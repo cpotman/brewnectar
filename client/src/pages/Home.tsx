@@ -7,9 +7,10 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
-import { ChevronDown, ChevronLeft, ChevronRight, Play, Star, Check, X as XIcon, Zap, Brain, Coffee, Clock, Sparkles } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight, Play, Star, Check, X as XIcon, Zap, Brain, Coffee, Clock, Sparkles, ExternalLink, FlaskConical, BookOpen } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { AnimatePresence } from "framer-motion";
 
 /* ─── Fade-up animation wrapper ─── */
 function FadeUp({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -38,6 +39,308 @@ const IMAGES = {
   howStir: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/how-stir-3pNJBKzkQVwxqm57DvYdyL.webp",
   howLockIn: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/how-lockin-BGjMpAAVV2Cfd7diTUnZWZ.webp",
 };
+
+/* ─── Clinical studies data ─── */
+const CLINICAL_STUDIES = [
+  {
+    ingredient: "Lion\u2019s Mane",
+    studyCount: "30+",
+    tagline: "Peer-reviewed studies on neurogenesis & cognitive function",
+    icon: Brain,
+    color: "bg-amber-50 border-amber-200/60 text-[#B45309]",
+    dotColor: "bg-[#D97706]",
+    studies: [
+      {
+        title: "Acute and Chronic Effects of Lion\u2019s Mane on Cognitive Function",
+        authors: "Docherty et al.",
+        journal: "Nutrients",
+        year: 2023,
+        finding: "28-day supplementation improved cognitive performance and reduced subjective stress in healthy young adults.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10675414/",
+      },
+      {
+        title: "Improving Effects of Yamabushitake on Mild Cognitive Impairment",
+        authors: "Mori et al.",
+        journal: "Phytotherapy Research",
+        year: 2009,
+        finding: "16 weeks of supplementation significantly improved cognitive function scores in older adults with mild cognitive impairment.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/18844328/",
+      },
+      {
+        title: "Neurotrophic and Neuroprotective Effects of Hericium erinaceus",
+        authors: "Szućko-Kociuba et al.",
+        journal: "Int J Mol Sci",
+        year: 2023,
+        finding: "Comprehensive review confirming Lion\u2019s Mane promotes nerve growth factor (NGF) production and neuronal differentiation.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10650066/",
+      },
+    ],
+  },
+  {
+    ingredient: "Cognizin\u00AE",
+    studyCount: "20+",
+    tagline: "Clinical trials on memory, focus & attentional performance",
+    icon: Zap,
+    color: "bg-emerald-50 border-emerald-200/60 text-emerald-700",
+    dotColor: "bg-emerald-500",
+    studies: [
+      {
+        title: "Citicoline and Memory Function in Healthy Older Adults",
+        authors: "Nakazaki et al.",
+        journal: "The Journal of Nutrition",
+        year: 2021,
+        finding: "12 weeks of Cognizin\u00AE supplementation improved overall memory performance, especially episodic memory.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8349115/",
+      },
+      {
+        title: "Improved Attentional Performance Following Citicoline Administration",
+        authors: "McGlade et al.",
+        journal: "Food and Nutrition Sciences",
+        year: 2012,
+        finding: "Citicoline supplementation was associated with improved attentional focus and reduced errors of commission.",
+        url: "https://www.scirp.org/journal/paperinformation?paperid=19921",
+      },
+      {
+        title: "Citicoline Improves Human Vigilance and Visual Working Memory",
+        authors: "Al-Kuraishy & Al-Gareeb",
+        journal: "Basic and Clinical Neuroscience",
+        year: 2020,
+        finding: "Citicoline significantly improved psychomotor vigilance, arousal, and visual working memory vs. placebo.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7878037/",
+      },
+    ],
+  },
+  {
+    ingredient: "L-Theanine",
+    studyCount: "25+",
+    tagline: "Clinical studies on calm focus, alpha waves & stress reduction",
+    icon: Sparkles,
+    color: "bg-sky-50 border-sky-200/60 text-sky-700",
+    dotColor: "bg-sky-500",
+    studies: [
+      {
+        title: "Effects of L-Theanine on Stress-Related Symptoms and Cognitive Functions",
+        authors: "Hidese et al.",
+        journal: "Nutrients",
+        year: 2019,
+        finding: "L-Theanine reduced stress-related symptoms and improved cognitive function scores across multiple domains.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6836118/",
+      },
+      {
+        title: "Effects of l-Theanine on Cognitive Function in Middle-Aged and Older Subjects",
+        authors: "Baba et al.",
+        journal: "Journal of Medicinal Food",
+        year: 2021,
+        finding: "L-Theanine improved attention and working memory, enhancing executive function in middle-aged adults.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8080935/",
+      },
+      {
+        title: "L-Theanine and Caffeine in Combination Affect Human Cognition",
+        authors: "Kelly et al.",
+        journal: "The Journal of Nutrition",
+        year: 2008,
+        finding: "L-Theanine with caffeine increased alpha-band activity and improved attention task performance.",
+        url: "https://jn.nutrition.org/article/S0022-3166(22)09912-6/fulltext",
+      },
+    ],
+  },
+  {
+    ingredient: "B Vitamins",
+    studyCount: "100+",
+    tagline: "Research on neural energy, neurotransmitter synthesis & brain health",
+    icon: Coffee,
+    color: "bg-rose-50 border-rose-200/60 text-rose-700",
+    dotColor: "bg-rose-500",
+    studies: [
+      {
+        title: "B Vitamins and the Brain: Mechanisms, Dose and Efficacy",
+        authors: "Kennedy",
+        journal: "Nutrients",
+        year: 2016,
+        finding: "Comprehensive review establishing B vitamins as essential cofactors in neurotransmitter synthesis and cellular energy production.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4772032/",
+      },
+      {
+        title: "B Vitamins to Prevent Cognitive Decline in Older MCI Patients",
+        authors: "Kwok et al.",
+        journal: "Clinical Nutrition",
+        year: 2020,
+        finding: "B vitamin supplementation slowed cognitive decline and brain atrophy in patients with mild cognitive impairment.",
+        url: "https://www.sciencedirect.com/science/article/pii/S0261561419331322",
+      },
+      {
+        title: "B Vitamins in the Nervous System: Current Knowledge",
+        authors: "Calder\u00F3n-Ospina & Nava-Mesa",
+        journal: "Nutrients",
+        year: 2019,
+        finding: "B vitamins are critical for myelin formation, neurotransmitter synthesis, and overall nervous system function.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6930825/",
+      },
+    ],
+  },
+];
+
+/* ─── Clinical Studies Component ─── */
+function ClinicalStudies() {
+  const [expandedIdx, setExpandedIdx] = useState<number | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+
+  return (
+    <section id="clinical-studies" className="py-20 md:py-28 bg-[#FDFBF7]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <FlaskConical size={16} className="text-[#D97706]" />
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706]">Backed by Science</p>
+          </div>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">
+            The Research Behind Every Drop.
+          </h2>
+          <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">
+            Every ingredient in BrewNectar is supported by peer-reviewed clinical research. Tap any ingredient to explore the studies.
+          </p>
+        </motion.div>
+
+        {/* Ingredient study cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          {CLINICAL_STUDIES.map((item, i) => {
+            const isExpanded = expandedIdx === i;
+            return (
+              <motion.div
+                key={item.ingredient}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <button
+                  onClick={() => setExpandedIdx(isExpanded ? null : i)}
+                  className={`w-full text-left p-5 rounded-2xl border transition-all duration-300 ${
+                    isExpanded
+                      ? `${item.color} shadow-warm ring-1 ring-current/10`
+                      : "bg-white border-stone-100 hover:border-stone-200 hover:shadow-warm"
+                  }`}
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                      isExpanded ? "bg-white/60" : item.color.split(" ")[0] + " " + item.color.split(" ").slice(-1)[0]
+                    }`}>
+                      <item.icon size={20} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className={`font-display font-bold text-base truncate ${
+                        isExpanded ? "" : "text-[#1C1917]"
+                      }`}>
+                        {item.ingredient}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Study count — large number */}
+                  <div className="flex items-baseline gap-2 mb-2">
+                    <span className={`font-display text-3xl font-bold ${
+                      isExpanded ? "" : "text-[#1C1917]"
+                    }`}>
+                      {item.studyCount}
+                    </span>
+                    <span className={`text-xs font-semibold uppercase tracking-wider ${
+                      isExpanded ? "opacity-70" : "text-[#A8A29E]"
+                    }`}>
+                      Studies
+                    </span>
+                  </div>
+
+                  <p className={`text-xs leading-relaxed ${
+                    isExpanded ? "opacity-80" : "text-[#78716C]"
+                  }`}>
+                    {item.tagline}
+                  </p>
+
+                  {/* Expand indicator */}
+                  <div className="flex items-center gap-1.5 mt-3">
+                    <BookOpen size={13} className={isExpanded ? "opacity-70" : "text-[#A8A29E]"} />
+                    <span className={`text-xs font-medium ${
+                      isExpanded ? "opacity-70" : "text-[#A8A29E]"
+                    }`}>
+                      {isExpanded ? "Tap to close" : "View studies"}
+                    </span>
+                    <ChevronDown size={13} className={`transition-transform duration-300 ${
+                      isExpanded ? "rotate-180 opacity-70" : "text-[#A8A29E]"
+                    }`} />
+                  </div>
+                </button>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Expanded study details */}
+        <AnimatePresence mode="wait">
+          {expandedIdx !== null && (
+            <motion.div
+              key={expandedIdx}
+              initial={{ opacity: 0, height: 0, marginTop: 0 }}
+              animate={{ opacity: 1, height: "auto", marginTop: 8 }}
+              exit={{ opacity: 0, height: 0, marginTop: 0 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="overflow-hidden"
+            >
+              <div className="bg-white rounded-2xl border border-stone-100 shadow-warm p-6 md:p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className={`w-2 h-2 rounded-full ${CLINICAL_STUDIES[expandedIdx].dotColor}`} />
+                  <h3 className="font-display font-bold text-lg text-[#1C1917]">
+                    Key Studies — {CLINICAL_STUDIES[expandedIdx].ingredient}
+                  </h3>
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-4">
+                  {CLINICAL_STUDIES[expandedIdx].studies.map((study, j) => (
+                    <a
+                      key={j}
+                      href={study.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group block p-5 rounded-xl border border-stone-100 hover:border-amber-200 hover:bg-amber-50/30 transition-all duration-300"
+                    >
+                      <div className="flex items-start justify-between gap-2 mb-3">
+                        <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-[#A8A29E]">
+                          <span className={`w-1.5 h-1.5 rounded-full ${CLINICAL_STUDIES[expandedIdx].dotColor}`} />
+                          {study.journal} &middot; {study.year}
+                        </span>
+                        <ExternalLink size={14} className="text-[#A8A29E] group-hover:text-[#D97706] transition-colors flex-shrink-0 mt-0.5" />
+                      </div>
+
+                      <h4 className="font-display font-semibold text-sm text-[#1C1917] mb-1.5 leading-snug group-hover:text-[#B45309] transition-colors">
+                        {study.title}
+                      </h4>
+                      <p className="text-xs text-[#A8A29E] mb-3">{study.authors}</p>
+
+                      <p className="text-xs text-[#78716C] leading-relaxed">
+                        <span className="font-semibold text-[#44403C]">Finding:</span> {study.finding}
+                      </p>
+                    </a>
+                  ))}
+                </div>
+
+                <div className="mt-5 pt-4 border-t border-stone-100 flex items-center gap-2">
+                  <FlaskConical size={13} className="text-[#A8A29E]" />
+                  <p className="text-xs text-[#A8A29E]">
+                    All studies are published in peer-reviewed journals. Click any study to read the full paper.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </section>
+  );
+}
 
 /* ─── Ticker messages ─── */
 const TICKER_MESSAGES = [
@@ -433,6 +736,9 @@ export default function Home() {
           </FadeUp>
         </div>
       </section>
+
+      {/* ═══════════ CLINICAL STUDIES ═══════════ */}
+      <ClinicalStudies />
 
       {/* ═══════════ SOCIAL PROOF — VIDEO TESTIMONIALS ═══════════ */}
       <section id="social-proof" className="py-20 md:py-28 bg-white">
