@@ -1,0 +1,10 @@
+Hero Background Observation:
+The radial gradient IS rendering but it's still very subtle. The user says "the background image is only in the top right corner" which likely refers to the warm gradient image being very faint. The issue is that the CSS radial gradient + image overlay are both too transparent.
+
+The user wants a more visible, warm background that clearly spans the full hero area. Need to significantly increase the opacity and make the warm tones more prominent - like a peach/amber wash across the entire hero section.
+
+Also need to check: the warm gradient image might not be loading at all, or it might be the product image they're referring to as "only in the top right corner" - the product image IS positioned in the right side of the hero grid.
+
+Looking at the screenshot more carefully: The hero section has a very faint warm tint but it's barely visible. The transition to the white "Problem" section below is almost seamless. The user wants more visual presence in the background.
+
+Fix: Make the radial gradient much more saturated/opaque, and increase the image overlay opacity.

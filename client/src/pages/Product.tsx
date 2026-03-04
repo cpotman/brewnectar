@@ -1,7 +1,8 @@
 /*
   BrewNectar Product Page — Grüns-Inspired Layout
-  Design: Problem callouts → Benefit visuals → Subscription-heavy pricing → FAQ
+  Design: Hero with images + plan selector → Benefits → Taste → Comparison → FAQ
   Bright, warm cream aesthetic with amber accents
+  Plan perks collapse/expand on selection (FAQ-style)
 */
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -13,21 +14,14 @@ import {
   Brain,
   Zap,
   Sparkles,
-  Coffee,
   ShieldCheck,
   Truck,
   RotateCcw,
-  Clock,
   Check,
   X as XIcon,
-  Minus,
-  Plus,
   ChevronDown,
   ArrowRight,
-  Timer,
   TrendingUp,
-  Shield,
-  Leaf,
 } from "lucide-react";
 
 /* ─── Fade-up wrapper ─── */
@@ -56,18 +50,61 @@ const IMAGES = {
   warmGradient: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/warm-gradient-bg-LWJsvAnDJnqPdXt4YEzJjg.webp",
 };
 
-type PlanType = "subscribe-1" | "subscribe-2" | "one-time";
+type PlanType = "subscribe-3" | "subscribe-2" | "subscribe-1" | "one-time";
 
 export default function Product() {
-  const [selectedPlan, setSelectedPlan] = useState<PlanType>("subscribe-1");
-  const [quantity, setQuantity] = useState(1);
+  const [selectedPlan, setSelectedPlan] = useState<PlanType>("subscribe-3");
   const [selectedImage, setSelectedImage] = useState(0);
   const [showSticky, setShowSticky] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const images = [IMAGES.productClean, IMAGES.hero, IMAGES.pour, IMAGES.stir];
 
-  const plans = {
+  const plans: Record<PlanType, {
+    label: string;
+    subtitle: string;
+    price: number;
+    originalPrice: number;
+    perDay: string;
+    discount: string;
+    badge: string;
+    badgeColor: string;
+    perks: { text: string; positive: boolean }[];
+    isSubscription: boolean;
+  }> = {
+    "subscribe-3": {
+      label: "3 Bottles",
+      subtitle: "Delivered every 12 weeks",
+      price: 90,
+      originalPrice: 120,
+      perDay: "1.00",
+      discount: "25% OFF",
+      badge: "Best Value",
+      badgeColor: "bg-emerald-600",
+      perks: [
+        { text: "Fast & FREE Shipping", positive: true },
+        { text: "Cancel anytime — no commitments", positive: true },
+        { text: "Biggest savings per bottle ($30/ea)", positive: true },
+        { text: "Priority access to new flavors", positive: true },
+      ],
+      isSubscription: true,
+    },
+    "subscribe-2": {
+      label: "2 Bottles",
+      subtitle: "Delivered every 8 weeks",
+      price: 64,
+      originalPrice: 80,
+      perDay: "1.07",
+      discount: "20% OFF",
+      badge: "Most Popular",
+      badgeColor: "bg-[#B45309]",
+      perks: [
+        { text: "Fast & FREE Shipping", positive: true },
+        { text: "Cancel anytime — no commitments", positive: true },
+        { text: "Great value — share with a partner ($32/ea)", positive: true },
+      ],
+      isSubscription: true,
+    },
     "subscribe-1": {
       label: "1 Bottle",
       subtitle: "Delivered every 4 weeks",
@@ -75,48 +112,34 @@ export default function Product() {
       originalPrice: 40,
       perDay: "1.13",
       discount: "15% OFF",
+      badge: "",
+      badgeColor: "",
       perks: [
         { text: "Fast & FREE Shipping", positive: true },
-        { text: "Cancel anytime", positive: true },
-        { text: "Priority access to new flavors", positive: true },
+        { text: "Cancel anytime — no commitments", positive: true },
+        { text: "Lock in subscriber pricing", positive: true },
       ],
       isSubscription: true,
-      popular: true,
-    },
-    "subscribe-2": {
-      label: "2 Bottles",
-      subtitle: "Delivered every 4 weeks",
-      price: 60,
-      originalPrice: 80,
-      perDay: "1.00",
-      discount: "25% OFF",
-      perks: [
-        { text: "Fast & FREE Shipping", positive: true },
-        { text: "Cancel anytime", positive: true },
-        { text: "Best value — share with a partner", positive: true },
-      ],
-      isSubscription: true,
-      popular: false,
     },
     "one-time": {
       label: "1 Bottle",
-      subtitle: "One-time delivery",
+      subtitle: "One-time purchase",
       price: 40,
       originalPrice: 40,
       perDay: "1.33",
       discount: "",
+      badge: "",
+      badgeColor: "",
       perks: [
-        { text: "No free shipping", positive: false },
+        { text: "No free shipping ($5.99 flat rate)", positive: false },
         { text: "No discount applied", positive: false },
         { text: "2nd order at full price", positive: false },
       ],
       isSubscription: false,
-      popular: false,
     },
   };
 
   const currentPlan = plans[selectedPlan];
-  const totalPrice = currentPlan.price * quantity;
 
   useEffect(() => {
     const handleScroll = () => setShowSticky(window.scrollY > 800);
@@ -126,7 +149,7 @@ export default function Product() {
 
   const handleAddToCart = () => {
     toast.success("Added to cart!", {
-      description: `${currentPlan.label} (${currentPlan.isSubscription ? "Subscription" : "One-time"}) × ${quantity}`,
+      description: `${currentPlan.label} (${currentPlan.isSubscription ? "Subscription" : "One-time"})`,
     });
   };
 
@@ -151,6 +174,8 @@ export default function Product() {
     { feature: "Daily Ritual Friendly", bn: true, rc: true, ss: false, cn: false },
   ];
 
+  const planOrder: PlanType[] = ["subscribe-3", "subscribe-2", "subscribe-1", "one-time"];
+
   return (
     <div className="min-h-screen bg-[#FDFBF7]">
       <Navbar />
@@ -159,12 +184,11 @@ export default function Product() {
       <div className="h-8 bg-[#1C1917]" />
       <style>{`nav.fixed { top: 32px !important; }`}</style>
 
-      {/* ═══════════ HERO: PROBLEM + PRODUCT ═══════════ */}
-      <section className="pt-28 md:pt-32 pb-16 md:pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <img src={IMAGES.warmGradient} alt="" className="w-full h-full object-cover" />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FDFBF7]/50 to-[#FDFBF7]" />
+      {/* ═══════════ HERO: PRODUCT IMAGES + PLAN SELECTOR ═══════════ */}
+      <section className="pt-24 md:pt-28 pb-10 md:pb-14 relative overflow-hidden">
+        <div className="absolute inset-0" style={{
+          background: "radial-gradient(ellipse 120% 80% at 60% 30%, rgba(251,191,114,0.15) 0%, rgba(245,158,66,0.08) 30%, rgba(253,251,247,0.6) 70%, #FDFBF7 100%), #FDFBF7"
+        }} />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Rating bar */}
@@ -185,53 +209,9 @@ export default function Product() {
             </div>
           </FadeUp>
 
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            {/* Left: Problem + CTA */}
-            <div>
-              <FadeUp delay={0.05}>
-                <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-[#1C1917] mb-4">
-                  Your coffee has a focus problem.{" "}
-                  <span className="text-gradient-warm">BrewNectar fixes it.</span>
-                </h1>
-              </FadeUp>
-
-              <FadeUp delay={0.1}>
-                <p className="text-lg text-[#57534E] leading-relaxed mb-8 max-w-lg">
-                  Nootropic coffee syrup with Lion's Mane, Cognizin, and L-Theanine. One tablespoon turns your morning cup into a cognitive upgrade.
-                </p>
-              </FadeUp>
-
-              {/* Problem stats — Grüns-inspired */}
-              <FadeUp delay={0.15}>
-                <div className="grid grid-cols-2 gap-4 mb-8">
-                  <div className="bg-white rounded-2xl border border-stone-100 p-5">
-                    <p className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#1C1917] mb-1">73%</p>
-                    <p className="text-sm text-[#78716C] leading-snug">of adults report daily brain fog that impacts their productivity at work.</p>
-                  </div>
-                  <div className="bg-white rounded-2xl border border-stone-100 p-5">
-                    <p className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#1C1917] mb-1">85%</p>
-                    <p className="text-sm text-[#78716C] leading-snug">of coffee drinkers experience an afternoon crash that kills deep work.</p>
-                  </div>
-                </div>
-              </FadeUp>
-
-              <FadeUp delay={0.2}>
-                <a
-                  href="#offers"
-                  className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg"
-                >
-                  Save 25% + Free Shipping
-                  <ArrowRight size={18} />
-                </a>
-                <div className="flex items-center gap-2 mt-3">
-                  <Check size={14} className="text-emerald-600" />
-                  <span className="text-xs text-[#78716C]">30-Day Money-Back Guarantee</span>
-                </div>
-              </FadeUp>
-            </div>
-
-            {/* Right: Product image */}
-            <FadeUp delay={0.1} className="relative">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+            {/* Left: Product Images */}
+            <FadeUp delay={0.05}>
               <div className="relative rounded-2xl overflow-hidden aspect-square bg-stone-50">
                 <img
                   src={images[selectedImage]}
@@ -255,12 +235,172 @@ export default function Product() {
                 ))}
               </div>
             </FadeUp>
+
+            {/* Right: Plan Selector (directly beside images) */}
+            <FadeUp delay={0.1}>
+              <div>
+                <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">
+                  BrewNectar Nootropic Coffee Syrup
+                </h1>
+                <p className="text-[#57534E] text-base mb-6 leading-relaxed">
+                  Vanilla bean nootropic syrup with Lion's Mane, Cognizin, and L-Theanine. One tablespoon for calm focus, faster recall, and deep work.
+                </p>
+
+                {/* Plan options — collapsible perks */}
+                <div className="space-y-3 mb-6" id="offers">
+                  {planOrder.map((planKey) => {
+                    const plan = plans[planKey];
+                    const isSelected = selectedPlan === planKey;
+                    return (
+                      <button
+                        key={planKey}
+                        onClick={() => setSelectedPlan(planKey)}
+                        className={`w-full text-left rounded-2xl border-2 transition-all duration-200 relative overflow-hidden ${
+                          isSelected
+                            ? "border-[#B45309] bg-white shadow-warm"
+                            : "border-stone-200 bg-white hover:border-stone-300"
+                        }`}
+                      >
+                        {/* Badge */}
+                        {plan.badge && (
+                          <span className={`absolute -top-0 right-0 px-3 py-1 ${plan.badgeColor} text-white text-[10px] font-bold rounded-bl-xl uppercase tracking-wide`}>
+                            {plan.badge}
+                          </span>
+                        )}
+
+                        {/* Main row: always visible */}
+                        <div className="flex items-center justify-between gap-3 p-4 md:p-5">
+                          <div className="flex items-center gap-3">
+                            {/* Radio circle */}
+                            <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
+                              isSelected ? "border-[#B45309]" : "border-stone-300"
+                            }`}>
+                              {isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#B45309]" />}
+                            </div>
+
+                            <div>
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <h3 className="font-display font-bold text-base text-[#1C1917]">{plan.label}</h3>
+                                {plan.discount && (
+                                  <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold">
+                                    {plan.discount}
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-xs text-[#78716C] mt-0.5">{plan.subtitle}</p>
+                            </div>
+                          </div>
+
+                          {/* Pricing */}
+                          <div className="text-right flex-shrink-0">
+                            <div className="flex items-baseline gap-1.5 justify-end">
+                              <span className="font-display text-xl sm:text-2xl font-bold text-[#1C1917]">${plan.price}</span>
+                              {plan.isSubscription && plan.originalPrice > plan.price && (
+                                <span className="text-xs text-[#A8A29E] line-through">${plan.originalPrice}</span>
+                              )}
+                            </div>
+                            <p className="text-[11px] font-semibold text-[#B45309]">${plan.perDay}/day</p>
+                          </div>
+                        </div>
+
+                        {/* Collapsible perks — only show when selected */}
+                        <AnimatePresence initial={false}>
+                          {isSelected && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                              className="overflow-hidden"
+                            >
+                              <div className="px-4 md:px-5 pb-4 md:pb-5 pt-0 border-t border-stone-100 mt-0">
+                                <div className="pt-3 space-y-1.5">
+                                  {plan.perks.map((perk) => (
+                                    <div key={perk.text} className="flex items-center gap-2">
+                                      {perk.positive ? (
+                                        <Check size={14} className="text-emerald-600 flex-shrink-0" />
+                                      ) : (
+                                        <XIcon size={14} className="text-stone-400 flex-shrink-0" />
+                                      )}
+                                      <span className={`text-sm ${perk.positive ? "text-[#44403C]" : "text-[#A8A29E]"}`}>
+                                        {perk.text}
+                                      </span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* CTA */}
+                <button
+                  onClick={handleAddToCart}
+                  className="w-full py-4 rounded-full bg-[#1C1917] font-display font-bold text-base text-white hover:bg-[#292524] hover:shadow-lg transition-all mb-3"
+                >
+                  {currentPlan.isSubscription ? `Start Subscription — $${currentPlan.price}/mo` : `Buy Now — $${currentPlan.price}`}
+                </button>
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <Check size={14} className="text-emerald-600" />
+                  <span className="text-xs text-[#78716C]">Limited Time Discount Auto-Applied</span>
+                </div>
+
+                {/* Trust badges */}
+                <div className="grid grid-cols-3 gap-3">
+                  {[
+                    { icon: <ShieldCheck size={18} />, label: "30-Day Guarantee" },
+                    { icon: <Truck size={18} />, label: "Free Shipping" },
+                    { icon: <RotateCcw size={18} />, label: "Cancel Anytime" },
+                  ].map((badge) => (
+                    <div key={badge.label} className="flex flex-col items-center gap-1.5 text-center">
+                      <div className="text-[#B45309]">{badge.icon}</div>
+                      <span className="text-[#78716C] text-[11px] font-medium">{badge.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </FadeUp>
           </div>
         </div>
       </section>
 
-      {/* ═══════════ TRANSFORM YOUR FOCUS — Benefit Visuals Around Product ═══════════ */}
-      <section className="py-16 md:py-24 bg-white">
+      {/* ═══════════ PROBLEM STATS ═══════════ */}
+      <section className="py-14 md:py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeUp>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">The Problem</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">
+              Your Coffee Has a Focus Problem.
+            </h2>
+            <p className="text-center text-[#78716C] text-lg mb-10 max-w-2xl mx-auto">
+              Caffeine alone is a blunt instrument. Here's what it actually does to your day.
+            </p>
+          </FadeUp>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { stat: "73%", desc: "of adults report daily brain fog at work" },
+              { stat: "85%", desc: "experience an afternoon crash that kills deep work" },
+              { stat: "4.2", desc: "cups of coffee consumed daily by the average American" },
+              { stat: "62%", desc: "say caffeine gives them jitters or anxiety" },
+            ].map((item, i) => (
+              <FadeUp key={item.stat} delay={i * 0.08}>
+                <div className="bg-[#FDFBF7] rounded-2xl border border-stone-100 p-5 text-center">
+                  <p className="font-display text-3xl md:text-4xl font-bold text-[#1C1917] mb-2">{item.stat}</p>
+                  <p className="text-xs text-[#78716C] leading-snug">{item.desc}</p>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════ TRANSFORM YOUR FOCUS — Benefit Visuals ═══════════ */}
+      <section className="py-16 md:py-24 bg-[#FDFBF7]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Transform Your Focus</p>
@@ -272,110 +412,96 @@ export default function Product() {
             </p>
           </FadeUp>
 
-          {/* Product in center with benefits around it */}
-          <div className="relative">
-            {/* Desktop: product centered with benefits on sides */}
-            <div className="hidden lg:grid lg:grid-cols-3 gap-8 items-center">
-              {/* Left benefits */}
-              <div className="space-y-10">
-                <FadeUp delay={0.1}>
-                  <div className="text-right">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 mb-3 ml-auto">
-                      <Brain size={22} className="text-[#B45309]" />
-                    </div>
-                    <h3 className="font-display font-bold text-lg text-[#1C1917] mb-1">Cognitive Clarity</h3>
-                    <p className="text-sm text-[#78716C] leading-relaxed">
-                      Lion's Mane promotes nerve growth factor (NGF) production, supporting neurogenesis and sharper thinking.
-                    </p>
+          {/* Desktop: product centered with benefits on sides */}
+          <div className="hidden lg:grid lg:grid-cols-3 gap-8 items-center">
+            <div className="space-y-10">
+              <FadeUp delay={0.1}>
+                <div className="text-right">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 mb-3 ml-auto">
+                    <Brain size={22} className="text-[#B45309]" />
                   </div>
-                </FadeUp>
-                <FadeUp delay={0.2}>
-                  <div className="text-right">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 mb-3 ml-auto">
-                      <Zap size={22} className="text-emerald-600" />
-                    </div>
-                    <h3 className="font-display font-bold text-lg text-[#1C1917] mb-1">Clean Energy</h3>
-                    <p className="text-sm text-[#78716C] leading-relaxed">
-                      Cognizin (Citicoline) fuels brain cells directly, enhancing mental energy without jitters or crash.
-                    </p>
-                  </div>
-                </FadeUp>
-              </div>
-
-              {/* Center product image */}
-              <FadeUp delay={0.15}>
-                <div className="flex justify-center">
-                  <img
-                    src={IMAGES.productClean}
-                    alt="BrewNectar bottle"
-                    className="w-72 h-72 object-contain drop-shadow-xl"
-                  />
+                  <h3 className="font-display font-bold text-lg text-[#1C1917] mb-1">Cognitive Clarity</h3>
+                  <p className="text-sm text-[#78716C] leading-relaxed">
+                    Lion's Mane promotes nerve growth factor (NGF) production, supporting neurogenesis and sharper thinking.
+                  </p>
                 </div>
               </FadeUp>
-
-              {/* Right benefits */}
-              <div className="space-y-10">
-                <FadeUp delay={0.1}>
-                  <div>
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-sky-50 border border-sky-100 mb-3">
-                      <Sparkles size={22} className="text-sky-600" />
-                    </div>
-                    <h3 className="font-display font-bold text-lg text-[#1C1917] mb-1">Calm Focus</h3>
-                    <p className="text-sm text-[#78716C] leading-relaxed">
-                      L-Theanine promotes alpha brain waves — the same state achieved during meditation. Focus without anxiety.
-                    </p>
+              <FadeUp delay={0.2}>
+                <div className="text-right">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 mb-3 ml-auto">
+                    <Zap size={22} className="text-emerald-600" />
                   </div>
-                </FadeUp>
-                <FadeUp delay={0.2}>
-                  <div>
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-rose-50 border border-rose-100 mb-3">
-                      <TrendingUp size={22} className="text-rose-500" />
-                    </div>
-                    <h3 className="font-display font-bold text-lg text-[#1C1917] mb-1">Sustained Performance</h3>
-                    <p className="text-sm text-[#78716C] leading-relaxed">
-                      B-Vitamins support cellular energy metabolism, keeping your brain fueled throughout the entire workday.
-                    </p>
-                  </div>
-                </FadeUp>
-              </div>
+                  <h3 className="font-display font-bold text-lg text-[#1C1917] mb-1">Clean Energy</h3>
+                  <p className="text-sm text-[#78716C] leading-relaxed">
+                    Cognizin (Citicoline) fuels brain cells directly, enhancing mental energy without jitters or crash.
+                  </p>
+                </div>
+              </FadeUp>
             </div>
 
-            {/* Mobile: stacked layout */}
-            <div className="lg:hidden">
-              <FadeUp>
-                <div className="flex justify-center mb-10">
-                  <img
-                    src={IMAGES.productClean}
-                    alt="BrewNectar bottle"
-                    className="w-48 h-48 object-contain drop-shadow-xl"
-                  />
+            <FadeUp delay={0.15}>
+              <div className="flex justify-center">
+                <img src={IMAGES.productClean} alt="BrewNectar bottle" className="w-72 h-72 object-contain drop-shadow-xl" />
+              </div>
+            </FadeUp>
+
+            <div className="space-y-10">
+              <FadeUp delay={0.1}>
+                <div>
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-sky-50 border border-sky-100 mb-3">
+                    <Sparkles size={22} className="text-sky-600" />
+                  </div>
+                  <h3 className="font-display font-bold text-lg text-[#1C1917] mb-1">Calm Focus</h3>
+                  <p className="text-sm text-[#78716C] leading-relaxed">
+                    L-Theanine promotes alpha brain waves — the same state achieved during meditation. Focus without anxiety.
+                  </p>
                 </div>
               </FadeUp>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { icon: Brain, color: "bg-amber-50 border-amber-100 text-[#B45309]", title: "Cognitive Clarity", desc: "Lion's Mane supports neurogenesis and sharper thinking." },
-                  { icon: Zap, color: "bg-emerald-50 border-emerald-100 text-emerald-600", title: "Clean Energy", desc: "Cognizin fuels brain cells without jitters or crash." },
-                  { icon: Sparkles, color: "bg-sky-50 border-sky-100 text-sky-600", title: "Calm Focus", desc: "L-Theanine promotes alpha brain waves for focus." },
-                  { icon: TrendingUp, color: "bg-rose-50 border-rose-100 text-rose-500", title: "Sustained Performance", desc: "B-Vitamins keep your brain fueled all day." },
-                ].map((b, i) => (
-                  <FadeUp key={b.title} delay={i * 0.08}>
-                    <div className="bg-white rounded-2xl border border-stone-100 p-4 text-center h-full">
-                      <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl border ${b.color} mb-2`}>
-                        <b.icon size={18} />
-                      </div>
-                      <h3 className="font-display font-bold text-sm text-[#1C1917] mb-1">{b.title}</h3>
-                      <p className="text-xs text-[#78716C] leading-relaxed">{b.desc}</p>
-                    </div>
-                  </FadeUp>
-                ))}
+              <FadeUp delay={0.2}>
+                <div>
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-rose-50 border border-rose-100 mb-3">
+                    <TrendingUp size={22} className="text-rose-500" />
+                  </div>
+                  <h3 className="font-display font-bold text-lg text-[#1C1917] mb-1">Sustained Performance</h3>
+                  <p className="text-sm text-[#78716C] leading-relaxed">
+                    B-Vitamins support cellular energy metabolism, keeping your brain fueled throughout the entire workday.
+                  </p>
+                </div>
+              </FadeUp>
+            </div>
+          </div>
+
+          {/* Mobile: stacked layout */}
+          <div className="lg:hidden">
+            <FadeUp>
+              <div className="flex justify-center mb-10">
+                <img src={IMAGES.productClean} alt="BrewNectar bottle" className="w-48 h-48 object-contain drop-shadow-xl" />
               </div>
+            </FadeUp>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { icon: Brain, color: "bg-amber-50 border-amber-100 text-[#B45309]", title: "Cognitive Clarity", desc: "Lion's Mane supports neurogenesis and sharper thinking." },
+                { icon: Zap, color: "bg-emerald-50 border-emerald-100 text-emerald-600", title: "Clean Energy", desc: "Cognizin fuels brain cells without jitters or crash." },
+                { icon: Sparkles, color: "bg-sky-50 border-sky-100 text-sky-600", title: "Calm Focus", desc: "L-Theanine promotes alpha brain waves for focus." },
+                { icon: TrendingUp, color: "bg-rose-50 border-rose-100 text-rose-500", title: "Sustained Performance", desc: "B-Vitamins keep your brain fueled all day." },
+              ].map((b, i) => (
+                <FadeUp key={b.title} delay={i * 0.08}>
+                  <div className="bg-white rounded-2xl border border-stone-100 p-4 text-center h-full">
+                    <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl border ${b.color} mb-2`}>
+                      <b.icon size={18} />
+                    </div>
+                    <h3 className="font-display font-bold text-sm text-[#1C1917] mb-1">{b.title}</h3>
+                    <p className="text-xs text-[#78716C] leading-relaxed">{b.desc}</p>
+                  </div>
+                </FadeUp>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* ═══════════ TASTE CALLOUTS ═══════════ */}
-      <section className="py-14 md:py-20 bg-[#FDFBF7]">
+      <section className="py-14 md:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <h2 className="font-display text-2xl md:text-3xl font-bold text-center text-[#1C1917] mb-10">
@@ -391,7 +517,7 @@ export default function Product() {
               { emoji: "🌿", label: "Clean Finish", desc: "Zero sugar, zero aftertaste" },
             ].map((taste, i) => (
               <FadeUp key={taste.label} delay={i * 0.08}>
-                <div className="bg-white rounded-2xl border border-stone-100 p-5 md:p-6 text-center hover:shadow-warm hover:border-amber-100 transition-all duration-300">
+                <div className="bg-[#FDFBF7] rounded-2xl border border-stone-100 p-5 md:p-6 text-center hover:shadow-warm hover:border-amber-100 transition-all duration-300">
                   <span className="text-3xl md:text-4xl block mb-3">{taste.emoji}</span>
                   <h3 className="font-display font-bold text-sm md:text-base text-[#1C1917] mb-1">{taste.label}</h3>
                   <p className="text-xs text-[#78716C]">{taste.desc}</p>
@@ -400,14 +526,10 @@ export default function Product() {
             ))}
           </div>
 
-          {/* Packed With */}
           <FadeUp delay={0.2}>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               {["Lion's Mane", "Cognizin\u00AE", "L-Theanine", "B-Complex", "Vanilla Extract", "Zero Sugar"].map((item) => (
-                <span
-                  key={item}
-                  className="px-4 py-2 rounded-full bg-white border border-stone-100 text-sm text-[#57534E] font-medium"
-                >
+                <span key={item} className="px-4 py-2 rounded-full bg-white border border-stone-100 text-sm text-[#57534E] font-medium">
                   {item}
                 </span>
               ))}
@@ -417,7 +539,7 @@ export default function Product() {
       </section>
 
       {/* ═══════════ COMPARISON CHART ═══════════ */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-[#FDFBF7]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Us vs. Them</p>
@@ -463,157 +585,6 @@ export default function Product() {
                   ))}
                 </tbody>
               </table>
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* ═══════════ SUBSCRIPTION OFFERS — Grüns-Inspired ═══════════ */}
-      <section id="offers" className="py-16 md:py-24 bg-[#FDFBF7]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeUp>
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Choose Your Plan</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">
-              Subscribe & Save
-            </h2>
-            <p className="text-center text-[#78716C] text-lg mb-10 max-w-xl mx-auto">
-              Join 12,000+ high performers who made BrewNectar part of their daily ritual.
-            </p>
-          </FadeUp>
-
-          {/* Plan options */}
-          <div className="space-y-4 mb-8">
-            {(["subscribe-2", "subscribe-1", "one-time"] as PlanType[]).map((planKey) => {
-              const plan = plans[planKey];
-              const isSelected = selectedPlan === planKey;
-              return (
-                <FadeUp key={planKey} delay={planKey === "subscribe-2" ? 0 : planKey === "subscribe-1" ? 0.05 : 0.1}>
-                  <button
-                    onClick={() => setSelectedPlan(planKey)}
-                    className={`w-full text-left rounded-2xl border-2 p-5 md:p-6 transition-all duration-200 relative ${
-                      isSelected
-                        ? "border-[#B45309] bg-white shadow-warm"
-                        : "border-stone-200 bg-white hover:border-stone-300"
-                    }`}
-                  >
-                    {/* Popular badge */}
-                    {plan.popular && (
-                      <span className="absolute -top-3 left-6 px-3 py-1 bg-[#B45309] text-white text-xs font-bold rounded-full uppercase tracking-wide">
-                        Most Popular
-                      </span>
-                    )}
-                    {planKey === "subscribe-2" && (
-                      <span className="absolute -top-3 left-6 px-3 py-1 bg-emerald-600 text-white text-xs font-bold rounded-full uppercase tracking-wide">
-                        Best Value
-                      </span>
-                    )}
-
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                      {/* Left: radio + plan info */}
-                      <div className="flex items-start gap-4">
-                        {/* Radio circle */}
-                        <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                          isSelected ? "border-[#B45309]" : "border-stone-300"
-                        }`}>
-                          {isSelected && <div className="w-3 h-3 rounded-full bg-[#B45309]" />}
-                        </div>
-
-                        <div>
-                          <div className="flex items-center gap-3 flex-wrap">
-                            <h3 className="font-display font-bold text-lg text-[#1C1917]">{plan.label}</h3>
-                            {plan.discount && (
-                              <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold">
-                                {plan.discount}
-                              </span>
-                            )}
-                          </div>
-                          <p className="text-sm text-[#78716C] mt-0.5">{plan.subtitle}</p>
-
-                          {/* Perks */}
-                          <div className="mt-3 space-y-1.5">
-                            {plan.perks.map((perk) => (
-                              <div key={perk.text} className="flex items-center gap-2">
-                                {perk.positive ? (
-                                  <Check size={14} className="text-emerald-600 flex-shrink-0" />
-                                ) : (
-                                  <XIcon size={14} className="text-stone-400 flex-shrink-0" />
-                                )}
-                                <span className={`text-sm ${perk.positive ? "text-[#44403C]" : "text-[#A8A29E]"}`}>
-                                  {perk.text}
-                                </span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Right: pricing */}
-                      <div className="text-right flex-shrink-0 sm:min-w-[140px] pl-10 sm:pl-0">
-                        <div className="flex items-baseline gap-2 justify-end">
-                          <span className="font-display text-3xl font-bold text-[#1C1917]">${plan.price}</span>
-                          {plan.isSubscription && (
-                            <span className="text-sm text-[#A8A29E] line-through">${plan.originalPrice}</span>
-                          )}
-                        </div>
-                        <p className="text-sm text-[#78716C]">{plan.isSubscription ? "/mo" : ""}</p>
-                        <p className="text-xs font-semibold text-[#B45309] mt-1">${plan.perDay}/day</p>
-                      </div>
-                    </div>
-                  </button>
-                </FadeUp>
-              );
-            })}
-          </div>
-
-          {/* Quantity */}
-          <FadeUp delay={0.15}>
-            <div className="flex items-center justify-between bg-white rounded-2xl border border-stone-200 p-5 mb-6">
-              <span className="font-display font-semibold text-[#1C1917]">Quantity</span>
-              <div className="flex items-center gap-4">
-                <button
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="w-10 h-10 rounded-xl border border-stone-200 flex items-center justify-center text-[#78716C] hover:bg-stone-50 transition-colors"
-                >
-                  <Minus size={16} />
-                </button>
-                <span className="font-display font-bold text-[#1C1917] text-lg w-8 text-center">{quantity}</span>
-                <button
-                  onClick={() => setQuantity(quantity + 1)}
-                  className="w-10 h-10 rounded-xl border border-stone-200 flex items-center justify-center text-[#78716C] hover:bg-stone-50 transition-colors"
-                >
-                  <Plus size={16} />
-                </button>
-              </div>
-            </div>
-          </FadeUp>
-
-          {/* CTA */}
-          <FadeUp delay={0.2}>
-            <button
-              onClick={handleAddToCart}
-              className="w-full py-4 rounded-full bg-[#1C1917] font-display font-bold text-lg text-white hover:bg-[#292524] hover:shadow-lg transition-all mb-3"
-            >
-              {currentPlan.isSubscription ? `Start Subscription — $${totalPrice}/mo` : `Buy Now — $${totalPrice}`}
-            </button>
-            <div className="flex items-center justify-center gap-2 mb-3">
-              <Check size={14} className="text-emerald-600" />
-              <span className="text-xs text-[#78716C]">Limited Time Discount Auto-Applied</span>
-            </div>
-          </FadeUp>
-
-          {/* Trust badges */}
-          <FadeUp delay={0.25}>
-            <div className="grid grid-cols-3 gap-4 mt-6">
-              {[
-                { icon: <ShieldCheck size={20} />, label: "30-Day Guarantee" },
-                { icon: <Truck size={20} />, label: "Free Shipping" },
-                { icon: <RotateCcw size={20} />, label: "Cancel Anytime" },
-              ].map((badge) => (
-                <div key={badge.label} className="flex flex-col items-center gap-2 text-center">
-                  <div className="text-[#B45309]">{badge.icon}</div>
-                  <span className="text-[#78716C] text-xs font-medium">{badge.label}</span>
-                </div>
-              ))}
             </div>
           </FadeUp>
         </div>
@@ -683,6 +654,7 @@ export default function Product() {
             <a
               href="#offers"
               className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg"
+              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
             >
               Start Your Subscription
               <ArrowRight size={18} />
@@ -703,13 +675,16 @@ export default function Product() {
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="min-w-0">
             <div className="flex items-baseline gap-2">
-              <p className="font-display font-bold text-[#1C1917] text-lg">${totalPrice}{currentPlan.isSubscription ? "/mo" : ""}</p>
+              <p className="font-display font-bold text-[#1C1917] text-lg">${currentPlan.price}{currentPlan.isSubscription ? "/mo" : ""}</p>
               {currentPlan.isSubscription && currentPlan.originalPrice > currentPlan.price && (
-                <span className="text-sm text-[#A8A29E] line-through">${currentPlan.originalPrice * quantity}</span>
+                <span className="text-sm text-[#A8A29E] line-through">${currentPlan.originalPrice}</span>
+              )}
+              {currentPlan.discount && (
+                <span className="text-xs font-bold text-emerald-600">{currentPlan.discount}</span>
               )}
             </div>
             <p className="text-[#78716C] text-xs truncate">
-              {currentPlan.isSubscription ? "Subscription" : "One-time"} · {currentPlan.label} × {quantity}
+              {currentPlan.isSubscription ? "Subscription" : "One-time"} · {currentPlan.label}
             </p>
           </div>
           <button

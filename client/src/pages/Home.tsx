@@ -487,21 +487,24 @@ export default function Home() {
 
       {/* ═══════════ HERO ═══════════ */}
       <section className="relative pt-36 md:pt-44 pb-20 md:pb-28 overflow-hidden">
-        {/* Full-bleed warm gradient background */}
+        {/* Full-bleed warm gradient background — clearly visible across entire section */}
+        <div className="absolute inset-0" style={{
+          background: "radial-gradient(ellipse 140% 100% at 50% 30%, rgba(251,191,114,0.38) 0%, rgba(245,158,66,0.22) 25%, rgba(255,237,213,0.35) 50%, rgba(253,251,247,0.8) 80%, #FDFBF7 100%), radial-gradient(ellipse 90% 70% at 15% 55%, rgba(217,119,6,0.12) 0%, transparent 55%), radial-gradient(ellipse 60% 50% at 85% 25%, rgba(251,191,114,0.18) 0%, transparent 50%), #FDFBF7"
+        }} />
+        {/* Warm gradient image overlay for texture */}
         <div className="absolute inset-0">
-          <img src={IMAGES.warmGradient} alt="" className="w-full h-full object-cover opacity-30" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FDFBF7]/60 via-[#FDFBF7]/40 to-[#FDFBF7]" />
+          <img src={IMAGES.warmGradient} alt="" className="w-full h-full object-cover opacity-40 mix-blend-multiply" />
         </div>
         {/* Botanical decoration */}
         <img
           src={IMAGES.botanical}
           alt=""
-          className="absolute -right-10 top-10 w-48 md:w-72 lg:w-96 opacity-[0.07] pointer-events-none select-none"
+          className="absolute -right-10 top-10 w-48 md:w-72 lg:w-96 opacity-[0.12] pointer-events-none select-none"
         />
         <img
           src={IMAGES.botanical}
           alt=""
-          className="absolute -left-16 bottom-0 w-40 md:w-56 opacity-[0.05] pointer-events-none select-none rotate-180 hidden md:block"
+          className="absolute -left-16 bottom-0 w-40 md:w-56 opacity-[0.08] pointer-events-none select-none rotate-180 hidden md:block"
         />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

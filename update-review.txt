@@ -1,0 +1,20 @@
+Update Review Notes:
+
+HOMEPAGE:
+- Hero background is now more visible with warm amber/peach tones spanning the full section
+- The gradient is clearly present across the entire hero area, not just the top-right
+- Botanical decorations are more visible too
+- Overall the hero feels warmer and more inviting
+
+PRODUCT PAGE:
+- Plan selector is now directly beside the product images (right column) - looks great!
+- 4 plan options: 3 Bottles (Best Value), 2 Bottles (Most Popular), 1 Bottle, One-time
+- 3 Bottles is pre-selected and its perks are expanded (collapsible FAQ-style)
+- Other plans show collapsed - just the plan name, price, and per-day cost
+- Quantity selector has been removed
+- CTA button says "Start Subscription — $90/mo"
+- Trust badges below CTA
+- Sticky bar at bottom with price and Subscribe Now button
+- Sections flow: Hero → Problem Stats → Benefits → Taste → Comparison → FAQ → Final CTA
+
+Everything looks good! The product page layout is much more conversion-focused now.
