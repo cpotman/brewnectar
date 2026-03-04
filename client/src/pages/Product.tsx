@@ -184,8 +184,39 @@ export default function Product() {
       <div className="h-8 bg-[#1C1917]" />
       <style>{`nav.fixed { top: 32px !important; }`}</style>
 
+      {/* ═══════════ PROBLEM STATS (above product) ═══════════ */}
+      <section className="pt-24 md:pt-28 pb-10 md:pb-14 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeUp>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">The Problem</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">
+              Your Coffee Has a Focus Problem.
+            </h2>
+            <p className="text-center text-[#78716C] text-lg mb-10 max-w-2xl mx-auto">
+              Caffeine alone is a blunt instrument. Here's what it actually does to your day.
+            </p>
+          </FadeUp>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { stat: "73%", desc: "of adults report daily brain fog at work" },
+              { stat: "85%", desc: "experience an afternoon crash that kills deep work" },
+              { stat: "4.2", desc: "cups of coffee consumed daily by the average American" },
+              { stat: "62%", desc: "say caffeine gives them jitters or anxiety" },
+            ].map((item, i) => (
+              <FadeUp key={item.stat} delay={i * 0.08}>
+                <div className="bg-[#FDFBF7] rounded-2xl border border-stone-100 p-5 text-center">
+                  <p className="font-display text-3xl md:text-4xl font-bold text-[#1C1917] mb-2">{item.stat}</p>
+                  <p className="text-xs text-[#78716C] leading-snug">{item.desc}</p>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ═══════════ HERO: PRODUCT IMAGES + PLAN SELECTOR ═══════════ */}
-      <section className="pt-24 md:pt-28 pb-10 md:pb-14 relative overflow-hidden">
+      <section className="pt-10 md:pt-14 pb-10 md:pb-14 relative overflow-hidden">
         <div className="absolute inset-0" style={{
           background: "radial-gradient(ellipse 120% 80% at 60% 30%, rgba(251,191,114,0.15) 0%, rgba(245,158,66,0.08) 30%, rgba(253,251,247,0.6) 70%, #FDFBF7 100%), #FDFBF7"
         }} />
@@ -368,36 +399,7 @@ export default function Product() {
         </div>
       </section>
 
-      {/* ═══════════ PROBLEM STATS ═══════════ */}
-      <section className="py-14 md:py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeUp>
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">The Problem</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">
-              Your Coffee Has a Focus Problem.
-            </h2>
-            <p className="text-center text-[#78716C] text-lg mb-10 max-w-2xl mx-auto">
-              Caffeine alone is a blunt instrument. Here's what it actually does to your day.
-            </p>
-          </FadeUp>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { stat: "73%", desc: "of adults report daily brain fog at work" },
-              { stat: "85%", desc: "experience an afternoon crash that kills deep work" },
-              { stat: "4.2", desc: "cups of coffee consumed daily by the average American" },
-              { stat: "62%", desc: "say caffeine gives them jitters or anxiety" },
-            ].map((item, i) => (
-              <FadeUp key={item.stat} delay={i * 0.08}>
-                <div className="bg-[#FDFBF7] rounded-2xl border border-stone-100 p-5 text-center">
-                  <p className="font-display text-3xl md:text-4xl font-bold text-[#1C1917] mb-2">{item.stat}</p>
-                  <p className="text-xs text-[#78716C] leading-snug">{item.desc}</p>
-                </div>
-              </FadeUp>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ═══════════ TRANSFORM YOUR FOCUS — Benefit Visuals ═══════════ */}
       <section className="py-16 md:py-24 bg-[#FDFBF7]">
