@@ -35,9 +35,8 @@ const IMAGES = {
   botanical: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/botanical-stipple-YXHqjKQEjP2LspSUm3f2Gh.webp",
   lifestylePour: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/lifestyle-pour-bright-Gx24uHuFzUnhzZ4wLHqXvY.webp",
   benefitTexture: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/benefit-texture-bg-7Q84t6rmotySQdZXZXCNVa.webp",
-  lifestyleDesk: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/lifestyle-desk-a3PoRPuCPqDsqnXXGkxfTf.webp",
-  lifestyleGym: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/lifestyle-gym-2dZCKdqwdGCQxvRKPBCCMn.webp",
-  lifestyleStudy: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/lifestyle-study-VCPJqRSFsqtPLCpCfwFqJi.webp",
+  howStir: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/how-stir-3pNJBKzkQVwxqm57DvYdyL.webp",
+  howLockIn: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/how-lockin-BGjMpAAVV2Cfd7diTUnZWZ.webp",
 };
 
 /* ─── Ticker messages ─── */
@@ -58,7 +57,7 @@ const VIDEO_TESTIMONIALS = [
     title: "Software Engineer",
     quote: "Replaced my second cup of coffee with BrewNectar. I'm shipping code faster and my afternoons are actually productive now.",
     rating: 5,
-    thumbnail: IMAGES.lifestyleDesk,
+    thumbnail: IMAGES.howLockIn,
   },
   {
     id: 2,
@@ -74,7 +73,7 @@ const VIDEO_TESTIMONIALS = [
     title: "Founder & CEO",
     quote: "I've tried every nootropic on the market. This is the first one I actually look forward to taking.",
     rating: 5,
-    thumbnail: IMAGES.lifestyleGym,
+    thumbnail: IMAGES.howStir,
   },
   {
     id: 4,
@@ -82,7 +81,7 @@ const VIDEO_TESTIMONIALS = [
     title: "Medical Student",
     quote: "Study sessions went from 45 minutes to 3 hours. My recall during exams improved noticeably.",
     rating: 5,
-    thumbnail: IMAGES.lifestyleStudy,
+    thumbnail: IMAGES.howLockIn,
   },
   {
     id: 5,
@@ -90,7 +89,7 @@ const VIDEO_TESTIMONIALS = [
     title: "Creative Director",
     quote: "BrewNectar is part of my morning ritual now. The calm focus is unlike anything I've experienced with regular coffee.",
     rating: 5,
-    thumbnail: IMAGES.lifestyleDesk,
+    thumbnail: IMAGES.hero,
   },
 ];
 
@@ -372,13 +371,13 @@ export default function Home() {
                 step: "02",
                 title: "Stir",
                 desc: "Mix it in. Vanilla bean flavor blends perfectly with any roast.",
-                image: IMAGES.lifestyleDesk,
+                image: IMAGES.howStir,
               },
               {
                 step: "03",
                 title: "Lock In",
                 desc: "Feel the calm focus set in within 20 minutes. Deep work mode activated.",
-                image: IMAGES.lifestyleStudy,
+                image: IMAGES.howLockIn,
               },
             ].map((item, i) => (
               <FadeUp key={item.step} delay={i * 0.12}>
