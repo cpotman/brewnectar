@@ -1,0 +1,84 @@
+MAGIC MIND DESIGN OBSERVATIONS:
+- Background: Very light, almost white/cream with soft blue-gray tones
+- Hero: Light airy background (looks like misty water/sky), products floating on reflective surface
+- Typography: Bold serif/italic for headlines ("Sharper mind. Sustained energy."), clean sans for body
+- CTA: Bright green/lime accent buttons (high contrast against light bg)
+- Trust bar: Scrolling ticker with green checkmarks
+- Sections alternate between white and very soft cream/off-white
+- Lots of white space, generous padding
+- Product cards on white backgrounds
+- Overall feel: Clean, clinical, premium, bright, airy
+- Accent color: Bright green/lime (#00FF00 range)
+- Text: Dark charcoal/near-black on white backgrounds
+
+BREZ DESIGN OBSERVATIONS:
+- Background: Predominantly white/cream with soft iridescent gradients
+- Hero: Dreamy surreal landscape with pastel pink/purple/blue tones, products on reflective surface
+- Below hero: Clean white background with generous white space
+- Typography: Large bold serif/display font for headlines, clean sans-serif body
+- Accent: Bright lime/chartreuse green for CTAs and links
+- Product images float on iridescent/holographic light effects
+- "Drink better, feel better" section: white bg, dark text, lots of breathing room
+- "The perfect alternative": asymmetric layout, product on right with rainbow light halo
+- Overall: Very bright, airy, premium, lots of white space, iridescent/holographic accents
+- Text: Dark charcoal/near-black on white backgrounds
+
+USER TEXTURE REFERENCE IMAGE ANALYSIS:
+- Stippled/grainy dot textures (pointillism style)
+- Warm gradient tones (amber, peach, teal)
+- Organic botanical illustrations with stipple technique
+- Soft color blurs/aurora effects (orange, blue, violet)
+- Cream/off-white backgrounds
+- Botanical line art in navy/indigo on cream
+
+DESIGN DIRECTION FOR REDESIGN:
+- Switch from dark to LIGHT theme
+- Base: Warm cream/off-white (#FEFAF6 range) with pure white sections
+- Accent: Warm amber/honey (#D97706) to match coffee/syrup brand identity
+- Secondary accent: Soft sage green or teal for freshness
+- Text: Rich dark charcoal (#1C1917)
+- Subtle grain/noise texture overlay on hero and accent sections
+- Soft warm gradients (peach → cream → white)
+- Generous white space throughout
+- Keep Outfit + Plus Jakarta Sans fonts
+- Cards: White with subtle warm shadows instead of glassmorphism
+- CTAs: Warm amber/honey with dark text, or dark with warm accent
+
+HISTRIPS.COM DESIGN OBSERVATIONS:
+- Sliding news ticker at top: rotating announcements (FREE shipping, money-back guarantee, etc.) with prev/next arrows, bright magenta/pink background
+- "AS SEEN IN" logo bar: horizontal scrolling logos (goop, Forbes, People, Vogue, Women's Health, Cosmopolitan, ELLE)
+- Social proof section: Horizontal scrolling cards with VIDEO THUMBNAILS showing real athletes, star ratings, quote text, and person name/title below. These appear to be short-form video testimonials (TikTok-style) in a carousel
+- FAQ section: Clean accordion style on white background
+- Overall: White/light gray backgrounds, bold black typography, bright accent colors (magenta/pink CTAs)
+- Trust badges and social proof heavily emphasized
+- Scrolling/sliding patterns used throughout for engagement
+
+KEY PATTERNS TO REPLICATE FOR BREWNECTAR:
+1. Sliding announcement ticker bar (top of page, rotating messages)
+2. Social proof with embedded video thumbnails in horizontal scroll carousel
+3. Clean FAQ accordion on light background
+4. "As seen in" or trust logo bar
+5. White/cream base with warm accent colors
+
+HISTRIPS FAQ SECTION:
+- Title: "Got Questions About HiStrips?" in bold serif
+- Subtitle: "Get quick solutions to your common concerns, from shipping to application method."
+- Clean white background
+- Each FAQ item is a full-width row with question text on left, "+" icon on right
+- Separated by thin horizontal lines
+- Minimal, clean, lots of white space
+- No colored backgrounds, just white with thin borders
+- Plus icon expands to reveal answer
+
+HISTRIPS SOCIAL PROOF SECTION:
+- Horizontal scrolling carousel of video testimonial cards
+- Each card shows: video thumbnail (athlete in action), star rating, quote text, person name + title
+- Cards have slight shadow, white background
+- Scrolls horizontally with momentum
+- Very engaging, feels like TikTok/Reels format
+
+HISTRIPS SLIDING TICKER:
+- Top bar with rotating announcements
+- Bright colored background (magenta/pink/lime green)
+- Left/right arrows to manually navigate
+- Auto-rotates between messages like "FREE Fast Shipping Over $50", "30-day money-back guarantee", "Doctor Recommended. Champion Approved."

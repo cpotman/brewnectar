@@ -1,10 +1,9 @@
 /*
-  BrewNectar Navbar — Liquid Intelligence Design
-  Glassmorphism sticky nav with violet accent highlights
+  BrewNectar Navbar — Warm Light Theme
+  Clean white background, warm amber accents, elegant typography
 */
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -12,9 +11,9 @@ export default function Navbar() {
   const [location] = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -24,7 +23,7 @@ export default function Navbar() {
       return;
     }
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const navLinks = [
@@ -36,79 +35,76 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "glass-card-strong py-3 shadow-lg shadow-black/20"
-          : "bg-transparent py-5"
+          ? "bg-white/92 backdrop-blur-md shadow-[0_1px_12px_rgba(180,140,80,0.08)] border-b border-amber-100/50"
+          : "bg-transparent"
       }`}
     >
-      <div className="container flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet to-rose-neon flex items-center justify-center">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
-              <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
-              <line x1="6" y1="2" x2="6" y2="4" />
-              <line x1="10" y1="2" x2="10" y2="4" />
-              <line x1="14" y1="2" x2="14" y2="4" />
-            </svg>
-          </div>
-          <span className="font-display font-bold text-xl tracking-tight text-white group-hover:text-violet-soft transition-colors">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 md:h-[72px]">
+          {/* Logo */}
+          <Link href="/" className="font-display text-xl md:text-2xl font-bold tracking-tight text-[#1C1917]">
             BrewNectar
-          </span>
-        </Link>
+          </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => scrollToSection(link.id)}
+                className="text-sm font-medium text-[#57534E] hover:text-[#B45309] transition-colors"
+              >
+                {link.label}
+              </button>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="hidden md:block">
+            <Link
+              href="/product"
+              className="inline-flex items-center px-5 py-2.5 text-sm font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg"
+            >
+              Shop Now
+            </Link>
+          </div>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden w-10 h-10 flex items-center justify-center"
+            aria-label="Toggle menu"
+          >
+            <div className="space-y-1.5">
+              <span className={`block w-6 h-0.5 bg-[#1C1917] transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
+              <span className={`block w-6 h-0.5 bg-[#1C1917] transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
+              <span className={`block w-6 h-0.5 bg-[#1C1917] transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+            </div>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-amber-100/40 px-4 pb-6 pt-2">
           {navLinks.map((link) => (
             <button
               key={link.id}
               onClick={() => scrollToSection(link.id)}
-              className="text-sm font-medium text-white/70 hover:text-white transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-violet after:transition-all after:duration-300 hover:after:w-full"
+              className="block w-full text-left py-3 text-base font-medium text-[#57534E] hover:text-[#B45309] transition-colors border-b border-stone-100 last:border-0"
             >
               {link.label}
             </button>
           ))}
           <Link
             href="/product"
-            className="ml-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-rose-neon to-violet font-display font-semibold text-sm text-white btn-glow hover:scale-105 transition-transform"
+            onClick={() => setMobileOpen(false)}
+            className="mt-4 block text-center px-5 py-3 text-sm font-semibold text-white bg-[#1C1917] rounded-full"
           >
             Shop Now
           </Link>
-        </div>
-
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden text-white p-2"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileOpen && (
-        <div className="md:hidden glass-card-strong mt-2 mx-4 p-6 rounded-2xl animate-in fade-in slide-in-from-top-2 duration-300">
-          <div className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className="text-left text-base font-medium text-white/80 hover:text-white transition-colors py-2 border-b border-white/5"
-              >
-                {link.label}
-              </button>
-            ))}
-            <Link
-              href="/product"
-              onClick={() => setMobileOpen(false)}
-              className="mt-2 px-5 py-3 rounded-full bg-gradient-to-r from-rose-neon to-violet font-display font-semibold text-center text-white"
-            >
-              Shop Now
-            </Link>
-          </div>
         </div>
       )}
     </nav>

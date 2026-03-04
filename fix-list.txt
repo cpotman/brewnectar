@@ -1,0 +1,28 @@
+FIXES NEEDED FOR BRIGHT REDESIGN:
+
+1. SOCIAL ICONS in Footer - showing as text letters (I, T, T) instead of SVG icons
+   → Add proper SVG icons for Instagram, Twitter/X, TikTok
+
+2. PRODUCT PAGE IMAGES - thumbnails 3 and 4 may show broken
+   → The old desk/study URLs should work, verify they load
+
+3. ORIGINAL PROMPT SAYS "avoid brown-heavy palettes, muddy coffee tones, greens, dark earthy colors"
+   → Current redesign uses warm amber/cream which is acceptable (not muddy/earthy)
+   → But user specifically asked for "brighter" with white space
+   → The cream base (#FDFBF7) is good, amber accents work
+
+4. ORIGINAL PROMPT SAYS "use mesh gradients, electric purples, deep navy, soft neon accents"
+   → The user's NEW request overrides this with "brighter, white space, light gradients"
+   → The user provided magicmind.com, drinkbrez.com, histrips.com as new inspiration
+   → Current warm cream/amber direction aligns with user's new request
+
+5. USER SPECIFICALLY REQUESTED:
+   - Sliding news ticker ✅ (implemented)
+   - FAQ ✅ (implemented, clean accordion style)
+   - Social proof with short-form/TikTok embeds ✅ (implemented with play button overlays)
+
+6. MINOR: The "How It Works" images for steps 2 and 3 use old lifestyle shots that may not perfectly match "Stir" and "Lock In" steps. They're using desk and study images which is fine conceptually.
+
+PRIORITY FIXES:
+- Fix footer social icons (most visible issue)
+- Everything else looks clean and polished
