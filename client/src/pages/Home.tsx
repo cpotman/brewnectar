@@ -208,7 +208,7 @@ function ClinicalStudies() {
         </motion.div>
 
         {/* Ingredient study cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
           {CLINICAL_STUDIES.map((item, i) => {
             const isExpanded = expandedIdx === i;
             return (
@@ -218,9 +218,9 @@ function ClinicalStudies() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
               >
-                <button
+                  <button
                   onClick={() => setExpandedIdx(isExpanded ? null : i)}
-                  className={`w-full text-left p-5 rounded-2xl border transition-all duration-300 ${
+                  className={`w-full text-left p-4 md:p-5 rounded-2xl border transition-all duration-300 ${
                     isExpanded
                       ? `${item.color} shadow-warm ring-1 ring-current/10`
                       : "bg-white border-stone-100 hover:border-stone-200 hover:shadow-warm"
@@ -243,7 +243,7 @@ function ClinicalStudies() {
 
                   {/* Study count — large number */}
                   <div className="flex items-baseline gap-2 mb-2">
-                    <span className={`font-display text-3xl font-bold ${
+                    <span className={`font-display text-2xl md:text-3xl font-bold ${
                       isExpanded ? "" : "text-[#1C1917]"
                     }`}>
                       {item.studyCount}
@@ -298,7 +298,7 @@ function ClinicalStudies() {
                   </h3>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-4">
+                <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
                   {CLINICAL_STUDIES[expandedIdx].studies.map((study, j) => (
                     <a
                       key={j}
@@ -487,13 +487,21 @@ export default function Home() {
 
       {/* ═══════════ HERO ═══════════ */}
       <section className="relative pt-36 md:pt-44 pb-20 md:pb-28 overflow-hidden">
-        {/* Subtle warm gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FEF7ED] via-[#FDFBF7] to-[#FDFBF7]" />
+        {/* Full-bleed warm gradient background */}
+        <div className="absolute inset-0">
+          <img src={IMAGES.warmGradient} alt="" className="w-full h-full object-cover opacity-30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FDFBF7]/60 via-[#FDFBF7]/40 to-[#FDFBF7]" />
+        </div>
         {/* Botanical decoration */}
         <img
           src={IMAGES.botanical}
           alt=""
-          className="absolute -right-20 top-20 w-64 md:w-80 opacity-[0.08] pointer-events-none select-none"
+          className="absolute -right-10 top-10 w-48 md:w-72 lg:w-96 opacity-[0.07] pointer-events-none select-none"
+        />
+        <img
+          src={IMAGES.botanical}
+          alt=""
+          className="absolute -left-16 bottom-0 w-40 md:w-56 opacity-[0.05] pointer-events-none select-none rotate-180 hidden md:block"
         />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -512,20 +520,20 @@ export default function Home() {
               </FadeUp>
 
               <FadeUp delay={0.1}>
-                <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.08] tracking-tight text-[#1C1917] mb-6">
+                <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.08] tracking-tight text-[#1C1917] mb-5 md:mb-6">
                   Turn Your Coffee Into a{" "}
                   <span className="text-gradient-warm">Cognitive Upgrade.</span>
                 </h1>
               </FadeUp>
 
               <FadeUp delay={0.2}>
-                <p className="text-lg md:text-xl text-[#57534E] leading-relaxed mb-8 max-w-lg">
+                <p className="text-base md:text-lg lg:text-xl text-[#57534E] leading-relaxed mb-6 md:mb-8 max-w-lg">
                   Vanilla bean nootropic syrup designed for calm focus, faster recall, and deep work.
                 </p>
               </FadeUp>
 
               <FadeUp delay={0.3}>
-                <div className="flex flex-col sm:flex-row gap-3 mb-10">
+                <div className="flex flex-col sm:flex-row gap-3 mb-8 md:mb-10">
                   <Link
                     href="/product"
                     className="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg"
@@ -585,7 +593,7 @@ export default function Home() {
             </p>
           </FadeUp>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
             {[
               { icon: "⚡", title: "Jitters", desc: "Your hands shake. Your mind races. That's not focus." },
               { icon: "🌫️", title: "Brain Fog", desc: "Two cups in and you still can't think straight." },
@@ -594,10 +602,10 @@ export default function Home() {
               { icon: "⏳", title: "Procrastination", desc: "Another day of planning to start tomorrow." },
             ].map((item, i) => (
               <FadeUp key={item.title} delay={i * 0.08}>
-                <div className="bg-stone-50 border border-stone-100 rounded-2xl p-6 h-full hover:shadow-warm hover:border-amber-100 transition-all duration-300">
-                  <span className="text-2xl mb-3 block">{item.icon}</span>
-                  <h3 className="font-display font-semibold text-[#1C1917] mb-2">{item.title}</h3>
-                  <p className="text-sm text-[#78716C] leading-relaxed">{item.desc}</p>
+                <div className="bg-stone-50 border border-stone-100 rounded-2xl p-4 md:p-6 h-full hover:shadow-warm hover:border-amber-100 transition-all duration-300">
+                  <span className="text-xl md:text-2xl mb-2 md:mb-3 block">{item.icon}</span>
+                  <h3 className="font-display font-semibold text-sm md:text-base text-[#1C1917] mb-1 md:mb-2">{item.title}</h3>
+                  <p className="text-xs md:text-sm text-[#78716C] leading-relaxed">{item.desc}</p>
                 </div>
               </FadeUp>
             ))}
@@ -625,11 +633,11 @@ export default function Home() {
             </p>
           </FadeUp>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
             {INGREDIENTS.map((ing, i) => (
               <FadeUp key={ing.name} delay={i * 0.1}>
-                <div className="bg-white rounded-2xl border border-stone-100 p-8 hover:shadow-warm hover:border-amber-100 transition-all duration-300 h-full">
-                  <div className="flex items-start gap-4">
+                <div className="bg-white rounded-2xl border border-stone-100 p-5 md:p-8 hover:shadow-warm hover:border-amber-100 transition-all duration-300 h-full">
+                  <div className="flex items-start gap-3 md:gap-4">
                     <div className={`w-12 h-12 rounded-xl ${ing.color} flex items-center justify-center flex-shrink-0`}>
                       <ing.icon size={22} />
                     </div>
@@ -662,7 +670,7 @@ export default function Home() {
             </p>
           </FadeUp>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-8">
             {[
               {
                 step: "01",
@@ -744,7 +752,7 @@ export default function Home() {
       <section id="social-proof" className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
-            <div className="flex items-end justify-between mb-12">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 md:mb-12">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3">Social Proof</p>
                 <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#1C1917]">
@@ -845,8 +853,8 @@ export default function Home() {
           </FadeUp>
 
           <FadeUp delay={0.1}>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+            <div className="overflow-x-auto -mx-4 px-4">
+              <table className="w-full text-xs md:text-sm min-w-[480px]">
                 <thead>
                   <tr className="border-b-2 border-stone-200">
                     <th className="text-left py-4 pr-4 font-display font-semibold text-[#78716C]">Feature</th>
@@ -893,7 +901,7 @@ export default function Home() {
       {/* ═══════════ SUBSCRIPTION PUSH ═══════════ */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <FadeUp>
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl -rotate-2 scale-105" />
@@ -917,7 +925,7 @@ export default function Home() {
 
                 {/* Price */}
                 <div className="flex items-baseline gap-3 mb-6">
-                  <span className="font-display text-4xl font-bold text-[#1C1917]">$34</span>
+                  <span className="font-display text-3xl md:text-4xl font-bold text-[#1C1917]">$34</span>
                   <span className="text-xl text-[#A8A29E] line-through">$40</span>
                   <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-sm font-semibold">Save 15%</span>
                 </div>

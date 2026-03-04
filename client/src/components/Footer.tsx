@@ -42,9 +42,9 @@ export default function Footer() {
   return (
     <footer className="bg-[#FDFAF5] border-t border-stone-200/60 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 mb-12">
           {/* Brand */}
-          <div className="md:col-span-1">
+          <div className="col-span-2 md:col-span-1">
             <h3 className="font-display font-bold text-xl text-[#1C1917] mb-3">BrewNectar</h3>
             <p className="text-sm text-[#78716C] leading-relaxed mb-5">
               Nootropic coffee syrup for calm focus, faster recall, and deep work.
@@ -99,7 +99,7 @@ export default function Footer() {
           </div>
 
           {/* Newsletter */}
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <h4 className="font-display font-semibold text-sm text-[#1C1917] uppercase tracking-wider mb-4">Stay in the loop</h4>
             <p className="text-sm text-[#78716C] mb-4">Get 10% off your first order and early access to new products.</p>
             <div className="flex gap-2">

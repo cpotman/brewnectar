@@ -1,38 +1,31 @@
-# BrewNectar Redesign TODO
+# BrewNectar Update TODO
 
-## Research
-- [ ] Study histrips.com for sliding ticker, FAQ, and social proof patterns
-- [ ] Document key design patterns to replicate
+## Hero Background Fix
+- [ ] Fix hero background image to span full section width, not just top-right corner
+- [ ] Ensure proper overlay/gradient so text remains readable
 
-## Image Generation
-- [ ] Generate bright hero product shot (cream/warm tones)
-- [ ] Generate warm gradient background texture
-- [ ] Generate botanical stipple illustration
-- [ ] Generate bright lifestyle pour shot
-- [ ] Generate benefit section texture background
+## Mobile Optimization
+- [ ] Fix Navbar for mobile (hamburger menu, proper spacing)
+- [ ] Fix Hero section mobile layout (stack text/image vertically)
+- [ ] Fix Problem section cards for mobile scroll
+- [ ] Fix Ingredients grid for mobile (2-col or 1-col)
+- [ ] Fix How It Works cards for mobile
+- [ ] Fix Benefit block text sizing for mobile
+- [ ] Fix Clinical Studies cards for mobile (horizontal scroll or stack)
+- [ ] Fix Social Proof video cards for mobile
+- [ ] Fix Comparison table for mobile
+- [ ] Fix Subscription section for mobile
+- [ ] Fix FAQ for mobile
+- [ ] Fix Footer for mobile
+- [ ] Fix Product page for mobile
 
-## Theme Redesign
-- [ ] Switch to light mode in App.tsx
-- [ ] Redesign index.css color palette (warm cream, amber, sage)
-- [ ] Update font weights and hierarchy
-
-## Homepage Sections
-- [ ] Add sliding news/trust ticker (inspired by histrips.com)
-- [ ] Redesign Hero section (bright, airy, white space)
-- [ ] Redesign Problem section (light cards)
-- [ ] Redesign Ingredients section (light cards, warm accents)
-- [ ] Redesign How It Works section
-- [ ] Redesign Benefit Block (light gradient bg)
-- [ ] Redesign Social Proof with embedded TikTok/short-form videos
-- [ ] Redesign Comparison Table (light theme)
-- [ ] Redesign Subscription section
-- [ ] Redesign FAQ (inspired by histrips.com style)
-
-## Product Page
-- [ ] Update Product page to match bright aesthetic
-
-## Polish
-- [ ] Navbar: light glassmorphism
-- [ ] Footer: light theme
-- [ ] Mobile responsiveness check
-- [ ] Animations and transitions
+## Product Page Redesign (Grüns-inspired)
+- [ ] Add problem callout section at top with stats (like "90% of adults...")
+- [ ] Add benefit visuals around product image (like Grüns "Transform Your Health")
+- [ ] Heavy subscription emphasis with "X% off" + "$X/day" pricing
+- [ ] Show pros of subscription (free shipping, cancel anytime, discount)
+- [ ] Show cons of one-time purchase (no free shipping, full price on reorder)
+- [ ] Add taste callouts section
+- [ ] Add comparison chart with good visuals
+- [ ] Add FAQ directly on product page
+- [ ] "Save X% + Free Shipping" CTA button style

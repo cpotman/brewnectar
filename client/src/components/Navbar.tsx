@@ -42,7 +42,7 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-[72px]">
+        <div className="flex items-center justify-between h-14 md:h-[72px]">
           {/* Logo */}
           <Link href="/" className="font-display text-xl md:text-2xl font-bold tracking-tight text-[#1C1917]">
             BrewNectar
@@ -88,7 +88,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-amber-100/40 px-4 pb-6 pt-2">
+        <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-amber-100/40 px-4 pb-6 pt-2" style={{ marginTop: 0 }}>
           {navLinks.map((link) => (
             <button
               key={link.id}

@@ -1,0 +1,47 @@
+GRÜNS PRODUCT PAGE DESIGN PATTERNS:
+
+1. SUBSCRIPTION PRICING LAYOUT:
+   - "Autoship and Save" header
+   - Three radio options stacked vertically:
+     a) "One Person" - 28 packs each 4 weeks - $40.80/mo (strikethrough $79.99/mo) - $1.46/day - "49% OFF" badge - "FAST & FREE Shipping" + "Cancel anytime" in green checkmarks
+     b) "Two People" - 56 packs each 4 weeks - $77.52/mo (strikethrough $159.98/mo) - $1.38/day - "52% OFF" badge
+     c) "One Time Purchase" - 28 packs delivered once - $79.99 - $2.86/day - "No free shipping or discount" + "2nd order at full price" in muted/negative text
+   - Big green "Start Now" button
+   - "Limited Time Discount Auto-Applied" with checkmark
+   - Trust badges: 30-day guarantee, Clinically tested, HSA/FSA eligible
+
+2. FAQ ACCORDION directly below pricing:
+   - "Why Grüns?", "Ingredients & Allergies", "Low Sugar vs Sugar-Free", "Science & Certifications", "Directions", "Benefits"
+   - Simple plus/minus toggle icons
+
+3. TASTE CALLOUTS:
+   - "Tastes Like" section with emoji icons
+   - Fresh & Light, Strawberry, Sweet Greens
+   - "Packed With" section: Whole Veggies, Whole Fruits, Vitamins, Adaptogens, Herbs, Antioxidants, Prebiotics, Super Mushrooms
+
+4. COMPARISON CHART ("Us vs. Them"):
+   - Tabs: Taste, Value, Vs Powders, Benefits, Ingredients, Convenience
+   - Visual comparison with reviews
+
+5. PRODUCT IMAGE AREA:
+   - Left: product images with thumbnail gallery
+   - Right: product info, benefits checklist with green checkmarks
+   - Benefit callouts around product image: "Full-body health benefits", "On-the-go convenience", "Supports gut health", "Crash-free energy", "Great taste, no compromises"
+
+6. PROBLEM SECTION (above product):
+   - "Modern Living Leaves Our Bodies Deficient"
+   - Big stat numbers: "90%" and "61%" with descriptions
+   - Split layout: stats on left, lifestyle image on right
+
+7. TRANSFORM YOUR HEALTH section:
+   - Product in center, 4 benefit callouts around it with icons
+   - Gut Health, Immunity, Energy & Body, Brain Health
+
+KEY TAKEAWAYS FOR BREWNECTAR:
+- Subscription should be pre-selected and visually dominant
+- One-time purchase should show "cons" (no discount, no free shipping)
+- Per-day pricing makes it feel affordable
+- Big percentage off badge draws attention
+- FAQ directly under pricing reduces friction
+- Taste callouts build confidence
+- Problem stats create urgency before showing product
