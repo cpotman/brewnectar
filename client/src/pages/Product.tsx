@@ -111,11 +111,11 @@ export default function Product() {
     "subscribe-1": {
       label: "1 Bottle",
       subtitle: "Delivered every 4 weeks",
-      price: 49,
+      price: 36,
       originalPrice: 49,
-      perMonth: "49",
-      perDay: "1.75",
-      discount: "",
+      perMonth: "36",
+      perDay: "1.29",
+      discount: "27% OFF",
       badge: "",
       badgeColor: "",
       perks: [
