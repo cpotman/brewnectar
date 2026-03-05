@@ -77,7 +77,7 @@ export default function Product() {
       label: "3 Bottles",
       subtitle: "Delivered every 12 weeks",
       price: 81,
-      originalPrice: 180,
+      originalPrice: 147,
       perMonth: "27",
       perDay: "0.96",
       discount: "55% OFF",
@@ -95,7 +95,7 @@ export default function Product() {
       label: "2 Bottles",
       subtitle: "Delivered every 8 weeks",
       price: 64,
-      originalPrice: 120,
+      originalPrice: 98,
       perMonth: "32",
       perDay: "1.14",
       discount: "47% OFF",
@@ -111,11 +111,11 @@ export default function Product() {
     "subscribe-1": {
       label: "1 Bottle",
       subtitle: "Delivered every 4 weeks",
-      price: 35,
-      originalPrice: 60,
-      perMonth: "35",
-      perDay: "1.25",
-      discount: "42% OFF",
+      price: 49,
+      originalPrice: 49,
+      perMonth: "49",
+      perDay: "1.75",
+      discount: "",
       badge: "",
       badgeColor: "",
       perks: [
@@ -128,10 +128,10 @@ export default function Product() {
     "one-time": {
       label: "1 Bottle",
       subtitle: "One-time purchase",
-      price: 60,
-      originalPrice: 60,
-      perMonth: "60",
-      perDay: "2.14",
+      price: 49,
+      originalPrice: 49,
+      perMonth: "49",
+      perDay: "1.75",
       discount: "",
       badge: "",
       badgeColor: "",
@@ -332,8 +332,8 @@ export default function Product() {
                             <div className="flex items-baseline gap-1.5 justify-end">
                               <span className="font-display text-xl sm:text-2xl font-bold text-[#1C1917]">${plan.perMonth}</span>
                               <span className="text-sm text-[#57534E] font-medium">/mo</span>
-                              {plan.isSubscription && (
-                                <span className="text-xs text-[#A8A29E] line-through">$60</span>
+                              {plan.originalPrice > plan.price && (
+                                <span className="text-xs text-[#A8A29E] line-through">${plan.originalPrice}</span>
                               )}
                             </div>
                             <p className="text-[11px] font-semibold text-[#B45309]">${plan.perDay}/day</p>
@@ -684,8 +684,8 @@ export default function Product() {
           <div className="min-w-0">
             <div className="flex items-baseline gap-2">
               <p className="font-display font-bold text-[#1C1917] text-lg">${currentPlan.perMonth}/mo</p>
-              {currentPlan.isSubscription && (
-                <span className="text-sm text-[#A8A29E] line-through">$60</span>
+              {currentPlan.originalPrice > currentPlan.price && (
+                <span className="text-sm text-[#A8A29E] line-through">${currentPlan.originalPrice}</span>
               )}
               {currentPlan.discount && (
                 <span className="text-xs font-bold text-emerald-600">{currentPlan.discount}</span>
