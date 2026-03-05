@@ -279,7 +279,7 @@ export default function Product() {
                   BrewNectar Nootropic Coffee Syrup
                 </h1>
                 <p className="text-[#57534E] text-base mb-6 leading-relaxed">
-                  Vanilla bean nootropic syrup with Lion's Mane, Cognizin, and L-Theanine. 28 servings per bottle — one tablespoon a day for calm focus, faster recall, and deep work.
+                  Vanilla bean nootropic syrup with Lion's Mane, Cognizin, and L-Theanine. One tablespoon a day for calm focus, faster recall, and deep work.
                 </p>
 
                 {/* Plan options — collapsible perks */}
@@ -336,7 +336,7 @@ export default function Product() {
                                 <span className="text-xs text-[#A8A29E] line-through">$60</span>
                               )}
                             </div>
-                            <p className="text-[11px] font-semibold text-[#B45309]">${plan.perDay}/day · 28 servings</p>
+                            <p className="text-[11px] font-semibold text-[#B45309]">${plan.perDay}/day</p>
                           </div>
                         </div>
 
@@ -692,7 +692,7 @@ export default function Product() {
               )}
             </div>
             <p className="text-[#78716C] text-xs truncate">
-              {currentPlan.isSubscription ? "Subscription" : "One-time"} · {currentPlan.label} · 28 servings/bottle
+              {currentPlan.isSubscription ? "Subscription" : "One-time"} · {currentPlan.label}
             </p>
           </div>
           <button
