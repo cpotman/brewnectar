@@ -80,7 +80,7 @@ export default function Product() {
       originalPrice: 147,
       perMonth: "27",
       perDay: "0.96",
-      discount: "55% OFF",
+      discount: "45% OFF",
       badge: "Best Value",
       badgeColor: "bg-emerald-600",
       perks: [
@@ -98,7 +98,7 @@ export default function Product() {
       originalPrice: 98,
       perMonth: "32",
       perDay: "1.14",
-      discount: "47% OFF",
+      discount: "35% OFF",
       badge: "Most Popular",
       badgeColor: "bg-[#B45309]",
       perks: [
