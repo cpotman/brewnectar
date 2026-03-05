@@ -349,7 +349,7 @@ const TICKER_MESSAGES = [
   "Zero sugar \u00B7 30 servings per bottle",
   "Trusted by 12,000+ high performers",
   "Third-party tested for purity",
-  "Subscribe & save 15%",
+  "Subscribe & save up to 45%",
 ];
 
 /* ─── Video testimonials data ─── */
@@ -551,7 +551,7 @@ export default function Home() {
                     href="/product"
                     className="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-[#92400E] bg-amber-50 border border-amber-200 rounded-full hover:bg-amber-100 transition-all"
                   >
-                    Start Subscription & Save 15%
+                    Start Subscription & Save Up to 45%
                   </Link>
                 </div>
               </FadeUp>
@@ -1117,9 +1117,9 @@ export default function Home() {
 
                 {/* Price */}
                 <div className="flex items-baseline gap-3 mb-6">
-                  <span className="font-display text-3xl md:text-4xl font-bold text-[#1C1917]">$34</span>
-                  <span className="text-xl text-[#A8A29E] line-through">$40</span>
-                  <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-sm font-semibold">Save 15%</span>
+                  <span className="font-display text-3xl md:text-4xl font-bold text-[#1C1917]">$27</span>
+<span className="text-xl text-[#A8A29E] line-through">$49</span>
+                   <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-sm font-semibold">Save up to 45%</span>
                 </div>
                 <p className="text-sm text-[#78716C] mb-6">per bottle / delivered monthly</p>
 
