@@ -65,6 +65,7 @@ export default function Product() {
     subtitle: string;
     price: number;
     originalPrice: number;
+    perMonth: string;
     perDay: string;
     discount: string;
     badge: string;
@@ -75,16 +76,17 @@ export default function Product() {
     "subscribe-3": {
       label: "3 Bottles",
       subtitle: "Delivered every 12 weeks",
-      price: 90,
-      originalPrice: 120,
-      perDay: "1.00",
-      discount: "25% OFF",
+      price: 81,
+      originalPrice: 180,
+      perMonth: "27",
+      perDay: "0.96",
+      discount: "55% OFF",
       badge: "Best Value",
       badgeColor: "bg-emerald-600",
       perks: [
         { text: "Fast & FREE Shipping", positive: true },
         { text: "Cancel anytime — no commitments", positive: true },
-        { text: "Biggest savings per bottle ($30/ea)", positive: true },
+        { text: "Biggest savings — just $27/bottle", positive: true },
         { text: "Priority access to new flavors", positive: true },
       ],
       isSubscription: true,
@@ -93,25 +95,27 @@ export default function Product() {
       label: "2 Bottles",
       subtitle: "Delivered every 8 weeks",
       price: 64,
-      originalPrice: 80,
-      perDay: "1.07",
-      discount: "20% OFF",
+      originalPrice: 120,
+      perMonth: "32",
+      perDay: "1.14",
+      discount: "47% OFF",
       badge: "Most Popular",
       badgeColor: "bg-[#B45309]",
       perks: [
         { text: "Fast & FREE Shipping", positive: true },
         { text: "Cancel anytime — no commitments", positive: true },
-        { text: "Great value — share with a partner ($32/ea)", positive: true },
+        { text: "Great value — $32/bottle, share with a partner", positive: true },
       ],
       isSubscription: true,
     },
     "subscribe-1": {
       label: "1 Bottle",
       subtitle: "Delivered every 4 weeks",
-      price: 34,
-      originalPrice: 40,
-      perDay: "1.13",
-      discount: "15% OFF",
+      price: 35,
+      originalPrice: 60,
+      perMonth: "35",
+      perDay: "1.25",
+      discount: "42% OFF",
       badge: "",
       badgeColor: "",
       perks: [
@@ -124,9 +128,10 @@ export default function Product() {
     "one-time": {
       label: "1 Bottle",
       subtitle: "One-time purchase",
-      price: 40,
-      originalPrice: 40,
-      perDay: "1.33",
+      price: 60,
+      originalPrice: 60,
+      perMonth: "60",
+      perDay: "2.14",
       discount: "",
       badge: "",
       badgeColor: "",
@@ -154,7 +159,7 @@ export default function Product() {
   };
 
   const productFaqs = [
-    { q: "How many servings per bottle?", a: "Each bottle contains 30 servings — one tablespoon per day for a full month of cognitive support." },
+    { q: "How many servings per bottle?", a: "Each bottle contains 28 servings — one tablespoon per day for 4 weeks of cognitive support." },
     { q: "What does it taste like?", a: "Smooth vanilla bean with a hint of caramel sweetness. Zero sugar, zero artificial flavors. Pairs perfectly with any coffee — hot, iced, or cold brew." },
     { q: "Can I cancel my subscription?", a: "Absolutely. Cancel anytime with one click from your account dashboard. No contracts, no fees, no hassle. You can also pause or skip deliveries." },
     { q: "How should I store it?", a: "Store in a cool, dry place. Refrigerate after opening for best freshness. Good for 60 days after opening." },
@@ -274,7 +279,7 @@ export default function Product() {
                   BrewNectar Nootropic Coffee Syrup
                 </h1>
                 <p className="text-[#57534E] text-base mb-6 leading-relaxed">
-                  Vanilla bean nootropic syrup with Lion's Mane, Cognizin, and L-Theanine. One tablespoon for calm focus, faster recall, and deep work.
+                  Vanilla bean nootropic syrup with Lion's Mane, Cognizin, and L-Theanine. 28 servings per bottle — one tablespoon a day for calm focus, faster recall, and deep work.
                 </p>
 
                 {/* Plan options — collapsible perks */}
@@ -325,12 +330,13 @@ export default function Product() {
                           {/* Pricing */}
                           <div className="text-right flex-shrink-0">
                             <div className="flex items-baseline gap-1.5 justify-end">
-                              <span className="font-display text-xl sm:text-2xl font-bold text-[#1C1917]">${plan.price}</span>
-                              {plan.isSubscription && plan.originalPrice > plan.price && (
-                                <span className="text-xs text-[#A8A29E] line-through">${plan.originalPrice}</span>
+                              <span className="font-display text-xl sm:text-2xl font-bold text-[#1C1917]">${plan.perMonth}</span>
+                              <span className="text-sm text-[#57534E] font-medium">/mo</span>
+                              {plan.isSubscription && (
+                                <span className="text-xs text-[#A8A29E] line-through">$60</span>
                               )}
                             </div>
-                            <p className="text-[11px] font-semibold text-[#B45309]">${plan.perDay}/day</p>
+                            <p className="text-[11px] font-semibold text-[#B45309]">${plan.perDay}/day · 28 servings</p>
                           </div>
                         </div>
 
@@ -373,7 +379,7 @@ export default function Product() {
                   onClick={handleAddToCart}
                   className="w-full py-4 rounded-full bg-[#1C1917] font-display font-bold text-base text-white hover:bg-[#292524] hover:shadow-lg transition-all mb-3"
                 >
-                  {currentPlan.isSubscription ? `Start Subscription — $${currentPlan.price}/mo` : `Buy Now — $${currentPlan.price}`}
+                  {currentPlan.isSubscription ? `Start Subscription — $${currentPlan.perMonth}/mo` : `Buy Now — $${currentPlan.price}`}
                 </button>
                 <div className="flex items-center justify-center gap-2 mb-4">
                   <Check size={14} className="text-emerald-600" />
@@ -677,16 +683,16 @@ export default function Product() {
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="min-w-0">
             <div className="flex items-baseline gap-2">
-              <p className="font-display font-bold text-[#1C1917] text-lg">${currentPlan.price}{currentPlan.isSubscription ? "/mo" : ""}</p>
-              {currentPlan.isSubscription && currentPlan.originalPrice > currentPlan.price && (
-                <span className="text-sm text-[#A8A29E] line-through">${currentPlan.originalPrice}</span>
+              <p className="font-display font-bold text-[#1C1917] text-lg">${currentPlan.perMonth}/mo</p>
+              {currentPlan.isSubscription && (
+                <span className="text-sm text-[#A8A29E] line-through">$60</span>
               )}
               {currentPlan.discount && (
                 <span className="text-xs font-bold text-emerald-600">{currentPlan.discount}</span>
               )}
             </div>
             <p className="text-[#78716C] text-xs truncate">
-              {currentPlan.isSubscription ? "Subscription" : "One-time"} · {currentPlan.label}
+              {currentPlan.isSubscription ? "Subscription" : "One-time"} · {currentPlan.label} · 28 servings/bottle
             </p>
           </div>
           <button
