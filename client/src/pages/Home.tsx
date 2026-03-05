@@ -399,6 +399,10 @@ const VIDEO_TESTIMONIALS = [
 /* ─── FAQ data ─── */
 const FAQ_DATA = [
   {
+    q: "Do I need to switch to a special coffee?",
+    a: "Not at all! That's what makes BrewNectar different from nootropic coffees. You keep drinking whatever coffee you already love — drip, cold brew, espresso, latte, even decaf. Just add a pump of BrewNectar and you're upgraded. No new brand, no new routine.",
+  },
+  {
     q: "Does it taste sweet?",
     a: "BrewNectar has a smooth vanilla bean flavor with zero sugar. It's lightly sweet from natural flavoring — think premium vanilla latte, not candy. It pairs perfectly with black coffee, lattes, or cold brew.",
   },
@@ -531,7 +535,7 @@ export default function Home() {
 
               <FadeUp delay={0.2}>
                 <p className="text-base md:text-lg lg:text-xl text-[#57534E] leading-relaxed mb-6 md:mb-8 max-w-lg">
-                  Vanilla bean nootropic syrup designed for calm focus, faster recall, and deep work.
+                  Add a pump of vanilla bean nootropic syrup to <em>your</em> coffee for calm focus, faster recall, and deep work. No new coffee required.
                 </p>
               </FadeUp>
 
@@ -555,9 +559,9 @@ export default function Home() {
               <FadeUp delay={0.4}>
                 <div className="flex flex-wrap gap-6">
                   {[
+                    { label: "Works with Any Coffee", icon: "☕" },
                     { label: "Zero Sugar", icon: "✦" },
                     { label: "Nootropic Stack", icon: "◆" },
-                    { label: "Clean Energy", icon: "●" },
                   ].map((badge) => (
                     <div key={badge.label} className="flex items-center gap-2">
                       <span className="text-[#D97706] text-sm">{badge.icon}</span>
@@ -632,7 +636,7 @@ export default function Home() {
               Designed for the Mind.
             </h2>
             <p className="text-center text-[#78716C] text-lg mb-16 max-w-2xl mx-auto">
-              Four science-backed ingredients. One delicious syrup. Engineered for cognitive performance.
+              Four science-backed ingredients in one delicious syrup. Just add it to whatever coffee you already drink.
             </p>
           </FadeUp>
 
@@ -678,7 +682,7 @@ export default function Home() {
               {
                 step: "01",
                 title: "Pour",
-                desc: "Add one tablespoon of BrewNectar to your morning coffee.",
+                desc: "Add one pump of BrewNectar to whatever coffee you're already drinking. Latte, cold brew, drip — it all works.",
                 image: IMAGES.lifestylePour,
               },
               {
@@ -750,6 +754,247 @@ export default function Home() {
 
       {/* ═══════════ CLINICAL STUDIES ═══════════ */}
       <ClinicalStudies />
+
+      {/* ═══════════ WHAT TO EXPECT — TIMELINE ═══════════ */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeUp>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Your Journey</p>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">
+              What to Expect with BrewNectar
+            </h2>
+            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">
+              Best results come with consistency. Here's what happens when you make BrewNectar part of your daily ritual.
+            </p>
+          </FadeUp>
+
+          {/* Visual graph — dotted line with milestones */}
+          <div className="relative mb-16">
+            {/* Dotted timeline connector */}
+            <div className="hidden md:block absolute top-8 left-[12.5%] right-[12.5%] h-0.5 border-t-2 border-dashed border-[#D97706]/30" />
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4">
+              {[
+                {
+                  period: "Week 1",
+                  title: "Immediate Clarity",
+                  desc: "L-Theanine and Cognizin kick in within 20 minutes. You'll notice calmer focus, reduced jitters, and smoother energy from your very first cup.",
+                  ingredients: ["L-Theanine", "Cognizin"],
+                  color: "bg-amber-50 border-amber-200",
+                  iconColor: "text-[#D97706]",
+                  dotColor: "bg-[#D97706]",
+                  level: "40%",
+                },
+                {
+                  period: "1 Month",
+                  title: "Sharper Recall",
+                  desc: "Cognizin builds up in your system, improving working memory and mental processing speed. Tasks that felt hard start feeling effortless.",
+                  ingredients: ["Cognizin", "B Vitamins"],
+                  color: "bg-emerald-50 border-emerald-200",
+                  iconColor: "text-emerald-600",
+                  dotColor: "bg-emerald-600",
+                  level: "60%",
+                },
+                {
+                  period: "2 Months",
+                  title: "Compounding Focus",
+                  desc: "Lion's Mane begins stimulating nerve growth factor (NGF). Neural pathways strengthen. Deep work sessions get longer and more productive.",
+                  ingredients: ["Lion's Mane", "Cognizin"],
+                  color: "bg-sky-50 border-sky-200",
+                  iconColor: "text-sky-600",
+                  dotColor: "bg-sky-600",
+                  level: "80%",
+                },
+                {
+                  period: "3 Months",
+                  title: "Peak Performance",
+                  desc: "Full neurogenesis benefits from Lion's Mane. Your brain is literally building new connections. This is where the magic compounds.",
+                  ingredients: ["Lion's Mane", "Full Stack"],
+                  color: "bg-violet-50 border-violet-200",
+                  iconColor: "text-violet-600",
+                  dotColor: "bg-violet-600",
+                  level: "95%",
+                },
+              ].map((milestone, i) => (
+                <FadeUp key={milestone.period} delay={i * 0.1}>
+                  <div className="flex flex-col items-center text-center">
+                    {/* Timeline dot */}
+                    <div className={`relative z-10 w-16 h-16 rounded-full ${milestone.color} border-2 flex items-center justify-center mb-4`}>
+                      <span className={`font-display font-bold text-sm ${milestone.iconColor}`}>{milestone.level}</span>
+                    </div>
+                    <span className="text-xs font-semibold uppercase tracking-widest text-[#D97706] mb-2">{milestone.period}</span>
+
+                    {/* Card */}
+                    <div className={`${milestone.color} border rounded-2xl p-5 w-full`}>
+                      <h3 className="font-display font-bold text-base text-[#1C1917] mb-2">{milestone.title}</h3>
+                      <p className="text-xs text-[#57534E] leading-relaxed mb-3">{milestone.desc}</p>
+                      <div className="flex flex-wrap justify-center gap-1.5">
+                        {milestone.ingredients.map((ing) => (
+                          <span key={ing} className="px-2.5 py-1 rounded-full bg-white/80 text-[10px] font-semibold text-[#44403C] border border-stone-100">
+                            {ing}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </FadeUp>
+              ))}
+            </div>
+          </div>
+
+          {/* Visual energy graph */}
+          <FadeUp delay={0.3}>
+            <div className="bg-[#FDFBF7] rounded-2xl border border-stone-100 p-6 md:p-8">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h3 className="font-display font-bold text-lg text-[#1C1917]">Cognitive Performance Over Time</h3>
+                  <p className="text-xs text-[#78716C] mt-1">Based on clinical research of individual ingredients</p>
+                </div>
+                <div className="hidden sm:flex items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-0.5 bg-stone-300" style={{ borderTop: '2px dotted #A8A29E' }} />
+                    <span className="text-xs text-[#A8A29E] font-medium">Coffee Only</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-0.5 bg-[#D97706]" style={{ borderTop: '2px dotted #D97706' }} />
+                    <span className="text-xs text-[#D97706] font-medium">With BrewNectar</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* SVG Graph */}
+              <div className="relative w-full" style={{ aspectRatio: '3/1' }}>
+                <svg viewBox="0 0 600 200" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
+                  {/* Grid lines */}
+                  <line x1="50" y1="30" x2="50" y2="170" stroke="#E7E5E4" strokeWidth="1" />
+                  <line x1="50" y1="170" x2="570" y2="170" stroke="#E7E5E4" strokeWidth="1" />
+                  {/* Y-axis labels */}
+                  <text x="40" y="35" textAnchor="end" className="fill-[#A8A29E]" fontSize="9" fontFamily="system-ui">High</text>
+                  <text x="40" y="105" textAnchor="end" className="fill-[#A8A29E]" fontSize="9" fontFamily="system-ui">Med</text>
+                  <text x="40" y="170" textAnchor="end" className="fill-[#A8A29E]" fontSize="9" fontFamily="system-ui">Low</text>
+                  {/* X-axis labels */}
+                  <text x="115" y="190" textAnchor="middle" className="fill-[#78716C]" fontSize="9" fontWeight="600" fontFamily="system-ui">Week 1</text>
+                  <text x="245" y="190" textAnchor="middle" className="fill-[#78716C]" fontSize="9" fontWeight="600" fontFamily="system-ui">Month 1</text>
+                  <text x="375" y="190" textAnchor="middle" className="fill-[#78716C]" fontSize="9" fontWeight="600" fontFamily="system-ui">Month 2</text>
+                  <text x="505" y="190" textAnchor="middle" className="fill-[#78716C]" fontSize="9" fontWeight="600" fontFamily="system-ui">Month 3</text>
+
+                  {/* Coffee Only line — peaks early then crashes */}
+                  <path
+                    d="M 70 120 Q 115 70, 160 95 Q 200 110, 245 130 Q 310 145, 375 140 Q 440 138, 505 142 L 550 145"
+                    fill="none"
+                    stroke="#A8A29E"
+                    strokeWidth="2.5"
+                    strokeDasharray="6 4"
+                    strokeLinecap="round"
+                  />
+                  {/* BrewNectar line — steady climb */}
+                  <path
+                    d="M 70 120 Q 115 80, 160 72 Q 200 65, 245 55 Q 310 45, 375 38 Q 440 33, 505 30 L 550 28"
+                    fill="none"
+                    stroke="#D97706"
+                    strokeWidth="2.5"
+                    strokeDasharray="6 4"
+                    strokeLinecap="round"
+                  />
+
+                  {/* Milestone dots on BrewNectar line */}
+                  <circle cx="115" cy="80" r="5" fill="#D97706" />
+                  <circle cx="245" cy="55" r="5" fill="#D97706" />
+                  <circle cx="375" cy="38" r="5" fill="#D97706" />
+                  <circle cx="505" cy="30" r="5" fill="#D97706" />
+
+                  {/* Milestone labels */}
+                  <text x="115" y="68" textAnchor="middle" className="fill-[#B45309]" fontSize="7" fontWeight="600" fontFamily="system-ui">L-Theanine</text>
+                  <text x="245" y="43" textAnchor="middle" className="fill-[#B45309]" fontSize="7" fontWeight="600" fontFamily="system-ui">Cognizin</text>
+                  <text x="375" y="26" textAnchor="middle" className="fill-[#B45309]" fontSize="7" fontWeight="600" fontFamily="system-ui">Lion's Mane</text>
+                  <text x="505" y="18" textAnchor="middle" className="fill-[#B45309]" fontSize="7" fontWeight="600" fontFamily="system-ui">Full Stack</text>
+
+                  {/* Milestone dots on Coffee Only line */}
+                  <circle cx="115" cy="70" r="4" fill="#A8A29E" />
+                  <circle cx="245" cy="130" r="4" fill="#A8A29E" />
+                  <circle cx="375" cy="140" r="4" fill="#A8A29E" />
+                  <circle cx="505" cy="142" r="4" fill="#A8A29E" />
+                </svg>
+              </div>
+
+              {/* Mobile legend */}
+              <div className="flex sm:hidden items-center justify-center gap-6 mt-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-0.5 bg-stone-300" />
+                  <span className="text-xs text-[#A8A29E] font-medium">Coffee Only</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-0.5 bg-[#D97706]" />
+                  <span className="text-xs text-[#D97706] font-medium">With BrewNectar</span>
+                </div>
+              </div>
+
+              <p className="text-center text-xs text-[#A8A29E] mt-4">
+                This is why we recommend subscribing for at least 3 months to experience the full compounding benefits.
+              </p>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ═══════════ COMPARISON TABLE ═══════════ */}
+      <section className="py-20 md:py-28 bg-[#FDFBF7]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeUp>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Compare</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">
+              Not All Upgrades Are Equal.
+            </h2>
+            <p className="text-center text-[#78716C] text-lg mb-12 max-w-2xl mx-auto">
+              Unlike nootropic coffees that force you to switch brands, BrewNectar works with the coffee you already love.
+            </p>
+          </FadeUp>
+
+          <FadeUp delay={0.1}>
+            <div className="overflow-x-auto -mx-4 px-4">
+              <table className="w-full text-xs md:text-sm min-w-[480px]">
+                <thead>
+                  <tr className="border-b-2 border-stone-200">
+                    <th className="text-left py-4 pr-4 font-display font-semibold text-[#78716C]">Feature</th>
+                    <th className="py-4 px-3 font-display font-bold text-[#1C1917] bg-amber-50/50 rounded-t-xl">BrewNectar</th>
+                    <th className="py-4 px-3 font-display font-semibold text-[#A8A29E]">Regular Coffee</th>
+                    <th className="py-4 px-3 font-display font-semibold text-[#A8A29E] hidden sm:table-cell">Sugary Syrups</th>
+                    <th className="py-4 px-3 font-display font-semibold text-[#A8A29E] hidden sm:table-cell">Nootropic Coffees</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { feature: "Calm Focus", bn: true, rc: false, ss: false, cn: true },
+                    { feature: "Zero Sugar", bn: true, rc: true, ss: false, cn: true },
+                    { feature: "No Crash", bn: true, rc: false, ss: false, cn: true },
+                    { feature: "Tastes Great", bn: true, rc: true, ss: true, cn: false },
+                    { feature: "Use YOUR Own Coffee", bn: true, rc: true, ss: true, cn: false },
+                    { feature: "No Pills Required", bn: true, rc: true, ss: true, cn: false },
+                    { feature: "Supports Neurogenesis", bn: true, rc: false, ss: false, cn: true },
+                    { feature: "Daily Ritual Friendly", bn: true, rc: true, ss: false, cn: false },
+                  ].map((row, i) => (
+                    <tr key={row.feature} className="border-b border-stone-100">
+                      <td className="py-3.5 pr-4 font-medium text-[#44403C]">{row.feature}</td>
+                      <td className="py-3.5 px-3 text-center bg-amber-50/30">
+                        {row.bn ? <Check size={18} className="mx-auto text-[#16A34A]" /> : <XIcon size={16} className="mx-auto text-stone-300" />}
+                      </td>
+                      <td className="py-3.5 px-3 text-center">
+                        {row.rc ? <Check size={18} className="mx-auto text-[#16A34A]" /> : <XIcon size={16} className="mx-auto text-stone-300" />}
+                      </td>
+                      <td className="py-3.5 px-3 text-center hidden sm:table-cell">
+                        {row.ss ? <Check size={18} className="mx-auto text-[#16A34A]" /> : <XIcon size={16} className="mx-auto text-stone-300" />}
+                      </td>
+                      <td className="py-3.5 px-3 text-center hidden sm:table-cell">
+                        {row.cn ? <Check size={18} className="mx-auto text-[#16A34A]" /> : <XIcon size={16} className="mx-auto text-stone-300" />}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
 
       {/* ═══════════ SOCIAL PROOF — VIDEO TESTIMONIALS ═══════════ */}
       <section id="social-proof" className="py-20 md:py-28 bg-white">
@@ -845,62 +1090,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════════ COMPARISON TABLE ═══════════ */}
-      <section className="py-20 md:py-28 bg-[#FDFBF7]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeUp>
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Compare</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-12">
-              Not All Upgrades Are Equal.
-            </h2>
-          </FadeUp>
-
-          <FadeUp delay={0.1}>
-            <div className="overflow-x-auto -mx-4 px-4">
-              <table className="w-full text-xs md:text-sm min-w-[480px]">
-                <thead>
-                  <tr className="border-b-2 border-stone-200">
-                    <th className="text-left py-4 pr-4 font-display font-semibold text-[#78716C]">Feature</th>
-                    <th className="py-4 px-3 font-display font-bold text-[#1C1917] bg-amber-50/50 rounded-t-xl">BrewNectar</th>
-                    <th className="py-4 px-3 font-display font-semibold text-[#A8A29E]">Regular Coffee</th>
-                    <th className="py-4 px-3 font-display font-semibold text-[#A8A29E] hidden sm:table-cell">Sugary Syrups</th>
-                    <th className="py-4 px-3 font-display font-semibold text-[#A8A29E] hidden sm:table-cell">Capsule Nootropics</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    { feature: "Calm Focus", bn: true, rc: false, ss: false, cn: true },
-                    { feature: "Zero Sugar", bn: true, rc: true, ss: false, cn: true },
-                    { feature: "No Crash", bn: true, rc: false, ss: false, cn: true },
-                    { feature: "Tastes Great", bn: true, rc: true, ss: true, cn: false },
-                    { feature: "Stackable with Coffee", bn: true, rc: false, ss: true, cn: false },
-                    { feature: "No Pills Required", bn: true, rc: true, ss: true, cn: false },
-                    { feature: "Supports Neurogenesis", bn: true, rc: false, ss: false, cn: true },
-                    { feature: "Daily Ritual Friendly", bn: true, rc: true, ss: false, cn: false },
-                  ].map((row, i) => (
-                    <tr key={row.feature} className="border-b border-stone-100">
-                      <td className="py-3.5 pr-4 font-medium text-[#44403C]">{row.feature}</td>
-                      <td className="py-3.5 px-3 text-center bg-amber-50/30">
-                        {row.bn ? <Check size={18} className="mx-auto text-[#16A34A]" /> : <XIcon size={16} className="mx-auto text-stone-300" />}
-                      </td>
-                      <td className="py-3.5 px-3 text-center">
-                        {row.rc ? <Check size={18} className="mx-auto text-[#16A34A]" /> : <XIcon size={16} className="mx-auto text-stone-300" />}
-                      </td>
-                      <td className="py-3.5 px-3 text-center hidden sm:table-cell">
-                        {row.ss ? <Check size={18} className="mx-auto text-[#16A34A]" /> : <XIcon size={16} className="mx-auto text-stone-300" />}
-                      </td>
-                      <td className="py-3.5 px-3 text-center hidden sm:table-cell">
-                        {row.cn ? <Check size={18} className="mx-auto text-[#16A34A]" /> : <XIcon size={16} className="mx-auto text-stone-300" />}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
       {/* ═══════════ SUBSCRIPTION PUSH ═══════════ */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -920,10 +1109,10 @@ export default function Home() {
               <div>
                 <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3">Subscribe & Save</p>
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1C1917] mb-4">
-                  Your Daily Brain Ritual.
+                  Keep Your Coffee. Upgrade Your Brain.
                 </h2>
                 <p className="text-[#78716C] text-lg leading-relaxed mb-8">
-                  Make cognitive performance a habit, not a one-off. Subscribe and never run out of your edge.
+                  Unlike nootropic coffees that make you switch, BrewNectar works with whatever you already drink. Subscribe and never run out of your edge.
                 </p>
 
                 {/* Price */}

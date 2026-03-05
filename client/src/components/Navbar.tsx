@@ -27,7 +27,7 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { label: "Science", id: "ingredients" },
+    { label: "Science", id: "clinical-studies" },
     { label: "How It Works", id: "how-it-works" },
     { label: "Reviews", id: "social-proof" },
     { label: "FAQ", id: "faq" },
