@@ -355,11 +355,11 @@ export default function Product() {
                                   {plan.perks.map((perk) => (
                                     <div key={perk.text} className="flex items-center gap-2">
                                       {perk.positive ? (
-                                        <Check size={14} className="text-emerald-600 flex-shrink-0" />
+                                        <Check size={16} strokeWidth={3} className="text-emerald-600 flex-shrink-0" />
                                       ) : (
-                                        <XIcon size={14} className="text-stone-400 flex-shrink-0" />
+                                        <XIcon size={16} strokeWidth={3} className="text-red-500 flex-shrink-0" />
                                       )}
-                                      <span className={`text-sm ${perk.positive ? "text-[#44403C]" : "text-[#A8A29E]"}`}>
+                                      <span className={`text-sm ${perk.positive ? "text-[#44403C]" : "text-red-500 font-semibold"}`}>
                                         {perk.text}
                                       </span>
                                     </div>
