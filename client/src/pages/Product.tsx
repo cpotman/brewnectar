@@ -227,23 +227,6 @@ export default function Product() {
         }} />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Rating bar */}
-          <FadeUp>
-            <div className="flex flex-wrap items-center gap-3 mb-6">
-              <div className="flex -space-x-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />
-                ))}
-              </div>
-              <span className="text-sm text-[#57534E]">
-                <strong className="text-[#1C1917]">4.9</strong> stars from <strong className="text-[#1C1917]">2,400+</strong> reviews
-              </span>
-              <span className="text-[#D4D0CA]">|</span>
-              <span className="text-sm text-[#57534E]">
-                <strong className="text-[#1C1917]">12,000+</strong> members
-              </span>
-            </div>
-          </FadeUp>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Left: Product Images */}
@@ -278,6 +261,20 @@ export default function Product() {
                 <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">
                   BrewNectar Nootropic Coffee Syrup
                 </h1>
+                <div className="flex flex-wrap items-center gap-3 mb-3">
+                  <div className="flex -space-x-0.5">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />
+                    ))}
+                  </div>
+                  <span className="text-sm text-[#57534E]">
+                    <strong className="text-[#1C1917]">4.9</strong> stars from <strong className="text-[#1C1917]">2,400+</strong> reviews
+                  </span>
+                  <span className="text-[#D4D0CA]">|</span>
+                  <span className="text-sm text-[#57534E]">
+                    <strong className="text-[#1C1917]">12,000+</strong> members
+                  </span>
+                </div>
                 <p className="text-[#57534E] text-base mb-6 leading-relaxed">
                   Vanilla bean nootropic syrup with Lion's Mane, Cognizin, and L-Theanine. One tablespoon a day for calm focus, faster recall, and deep work.
                 </p>
