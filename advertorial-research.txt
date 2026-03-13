@@ -1,0 +1,51 @@
+ADVERTORIAL RESEARCH NOTES
+==========================
+
+SERENE HERBS (sereneherbs.com/pages/flush-out-the-toxics)
+- Layout: Two-column — content on left, sticky product card on right
+- Sticky sidebar: Product image + bullet benefits + "CHECK AVAILABILITY" CTA + guarantee badge
+- Multiple CTAs throughout: "CHECK AVAILABILITY" buttons after key sections
+- Section structure: What is it → How fast → Testimonials → How it works → Weight loss → Parasites → How to take → Safety → Pricing → Where to buy → Guarantee → Final CTA
+- Uses urgency: countdown timer at bottom
+- Author byline with photo for credibility
+- Image carousel at top
+- Weakness: Design is very basic/template-looking, green color scheme feels cheap
+- Strength: Sticky sidebar CTA is always visible, multiple CTAs throughout
+
+TRYTANOVA (trytanova.com/pages/listacle)
+- Layout: Numbered listicle format "7 Reasons Why..."
+- Full-width hero with title, subtitle, author byline, date
+- "As Seen In" press logos bar (Bazaar, Elle, Cosmopolitan, Vogue, Allure)
+- Alternating image/text layout for each numbered reason
+- CTA buttons after key sections: "Try Tanova Today", "Shop Now"
+- Testimonial carousel with real photos, names, ages, locations
+- Ingredient breakdown section
+- Final urgency CTA: "Start Your Daily Glow" 
+- No sticky nav or sidebar — just inline CTAs
+- Weakness: No sticky navigation, no way to jump between sections
+- Strength: Numbered listicle format is scannable, good testimonial carousel
+
+DRIVSE (shower.drivse.com/list2108)
+- Layout: Numbered listicle "9 Reasons" format
+- Fake publication header "HOME-INSIDER" for credibility
+- Urgency banner at top with countdown timer + sale messaging
+- Author byline with photo + "Verified" badge
+- Alternating image/text for each numbered point
+- Video testimonials inline
+- Single CTA at bottom: "Get 50% OFF"
+- Clean, editorial design — feels like reading a magazine article
+- Weakness: Only one CTA at bottom, no sticky nav
+- Strength: Editorial credibility feel, clean typography, numbered format is scannable
+
+SYNTHESIS — BEST PRACTICES FOR BREWNECTAR ADVERTORIAL:
+1. Sticky section navigation (horizontal pill bar) — jump to any section
+2. Multiple CTAs after every 2-3 sections — "Get BrewNectar" or "Check Availability"
+3. Numbered listicle format for scannability
+4. Author byline with credibility markers
+5. Alternating image/text layout
+6. Testimonial section with real-feeling quotes
+7. Ingredient science section
+8. "As Seen In" or credibility markers
+9. Guarantee callout
+10. Final urgency CTA
+11. Match BrewNectar's warm cream aesthetic

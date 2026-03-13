@@ -7,6 +7,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
+import Advertorial from "./pages/Advertorial";
 
 function Router() {
   return (
@@ -15,6 +16,7 @@ function Router() {
       <Switch>
         <Route path={"/"} component={Home} />
         <Route path={"/product"} component={Product} />
+        <Route path={"/learn"} component={Advertorial} />
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />
       </Switch>

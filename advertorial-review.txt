@@ -1,0 +1,38 @@
+Advertorial Page Review - /learn
+
+HERO:
+- Title renders beautifully with amber accent on "Nootropic Syrup"
+- Author byline with verified badge looks credible
+- Hero image loads correctly with "Works with ANY coffee" badge overlay
+- Stars and "12,000+ high performers" trust bar at top
+
+STICKY NAV:
+- Appears after scrolling past hero - works correctly
+- Section pills highlight active section
+- "Get Offer" CTA button on right side of sticky nav
+- Smooth transitions
+
+SECTION 1 (The Problem):
+- Numbered circle + heading looks clean
+- 73% and 85% stat cards in red tones - effective
+- Good copy flow, bold text for emphasis
+- First CTA banner after section - warm amber gradient, prominent button
+
+SECTION 2 (How It Works):
+- Timeline with icons and time markers (0-15min, 15-45min, etc.)
+- Two images side by side (stir + lock in) - both load
+- Caption below images
+
+Overall: Page looks professional, editorial feel, good CTA placement. The sticky nav works well.
+Mobile optimization needed: check text sizes, CTA button sizing, stat cards on small screens.
+
+FULL PAGE REVIEW:
+
+Section 3 (Ingredients): Clean ingredient cards with study counts, source citations. CTA after.
+Section 4 (The Proof): Timeline showing Week 1 → Month 3+ progression. Subscription retention callout. CTA after.
+Section 5 (Reviews): 4 testimonial cards in 2x2 grid. Stars, quotes, names, titles. Stats bar (4.9 rating, 2400+ reviews, 94% reorder). CTA after.
+Section 6 (Why Us): Comparison table - BrewNectar vs Nootropic Coffees vs Capsule Nootropics. "The biggest difference?" paragraph. CTA after.
+Section 7 (Guarantee): 30-day money-back guarantee card. Trust badges. Final CTA.
+Final CTA: Dark section with "Ready to Upgrade Your Coffee?" - prominent button. FDA disclaimer. Back link.
+
+OVERALL: Page looks excellent. All 7 sections render properly. Sticky nav highlights active section. CTAs placed after every section. Good editorial feel. Mobile optimization needed for smaller screens.
