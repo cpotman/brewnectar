@@ -131,7 +131,7 @@ function SparkleParticles() {
 }
 
 export default function EnergyClaritySlider() {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(50);
   const [hasReachedBrewNectar, setHasReachedBrewNectar] = useState(false);
   const [showSparkles, setShowSparkles] = useState(false);
   const sliderRef = useRef<HTMLInputElement>(null);
@@ -162,7 +162,7 @@ export default function EnergyClaritySlider() {
   const fillPercent = value;
 
   return (
-    <section className="py-20 md:py-28 bg-[#FDFBF7]">
+    <section className="py-20 md:py-28 bg-[#FDFBF7] overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-10 md:mb-14">
@@ -195,7 +195,7 @@ export default function EnergyClaritySlider() {
         </div>
 
         {/* Image Container */}
-        <div className="relative mb-8">
+        <div className="relative mb-8 overflow-hidden">
           {/* Glow ring for BrewNectar state */}
           <motion.div
             className="absolute -inset-1 rounded-2xl pointer-events-none z-0"
@@ -212,7 +212,7 @@ export default function EnergyClaritySlider() {
             <motion.img
               src={SLIDER_IMAGE}
               alt="Energy clarity demonstration"
-              className="w-full h-auto block"
+              className="w-full block object-cover h-[260px] sm:h-[340px] md:h-[420px] lg:h-auto"
               style={{ filter: filterString }}
               transition={{ duration: 0.05 }}
             />
