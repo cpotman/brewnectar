@@ -2,6 +2,9 @@
   Energy Clarity Slider — Interactive demonstration of Brain Fog → Coffee → BrewNectar
   Design: Warm cream aesthetic, CSS filter transitions, reward animation at BrewNectar state
   Placement: Below "How It Works" section on homepage
+  
+  Uses a fully custom pointer-event slider (no native <input type="range">) to avoid
+  browser drag-prevention conflicts (red circle icon on drag).
 */
 import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -71,7 +74,6 @@ function lerp(a: number, b: number, t: number) {
 }
 
 function getFilterValues(value: number) {
-  // value: 0 = Brain Fog, 50 = Coffee, 100 = BrewNectar
   let stateA: SliderState;
   let stateB: SliderState;
   let t: number;
@@ -99,6 +101,10 @@ function getActiveStateIndex(value: number): number {
   if (value < 33) return 0;
   if (value < 67) return 1;
   return 2;
+}
+
+function clamp(val: number, min: number, max: number) {
+  return Math.min(max, Math.max(min, val));
 }
 
 /* ─── Sparkle Particles ─── */
@@ -134,7 +140,8 @@ export default function EnergyClaritySlider() {
   const [value, setValue] = useState(50);
   const [hasReachedBrewNectar, setHasReachedBrewNectar] = useState(false);
   const [showSparkles, setShowSparkles] = useState(false);
-  const sliderRef = useRef<HTMLInputElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   const activeIndex = getActiveStateIndex(value);
   const activeState = STATES[activeIndex];
@@ -152,13 +159,38 @@ export default function EnergyClaritySlider() {
     }
   }, [isBrewNectar, hasReachedBrewNectar]);
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(Number(e.target.value));
-  }, []);
+  /* ─── Custom pointer-based slider logic ─── */
+  const getValueFromPointer = useCallback((clientX: number) => {
+    if (!trackRef.current) return value;
+    const rect = trackRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const pct = clamp(x / rect.width, 0, 1) * 100;
+    return Math.round(pct);
+  }, [value]);
+
+  const handlePointerDown = useCallback((e: React.PointerEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+    setIsDragging(true);
+    setValue(getValueFromPointer(e.clientX));
+  }, [getValueFromPointer]);
+
+  const handlePointerMove = useCallback((e: React.PointerEvent) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    setValue(getValueFromPointer(e.clientX));
+  }, [isDragging, getValueFromPointer]);
+
+  const handlePointerUp = useCallback((e: React.PointerEvent) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    (e.target as HTMLElement).releasePointerCapture(e.pointerId);
+    setIsDragging(false);
+  }, [isDragging]);
 
   const filterString = `blur(${filters.blur}px) brightness(${filters.brightness}) saturate(${filters.saturate}) grayscale(${filters.grayscale}) contrast(${filters.contrast})`;
 
-  // Calculate slider fill percentage for the track gradient
   const fillPercent = value;
 
   return (
@@ -195,7 +227,7 @@ export default function EnergyClaritySlider() {
         </div>
 
         {/* Image Container */}
-        <div className="relative mb-8 overflow-hidden">
+        <div className="relative mb-8 overflow-hidden rounded-2xl">
           {/* Glow ring for BrewNectar state */}
           <motion.div
             className="absolute -inset-1 rounded-2xl pointer-events-none z-0"
@@ -209,12 +241,12 @@ export default function EnergyClaritySlider() {
 
           {/* Main Image */}
           <div className="relative overflow-hidden rounded-2xl shadow-lg z-[1]">
-            <motion.img
+            <img
               src={SLIDER_IMAGE}
               alt="Energy clarity demonstration"
-              className="w-full block object-cover h-[260px] sm:h-[340px] md:h-[420px] lg:h-auto"
-              style={{ filter: filterString }}
-              transition={{ duration: 0.05 }}
+              className="w-full block object-cover h-[260px] sm:h-[340px] md:h-[420px] lg:h-auto select-none"
+              style={{ filter: filterString, transition: "filter 0.1s ease-out" }}
+              draggable={false}
             />
 
             {/* Sparkle particles on reaching BrewNectar */}
@@ -256,13 +288,36 @@ export default function EnergyClaritySlider() {
           </div>
         </div>
 
-        {/* Slider */}
-        <div className="relative px-2 md:px-4">
-          {/* Custom slider track background */}
-          <div className="relative h-12 flex items-center">
-            <div className="absolute inset-x-0 h-2.5 rounded-full bg-stone-200 overflow-hidden">
+        {/* Custom Pointer-Based Slider */}
+        <div className="relative px-2 md:px-4 select-none">
+          {/* Slider track — pointer events drive the value */}
+          <div
+            ref={trackRef}
+            className="relative h-14 flex items-center cursor-pointer touch-none"
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerCancel={handlePointerUp}
+            role="slider"
+            aria-label="Energy clarity slider"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={value}
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "ArrowRight" || e.key === "ArrowUp") {
+                e.preventDefault();
+                setValue((v) => clamp(v + 5, 0, 100));
+              } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
+                e.preventDefault();
+                setValue((v) => clamp(v - 5, 0, 100));
+              }
+            }}
+          >
+            {/* Track background */}
+            <div className="absolute inset-x-0 h-2.5 rounded-full bg-stone-200 overflow-hidden pointer-events-none">
               <div
-                className="h-full rounded-full transition-all duration-100"
+                className="h-full rounded-full"
                 style={{
                   width: `${fillPercent}%`,
                   background: fillPercent > 67
@@ -270,23 +325,18 @@ export default function EnergyClaritySlider() {
                     : fillPercent > 33
                     ? "linear-gradient(90deg, #D6D3D1, #D97706)"
                     : "linear-gradient(90deg, #D6D3D1, #A8A29E)",
+                  transition: isDragging ? "none" : "width 0.15s ease-out",
                 }}
               />
             </div>
-            <input
-              ref={sliderRef}
-              type="range"
-              min="0"
-              max="100"
-              value={value}
-              onChange={handleChange}
-              className="absolute inset-x-0 w-full h-12 opacity-0 cursor-pointer z-10"
-              aria-label="Energy clarity slider"
-            />
+
             {/* Custom thumb */}
             <div
               className="absolute top-1/2 -translate-y-1/2 pointer-events-none z-[5]"
-              style={{ left: `calc(${fillPercent}% - 14px)` }}
+              style={{
+                left: `calc(${fillPercent}% - 14px)`,
+                transition: isDragging ? "none" : "left 0.15s ease-out",
+              }}
             >
               <motion.div
                 className={`w-7 h-7 rounded-full border-[3px] shadow-md transition-colors duration-300 ${
