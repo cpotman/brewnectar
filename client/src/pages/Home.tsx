@@ -10,6 +10,7 @@ import { motion, useInView } from "framer-motion";
 import { ChevronDown, ChevronLeft, ChevronRight, Play, Star, Check, X as XIcon, Zap, Brain, Coffee, Clock, Sparkles, ExternalLink, FlaskConical, BookOpen } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import EnergyClaritySlider from "@/components/EnergyClaritySlider";
 import { AnimatePresence } from "framer-motion";
 
 /* ─── Fade-up animation wrapper ─── */
@@ -718,6 +719,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ═══════════ ENERGY CLARITY SLIDER ═══════════ */}
+      <EnergyClaritySlider />
 
       {/* ═══════════ BENEFIT BLOCK ═══════════ */}
       <section className="relative py-24 md:py-32 overflow-hidden">
