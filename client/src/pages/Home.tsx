@@ -351,6 +351,7 @@ const TICKER_MESSAGES = [
   "Trusted by 12,000+ high performers",
   "Third-party tested for purity",
   "Subscribe & save up to 45%",
+  "\u2728 Just Restocked \u2014 Limited Supply",
 ];
 
 /* ─── Video testimonials data ─── */

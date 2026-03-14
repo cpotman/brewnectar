@@ -235,6 +235,10 @@ export default function Product() {
                 BrewNectar Nootropic Coffee Syrup
               </h1>
               <div className="flex flex-wrap items-center gap-3 mb-3">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-[11px] font-semibold text-emerald-700">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  Back in Stock
+                </span>
                 <div className="flex -space-x-0.5">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />
@@ -286,6 +290,10 @@ export default function Product() {
                   BrewNectar Nootropic Coffee Syrup
                 </h1>
                 <div className="hidden lg:flex flex-wrap items-center gap-3 mb-3">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-[11px] font-semibold text-emerald-700">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    Back in Stock
+                  </span>
                   <div className="flex -space-x-0.5">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />

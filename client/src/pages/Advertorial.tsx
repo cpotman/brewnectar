@@ -265,9 +265,13 @@ export default function Advertorial() {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6">
+              <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 flex flex-wrap items-center gap-2">
                 <span className="bg-white/90 backdrop-blur-sm text-[#78350F] text-xs font-semibold px-3 py-1.5 rounded-full">
                   Works with ANY coffee you already drink
+                </span>
+                <span className="inline-flex items-center gap-1.5 bg-emerald-600/90 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                  Just Restocked
                 </span>
               </div>
             </div>
