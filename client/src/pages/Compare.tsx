@@ -1,7 +1,7 @@
 /*
   BrewNectar Competitor Comparison Page
   Design: Warm cream editorial — matches main site aesthetic
-  Structure: Hero → Comparison Table → Deep Dives → Switcher Stories → CTA
+  Structure: Hero → Product Lineup → Comparison Table → Deep Dives → Label Flip → Studies → Switcher Stories → CTA
   Goal: Capture competitor search traffic, convert switchers
 */
 import { useState, useRef } from "react";
@@ -22,6 +22,10 @@ import {
   Zap,
   ChevronDown,
   Quote,
+  ExternalLink,
+  FlaskConical,
+  Sparkles,
+  BookOpen,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -47,6 +51,9 @@ const IMAGES = {
   hero: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/hero-bright-TZynNw86MPFthaxzmzbNEA.webp",
   botanical: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/botanical-stipple-YXHqjKQEjP2LspSUm3f2Gh.webp",
   product: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/product-hero-clean-2JryfYKGcicCXzETS5MKKr.webp",
+  ryze: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ryze-product_cc0bfbbb.jpg",
+  everydayDose: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/everydaydose-product_82595972.jpg",
+  magicMind: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/magicmind-product_9b5bd476.jpg",
 };
 
 /* ─── Comparison data ─── */
@@ -131,6 +138,9 @@ const COMPETITOR_DIVES = [
   {
     name: "Ryze Mushroom Coffee",
     tagline: "The social-media-driven mushroom coffee with 250K+ reviews",
+    image: IMAGES.ryze,
+    color: "from-rose-50 to-rose-100/30",
+    borderColor: "border-rose-200/60",
     issues: [
       "NAD (BBB's advertising division) forced Ryze to permanently discontinue claims about \"all-day energy\" and \"sharper focus\" in September 2025",
       "Class-action lawsuit pending in California + 48 pages of BBB complaints for subscription fraud",
@@ -143,6 +153,9 @@ const COMPETITOR_DIVES = [
   {
     name: "Everyday Dose",
     tagline: "Premium mushroom coffee with collagen and L-Theanine",
+    image: IMAGES.everydayDose,
+    color: "from-violet-50 to-violet-100/30",
+    borderColor: "border-violet-200/60",
     issues: [
       "F rating on the BBB with 56 total complaints — same subscription trap pattern as Ryze",
       "Proprietary blend (700mg) — no transparency on individual mushroom amounts",
@@ -155,6 +168,9 @@ const COMPETITOR_DIVES = [
   {
     name: "Magic Mind",
     tagline: "Premium nootropic shot at $3–4 per serving",
+    image: IMAGES.magicMind,
+    color: "from-teal-50 to-teal-100/30",
+    borderColor: "border-teal-200/60",
     issues: [
       "Price is the #1 barrier — daily use costs $90–120/month",
       "Taste is divisive: bitter, herbal, nauseating for some — takes 3-4 tries to acquire",
@@ -163,6 +179,82 @@ const COMPETITOR_DIVES = [
       "Effects require 5–10 days of consistent use — many quit before that",
     ],
     realReview: "Did nothing for me. Energy levels remained stagnant. At $3+ a shot, I expected to feel something.",
+  },
+];
+
+/* ─── Clinical studies ─── */
+const CLINICAL_STUDIES = [
+  {
+    ingredient: "Lion's Mane",
+    studyCount: "30+",
+    color: "bg-amber-50 border-amber-200/40",
+    iconColor: "text-[#B45309]",
+    studies: [
+      {
+        title: "Acute and Chronic Effects of Lion's Mane on Cognitive Function",
+        authors: "Docherty et al.",
+        journal: "Nutrients",
+        year: 2023,
+        finding: "28-day supplementation improved cognitive performance and reduced subjective stress in healthy young adults.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10675414/",
+      },
+      {
+        title: "Improving Effects of Yamabushitake on Mild Cognitive Impairment",
+        authors: "Mori et al.",
+        journal: "Phytotherapy Research",
+        year: 2009,
+        finding: "16 weeks of supplementation significantly improved cognitive function scores in older adults with mild cognitive impairment.",
+        url: "https://pubmed.ncbi.nlm.nih.gov/18844328/",
+      },
+    ],
+  },
+  {
+    ingredient: "Cognizin®",
+    studyCount: "20+",
+    color: "bg-emerald-50 border-emerald-200/40",
+    iconColor: "text-emerald-700",
+    studies: [
+      {
+        title: "Citicoline and Memory Function in Healthy Older Adults",
+        authors: "Nakazaki et al.",
+        journal: "The Journal of Nutrition",
+        year: 2021,
+        finding: "12 weeks of Cognizin® supplementation improved overall memory performance, especially episodic memory.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8349115/",
+      },
+      {
+        title: "Improved Attentional Performance Following Citicoline Administration",
+        authors: "McGlade et al.",
+        journal: "Food and Nutrition Sciences",
+        year: 2012,
+        finding: "Citicoline supplementation was associated with improved attentional focus and reduced errors of commission.",
+        url: "https://www.scirp.org/journal/paperinformation?paperid=19921",
+      },
+    ],
+  },
+  {
+    ingredient: "L-Theanine",
+    studyCount: "25+",
+    color: "bg-sky-50 border-sky-200/40",
+    iconColor: "text-sky-700",
+    studies: [
+      {
+        title: "Effects of L-Theanine on Stress-Related Symptoms and Cognitive Functions",
+        authors: "Hidese et al.",
+        journal: "Nutrients",
+        year: 2019,
+        finding: "L-Theanine reduced stress-related symptoms and improved cognitive function scores across multiple domains.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6836118/",
+      },
+      {
+        title: "L-Theanine and Caffeine in Combination Affect Human Cognition",
+        authors: "Kelly et al.",
+        journal: "The Journal of Nutrition",
+        year: 2008,
+        finding: "L-Theanine with caffeine increased alpha-band activity and improved attention task performance.",
+        url: "https://jn.nutrition.org/article/S0022-3166(22)09912-6/fulltext",
+      },
+    ],
   },
 ];
 
@@ -245,8 +337,60 @@ export default function Compare() {
         </div>
       </section>
 
-      {/* ═══════════ THE CORE INSIGHT ═══════════ */}
+      {/* ═══════════ PRODUCT LINEUP — Visual comparison ═══════════ */}
       <section className="py-12 md:py-16 bg-white border-y border-stone-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <FadeUp>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+              {/* BrewNectar — highlighted */}
+              <div className="relative bg-gradient-to-br from-amber-50 to-orange-50/40 rounded-2xl p-4 md:p-6 border-2 border-[#B45309]/30 shadow-warm">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#B45309] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide whitespace-nowrap">
+                  Our Pick
+                </div>
+                <div className="aspect-square rounded-xl overflow-hidden bg-white/60 mb-3 flex items-center justify-center p-2">
+                  <img src={IMAGES.product} alt="BrewNectar" className="w-full h-full object-contain" />
+                </div>
+                <h3 className="font-display text-sm md:text-base font-bold text-[#1C1917] text-center">BrewNectar</h3>
+                <p className="text-[11px] text-[#B45309] font-semibold text-center mt-0.5">Nootropic Syrup</p>
+                <p className="text-[11px] text-[#78716C] text-center mt-1">~$0.96/day</p>
+              </div>
+
+              {/* Ryze */}
+              <div className="bg-stone-50 rounded-2xl p-4 md:p-6 border border-stone-200">
+                <div className="aspect-square rounded-xl overflow-hidden bg-white mb-3 flex items-center justify-center p-2">
+                  <img src={IMAGES.ryze} alt="Ryze Mushroom Coffee" className="w-full h-full object-contain" />
+                </div>
+                <h3 className="font-display text-sm md:text-base font-bold text-[#1C1917] text-center">Ryze</h3>
+                <p className="text-[11px] text-[#78716C] text-center mt-0.5">Mushroom Coffee</p>
+                <p className="text-[11px] text-[#78716C] text-center mt-1">~$1.10/day</p>
+              </div>
+
+              {/* Everyday Dose */}
+              <div className="bg-stone-50 rounded-2xl p-4 md:p-6 border border-stone-200">
+                <div className="aspect-square rounded-xl overflow-hidden bg-white mb-3 flex items-center justify-center p-2">
+                  <img src={IMAGES.everydayDose} alt="Everyday Dose" className="w-full h-full object-contain" />
+                </div>
+                <h3 className="font-display text-sm md:text-base font-bold text-[#1C1917] text-center">Everyday Dose</h3>
+                <p className="text-[11px] text-[#78716C] text-center mt-0.5">Mushroom Coffee+</p>
+                <p className="text-[11px] text-[#78716C] text-center mt-1">~$1.10/day</p>
+              </div>
+
+              {/* Magic Mind */}
+              <div className="bg-stone-50 rounded-2xl p-4 md:p-6 border border-stone-200">
+                <div className="aspect-square rounded-xl overflow-hidden bg-white mb-3 flex items-center justify-center p-2">
+                  <img src={IMAGES.magicMind} alt="Magic Mind" className="w-full h-full object-contain" />
+                </div>
+                <h3 className="font-display text-sm md:text-base font-bold text-[#1C1917] text-center">Magic Mind</h3>
+                <p className="text-[11px] text-[#78716C] text-center mt-0.5">Nootropic Shot</p>
+                <p className="text-[11px] text-[#78716C] text-center mt-1">~$3.50/day</p>
+              </div>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ═══════════ CORE INSIGHT ═══════════ */}
+      <section className="py-12 md:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <FadeUp>
             <div className="bg-gradient-to-br from-amber-50 to-orange-50/50 rounded-2xl p-8 md:p-10 border border-amber-200/40">
@@ -263,7 +407,7 @@ export default function Compare() {
       </section>
 
       {/* ═══════════ COMPARISON TABLE ═══════════ */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Side-by-Side</p>
@@ -278,15 +422,33 @@ export default function Compare() {
           {/* Desktop table */}
           <FadeUp delay={0.1}>
             <div className="hidden lg:block overflow-hidden rounded-2xl border border-stone-200 shadow-warm">
-              {/* Header */}
+              {/* Header with product images */}
               <div className="grid grid-cols-5 bg-[#1C1917] text-white">
                 <div className="p-5 font-display font-semibold text-sm">Feature</div>
-                <div className="p-5 font-display font-semibold text-sm text-center border-l border-white/10">
-                  <span className="text-amber-300">BrewNectar</span>
+                <div className="p-4 border-l border-white/10 flex flex-col items-center gap-2">
+                  <div className="w-10 h-10 rounded-lg bg-white/10 overflow-hidden flex items-center justify-center">
+                    <img src={IMAGES.product} alt="BrewNectar" className="w-8 h-8 object-contain" />
+                  </div>
+                  <span className="text-amber-300 font-display font-semibold text-sm">BrewNectar</span>
                 </div>
-                <div className="p-5 font-display font-semibold text-sm text-center border-l border-white/10">Ryze</div>
-                <div className="p-5 font-display font-semibold text-sm text-center border-l border-white/10">Everyday Dose</div>
-                <div className="p-5 font-display font-semibold text-sm text-center border-l border-white/10">Magic Mind</div>
+                <div className="p-4 border-l border-white/10 flex flex-col items-center gap-2">
+                  <div className="w-10 h-10 rounded-lg bg-white/10 overflow-hidden flex items-center justify-center">
+                    <img src={IMAGES.ryze} alt="Ryze" className="w-8 h-8 object-contain" />
+                  </div>
+                  <span className="font-display font-semibold text-sm">Ryze</span>
+                </div>
+                <div className="p-4 border-l border-white/10 flex flex-col items-center gap-2">
+                  <div className="w-10 h-10 rounded-lg bg-white/10 overflow-hidden flex items-center justify-center">
+                    <img src={IMAGES.everydayDose} alt="Everyday Dose" className="w-8 h-8 object-contain" />
+                  </div>
+                  <span className="font-display font-semibold text-sm">Everyday Dose</span>
+                </div>
+                <div className="p-4 border-l border-white/10 flex flex-col items-center gap-2">
+                  <div className="w-10 h-10 rounded-lg bg-white/10 overflow-hidden flex items-center justify-center">
+                    <img src={IMAGES.magicMind} alt="Magic Mind" className="w-8 h-8 object-contain" />
+                  </div>
+                  <span className="font-display font-semibold text-sm">Magic Mind</span>
+                </div>
               </div>
 
               {/* Rows */}
@@ -310,6 +472,25 @@ export default function Compare() {
                   <CompetitorCell value={feature.magicMind.value} good={feature.magicMind.good} />
                 </div>
               ))}
+
+              {/* Bottom verdict row */}
+              <div className="grid grid-cols-5 border-t-2 border-stone-200 bg-stone-50">
+                <div className="p-5 flex items-center">
+                  <span className="text-sm font-bold text-[#1C1917]">Verdict</span>
+                </div>
+                <div className="p-5 border-l border-stone-100 bg-emerald-50/50">
+                  <span className="text-sm font-bold text-emerald-700">Best Overall</span>
+                </div>
+                <div className="p-5 border-l border-stone-100">
+                  <span className="text-sm text-[#78716C]">Taste & trust issues</span>
+                </div>
+                <div className="p-5 border-l border-stone-100">
+                  <span className="text-sm text-[#78716C]">Transparency concerns</span>
+                </div>
+                <div className="p-5 border-l border-stone-100">
+                  <span className="text-sm text-[#78716C]">Overpriced</span>
+                </div>
+              </div>
             </div>
           </FadeUp>
 
@@ -323,7 +504,6 @@ export default function Compare() {
                     <span className="text-sm font-bold text-[#1C1917]">{feature.label}</span>
                   </div>
                   <div className="divide-y divide-stone-100">
-                    {/* BrewNectar */}
                     <div className="p-4 bg-emerald-50/30">
                       <div className="flex items-start gap-2">
                         <Check size={15} className="text-emerald-600 mt-0.5 shrink-0" />
@@ -333,7 +513,6 @@ export default function Compare() {
                         </div>
                       </div>
                     </div>
-                    {/* Competitors */}
                     {[
                       { name: "Ryze", data: feature.ryze },
                       { name: "Everyday Dose", data: feature.everydayDose },
@@ -358,7 +537,7 @@ export default function Compare() {
       </section>
 
       {/* ═══════════ COMPETITOR DEEP DIVES ═══════════ */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">The Details</p>
@@ -373,19 +552,23 @@ export default function Compare() {
           <div className="space-y-4">
             {COMPETITOR_DIVES.map((comp, i) => (
               <FadeUp key={comp.name} delay={i * 0.05}>
-                <div className="bg-[#FDFBF7] rounded-2xl border border-stone-200 overflow-hidden">
+                <div className={`bg-gradient-to-br ${comp.color} rounded-2xl border ${comp.borderColor} overflow-hidden`}>
                   {/* Header — clickable */}
                   <button
                     onClick={() => setExpandedCompetitor(expandedCompetitor === i ? null : i)}
-                    className="w-full flex items-center justify-between p-5 md:p-6 text-left hover:bg-stone-50/50 transition-colors"
+                    className="w-full flex items-center gap-4 p-5 md:p-6 text-left hover:bg-white/30 transition-colors"
                   >
-                    <div>
+                    {/* Product thumbnail */}
+                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white border border-stone-200/60 overflow-hidden shrink-0 flex items-center justify-center p-1.5">
+                      <img src={comp.image} alt={comp.name} className="w-full h-full object-contain" />
+                    </div>
+                    <div className="flex-1">
                       <h3 className="font-display text-lg md:text-xl font-bold text-[#1C1917]">{comp.name}</h3>
                       <p className="text-sm text-[#78716C] mt-0.5">{comp.tagline}</p>
                     </div>
                     <ChevronDown
                       size={20}
-                      className={`text-[#78716C] transition-transform duration-300 shrink-0 ml-4 ${
+                      className={`text-[#78716C] transition-transform duration-300 shrink-0 ml-2 ${
                         expandedCompetitor === i ? "rotate-180" : ""
                       }`}
                     />
@@ -397,10 +580,9 @@ export default function Compare() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       transition={{ duration: 0.3 }}
-                      className="border-t border-stone-200"
+                      className="border-t border-stone-200/60"
                     >
                       <div className="p-5 md:p-6 space-y-4">
-                        {/* Issues */}
                         <div className="space-y-3">
                           {comp.issues.map((issue, j) => (
                             <div key={j} className="flex items-start gap-3">
@@ -410,7 +592,6 @@ export default function Compare() {
                           ))}
                         </div>
 
-                        {/* Real review quote */}
                         <div className="mt-6 bg-red-50/50 rounded-xl p-5 border border-red-100/60">
                           <div className="flex items-start gap-3">
                             <Quote size={18} className="text-red-300 shrink-0 mt-0.5" />
@@ -431,7 +612,7 @@ export default function Compare() {
       </section>
 
       {/* ═══════════ THE LABEL FLIP ═══════════ */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Transparency</p>
@@ -443,7 +624,7 @@ export default function Compare() {
           <FadeUp delay={0.1}>
             <div className="grid md:grid-cols-2 gap-6">
               {/* Competitor label */}
-              <div className="bg-white rounded-2xl border border-red-200/60 p-6 md:p-8 relative overflow-hidden">
+              <div className="bg-[#FDFBF7] rounded-2xl border border-red-200/60 p-6 md:p-8 relative overflow-hidden">
                 <div className="absolute top-0 right-0 bg-red-100 text-red-600 text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wide">
                   Typical Competitor
                 </div>
@@ -461,7 +642,7 @@ export default function Compare() {
                   ))}
                 </div>
                 <p className="text-xs text-red-400 mt-4 italic">
-                  * Individual amounts not disclosed. Clinical studies use 2,000mg+ of Lion's Mane alone.
+                  "Proprietary blend" = they won't tell you how much of each ingredient you're getting.
                 </p>
               </div>
 
@@ -495,6 +676,70 @@ export default function Compare() {
         </div>
       </section>
 
+      {/* ═══════════ CLINICAL STUDIES ═══════════ */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <FadeUp>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">The Science</p>
+            <h2 className="font-display text-2xl md:text-4xl font-bold text-center text-[#1C1917] mb-4">
+              Backed by Peer-Reviewed Research
+            </h2>
+            <p className="text-center text-[#78716C] text-base mb-12 max-w-xl mx-auto">
+              Unlike competitors who rely on vague "adaptogen" claims, every BrewNectar ingredient has published clinical evidence.
+            </p>
+          </FadeUp>
+
+          <div className="space-y-6">
+            {CLINICAL_STUDIES.map((group, gi) => (
+              <FadeUp key={group.ingredient} delay={gi * 0.05}>
+                <div className={`${group.color} rounded-2xl border p-6 md:p-8`}>
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className={`w-10 h-10 rounded-xl bg-white flex items-center justify-center ${group.iconColor}`}>
+                      <FlaskConical size={18} />
+                    </div>
+                    <div>
+                      <h3 className="font-display text-lg font-bold text-[#1C1917]">{group.ingredient}</h3>
+                      <p className="text-xs text-[#78716C]">{group.studyCount} peer-reviewed studies</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    {group.studies.map((study, si) => (
+                      <div key={si} className="bg-white rounded-xl p-4 md:p-5 border border-stone-100">
+                        <h4 className="text-sm font-bold text-[#1C1917] leading-snug mb-1">{study.title}</h4>
+                        <p className="text-xs text-[#A8A29E] mb-2">{study.authors} · {study.journal} · {study.year}</p>
+                        <p className="text-sm text-[#57534E] leading-relaxed mb-3">{study.finding}</p>
+                        <a
+                          href={study.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#B45309] hover:text-[#92400E] transition-colors"
+                        >
+                          Read Full Study
+                          <ExternalLink size={12} />
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+
+          <FadeUp delay={0.15}>
+            <div className="text-center mt-8">
+              <Link
+                href="/#clinical-studies"
+                className="inline-flex items-center gap-2 text-sm font-medium text-[#B45309] hover:text-[#92400E] transition-colors"
+              >
+                <BookOpen size={15} />
+                View all 75+ studies on our homepage
+              </Link>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
       {/* ═══════════ SWITCHER STORIES ═══════════ */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
@@ -512,19 +757,14 @@ export default function Compare() {
             {SWITCHER_STORIES.map((story, i) => (
               <FadeUp key={story.name} delay={i * 0.05}>
                 <div className="bg-[#FDFBF7] rounded-2xl p-6 md:p-8 border border-stone-100 h-full flex flex-col">
-                  {/* Stars */}
                   <div className="flex gap-0.5 mb-3">
                     {[...Array(story.rating)].map((_, j) => (
                       <Star key={j} size={14} className="fill-[#D97706] text-[#D97706]" />
                     ))}
                   </div>
-
-                  {/* Quote */}
                   <p className="text-sm text-[#57534E] leading-relaxed flex-1 mb-4">
                     "{story.text}"
                   </p>
-
-                  {/* Attribution */}
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-semibold text-[#1C1917]">{story.name}</span>
                     <span className="text-xs font-medium text-red-400 bg-red-50 px-2.5 py-1 rounded-full">
@@ -543,7 +783,6 @@ export default function Compare() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <FadeUp>
             <div className="relative bg-[#1C1917] rounded-3xl p-10 md:p-16 text-center overflow-hidden">
-              {/* Subtle texture */}
               <div className="absolute inset-0 opacity-5">
                 <img src={IMAGES.botanical} alt="" className="w-full h-full object-cover" />
               </div>
