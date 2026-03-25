@@ -8,6 +8,8 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
 import Advertorial from "./pages/Advertorial";
+import Compare from "./pages/Compare";
+import Quiz from "./pages/Quiz";
 
 function Router() {
   return (
@@ -17,6 +19,8 @@ function Router() {
         <Route path={"/"} component={Home} />
         <Route path={"/product"} component={Product} />
         <Route path={"/learn"} component={Advertorial} />
+        <Route path={"/compare"} component={Compare} />
+        <Route path={"/quiz"} component={Quiz} />
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />
       </Switch>
