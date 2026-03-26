@@ -7,10 +7,11 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
-import { ChevronDown, ChevronLeft, ChevronRight, Play, Star, Check, X as XIcon, Zap, Brain, Coffee, Clock, Sparkles, ExternalLink, FlaskConical, BookOpen } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight, Play, Star, Check, X as XIcon, Zap, Brain, Coffee, Clock, Sparkles, ExternalLink, FlaskConical, BookOpen, Volume2, VolumeX, Pause } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import EnergyClaritySlider from "@/components/EnergyClaritySlider";
+import VideoCard from "@/components/VideoCard";
 import { AnimatePresence } from "framer-motion";
 
 /* ─── Fade-up animation wrapper ─── */
@@ -39,6 +40,7 @@ const IMAGES = {
   benefitTexture: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/benefit-texture-bg-7Q84t6rmotySQdZXZXCNVa.webp",
   howStir: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/how-stir-3pNJBKzkQVwxqm57DvYdyL.webp",
   howLockIn: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/how-lockin-BGjMpAAVV2Cfd7diTUnZWZ.webp",
+  ugcVideo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ugcvid-web_4e0ef815.mp4",
 };
 
 /* ─── Clinical studies data ─── */
@@ -356,6 +358,15 @@ const TICKER_MESSAGES = [
 
 /* ─── Video testimonials data ─── */
 const VIDEO_TESTIMONIALS = [
+  {
+    id: 0,
+    name: "Real Customer",
+    title: "UGC Review",
+    quote: "Watch this real customer review to see how BrewNectar fits into a daily coffee ritual.",
+    rating: 5,
+    thumbnail: IMAGES.hero,
+    videoSrc: IMAGES.ugcVideo,
+  },
   {
     id: 1,
     name: "Alex K.",
@@ -1038,41 +1049,47 @@ export default function Home() {
           >
             {VIDEO_TESTIMONIALS.map((t, i) => (
               <FadeUp key={t.id} delay={i * 0.08} className="flex-shrink-0 w-[300px] snap-start">
-                <div className="bg-stone-50 border border-stone-100 rounded-2xl overflow-hidden hover:shadow-warm hover:border-amber-100 transition-all duration-300">
-                  {/* Video thumbnail */}
-                  <div className="relative aspect-[9/12] overflow-hidden group cursor-pointer">
-                    <img
-                      src={t.thumbnail}
-                      alt={t.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    {/* Play button overlay */}
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                      <div className="w-14 h-14 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <Play size={22} className="text-[#1C1917] ml-1" fill="#1C1917" />
+                {(t as any).videoSrc ? (
+                  <VideoCard
+                    videoSrc={(t as any).videoSrc}
+                    name={t.name}
+                    title={t.title}
+                    quote={t.quote}
+                    rating={t.rating}
+                  />
+                ) : (
+                  <div className="bg-stone-50 border border-stone-100 rounded-2xl overflow-hidden hover:shadow-warm hover:border-amber-100 transition-all duration-300">
+                    <div className="relative aspect-[9/12] overflow-hidden group cursor-pointer">
+                      <img
+                        src={t.thumbnail}
+                        alt={t.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                        <div className="w-14 h-14 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                          <Play size={22} className="text-[#1C1917] ml-1" fill="#1C1917" />
+                        </div>
+                      </div>
+                      <div className="absolute bottom-3 left-3 right-3">
+                        <div className="bg-black/40 backdrop-blur-sm rounded-lg px-3 py-2">
+                          <p className="text-white text-xs font-semibold">@{t.name.toLowerCase().replace(/\s/g, "")}</p>
+                        </div>
                       </div>
                     </div>
-                    {/* TikTok-style handle */}
-                    <div className="absolute bottom-3 left-3 right-3">
-                      <div className="bg-black/40 backdrop-blur-sm rounded-lg px-3 py-2">
-                        <p className="text-white text-xs font-semibold">@{t.name.toLowerCase().replace(/\s/g, "")}</p>
+                    <div className="p-5">
+                      <div className="flex gap-0.5 mb-2">
+                        {[...Array(t.rating)].map((_, j) => (
+                          <Star key={j} size={14} className="fill-[#D97706] text-[#D97706]" />
+                        ))}
+                      </div>
+                      <p className="text-sm text-[#44403C] leading-relaxed mb-3 line-clamp-3">"{t.quote}"</p>
+                      <div>
+                        <p className="text-sm font-semibold text-[#1C1917]">{t.name}</p>
+                        <p className="text-xs text-[#A8A29E]">{t.title}</p>
                       </div>
                     </div>
                   </div>
-                  {/* Card content */}
-                  <div className="p-5">
-                    <div className="flex gap-0.5 mb-2">
-                      {[...Array(t.rating)].map((_, j) => (
-                        <Star key={j} size={14} className="fill-[#D97706] text-[#D97706]" />
-                      ))}
-                    </div>
-                    <p className="text-sm text-[#44403C] leading-relaxed mb-3 line-clamp-3">"{t.quote}"</p>
-                    <div>
-                      <p className="text-sm font-semibold text-[#1C1917]">{t.name}</p>
-                      <p className="text-xs text-[#A8A29E]">{t.title}</p>
-                    </div>
-                  </div>
-                </div>
+                )}
               </FadeUp>
             ))}
           </div>
