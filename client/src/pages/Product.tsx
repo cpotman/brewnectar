@@ -22,6 +22,10 @@ import {
   ChevronDown,
   ArrowRight,
   TrendingUp,
+  Gift,
+  Lock,
+  GraduationCap,
+  Trophy,
 } from "lucide-react";
 
 /* ─── Fade-up wrapper ─── */
@@ -338,15 +342,8 @@ export default function Product() {
                           </span>
                         )}
 
-                        {/* Discount ribbon */}
-                        {plan.discount && (
-                          <div className="absolute top-0 left-0 px-3 py-1 bg-amber-50 border-b border-r border-amber-200 rounded-br-xl">
-                            <span className="text-[10px] font-bold text-[#B45309] uppercase tracking-wide">Save {plan.discount.replace(' OFF', '')} + Free Gifts</span>
-                          </div>
-                        )}
-
                         {/* Main row: always visible */}
-                        <div className={`flex items-center justify-between gap-3 p-4 md:p-5 ${plan.discount ? 'pt-8' : ''}`}>
+                        <div className="flex items-center justify-between gap-3 p-4 md:p-5">
                           <div className="flex items-center gap-3">
                             {/* Radio circle */}
                             <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
@@ -410,6 +407,91 @@ export default function Product() {
                       </button>
                     );
                   })}
+                </div>
+
+                {/* Free Gifts with your order */}
+                <div className="mb-5">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Gift size={16} className="text-[#B45309]" />
+                    <span className="text-sm font-bold text-[#1C1917]">Free gifts with your order</span>
+                  </div>
+                  <div className="flex gap-3">
+                    {/* Gift 1: Focus & Clarity Masterclass — unlocked with any subscription */}
+                    <button
+                      onClick={() => {
+                        if (selectedPlan === "one-time") setSelectedPlan("subscribe-1");
+                      }}
+                      className={`flex-1 relative rounded-xl border-2 p-3 transition-all duration-200 text-left ${
+                        selectedPlan !== "one-time"
+                          ? "border-[#B45309]/30 bg-amber-50/60"
+                          : "border-stone-200 bg-stone-50 opacity-60 cursor-pointer hover:border-stone-300"
+                      }`}
+                    >
+                      {selectedPlan === "one-time" && (
+                        <div className="absolute top-2 right-2">
+                          <Lock size={12} className="text-stone-400" />
+                        </div>
+                      )}
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 ${
+                        selectedPlan !== "one-time" ? "bg-[#B45309]/10" : "bg-stone-200"
+                      }`}>
+                        <GraduationCap size={16} className={selectedPlan !== "one-time" ? "text-[#B45309]" : "text-stone-400"} />
+                      </div>
+                      <p className="text-xs font-bold text-[#1C1917] leading-tight">Focus & Clarity Masterclass</p>
+                      <div className="flex items-center gap-1 mt-1">
+                        <span className="text-[10px] text-stone-400 line-through">$97</span>
+                        <span className={`text-[10px] font-bold ${
+                          selectedPlan !== "one-time" ? "text-emerald-600" : "text-stone-400"
+                        }`}>FREE</span>
+                      </div>
+                      {selectedPlan !== "one-time" && (
+                        <div className="absolute -top-1.5 -left-1.5">
+                          <div className="w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center">
+                            <Check size={10} strokeWidth={3} className="text-white" />
+                          </div>
+                        </div>
+                      )}
+                    </button>
+
+                    {/* Gift 2: La Marzocco Giveaway — unlocked with 2+ bottles */}
+                    <button
+                      onClick={() => {
+                        if (selectedPlan !== "subscribe-3" && selectedPlan !== "subscribe-2") {
+                          setSelectedPlan("subscribe-2");
+                        }
+                      }}
+                      className={`flex-1 relative rounded-xl border-2 p-3 transition-all duration-200 text-left ${
+                        selectedPlan === "subscribe-3" || selectedPlan === "subscribe-2"
+                          ? "border-[#B45309]/30 bg-amber-50/60"
+                          : "border-stone-200 bg-stone-50 opacity-60 cursor-pointer hover:border-stone-300"
+                      }`}
+                    >
+                      {selectedPlan !== "subscribe-3" && selectedPlan !== "subscribe-2" && (
+                        <div className="absolute top-2 right-2">
+                          <Lock size={12} className="text-stone-400" />
+                        </div>
+                      )}
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 ${
+                        selectedPlan === "subscribe-3" || selectedPlan === "subscribe-2" ? "bg-[#B45309]/10" : "bg-stone-200"
+                      }`}>
+                        <Trophy size={16} className={selectedPlan === "subscribe-3" || selectedPlan === "subscribe-2" ? "text-[#B45309]" : "text-stone-400"} />
+                      </div>
+                      <p className="text-xs font-bold text-[#1C1917] leading-tight">La Marzocco Linea Micra Giveaway</p>
+                      <div className="flex items-center gap-1 mt-1">
+                        <span className="text-[10px] text-stone-400">2+ bottles</span>
+                        <span className={`text-[10px] font-bold ${
+                          selectedPlan === "subscribe-3" || selectedPlan === "subscribe-2" ? "text-emerald-600" : "text-stone-400"
+                        }`}>{selectedPlan === "subscribe-3" || selectedPlan === "subscribe-2" ? "ENTERED" : "LOCKED"}</span>
+                      </div>
+                      {(selectedPlan === "subscribe-3" || selectedPlan === "subscribe-2") && (
+                        <div className="absolute -top-1.5 -left-1.5">
+                          <div className="w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center">
+                            <Check size={10} strokeWidth={3} className="text-white" />
+                          </div>
+                        </div>
+                      )}
+                    </button>
+                  </div>
                 </div>
 
                 {/* One Time Purchase link */}
