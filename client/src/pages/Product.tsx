@@ -268,15 +268,58 @@ export default function Product() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-            {/* Left: Product Images — sticky on desktop */}
+            {/* Left: Product Images — sticky on desktop, swipeable on mobile */}
             <FadeUp delay={0.05} className="lg:sticky lg:top-24 lg:self-start">
-              <div className="relative rounded-2xl overflow-hidden aspect-square bg-stone-50">
-                <img
+              {/* Swipeable gallery on mobile */}
+              <div
+                className="relative rounded-2xl overflow-hidden aspect-square bg-stone-50 touch-pan-y"
+                onTouchStart={(e) => {
+                  const touch = e.touches[0];
+                  (e.currentTarget as any)._touchStartX = touch.clientX;
+                  (e.currentTarget as any)._touchStartY = touch.clientY;
+                }}
+                onTouchEnd={(e) => {
+                  const startX = (e.currentTarget as any)._touchStartX;
+                  const startY = (e.currentTarget as any)._touchStartY;
+                  if (startX == null || startY == null) return;
+                  const touch = e.changedTouches[0];
+                  const diffX = touch.clientX - startX;
+                  const diffY = touch.clientY - startY;
+                  // Only trigger if horizontal swipe is dominant and significant
+                  if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
+                    if (diffX < 0 && selectedImage < images.length - 1) {
+                      setSelectedImage(selectedImage + 1);
+                    } else if (diffX > 0 && selectedImage > 0) {
+                      setSelectedImage(selectedImage - 1);
+                    }
+                  }
+                }}
+              >
+                <motion.img
+                  key={selectedImage}
                   src={images[selectedImage]}
                   alt="BrewNectar product"
                   className="w-full h-full object-cover"
+                  initial={{ opacity: 0.6, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
                 />
+                {/* Dot indicators on mobile */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 lg:hidden">
+                  {images.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setSelectedImage(i)}
+                      className={`rounded-full transition-all ${
+                        selectedImage === i
+                          ? "w-5 h-2 bg-[#B45309]"
+                          : "w-2 h-2 bg-white/70 hover:bg-white"
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
+              {/* Thumbnail buttons — always available */}
               <div className="grid grid-cols-4 gap-2 mt-3">
                 {images.map((img, i) => (
                   <button
@@ -351,7 +394,7 @@ export default function Product() {
                         )}
 
                         {/* Main row: always visible */}
-                        <div className="flex items-center justify-between gap-3 p-4 md:p-5">
+                        <div className={`flex items-center justify-between gap-3 p-4 md:p-5 ${plan.badge ? "pt-7 md:pt-5" : ""}`}>
                           <div className="flex items-center gap-3">
                             {/* Radio circle */}
                             <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
