@@ -179,7 +179,7 @@ export default function Product() {
     { feature: "Daily Ritual Friendly", bn: true, rc: true, ss: false, cn: false },
   ];
 
-  const planOrder: PlanType[] = ["subscribe-3", "subscribe-2", "subscribe-1", "one-time"];
+  const planOrder: PlanType[] = ["subscribe-3", "subscribe-2", "subscribe-1"];
 
   return (
     <div className="min-h-screen bg-[#FDFBF7]">
@@ -311,11 +311,16 @@ export default function Product() {
                   Vanilla bean nootropic syrup with Lion's Mane, Cognizin, and L-Theanine. One tablespoon a day for calm focus, faster recall, and deep work.
                 </p>
 
-                {/* Plan options — collapsible perks */}
-                <div className="space-y-3 mb-6" id="offers">
+                {/* Subscribe & Save header */}
+                <div className="flex items-center gap-2 mb-4">
+                  <h3 className="font-display font-bold text-lg text-[#1C1917]">Subscribe & Save:</h3>
+                </div>
+
+                {/* Subscription plan options — collapsible perks */}
+                <div className="space-y-3 mb-4" id="offers">
                   {planOrder.map((planKey) => {
                     const plan = plans[planKey];
-                    const isSelected = selectedPlan === planKey;
+                    const isSelected = selectedPlan === planKey && selectedPlan !== "one-time";
                     return (
                       <button
                         key={planKey}
@@ -333,8 +338,15 @@ export default function Product() {
                           </span>
                         )}
 
+                        {/* Discount ribbon */}
+                        {plan.discount && (
+                          <div className="absolute top-0 left-0 px-3 py-1 bg-amber-50 border-b border-r border-amber-200 rounded-br-xl">
+                            <span className="text-[10px] font-bold text-[#B45309] uppercase tracking-wide">Save {plan.discount.replace(' OFF', '')} + Free Gifts</span>
+                          </div>
+                        )}
+
                         {/* Main row: always visible */}
-                        <div className="flex items-center justify-between gap-3 p-4 md:p-5">
+                        <div className={`flex items-center justify-between gap-3 p-4 md:p-5 ${plan.discount ? 'pt-8' : ''}`}>
                           <div className="flex items-center gap-3">
                             {/* Radio circle */}
                             <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
@@ -347,8 +359,8 @@ export default function Product() {
                               <div className="flex items-center gap-2 flex-wrap">
                                 <h3 className="font-display font-bold text-base text-[#1C1917]">{plan.label}</h3>
                                 {plan.discount && (
-                                  <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold">
-                                    {plan.discount}
+                                  <span className="text-sm font-semibold text-emerald-600">
+                                    (Save {plan.discount.replace(' OFF', '')})
                                   </span>
                                 )}
                               </div>
@@ -358,14 +370,11 @@ export default function Product() {
 
                           {/* Pricing */}
                           <div className="text-right flex-shrink-0">
-                            <div className="flex items-baseline gap-1.5 justify-end">
+                            <div className="flex items-baseline gap-1 justify-end">
                               <span className="font-display text-xl sm:text-2xl font-bold text-[#1C1917]">${plan.perMonth}</span>
                               <span className="text-sm text-[#57534E] font-medium">/mo</span>
-                              {plan.originalPrice > plan.price && (
-                                <span className="text-xs text-[#A8A29E] line-through">${plan.originalPrice}</span>
-                              )}
                             </div>
-                            <p className="text-[11px] font-semibold text-[#B45309]">${plan.perDay}/day</p>
+                            <p className="text-[11px] text-[#78716C]">${plan.perDay} USD / DAY</p>
                           </div>
                         </div>
 
@@ -403,12 +412,28 @@ export default function Product() {
                   })}
                 </div>
 
+                {/* One Time Purchase link */}
+                <div className="text-center mb-5">
+                  <button
+                    onClick={() => setSelectedPlan("one-time")}
+                    className={`text-sm font-medium transition-colors ${
+                      selectedPlan === "one-time"
+                        ? "text-[#B45309] underline decoration-2 underline-offset-4"
+                        : "text-[#78716C] underline decoration-dotted underline-offset-4 hover:text-[#B45309]"
+                    }`}
+                  >
+                    One Time Purchase ${plans["one-time"].price}
+                  </button>
+                </div>
+
                 {/* CTA */}
                 <button
                   onClick={handleAddToCart}
-                  className="w-full py-4 rounded-full bg-[#1C1917] font-display font-bold text-base text-white hover:bg-[#292524] hover:shadow-lg transition-all mb-3"
+                  className="w-full py-4 rounded-full bg-[#1C1917] font-display font-bold text-base text-white hover:bg-[#292524] hover:shadow-lg transition-all uppercase tracking-wide mb-3"
                 >
-                  {currentPlan.isSubscription ? `Start Subscription — $${currentPlan.perMonth}/mo` : `Buy Now — $${currentPlan.price}`}
+                  {selectedPlan === "one-time"
+                    ? `Buy Now — $${plans["one-time"].price}`
+                    : `Start My Subscription — $${currentPlan.perMonth}/mo`}
                 </button>
                 <div className="flex items-center justify-center gap-2 mb-4">
                   <Check size={14} className="text-emerald-600" />
@@ -721,14 +746,14 @@ export default function Product() {
               )}
             </div>
             <p className="text-[#78716C] text-xs truncate">
-              {currentPlan.isSubscription ? "Subscription" : "One-time"} · {currentPlan.label}
+              {selectedPlan === "one-time" ? "One-time purchase" : `Subscription · ${currentPlan.label}`}
             </p>
           </div>
           <button
             onClick={handleAddToCart}
             className="px-6 sm:px-8 py-3 rounded-full bg-[#1C1917] font-display font-bold text-sm text-white hover:bg-[#292524] hover:shadow-lg transition-all flex-shrink-0"
           >
-            {currentPlan.isSubscription ? "Subscribe Now" : "Buy Now"}
+            {selectedPlan === "one-time" ? "Buy Now" : "Subscribe Now"}
           </button>
         </div>
       </div>
