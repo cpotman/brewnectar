@@ -732,8 +732,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════════ ENERGY CLARITY SLIDER ═══════════ */}
-      <EnergyClaritySlider />
+      {/* ═══════════ ENERGY CLARITY SLIDER (hidden — uncomment to restore) ═══════════ */}
+      {/* <EnergyClaritySlider /> */}
 
       {/* ═══════════ BENEFIT BLOCK ═══════════ */}
       <section className="relative py-24 md:py-32 overflow-hidden">

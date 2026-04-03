@@ -88,12 +88,11 @@ export default function Product() {
       badge: "Best Value",
       badgeColor: "bg-emerald-600",
       perks: [
-        { text: "🎓 Exclusive Focus & Clarity Masterclass ($97 value)", positive: true },
+        { text: "🎓 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
         { text: "💰 Maximum savings — lowest price per serving", positive: true },
-        { text: "🛡️ 90-Day Money-Back Guarantee", positive: true },
-        { text: "🏆 La Marzocco Linea Micra Giveaway entries", positive: true },
+        { text: "🛡️ 30-Day Money-Back Guarantee", positive: true },
+        { text: "🏆 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
         { text: "👨‍👩‍👧 Share with family and friends", positive: true },
-        { text: "🎁 Free Mystery Gift", positive: true },
         { text: "🚚 Fast & FREE Shipping", positive: true },
         { text: "🔄 Cancel or pause anytime", positive: true },
         { text: "✨ Priority access to new flavors", positive: true },
@@ -111,10 +110,10 @@ export default function Product() {
       badge: "Most Popular",
       badgeColor: "bg-[#B45309]",
       perks: [
-        { text: "🎓 Exclusive Focus & Clarity Masterclass ($97 value)", positive: true },
+        { text: "🎓 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
         { text: "💰 Great value — $32/bottle, share with a partner", positive: true },
-        { text: "🛡️ 90-Day Money-Back Guarantee", positive: true },
-        { text: "🏆 La Marzocco Linea Micra Giveaway entries", positive: true },
+        { text: "🛡️ 30-Day Money-Back Guarantee", positive: true },
+        { text: "🏆 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
         { text: "🚚 Fast & FREE Shipping", positive: true },
         { text: "🔄 Cancel or pause anytime", positive: true },
       ],
@@ -135,7 +134,6 @@ export default function Product() {
         { text: "Cancel anytime", positive: true },
         { text: "Lock in subscriber pricing", positive: true },
         { text: "No giveaway entries", positive: false },
-        { text: "No mystery gift", positive: false },
       ],
       isSubscription: true,
     },
@@ -269,9 +267,9 @@ export default function Product() {
             </FadeUp>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-            {/* Left: Product Images */}
-            <FadeUp delay={0.05}>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+            {/* Left: Product Images — sticky on desktop */}
+            <FadeUp delay={0.05} className="lg:sticky lg:top-24 lg:self-start">
               <div className="relative rounded-2xl overflow-hidden aspect-square bg-stone-50">
                 <img
                   src={images[selectedImage]}
@@ -294,7 +292,7 @@ export default function Product() {
                   </button>
                 ))}
               </div>
-            </FadeUp>
+            </FadeUp>  
 
             {/* Right: Plan Selector (directly beside images) */}
             <FadeUp delay={0.1}>
@@ -449,7 +447,7 @@ export default function Product() {
                       </div>
                       <p className="text-xs font-bold text-[#1C1917] leading-tight">Focus & Clarity Masterclass</p>
                       <div className="flex items-center gap-1 mt-1">
-                        <span className="text-[10px] text-stone-400 line-through">$97</span>
+                        <span className="text-[10px] text-stone-400 line-through">$25</span>
                         <span className={`text-[10px] font-bold ${
                           selectedPlan !== "one-time" ? "text-emerald-600" : "text-stone-400"
                         }`}>FREE</span>
@@ -486,7 +484,7 @@ export default function Product() {
                       }`}>
                         <Trophy size={16} className={selectedPlan === "subscribe-3" || selectedPlan === "subscribe-2" ? "text-[#B45309]" : "text-stone-400"} />
                       </div>
-                      <p className="text-xs font-bold text-[#1C1917] leading-tight">La Marzocco Linea Micra Giveaway</p>
+                      <p className="text-xs font-bold text-[#1C1917] leading-tight">La Marzocco Espresso Machine ($4500) Giveaway</p>
                       <div className="flex items-center gap-1 mt-1">
                         <span className="text-[10px] text-stone-400">2+ bottles</span>
                         <span className={`text-[10px] font-bold ${
