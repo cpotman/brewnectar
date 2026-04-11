@@ -7,12 +7,13 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
-import { ChevronDown, ChevronLeft, ChevronRight, Play, Star, Check, X as XIcon, Zap, Brain, Coffee, Clock, Sparkles, ExternalLink, FlaskConical, BookOpen, Volume2, VolumeX, Pause } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight, Play, Star, Check, X as XIcon, Zap, Brain, Coffee, Clock, Sparkles, ExternalLink, FlaskConical, BookOpen, Volume2, VolumeX, Pause, Gift, Lock, GraduationCap, Trophy, ShieldCheck, Truck, RotateCcw } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import EnergyClaritySlider from "@/components/EnergyClaritySlider";
 import VideoCard from "@/components/VideoCard";
 import { AnimatePresence } from "framer-motion";
+import { toast } from "sonner";
 
 /* ─── Fade-up animation wrapper ─── */
 function FadeUp({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -473,8 +474,158 @@ const INGREDIENTS = [
   },
 ];
 
+/* ─── Plan types & data (mirrored from Product page) ─── */
+type PlanType = "subscribe-3" | "subscribe-2" | "subscribe-1" | "one-time";
+
+const PLANS: Record<PlanType, {
+  label: string;
+  subtitle: string;
+  price: number;
+  originalPrice: number;
+  perMonth: string;
+  perDay: string;
+  discount: string;
+  badge: string;
+  badgeColor: string;
+  perks: { text: string; positive: boolean }[];
+  isSubscription: boolean;
+}> = {
+  "subscribe-3": {
+    label: "3 Bottles",
+    subtitle: "Delivered every 12 weeks",
+    price: 81,
+    originalPrice: 147,
+    perMonth: "27",
+    perDay: "0.96",
+    discount: "45% OFF",
+    badge: "Best Value",
+    badgeColor: "bg-emerald-600",
+    perks: [
+      { text: "\ud83c\udf93 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
+      { text: "\ud83d\udcb0 Maximum savings \u2014 lowest price per serving", positive: true },
+      { text: "\ud83d\udee1\ufe0f 30-Day Money-Back Guarantee", positive: true },
+      { text: "\ud83c\udfc6 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
+      { text: "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67 Share with family and friends", positive: true },
+      { text: "\ud83d\ude9a Fast & FREE Shipping", positive: true },
+      { text: "\ud83d\udd04 Cancel or pause anytime", positive: true },
+      { text: "\u2728 Priority access to new flavors", positive: true },
+    ],
+    isSubscription: true,
+  },
+  "subscribe-2": {
+    label: "2 Bottles",
+    subtitle: "Delivered every 8 weeks",
+    price: 64,
+    originalPrice: 98,
+    perMonth: "32",
+    perDay: "1.14",
+    discount: "35% OFF",
+    badge: "Most Popular",
+    badgeColor: "bg-[#B45309]",
+    perks: [
+      { text: "\ud83c\udf93 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
+      { text: "\ud83d\udcb0 Great value \u2014 $32/bottle, share with a partner", positive: true },
+      { text: "\ud83d\udee1\ufe0f 30-Day Money-Back Guarantee", positive: true },
+      { text: "\ud83c\udfc6 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
+      { text: "\ud83d\ude9a Fast & FREE Shipping", positive: true },
+      { text: "\ud83d\udd04 Cancel or pause anytime", positive: true },
+    ],
+    isSubscription: true,
+  },
+  "subscribe-1": {
+    label: "1 Bottle",
+    subtitle: "Delivered every 4 weeks",
+    price: 36,
+    originalPrice: 49,
+    perMonth: "36",
+    perDay: "1.29",
+    discount: "27% OFF",
+    badge: "",
+    badgeColor: "",
+    perks: [
+      { text: "Free Shipping", positive: true },
+      { text: "Cancel anytime", positive: true },
+      { text: "Lock in subscriber pricing", positive: true },
+      { text: "No giveaway entries", positive: false },
+    ],
+    isSubscription: true,
+  },
+  "one-time": {
+    label: "1 Bottle",
+    subtitle: "One-time purchase",
+    price: 49,
+    originalPrice: 49,
+    perMonth: "49",
+    perDay: "1.75",
+    discount: "",
+    badge: "",
+    badgeColor: "",
+    perks: [
+      { text: "No free shipping ($5.99 flat rate)", positive: false },
+      { text: "No discount applied", positive: false },
+      { text: "2nd order at full price", positive: false },
+    ],
+    isSubscription: false,
+  },
+};
+
+const PLAN_ORDER: PlanType[] = ["subscribe-3", "subscribe-2", "subscribe-1"];
+
+/* ─── Extended text reviews ─── */
+const EXTENDED_REVIEWS = [
+  {
+    name: "Dr. Rachel W.",
+    title: "Neurologist",
+    rating: 5,
+    date: "March 2026",
+    heading: "Finally, a nootropic I can recommend to patients",
+    text: "As a neurologist, I\u2019m extremely cautious about supplements. Most nootropic products use proprietary blends with undisclosed dosages. BrewNectar is different \u2014 every ingredient is clinically dosed and transparently labeled. The Cognizin\u00AE (citicoline) at the dosage they use has solid evidence for memory and attention. I\u2019ve been using it myself for 3 months and recommending it to patients who want cognitive support alongside their existing coffee habit. The fact that it\u2019s a syrup rather than another pill makes compliance much easier.",
+  },
+  {
+    name: "James P.",
+    title: "Day Trader",
+    rating: 5,
+    date: "February 2026",
+    heading: "My edge in the markets",
+    text: "I trade futures from 6:30 AM to 4 PM. That\u2019s nearly 10 hours of intense decision-making where a single lapse in focus can cost thousands. I used to rely on 4-5 cups of coffee, but by noon I\u2019d be jittery and making impulsive trades. Switched to 2 cups of coffee with BrewNectar and the difference is night and day. My screen time analytics show I\u2019m making fewer but better trades. The L-Theanine keeps me calm during volatile moves. I\u2019m on the 3-bottle plan because running out is not an option.",
+  },
+  {
+    name: "Michelle K.",
+    title: "Working Mom of 3",
+    rating: 5,
+    date: "March 2026",
+    heading: "From zombie mom to present mom",
+    text: "I have a 2-year-old, a 5-year-old, and a 7-year-old. By 2 PM I used to be running on fumes \u2014 snapping at the kids, forgetting school pickups, staring at my laptop unable to form a sentence. My husband found BrewNectar and honestly I was skeptical. But after two weeks of adding it to my morning latte, the afternoon crash just... stopped. I\u2019m more patient, more present, and I\u2019m actually getting work done during nap time instead of doom-scrolling. This is the only \u2018supplement\u2019 that\u2019s ever actually worked for me.",
+  },
+  {
+    name: "David S.",
+    title: "PhD Candidate, Neuroscience",
+    rating: 5,
+    date: "January 2026",
+    heading: "The science checks out \u2014 and so does the experience",
+    text: "I study neuroplasticity for a living, so I know exactly what Lion\u2019s Mane and citicoline do at the cellular level. Most supplement companies underdose these ingredients or use inferior forms. BrewNectar uses Cognizin\u00AE (the patented citicoline) and specifies the beta-glucan content of their Lion\u2019s Mane \u2014 that\u2019s how you know it\u2019s the real deal. I\u2019ve been using it daily for 4 months while writing my dissertation. My writing sessions went from fragmented 30-minute bursts to solid 2-3 hour deep work blocks. My advisor noticed the difference before I told her what I was taking.",
+  },
+  {
+    name: "Tanya R.",
+    title: "Yoga Instructor & Wellness Coach",
+    rating: 5,
+    date: "February 2026",
+    heading: "Clean ingredients, real results",
+    text: "I\u2019m very particular about what goes into my body. No artificial sweeteners, no fillers, no proprietary blends. BrewNectar passed every check. Zero sugar, clean label, and I can actually pronounce every ingredient. I add it to my matcha on days I don\u2019t drink coffee and it works just as well. The vanilla flavor is subtle and natural \u2014 not that fake sweetness you get from most supplements. My clients have started asking what changed because my class cues are sharper and I\u2019m remembering everyone\u2019s modifications without checking my notes.",
+  },
+  {
+    name: "Robert M.",
+    title: "Retired Engineer, Age 68",
+    rating: 5,
+    date: "March 2026",
+    heading: "Keeping my mind sharp in retirement",
+    text: "At 68, I was starting to notice the little things \u2014 forgetting where I put my keys, losing my train of thought mid-sentence, struggling with crossword puzzles I used to breeze through. My daughter bought me BrewNectar for Christmas. I\u2019ve been adding it to my morning coffee for 3 months now. The crosswords are easier again. I\u2019m reading two books a week instead of one. And last week I beat my grandson at chess for the first time in a year. The Lion\u2019s Mane research on neurogenesis in older adults is what convinced me to stick with it.",
+  },
+];
+
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [selectedPlan, setSelectedPlan] = useState<PlanType>("subscribe-3");
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scrollTestimonials = (dir: "left" | "right") => {
@@ -1012,8 +1163,230 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ═══════════ SUBSCRIBE & SAVE — FULL OFFER ═══════════ */}
+      <section id="offers" className="py-20 md:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+            {/* Left: Product image */}
+            <FadeUp>
+              <div className="lg:sticky lg:top-28">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl -rotate-2 scale-105" />
+                  <img
+                    src={IMAGES.lifestylePour}
+                    alt="BrewNectar daily ritual"
+                    className="relative w-full rounded-3xl shadow-warm"
+                  />
+                </div>
+                {/* Trust badges below image */}
+                <div className="mt-6 flex items-center justify-center gap-6">
+                  {[
+                    { icon: ShieldCheck, label: "30-Day Guarantee" },
+                    { icon: Truck, label: "Free Shipping" },
+                    { icon: RotateCcw, label: "Cancel Anytime" },
+                  ].map((badge) => (
+                    <div key={badge.label} className="flex items-center gap-1.5 text-[#78716C]">
+                      <badge.icon size={14} />
+                      <span className="text-xs font-medium">{badge.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </FadeUp>
+
+            {/* Right: Full offer */}
+            <FadeUp delay={0.15}>
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3">Subscribe & Save</p>
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1C1917] mb-2">
+                  Keep Your Coffee. Upgrade Your Brain.
+                </h2>
+                <p className="text-[#78716C] text-lg leading-relaxed mb-8">
+                  Choose your plan and start your cognitive upgrade today. Ships directly to your door.
+                </p>
+
+                {/* Plan cards */}
+                <div className="space-y-3 mb-4">
+                  {PLAN_ORDER.map((planKey) => {
+                    const plan = PLANS[planKey];
+                    const isSelected = selectedPlan === planKey && selectedPlan !== "one-time";
+                    return (
+                      <button
+                        key={planKey}
+                        onClick={() => setSelectedPlan(planKey)}
+                        className={`w-full text-left rounded-2xl border-2 transition-all duration-200 relative overflow-hidden ${
+                          isSelected
+                            ? "border-[#B45309] bg-white shadow-warm"
+                            : "border-stone-200 bg-white hover:border-stone-300"
+                        }`}
+                      >
+                        {plan.badge && (
+                          <span className={`absolute -top-0 right-0 px-3 py-1 ${plan.badgeColor} text-white text-[10px] font-bold rounded-bl-xl uppercase tracking-wide`}>
+                            {plan.badge}
+                          </span>
+                        )}
+                        <div className={`flex items-center justify-between gap-3 p-4 md:p-5 ${plan.badge ? "pt-7 md:pt-5" : ""}`}>
+                          <div className="flex items-center gap-3">
+                            <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
+                              isSelected ? "border-[#B45309]" : "border-stone-300"
+                            }`}>
+                              {isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#B45309]" />}
+                            </div>
+                            <div>
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <h3 className="font-display font-bold text-base text-[#1C1917]">{plan.label}</h3>
+                                {plan.discount && (
+                                  <span className="text-sm font-semibold text-emerald-600">
+                                    (Save {plan.discount.replace(' OFF', '')})
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-xs text-[#78716C] mt-0.5">{plan.subtitle}</p>
+                            </div>
+                          </div>
+                          <div className="text-right flex-shrink-0">
+                            <div className="flex items-baseline gap-1 justify-end">
+                              <span className="font-display text-xl sm:text-2xl font-bold text-[#1C1917]">${plan.perMonth}</span>
+                              <span className="text-sm text-[#57534E] font-medium">/mo</span>
+                            </div>
+                            <p className="text-[11px] text-[#78716C]">${plan.perDay} USD / DAY</p>
+                          </div>
+                        </div>
+                        <AnimatePresence initial={false}>
+                          {isSelected && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                              className="overflow-hidden"
+                            >
+                              <div className="px-4 md:px-5 pb-4 md:pb-5 pt-0 border-t border-stone-100 mt-0">
+                                <div className="pt-3 space-y-1.5">
+                                  {plan.perks.map((perk) => (
+                                    <div key={perk.text} className="flex items-center gap-2">
+                                      {perk.positive ? (
+                                        <Check size={16} strokeWidth={3} className="text-emerald-600 flex-shrink-0" />
+                                      ) : (
+                                        <XIcon size={16} strokeWidth={3} className="text-red-500 flex-shrink-0" />
+                                      )}
+                                      <span className={`text-sm ${perk.positive ? "text-[#44403C]" : "text-red-500 font-semibold"}`}>
+                                        {perk.text}
+                                      </span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Free Gifts */}
+                <div className="mb-5">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Gift size={16} className="text-[#B45309]" />
+                    <span className="text-sm font-bold text-[#1C1917]">Free gifts with your order</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <button
+                      onClick={() => { if (selectedPlan === "one-time") setSelectedPlan("subscribe-1"); }}
+                      className={`flex-1 relative rounded-xl border-2 p-3 transition-all duration-200 text-left ${
+                        selectedPlan !== "one-time"
+                          ? "border-[#B45309]/30 bg-amber-50/60"
+                          : "border-stone-200 bg-stone-50 opacity-60 cursor-pointer hover:border-stone-300"
+                      }`}
+                    >
+                      {selectedPlan === "one-time" && <div className="absolute top-2 right-2"><Lock size={12} className="text-stone-400" /></div>}
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 ${selectedPlan !== "one-time" ? "bg-[#B45309]/10" : "bg-stone-200"}`}>
+                        <GraduationCap size={16} className={selectedPlan !== "one-time" ? "text-[#B45309]" : "text-stone-400"} />
+                      </div>
+                      <p className="text-xs font-bold text-[#1C1917] leading-tight">Focus & Clarity Masterclass</p>
+                      <div className="flex items-center gap-1 mt-1">
+                        <span className="text-[10px] text-stone-400 line-through">$25</span>
+                        <span className={`text-[10px] font-bold ${selectedPlan !== "one-time" ? "text-emerald-600" : "text-stone-400"}`}>FREE</span>
+                      </div>
+                      {selectedPlan !== "one-time" && (
+                        <div className="absolute -top-1.5 -left-1.5"><div className="w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center"><Check size={10} strokeWidth={3} className="text-white" /></div></div>
+                      )}
+                    </button>
+                    <button
+                      onClick={() => { if (selectedPlan !== "subscribe-3" && selectedPlan !== "subscribe-2") setSelectedPlan("subscribe-2"); }}
+                      className={`flex-1 relative rounded-xl border-2 p-3 transition-all duration-200 text-left ${
+                        selectedPlan === "subscribe-3" || selectedPlan === "subscribe-2"
+                          ? "border-[#B45309]/30 bg-amber-50/60"
+                          : "border-stone-200 bg-stone-50 opacity-60 cursor-pointer hover:border-stone-300"
+                      }`}
+                    >
+                      {selectedPlan !== "subscribe-3" && selectedPlan !== "subscribe-2" && <div className="absolute top-2 right-2"><Lock size={12} className="text-stone-400" /></div>}
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 ${selectedPlan === "subscribe-3" || selectedPlan === "subscribe-2" ? "bg-[#B45309]/10" : "bg-stone-200"}`}>
+                        <Trophy size={16} className={selectedPlan === "subscribe-3" || selectedPlan === "subscribe-2" ? "text-[#B45309]" : "text-stone-400"} />
+                      </div>
+                      <p className="text-xs font-bold text-[#1C1917] leading-tight">La Marzocco Espresso Machine ($4500) Giveaway</p>
+                      <div className="flex items-center gap-1 mt-1">
+                        <span className="text-[10px] text-stone-400">2+ bottles</span>
+                        <span className={`text-[10px] font-bold ${selectedPlan === "subscribe-3" || selectedPlan === "subscribe-2" ? "text-emerald-600" : "text-stone-400"}`}>
+                          {selectedPlan === "subscribe-3" || selectedPlan === "subscribe-2" ? "ENTERED" : "LOCKED"}
+                        </span>
+                      </div>
+                      {(selectedPlan === "subscribe-3" || selectedPlan === "subscribe-2") && (
+                        <div className="absolute -top-1.5 -left-1.5"><div className="w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center"><Check size={10} strokeWidth={3} className="text-white" /></div></div>
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                {/* One Time Purchase link */}
+                <div className="text-center mb-5">
+                  <button
+                    onClick={() => setSelectedPlan("one-time")}
+                    className={`text-sm font-medium transition-colors ${
+                      selectedPlan === "one-time"
+                        ? "text-[#B45309] underline decoration-2 underline-offset-4"
+                        : "text-[#78716C] underline decoration-dotted underline-offset-4 hover:text-[#B45309]"
+                    }`}
+                  >
+                    One Time Purchase ${PLANS["one-time"].price}
+                  </button>
+                </div>
+
+                {/* CTA Button */}
+                <button
+                  onClick={() => {
+                    const plan = PLANS[selectedPlan];
+                    toast.success("Added to cart!", {
+                      description: `${plan.label} (${plan.isSubscription ? "Subscription" : "One-time"}) — $${plan.isSubscription ? plan.perMonth + "/mo" : plan.price}`,
+                    });
+                  }}
+                  className="w-full py-4 rounded-full text-base font-bold text-white bg-[#1C1917] hover:bg-[#292524] transition-all hover:shadow-lg"
+                >
+                  {selectedPlan === "one-time"
+                    ? `BUY NOW — $${PLANS["one-time"].price}`
+                    : `START MY ${PLANS[selectedPlan].label.toUpperCase()} PLAN — $${PLANS[selectedPlan].perMonth}/MO`}
+                </button>
+
+                {/* Shipping notice */}
+                <div className="mt-4 flex flex-col items-center gap-2">
+                  <div className="flex items-center gap-2 text-sm text-[#57534E]">
+                    <Truck size={14} className="text-[#78716C]" />
+                    <span>Ships to United States in 4–5 days</span>
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/60 text-xs font-semibold text-[#92400E]">
+                    <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" /></span>
+                    Faster Shipping due to high demand
+                  </span>
+                </div>
+              </div>
+            </FadeUp>
+          </div>
+        </div>
+      </section>
+
       {/* ═══════════ SOCIAL PROOF — VIDEO TESTIMONIALS ═══════════ */}
-      <section id="social-proof" className="py-20 md:py-28 bg-white">
+      <section id="social-proof" className="py-20 md:py-28 bg-[#FDFBF7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 md:mb-12">
@@ -1112,68 +1485,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════════ SUBSCRIPTION PUSH ═══════════ */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <FadeUp>
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl -rotate-2 scale-105" />
-                <img
-                  src={IMAGES.lifestylePour}
-                  alt="BrewNectar daily ritual"
-                  className="relative w-full rounded-3xl shadow-warm"
-                />
-              </div>
-            </FadeUp>
-
-            <FadeUp delay={0.15}>
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3">Subscribe & Save</p>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1C1917] mb-4">
-                  Keep Your Coffee. Upgrade Your Brain.
-                </h2>
-                <p className="text-[#78716C] text-lg leading-relaxed mb-8">
-                  Unlike nootropic coffees that make you switch, BrewNectar works with whatever you already drink. Subscribe and never run out of your edge.
-                </p>
-
-                {/* Price */}
-                <div className="flex items-baseline gap-3 mb-6">
-                  <span className="font-display text-3xl md:text-4xl font-bold text-[#1C1917]">$27</span>
-<span className="text-xl text-[#A8A29E] line-through">$49</span>
-                   <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-sm font-semibold">Save up to 45%</span>
-                </div>
-                <p className="text-sm text-[#78716C] mb-6">per bottle / delivered monthly</p>
-
-                {/* Benefits */}
-                <div className="space-y-3 mb-8">
-                  {[
-                    "Free shipping on every order",
-                    "Cancel anytime — no commitments",
-                    "30-day money-back guarantee",
-                  ].map((b) => (
-                    <div key={b} className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-emerald-50 flex items-center justify-center flex-shrink-0">
-                        <Check size={12} className="text-emerald-600" />
-                      </div>
-                      <span className="text-sm text-[#44403C]">{b}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <Link
-                  href="/product"
-                  className="inline-flex items-center px-8 py-4 text-base font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg"
-                >
-                  Start My Subscription
-                </Link>
-                <p className="text-xs text-[#A8A29E] mt-3">Zero sugar. 30 servings. Ships in 24 hours.</p>
-              </div>
-            </FadeUp>
-          </div>
-        </div>
-      </section>
-
       {/* ═══════════ FAQ ═══════════ */}
       <section id="faq" className="py-20 md:py-28 bg-[#FDFBF7]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1215,6 +1526,76 @@ export default function Home() {
               </FadeUp>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════ EXTENDED TEXT REVIEWS ═══════════ */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeUp>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">In Their Words</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">
+              Real Stories From Real Customers
+            </h2>
+            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">
+              Don't just take our word for it. Here's what people are saying after making BrewNectar part of their daily ritual.
+            </p>
+          </FadeUp>
+
+          <div className="space-y-6">
+            {EXTENDED_REVIEWS.map((review, i) => (
+              <FadeUp key={review.name} delay={i * 0.08}>
+                <div className="bg-[#FDFBF7] border border-stone-100 rounded-2xl p-6 md:p-8 hover:shadow-warm hover:border-amber-100 transition-all duration-300">
+                  {/* Header */}
+                  <div className="flex items-start justify-between gap-4 mb-4">
+                    <div>
+                      <div className="flex gap-0.5 mb-2">
+                        {[...Array(review.rating)].map((_, j) => (
+                          <Star key={j} size={14} className="fill-[#D97706] text-[#D97706]" />
+                        ))}
+                      </div>
+                      <h3 className="font-display font-bold text-lg text-[#1C1917]">{review.heading}</h3>
+                    </div>
+                    <span className="text-xs text-[#A8A29E] whitespace-nowrap mt-1">{review.date}</span>
+                  </div>
+
+                  {/* Body */}
+                  <p className="text-[#57534E] leading-relaxed mb-4 text-sm md:text-base">
+                    "{review.text}"
+                  </p>
+
+                  {/* Author */}
+                  <div className="flex items-center gap-3 pt-4 border-t border-stone-100">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center">
+                      <span className="font-display font-bold text-sm text-[#B45309]">{review.name.charAt(0)}</span>
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-[#1C1917]">{review.name}</p>
+                      <p className="text-xs text-[#A8A29E]">{review.title} · Verified Buyer</p>
+                    </div>
+                    <div className="ml-auto">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-[10px] font-semibold text-emerald-700">
+                        <Check size={10} /> Verified
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+
+          {/* Bottom CTA */}
+          <FadeUp delay={0.3}>
+            <div className="text-center mt-12">
+              <Link
+                href="/product"
+                className="inline-flex items-center px-8 py-4 text-base font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg"
+              >
+                Join 12,000+ High Performers
+              </Link>
+              <p className="text-xs text-[#A8A29E] mt-3">30-day money-back guarantee · Free shipping on subscriptions</p>
+            </div>
+          </FadeUp>
         </div>
       </section>
 
