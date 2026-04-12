@@ -626,7 +626,15 @@ const EXTENDED_REVIEWS = [
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [selectedPlan, setSelectedPlan] = useState<PlanType>("subscribe-3");
+  const [selectedImage, setSelectedImage] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  const pdpImages = [
+    "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/product-hero-clean-2JryfYKGcicCXzETS5MKKr.webp",
+    IMAGES.hero,
+    IMAGES.lifestylePour,
+    IMAGES.howStir,
+  ];
 
   const scrollTestimonials = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
@@ -1167,30 +1175,83 @@ export default function Home() {
       <section id="offers" className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-            {/* Left: Product image */}
-            <FadeUp>
-              <div className="lg:sticky lg:top-28">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl -rotate-2 scale-105" />
-                  <img
-                    src={IMAGES.lifestylePour}
-                    alt="BrewNectar daily ritual"
-                    className="relative w-full rounded-3xl shadow-warm"
+            {/* Left: PDP Images — sticky on desktop, swipeable on mobile */}
+            <FadeUp delay={0.05} className="lg:sticky lg:top-24 lg:self-start">
+              {/* Swipeable gallery on mobile */}
+              <div
+                className="relative rounded-2xl overflow-hidden aspect-square bg-stone-50 touch-pan-y"
+                onTouchStart={(e) => {
+                  const touch = e.touches[0];
+                  (e.currentTarget as any)._touchStartX = touch.clientX;
+                  (e.currentTarget as any)._touchStartY = touch.clientY;
+                }}
+                onTouchEnd={(e) => {
+                  const startX = (e.currentTarget as any)._touchStartX;
+                  const startY = (e.currentTarget as any)._touchStartY;
+                  if (startX == null || startY == null) return;
+                  const endX = e.changedTouches[0].clientX;
+                  const endY = e.changedTouches[0].clientY;
+                  const diffX = startX - endX;
+                  const diffY = Math.abs(startY - endY);
+                  if (Math.abs(diffX) > 40 && diffY < 80) {
+                    if (diffX > 0 && selectedImage < pdpImages.length - 1) setSelectedImage(selectedImage + 1);
+                    if (diffX < 0 && selectedImage > 0) setSelectedImage(selectedImage - 1);
+                  }
+                }}
+              >
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={selectedImage}
+                    src={pdpImages[selectedImage]}
+                    alt={`BrewNectar product ${selectedImage + 1}`}
+                    className="w-full h-full object-cover"
+                    draggable={false}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
                   />
-                </div>
-                {/* Trust badges below image */}
-                <div className="mt-6 flex items-center justify-center gap-6">
-                  {[
-                    { icon: ShieldCheck, label: "30-Day Guarantee" },
-                    { icon: Truck, label: "Free Shipping" },
-                    { icon: RotateCcw, label: "Cancel Anytime" },
-                  ].map((badge) => (
-                    <div key={badge.label} className="flex items-center gap-1.5 text-[#78716C]">
-                      <badge.icon size={14} />
-                      <span className="text-xs font-medium">{badge.label}</span>
-                    </div>
+                </AnimatePresence>
+                {/* Dot indicators */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                  {pdpImages.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setSelectedImage(i)}
+                      className={`w-2 h-2 rounded-full transition-all ${selectedImage === i ? "bg-[#B45309] w-5" : "bg-white/70"}`}
+                    />
                   ))}
                 </div>
+              </div>
+              {/* Thumbnail strip */}
+              <div className="hidden sm:flex gap-2 mt-3">
+                {pdpImages.map((img, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setSelectedImage(i)}
+                    className={`rounded-xl overflow-hidden aspect-square border-2 transition-all ${
+                      selectedImage === i
+                        ? "border-[#B45309] ring-2 ring-amber-200"
+                        : "border-stone-200 hover:border-stone-300"
+                    }`}
+                    style={{ width: "calc(25% - 6px)" }}
+                  >
+                    <img src={img} alt={`Thumbnail ${i + 1}`} className="w-full h-full object-cover" />
+                  </button>
+                ))}
+              </div>
+              {/* Trust badges below images */}
+              <div className="mt-4 flex items-center justify-center gap-6">
+                {[
+                  { icon: ShieldCheck, label: "30-Day Guarantee" },
+                  { icon: Truck, label: "Free Shipping" },
+                  { icon: RotateCcw, label: "Cancel Anytime" },
+                ].map((badge) => (
+                  <div key={badge.label} className="flex items-center gap-1.5 text-[#78716C]">
+                    <badge.icon size={14} />
+                    <span className="text-xs font-medium">{badge.label}</span>
+                  </div>
+                ))}
               </div>
             </FadeUp>
 

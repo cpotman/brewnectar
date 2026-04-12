@@ -233,7 +233,7 @@ export default function Product() {
       </section>
 
       {/* ═══════════ HERO: PRODUCT IMAGES + PLAN SELECTOR ═══════════ */}
-      <section className="pt-10 md:pt-14 pb-10 md:pb-14 relative overflow-hidden">
+      <section className="pt-10 md:pt-14 pb-10 md:pb-14 relative">
         <div className="absolute inset-0" style={{
           background: "radial-gradient(ellipse 120% 80% at 60% 30%, rgba(251,191,114,0.15) 0%, rgba(245,158,66,0.08) 30%, rgba(253,251,247,0.6) 70%, #FDFBF7 100%), #FDFBF7"
         }} />
