@@ -79,7 +79,7 @@ export default function Product() {
   }> = {
     "subscribe-3": {
       label: "3 Bottles",
-      subtitle: "Delivered every 12 weeks",
+      subtitle: "Billed $81 every 12 weeks",
       price: 81,
       originalPrice: 147,
       perMonth: "27",
@@ -90,7 +90,7 @@ export default function Product() {
       perks: [
         { text: "🎓 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
         { text: "💰 Maximum savings — lowest price per serving", positive: true },
-        { text: "🛡️ 30-Day Money-Back Guarantee", positive: true },
+        { text: "🛡️ Try it 30 days — if you don't feel sharper, keep the bottle. We'll refund every penny.", positive: true },
         { text: "🏆 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
         { text: "👨‍👩‍👧 Share with family and friends", positive: true },
         { text: "🚚 Fast & FREE Shipping", positive: true },
@@ -101,7 +101,7 @@ export default function Product() {
     },
     "subscribe-2": {
       label: "2 Bottles",
-      subtitle: "Delivered every 8 weeks",
+      subtitle: "Billed $64 every 8 weeks",
       price: 64,
       originalPrice: 98,
       perMonth: "32",
@@ -112,7 +112,7 @@ export default function Product() {
       perks: [
         { text: "🎓 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
         { text: "💰 Great value — $32/bottle, share with a partner", positive: true },
-        { text: "🛡️ 30-Day Money-Back Guarantee", positive: true },
+        { text: "🛡️ Try it 30 days — keep the bottle if you're not sharper. Full refund.", positive: true },
         { text: "🏆 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
         { text: "🚚 Fast & FREE Shipping", positive: true },
         { text: "🔄 Cancel or pause anytime", positive: true },
@@ -121,7 +121,7 @@ export default function Product() {
     },
     "subscribe-1": {
       label: "1 Bottle",
-      subtitle: "Delivered every 4 weeks",
+      subtitle: "Billed $36 every 4 weeks",
       price: 36,
       originalPrice: 49,
       perMonth: "36",
@@ -576,7 +576,7 @@ export default function Product() {
                 {/* Trust badges */}
                 <div className="grid grid-cols-3 gap-3">
                   {[
-                    { icon: <ShieldCheck size={18} />, label: "30-Day Guarantee" },
+                    { icon: <ShieldCheck size={18} />, label: "30-Day Keep-the-Bottle Guarantee" },
                     { icon: <Truck size={18} />, label: "Free Shipping" },
                     { icon: <RotateCcw size={18} />, label: "Cancel Anytime" },
                   ].map((badge) => (
@@ -844,7 +844,7 @@ export default function Product() {
               Ready to Upgrade Your Coffee?
             </h2>
             <p className="text-[#78716C] text-lg mb-8 max-w-lg mx-auto">
-              Join 12,000+ high performers. Risk-free with our 30-day money-back guarantee.
+              Join 12,000+ high performers. Try it for 30 days — if you don't feel sharper, keep the bottle and we'll refund every penny.
             </p>
             <a
               href="#offers"

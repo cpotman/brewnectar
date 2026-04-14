@@ -349,7 +349,7 @@ function ClinicalStudies() {
 /* ─── Ticker messages ─── */
 const TICKER_MESSAGES = [
   "Free shipping on orders over $50",
-  "30-day money-back guarantee",
+  "30-day keep-the-bottle guarantee",
   "Zero sugar \u00B7 30 servings per bottle",
   "Trusted by 12,000+ high performers",
   "Third-party tested for purity",
@@ -442,6 +442,7 @@ const FAQ_DATA = [
 const INGREDIENTS = [
   {
     name: "Lion's Mane",
+    dosage: "1.2g per serving",
     tag: "Supports Neurogenesis",
     science: "Clinically studied to promote nerve growth factor (NGF) production.",
     emotion: "Build new neural pathways. Literally grow a sharper brain.",
@@ -450,6 +451,7 @@ const INGREDIENTS = [
   },
   {
     name: "Cognizin\u00AE (Citicoline)",
+    dosage: "250mg per serving",
     tag: "Faster Recall & Mental Clarity",
     science: "Patented form of citicoline shown to enhance focus and attention in clinical trials.",
     emotion: "Access thoughts faster. Retrieve information on demand.",
@@ -458,6 +460,7 @@ const INGREDIENTS = [
   },
   {
     name: "L-Theanine",
+    dosage: "75mg per serving",
     tag: "Calm, Jitter-Free Focus",
     science: "Amino acid found in green tea that promotes alpha brain wave activity.",
     emotion: "All the focus. None of the anxiety. Smooth and locked in.",
@@ -465,7 +468,8 @@ const INGREDIENTS = [
     color: "bg-sky-50 text-sky-700",
   },
   {
-    name: "B Vitamins",
+    name: "B Vitamins (B6 + B12)",
+    dosage: "250% DV each",
     tag: "Clean Mental Energy",
     science: "Essential cofactors in neurotransmitter synthesis and cellular energy production.",
     emotion: "Sustained energy that doesn't spike or crash. Just steady output.",
@@ -492,7 +496,7 @@ const PLANS: Record<PlanType, {
 }> = {
   "subscribe-3": {
     label: "3 Bottles",
-    subtitle: "Delivered every 12 weeks",
+    subtitle: "Billed $81 every 12 weeks",
     price: 81,
     originalPrice: 147,
     perMonth: "27",
@@ -503,8 +507,8 @@ const PLANS: Record<PlanType, {
     perks: [
       { text: "\ud83c\udf93 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
       { text: "\ud83d\udcb0 Maximum savings \u2014 lowest price per serving", positive: true },
-      { text: "\ud83d\udee1\ufe0f 30-Day Money-Back Guarantee", positive: true },
-      { text: "\ud83c\udfc6 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
+      { text: "🛡️ Try it 30 days — if you don't feel sharper, keep the bottle. We'll refund every penny.", positive: true },
+      { text: "🏆 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
       { text: "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67 Share with family and friends", positive: true },
       { text: "\ud83d\ude9a Fast & FREE Shipping", positive: true },
       { text: "\ud83d\udd04 Cancel or pause anytime", positive: true },
@@ -514,7 +518,7 @@ const PLANS: Record<PlanType, {
   },
   "subscribe-2": {
     label: "2 Bottles",
-    subtitle: "Delivered every 8 weeks",
+    subtitle: "Billed $64 every 8 weeks",
     price: 64,
     originalPrice: 98,
     perMonth: "32",
@@ -525,7 +529,7 @@ const PLANS: Record<PlanType, {
     perks: [
       { text: "\ud83c\udf93 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
       { text: "\ud83d\udcb0 Great value \u2014 $32/bottle, share with a partner", positive: true },
-      { text: "\ud83d\udee1\ufe0f 30-Day Money-Back Guarantee", positive: true },
+      { text: "\ud83d\udee1\ufe0f Try it 30 days \u2014 keep the bottle if you're not sharper. Full refund.", positive: true },
       { text: "\ud83c\udfc6 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
       { text: "\ud83d\ude9a Fast & FREE Shipping", positive: true },
       { text: "\ud83d\udd04 Cancel or pause anytime", positive: true },
@@ -534,7 +538,7 @@ const PLANS: Record<PlanType, {
   },
   "subscribe-1": {
     label: "1 Bottle",
-    subtitle: "Delivered every 4 weeks",
+    subtitle: "Billed $36 every 4 weeks",
     price: 36,
     originalPrice: 49,
     perMonth: "36",
@@ -627,7 +631,16 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [selectedPlan, setSelectedPlan] = useState<PlanType>("subscribe-3");
   const [selectedImage, setSelectedImage] = useState(0);
+  const [showMobileCta, setShowMobileCta] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowMobileCta(window.scrollY > 600);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const pdpImages = [
     "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/product-hero-clean-2JryfYKGcicCXzETS5MKKr.webp",
@@ -742,6 +755,21 @@ export default function Home() {
                   ))}
                 </div>
               </FadeUp>
+
+              {/* Mini social proof strip */}
+              <FadeUp delay={0.5}>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2">
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-4 h-4 fill-[#D97706] text-[#D97706]" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    ))}
+                    <span className="text-sm font-bold text-[#1C1917] ml-1">4.9/5</span>
+                    <span className="text-sm text-[#78716C]">from 2,400+ reviews</span>
+                  </div>
+                  <span className="hidden sm:inline text-stone-300">·</span>
+                  <p className="text-sm text-[#57534E] italic">"Replaced my afternoon coffee crash" — Sarah M.</p>
+                </div>
+              </FadeUp>
             </div>
 
             {/* Right: Hero image */}
@@ -822,9 +850,16 @@ export default function Home() {
                     </div>
                     <div className="flex-1">
                       <h3 className="font-display font-bold text-lg text-[#1C1917] mb-1">{ing.name}</h3>
-                      <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#D97706] bg-amber-50 px-2.5 py-1 rounded-full mb-3">
-                        {ing.tag}
-                      </span>
+                      <div className="flex flex-wrap items-center gap-2 mb-3">
+                        <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#D97706] bg-amber-50 px-2.5 py-1 rounded-full">
+                          {ing.tag}
+                        </span>
+                        {(ing as any).dosage && (
+                          <span className="inline-block text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-100">
+                            {(ing as any).dosage}
+                          </span>
+                        )}
+                      </div>
                       <p className="text-sm text-[#78716C] leading-relaxed mb-2">{ing.science}</p>
                       <p className="text-sm font-medium text-[#44403C] italic">{ing.emotion}</p>
                     </div>
@@ -1492,35 +1527,28 @@ export default function Home() {
                     rating={t.rating}
                   />
                 ) : (
-                  <div className="bg-stone-50 border border-stone-100 rounded-2xl overflow-hidden hover:shadow-warm hover:border-amber-100 transition-all duration-300">
-                    <div className="relative aspect-[9/12] overflow-hidden group cursor-pointer">
-                      <img
-                        src={t.thumbnail}
-                        alt={t.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                        <div className="w-14 h-14 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                          <Play size={22} className="text-[#1C1917] ml-1" fill="#1C1917" />
-                        </div>
+                  <div className="bg-white border border-stone-100 rounded-2xl overflow-hidden hover:shadow-warm hover:border-amber-100 transition-all duration-300 h-full flex flex-col">
+                    <div className="p-5 pb-0 flex items-center gap-3">
+                      <div className={`w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold text-sm ${
+                        ["bg-amber-600", "bg-emerald-600", "bg-sky-600", "bg-violet-600", "bg-rose-600"][i % 5]
+                      }`}>
+                        {t.name.split(" ").map(n => n[0]).join("")}
                       </div>
-                      <div className="absolute bottom-3 left-3 right-3">
-                        <div className="bg-black/40 backdrop-blur-sm rounded-lg px-3 py-2">
-                          <p className="text-white text-xs font-semibold">@{t.name.toLowerCase().replace(/\s/g, "")}</p>
-                        </div>
+                      <div>
+                        <p className="text-sm font-semibold text-[#1C1917]">{t.name}</p>
+                        <p className="text-xs text-[#A8A29E]">{t.title}</p>
                       </div>
+                      <span className="ml-auto inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-[10px] font-semibold text-emerald-700">
+                        <Check size={10} /> Verified
+                      </span>
                     </div>
-                    <div className="p-5">
+                    <div className="p-5 flex-1 flex flex-col">
                       <div className="flex gap-0.5 mb-2">
                         {[...Array(t.rating)].map((_, j) => (
                           <Star key={j} size={14} className="fill-[#D97706] text-[#D97706]" />
                         ))}
                       </div>
-                      <p className="text-sm text-[#44403C] leading-relaxed mb-3 line-clamp-3">"{t.quote}"</p>
-                      <div>
-                        <p className="text-sm font-semibold text-[#1C1917]">{t.name}</p>
-                        <p className="text-xs text-[#A8A29E]">{t.title}</p>
-                      </div>
+                      <p className="text-sm text-[#44403C] leading-relaxed line-clamp-4 flex-1">"{t.quote}"</p>
                     </div>
                   </div>
                 )}
@@ -1654,13 +1682,39 @@ export default function Home() {
               >
                 Join 12,000+ High Performers
               </Link>
-              <p className="text-xs text-[#A8A29E] mt-3">30-day money-back guarantee · Free shipping on subscriptions</p>
+              <p className="text-xs text-[#A8A29E] mt-3">30-day keep-the-bottle guarantee · Free shipping on subscriptions</p>
             </div>
           </FadeUp>
         </div>
       </section>
 
       <Footer />
+
+      {/* ═══════════ STICKY MOBILE CTA BAR ═══════════ */}
+      <AnimatePresence>
+        {showMobileCta && (
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white/95 backdrop-blur-md border-t border-stone-200 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-4 py-3"
+          >
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-bold text-[#1C1917] truncate">Get BrewNectar</p>
+                <p className="text-xs text-[#78716C]">From $27/mo · Free Shipping</p>
+              </div>
+              <a
+                href="#offers"
+                className="flex-shrink-0 px-5 py-2.5 text-sm font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all"
+              >
+                Shop Now
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
