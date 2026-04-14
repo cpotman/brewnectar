@@ -1299,7 +1299,7 @@ export default function Home() {
 
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
             {/* Left: PDP Images — sticky on desktop, swipeable on mobile */}
-            <FadeUp delay={0.05} className="lg:sticky lg:top-24 lg:self-start">
+            <FadeUp delay={0.05} className="lg:sticky lg:top-36 lg:self-start">
               {/* Swipeable gallery on mobile */}
               <div
                 className="relative rounded-2xl overflow-hidden aspect-square bg-stone-50 touch-pan-y"
