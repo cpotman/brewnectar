@@ -13,6 +13,7 @@ import Footer from "@/components/Footer";
 import EnergyClaritySlider from "@/components/EnergyClaritySlider";
 import VideoCard from "@/components/VideoCard";
 import { AnimatePresence } from "framer-motion";
+import { useVisualViewport } from "@/hooks/useVisualViewport";
 import { toast } from "sonner";
 import { useUserState } from "@/hooks/useUserState";
 
@@ -641,6 +642,7 @@ export default function Home() {
   const [showMobileCta, setShowMobileCta] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const userRegion = useUserState();
+  const stickyBottomOffset = useVisualViewport();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -1282,7 +1284,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════ SUBSCRIBE & SAVE — FULL OFFER ═══════════ */}
-      <section id="offers" className="py-20 md:py-28 bg-white scroll-mt-32">
+      <section id="offers" className="pt-6 pb-20 md:pt-8 md:pb-28 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Heading above the two-column layout */}
           <FadeUp>
@@ -1291,7 +1293,7 @@ export default function Home() {
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#1C1917] mb-4">
                 Keep Your Coffee. Upgrade Your Brain.
               </h2>
-              <p className="text-[#78716C] text-lg leading-relaxed max-w-3xl mx-auto">
+              <p className="text-[#78716C] text-sm md:text-lg leading-relaxed max-w-3xl mx-auto">
                 Formulated with clinical-dose <span className="font-bold text-gradient-warm">Lion's Mane</span>, patented <span className="font-bold text-gradient-warm">Cognizin®</span>, and <span className="font-bold text-gradient-warm">L-Theanine</span>, one pump transforms any coffee into a precision nootropic stack—delivering calm focus, faster recall, and sustained mental energy without the jitters, crash, or need to change your coffee.
               </p>
             </div>
@@ -1848,6 +1850,7 @@ export default function Home() {
             exit={{ y: 100, opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="sticky-bottom-bar z-50 md:hidden bg-white/95 backdrop-blur-md border-t border-stone-200 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-4 pt-3"
+            style={{ bottom: stickyBottomOffset > 0 ? `${stickyBottomOffset}px` : undefined }}
           >
             <div className="flex items-center justify-between gap-3">
               <div className="flex-1 min-w-0">

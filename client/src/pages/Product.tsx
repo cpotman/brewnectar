@@ -35,6 +35,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { useUserState } from "@/hooks/useUserState";
+import { useVisualViewport } from "@/hooks/useVisualViewport";
 
 /* ─── Fade-up wrapper ─── */
 function FadeUp({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -106,6 +107,7 @@ export default function Product() {
   const [showSticky, setShowSticky] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const userRegion = useUserState();
+  const stickyBottomOffset = useVisualViewport();
 
   const images = [IMAGES.productClean, IMAGES.hero, IMAGES.pour, IMAGES.stir];
 
@@ -381,12 +383,8 @@ export default function Product() {
                   Formulated with clinical-dose <span className="font-bold text-gradient-warm">Lion's Mane</span>, patented <span className="font-bold text-gradient-warm">Cognizin®</span>, and <span className="font-bold text-gradient-warm">L-Theanine</span>. One tablespoon transforms any coffee into a precision nootropic stack.
                 </p>
 
-                {/* Trust strip — 3 rows (ported from homepage) */}
+                {/* Trust strip — 2 rows (ported from homepage, Back in Stock already shown above) */}
                 <div className="flex flex-col gap-2.5 mb-5">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-xs font-semibold text-emerald-700 w-fit">
-                    <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" /></span>
-                    Back in Stock
-                  </span>
                   <div className="flex items-center gap-2 text-sm text-[#44403C]">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0 text-[#78716C]">
                       <rect x="1" y="3" width="14" height="12" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none" />
@@ -1142,6 +1140,7 @@ export default function Product() {
         className={`sticky-bottom-bar z-50 bg-white/95 backdrop-blur-md border-t border-stone-200 pt-3 px-4 transition-transform duration-500 ${
           showSticky ? "translate-y-0" : "translate-y-full"
         }`}
+        style={{ bottom: stickyBottomOffset > 0 ? `${stickyBottomOffset}px` : undefined }}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="min-w-0">

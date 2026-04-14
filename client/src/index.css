@@ -213,6 +213,26 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
+    /* Force GPU layer to prevent repaints during browser chrome transitions */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    /* Use will-change for smoother compositing */
+    will-change: transform;
+  }
+}
+
+/* Ensure the bar sticks to the actual visual bottom on iOS Safari & Chrome */
+@supports (height: 100dvh) {
+  .sticky-bottom-bar {
+    /* Override: position relative to dynamic viewport */
+    bottom: 0;
+  }
+}
+
+/* Fallback: use 100dvh on html/body to ensure fixed elements align to visual viewport */
+@supports (min-height: 100dvh) {
+  html {
+    min-height: 100dvh;
   }
 }
