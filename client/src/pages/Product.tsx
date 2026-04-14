@@ -78,7 +78,7 @@ export default function Product() {
     isSubscription: boolean;
   }> = {
     "subscribe-3": {
-      label: "3 Bottles",
+      label: "90-Day Supply",
       subtitle: "Billed $81 every 12 weeks",
       price: 81,
       originalPrice: 147,
@@ -101,7 +101,7 @@ export default function Product() {
       isSubscription: true,
     },
     "subscribe-2": {
-      label: "2 Bottles",
+      label: "60-Day Supply",
       subtitle: "Billed $64 every 8 weeks",
       price: 64,
       originalPrice: 98,
@@ -112,7 +112,7 @@ export default function Product() {
       badgeColor: "bg-[#B45309]",
       perks: [
         { text: "🎓 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
-        { text: "💰 Great value — $32/bottle, share with a partner", positive: true },
+        { text: "💰 Great value — $32/mo, share with a partner", positive: true },
         { text: "🔒 Lock in savings — price guaranteed even if we raise it", positive: true },
         { text: "🛡️ Try it 30 days — keep the bottle if you're not sharper. Full refund.", positive: true },
         { text: "🏆 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
@@ -122,7 +122,7 @@ export default function Product() {
       isSubscription: true,
     },
     "subscribe-1": {
-      label: "1 Bottle",
+      label: "30-Day Supply",
       subtitle: "Billed $36 every 4 weeks",
       price: 36,
       originalPrice: 49,
@@ -140,7 +140,7 @@ export default function Product() {
       isSubscription: true,
     },
     "one-time": {
-      label: "1 Bottle",
+      label: "30-Day Supply",
       subtitle: "One-time purchase",
       price: 49,
       originalPrice: 49,
@@ -506,7 +506,7 @@ export default function Product() {
                       )}
                     </button>
 
-                    {/* Gift 2: La Marzocco Giveaway — unlocked with 2+ bottles */}
+                    {/* Gift 2: La Marzocco Giveaway — unlocked with 2+ supplies */}
                     <button
                       onClick={() => {
                         if (selectedPlan !== "subscribe-3" && selectedPlan !== "subscribe-2") {
@@ -531,7 +531,7 @@ export default function Product() {
                       </div>
                       <p className="text-xs font-bold text-[#1C1917] leading-tight">La Marzocco Espresso Machine ($4500) Giveaway</p>
                       <div className="flex items-center gap-1 mt-1">
-                        <span className="text-[10px] text-stone-400">2+ bottles</span>
+                        <span className="text-[10px] text-stone-400">2+ supplies</span>
                         <span className={`text-[10px] font-bold ${
                           selectedPlan === "subscribe-3" || selectedPlan === "subscribe-2" ? "text-emerald-600" : "text-stone-400"
                         }`}>{selectedPlan === "subscribe-3" || selectedPlan === "subscribe-2" ? "ENTERED" : "LOCKED"}</span>
@@ -568,7 +568,7 @@ export default function Product() {
                 >
                   {selectedPlan === "one-time"
                     ? `Buy Now — $${plans["one-time"].price}`
-                    : `Start My Subscription — $${currentPlan.perMonth}/mo`}
+                    : `Start My ${currentPlan.label} — $${currentPlan.perMonth}/mo`}
                 </button>
                 <div className="flex items-center justify-center gap-2 mb-4">
                   <Check size={14} className="text-emerald-600" />
@@ -881,7 +881,7 @@ export default function Product() {
               )}
             </div>
             <p className="text-[#78716C] text-xs truncate">
-              {selectedPlan === "one-time" ? "One-time purchase" : `Subscription · ${currentPlan.label}`}
+              {selectedPlan === "one-time" ? "One-time purchase" : `Subscribe · ${currentPlan.label}`}
             </p>
           </div>
           <button
