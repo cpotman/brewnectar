@@ -36,6 +36,7 @@ export default function VideoCard({ videoSrc, name, title, quote, rating }: Vide
     <div className="bg-stone-50 border-2 border-amber-200 rounded-2xl overflow-hidden hover:shadow-warm transition-all duration-300 ring-1 ring-amber-100">
       <div
         className="relative aspect-[9/12] overflow-hidden group cursor-pointer"
+        style={{ touchAction: "pan-y" }}
         onClick={togglePlay}
       >
         <video

@@ -90,6 +90,7 @@ export default function Product() {
       perks: [
         { text: "🎓 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
         { text: "💰 Maximum savings — lowest price per serving", positive: true },
+        { text: "🔒 Lock in savings — price guaranteed even if we raise it", positive: true },
         { text: "🛡️ Try it 30 days — if you don't feel sharper, keep the bottle. We'll refund every penny.", positive: true },
         { text: "🏆 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
         { text: "👨‍👩‍👧 Share with family and friends", positive: true },
@@ -112,6 +113,7 @@ export default function Product() {
       perks: [
         { text: "🎓 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
         { text: "💰 Great value — $32/bottle, share with a partner", positive: true },
+        { text: "🔒 Lock in savings — price guaranteed even if we raise it", positive: true },
         { text: "🛡️ Try it 30 days — keep the bottle if you're not sharper. Full refund.", positive: true },
         { text: "🏆 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
         { text: "🚚 Fast & FREE Shipping", positive: true },

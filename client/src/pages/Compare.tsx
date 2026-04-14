@@ -293,6 +293,13 @@ export default function Compare() {
     <div className="min-h-screen bg-[#FDFBF7]">
       <Navbar />
 
+      {/* ═══════════ URGENCY BANNER ═══════════ */}
+      <div className="bg-[#1C1917] text-white py-2.5 text-center">
+        <p className="text-xs sm:text-sm font-medium">
+          <span className="text-amber-400 font-bold">73% of mushroom coffee buyers</span> switch brands within 6 months — here's why.
+        </p>
+      </div>
+
       {/* ═══════════ HERO ═══════════ */}
       <section className="relative pt-28 md:pt-36 pb-16 md:pb-20 overflow-hidden">
         <div className="absolute inset-0" style={{
@@ -326,13 +333,22 @@ export default function Compare() {
           </FadeUp>
 
           <FadeUp delay={0.15}>
-            <Link
-              href="/product"
-              className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg"
-            >
-              Try BrewNectar — Save Up to 45%
-              <ArrowRight size={18} />
-            </Link>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Link
+                href="/product"
+                className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg"
+              >
+                Try BrewNectar — Save Up to 45%
+                <ArrowRight size={18} />
+              </Link>
+              <a
+                href="#comparison-table"
+                className="inline-flex items-center gap-2 px-7 py-3.5 text-base font-semibold text-[#1C1917] border border-stone-300 rounded-full hover:bg-stone-50 transition-all"
+              >
+                See the Comparison
+                <ChevronDown size={18} />
+              </a>
+            </div>
           </FadeUp>
         </div>
       </section>
@@ -407,7 +423,7 @@ export default function Compare() {
       </section>
 
       {/* ═══════════ COMPARISON TABLE ═══════════ */}
-      <section className="py-16 md:py-24 bg-white">
+      <section id="comparison-table" className="py-16 md:py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Side-by-Side</p>
@@ -533,6 +549,29 @@ export default function Compare() {
               </FadeUp>
             ))}
           </div>
+
+          {/* Summary verdict card */}
+          <FadeUp delay={0.15}>
+            <div className="mt-10 bg-gradient-to-br from-emerald-50 to-amber-50/30 rounded-2xl border border-emerald-200/50 p-6 md:p-8">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
+                  <Sparkles size={20} className="text-emerald-700" />
+                </div>
+                <div>
+                  <h3 className="font-display text-lg font-bold text-[#1C1917] mb-2">The Bottom Line</h3>
+                  <p className="text-sm text-[#57534E] leading-relaxed mb-3">
+                    BrewNectar wins in <strong className="text-[#1C1917]">7 out of 8 categories</strong>. It's the only product that lets you keep your coffee, shows every ingredient dose, and has zero BBB complaints. At ~$0.96/day on the 3-bottle plan, it's also the most affordable option per serving.
+                  </p>
+                  <Link
+                    href="/product"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition-colors"
+                  >
+                    Start your upgrade <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </FadeUp>
         </div>
       </section>
 
@@ -601,6 +640,16 @@ export default function Compare() {
                             </div>
                           </div>
                         </div>
+                      </div>
+
+                      {/* Verdict card inside deep dive */}
+                      <div className="mx-5 md:mx-6 mb-5 md:mb-6 bg-emerald-50 rounded-xl p-4 border border-emerald-200/50">
+                        <p className="text-sm font-semibold text-emerald-800 mb-1">Why BrewNectar instead?</p>
+                        <p className="text-sm text-[#57534E] leading-relaxed">
+                          {comp.name === "Ryze Mushroom Coffee" && "Keep your real coffee. Get clinically-dosed nootropics with full label transparency — no proprietary blends, no subscription traps, no class-action lawsuits."}
+                          {comp.name === "Everyday Dose" && "Skip the mystery blend and bovine collagen. BrewNectar shows every milligram, works with any coffee, and has zero BBB complaints."}
+                          {comp.name === "Magic Mind" && "Get the same Cognizin® at a fraction of the price. BrewNectar costs ~$0.96/day vs $3.50/day — that's $76/month in savings."}
+                        </p>
                       </div>
                     </motion.div>
                   )}
@@ -778,6 +827,31 @@ export default function Compare() {
         </div>
       </section>
 
+      {/* ═══════════ QUICK COMPARISON STRIP ═══════════ */}
+      <section className="py-12 md:py-16 bg-[#FDFBF7]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <FadeUp>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-white rounded-2xl p-6 border border-stone-100 text-center">
+                <p className="text-3xl font-bold text-[#1C1917] mb-1">$0.96</p>
+                <p className="text-sm text-[#78716C]">per day (3-bottle plan)</p>
+                <p className="text-xs text-emerald-600 font-semibold mt-2">vs $3.50/day for Magic Mind</p>
+              </div>
+              <div className="bg-white rounded-2xl p-6 border border-stone-100 text-center">
+                <p className="text-3xl font-bold text-[#1C1917] mb-1">100%</p>
+                <p className="text-sm text-[#78716C]">label transparency</p>
+                <p className="text-xs text-emerald-600 font-semibold mt-2">vs hidden proprietary blends</p>
+              </div>
+              <div className="bg-white rounded-2xl p-6 border border-stone-100 text-center">
+                <p className="text-3xl font-bold text-[#1C1917] mb-1">0</p>
+                <p className="text-sm text-[#78716C]">BBB complaints</p>
+                <p className="text-xs text-emerald-600 font-semibold mt-2">vs 48 pages for Ryze</p>
+              </div>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
       {/* ═══════════ BOTTOM CTA ═══════════ */}
       <section className="py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
@@ -788,11 +862,15 @@ export default function Compare() {
               </div>
 
               <div className="relative">
+                <p className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-3">You've Seen the Data</p>
                 <h2 className="font-display text-2xl md:text-4xl font-bold text-white mb-4">
                   Ready to Upgrade Your Coffee?
                 </h2>
-                <p className="text-stone-400 text-base md:text-lg mb-8 max-w-lg mx-auto">
+                <p className="text-stone-400 text-base md:text-lg mb-4 max-w-lg mx-auto">
                   Keep your coffee. Upgrade your brain. Join 12,000+ high performers who made the switch.
+                </p>
+                <p className="text-stone-500 text-sm mb-8">
+                  30-day money-back guarantee · Cancel anytime · Free shipping on 2+ bottles
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Link
@@ -806,7 +884,7 @@ export default function Compare() {
                     href="/quiz"
                     className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white border border-white/20 rounded-full hover:bg-white/10 transition-all"
                   >
-                    Take the Quiz
+                    Not Sure? Take the Quiz
                   </Link>
                 </div>
               </div>

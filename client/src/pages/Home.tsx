@@ -7,7 +7,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { motion, useInView } from "framer-motion";
-import { ChevronDown, ChevronLeft, ChevronRight, Play, Star, Check, X as XIcon, Zap, Brain, Coffee, Clock, Sparkles, ExternalLink, FlaskConical, BookOpen, Volume2, VolumeX, Pause, Gift, Lock, GraduationCap, Trophy, ShieldCheck, Truck, RotateCcw } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight, Play, Star, Check, X as XIcon, Zap, Brain, Coffee, Clock, Sparkles, ExternalLink, FlaskConical, BookOpen, Volume2, VolumeX, Pause, Gift, Lock, GraduationCap, Trophy, ShieldCheck, Truck, RotateCcw, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import EnergyClaritySlider from "@/components/EnergyClaritySlider";
@@ -448,6 +448,7 @@ const INGREDIENTS = [
     emotion: "Build new neural pathways. Literally grow a sharper brain.",
     icon: Brain,
     color: "bg-amber-50 text-[#B45309]",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-lions-mane_c905f004.png",
   },
   {
     name: "Cognizin\u00AE (Citicoline)",
@@ -457,6 +458,7 @@ const INGREDIENTS = [
     emotion: "Access thoughts faster. Retrieve information on demand.",
     icon: Zap,
     color: "bg-emerald-50 text-emerald-700",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-cognizin_3fb446ba.png",
   },
   {
     name: "L-Theanine",
@@ -466,6 +468,7 @@ const INGREDIENTS = [
     emotion: "All the focus. None of the anxiety. Smooth and locked in.",
     icon: Sparkles,
     color: "bg-sky-50 text-sky-700",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-l-theanine_dc3b4af3.png",
   },
   {
     name: "B Vitamins (B6 + B12)",
@@ -475,6 +478,7 @@ const INGREDIENTS = [
     emotion: "Sustained energy that doesn't spike or crash. Just steady output.",
     icon: Coffee,
     color: "bg-rose-50 text-rose-700",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-b-vitamins_1072f364.png",
   },
 ];
 
@@ -507,6 +511,7 @@ const PLANS: Record<PlanType, {
     perks: [
       { text: "\ud83c\udf93 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
       { text: "\ud83d\udcb0 Maximum savings \u2014 lowest price per serving", positive: true },
+      { text: "\ud83d\udd12 Lock in savings \u2014 price guaranteed even if we raise it", positive: true },
       { text: "🛡️ Try it 30 days — if you don't feel sharper, keep the bottle. We'll refund every penny.", positive: true },
       { text: "🏆 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
       { text: "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67 Share with family and friends", positive: true },
@@ -529,6 +534,7 @@ const PLANS: Record<PlanType, {
     perks: [
       { text: "\ud83c\udf93 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
       { text: "\ud83d\udcb0 Great value \u2014 $32/bottle, share with a partner", positive: true },
+      { text: "\ud83d\udd12 Lock in savings \u2014 price guaranteed even if we raise it", positive: true },
       { text: "\ud83d\udee1\ufe0f Try it 30 days \u2014 keep the bottle if you're not sharper. Full refund.", positive: true },
       { text: "\ud83c\udfc6 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
       { text: "\ud83d\ude9a Fast & FREE Shipping", positive: true },
@@ -728,15 +734,10 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row gap-3 mb-8 md:mb-10">
                   <Link
                     href="/product"
-                    className="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg"
+                    className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg group"
                   >
                     Upgrade My Coffee
-                  </Link>
-                  <Link
-                    href="/product"
-                    className="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-[#92400E] bg-amber-50 border border-amber-200 rounded-full hover:bg-amber-100 transition-all"
-                  >
-                    Start Subscription & Save Up to 45%
+                    <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </FadeUp>
@@ -843,26 +844,35 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-4 md:gap-6">
             {INGREDIENTS.map((ing, i) => (
               <FadeUp key={ing.name} delay={i * 0.1}>
-                <div className="bg-white rounded-2xl border border-stone-100 p-5 md:p-8 hover:shadow-warm hover:border-amber-100 transition-all duration-300 h-full">
-                  <div className="flex items-start gap-3 md:gap-4">
-                    <div className={`w-12 h-12 rounded-xl ${ing.color} flex items-center justify-center flex-shrink-0`}>
-                      <ing.icon size={22} />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-display font-bold text-lg text-[#1C1917] mb-1">{ing.name}</h3>
-                      <div className="flex flex-wrap items-center gap-2 mb-3">
-                        <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#D97706] bg-amber-50 px-2.5 py-1 rounded-full">
-                          {ing.tag}
-                        </span>
-                        {(ing as any).dosage && (
-                          <span className="inline-block text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-100">
-                            {(ing as any).dosage}
-                          </span>
-                        )}
+                <div className="bg-white rounded-2xl border border-stone-100 overflow-hidden hover:shadow-warm hover:border-amber-100 transition-all duration-300 h-full">
+                  {/* Ingredient image */}
+                  {(ing as any).image && (
+                    <div className="relative h-40 md:h-48 overflow-hidden">
+                      <img src={(ing as any).image} alt={ing.name} className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                      <div className="absolute bottom-3 left-4 right-4">
+                        <div className="flex items-center gap-2">
+                          <div className={`w-8 h-8 rounded-lg ${ing.color} flex items-center justify-center flex-shrink-0`}>
+                            <ing.icon size={16} />
+                          </div>
+                          <h3 className="font-display font-bold text-lg text-white drop-shadow-md">{ing.name}</h3>
+                        </div>
                       </div>
-                      <p className="text-sm text-[#78716C] leading-relaxed mb-2">{ing.science}</p>
-                      <p className="text-sm font-medium text-[#44403C] italic">{ing.emotion}</p>
                     </div>
+                  )}
+                  <div className="p-5 md:p-6">
+                    <div className="flex flex-wrap items-center gap-2 mb-3">
+                      <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#D97706] bg-amber-50 px-2.5 py-1 rounded-full">
+                        {ing.tag}
+                      </span>
+                      {(ing as any).dosage && (
+                        <span className="inline-block text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-100">
+                          {(ing as any).dosage}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-sm text-[#78716C] leading-relaxed mb-2">{ing.science}</p>
+                    <p className="text-sm font-medium text-[#44403C] italic">{ing.emotion}</p>
                   </div>
                 </div>
               </FadeUp>
@@ -1209,6 +1219,19 @@ export default function Home() {
       {/* ═══════════ SUBSCRIBE & SAVE — FULL OFFER ═══════════ */}
       <section id="offers" className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Heading above the two-column layout */}
+          <FadeUp>
+            <div className="text-center mb-12">
+              <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3">Subscribe & Save</p>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#1C1917] mb-4">
+                Keep Your Coffee. Upgrade Your Brain.
+              </h2>
+              <p className="text-[#78716C] text-lg leading-relaxed max-w-3xl mx-auto">
+                Formulated with clinical-dose Lion's Mane, patented Cognizin®, and L-Theanine, one pump transforms any coffee into a precision nootropic stack—delivering calm focus, faster recall, and sustained mental energy without the jitters, crash, or need to change your coffee.
+              </p>
+            </div>
+          </FadeUp>
+
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
             {/* Left: PDP Images — sticky on desktop, swipeable on mobile */}
             <FadeUp delay={0.05} className="lg:sticky lg:top-24 lg:self-start">
@@ -1293,14 +1316,6 @@ export default function Home() {
             {/* Right: Full offer */}
             <FadeUp delay={0.15}>
               <div>
-                <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3">Subscribe & Save</p>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1C1917] mb-2">
-                  Keep Your Coffee. Upgrade Your Brain.
-                </h2>
-                <p className="text-[#78716C] text-lg leading-relaxed mb-8">
-                  Choose your plan and start your cognitive upgrade today. Ships directly to your door.
-                </p>
-
                 {/* Plan cards */}
                 <div className="space-y-3 mb-4">
                   {PLAN_ORDER.map((planKey) => {
@@ -1510,63 +1525,80 @@ export default function Home() {
             </div>
           </FadeUp>
 
-          {/* Horizontal scroll carousel */}
+          {/* Auto-scrolling horizontal carousel */}
+          <style>{`
+            @keyframes scrollReviews {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            .reviews-track {
+              animation: scrollReviews 40s linear infinite;
+            }
+            .reviews-track:hover {
+              animation-play-state: paused;
+            }
+          `}</style>
           <div
             ref={scrollRef}
-            className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            className="overflow-hidden pb-4"
           >
-            {VIDEO_TESTIMONIALS.map((t, i) => (
-              <FadeUp key={t.id} delay={i * 0.08} className="flex-shrink-0 w-[300px] snap-start">
-                {(t as any).videoSrc ? (
-                  <VideoCard
-                    videoSrc={(t as any).videoSrc}
-                    name={t.name}
-                    title={t.title}
-                    quote={t.quote}
-                    rating={t.rating}
-                  />
-                ) : (
-                  <div className="bg-white border border-stone-100 rounded-2xl overflow-hidden hover:shadow-warm hover:border-amber-100 transition-all duration-300 h-full flex flex-col">
-                    <div className="p-5 pb-0 flex items-center gap-3">
-                      <div className={`w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold text-sm ${
-                        ["bg-amber-600", "bg-emerald-600", "bg-sky-600", "bg-violet-600", "bg-rose-600"][i % 5]
-                      }`}>
-                        {t.name.split(" ").map(n => n[0]).join("")}
+            <div className="reviews-track flex gap-5 w-max">
+              {/* Duplicate testimonials for seamless loop */}
+              {[...VIDEO_TESTIMONIALS, ...VIDEO_TESTIMONIALS].map((t, i) => {
+                const origIdx = i % VIDEO_TESTIMONIALS.length;
+                return (
+                  <div key={`${t.id}-${i}`} className="flex-shrink-0 w-[300px]">
+                    {(t as any).videoSrc ? (
+                      <VideoCard
+                        videoSrc={(t as any).videoSrc}
+                        name={t.name}
+                        title={t.title}
+                        quote={t.quote}
+                        rating={t.rating}
+                      />
+                    ) : (
+                      <div className="bg-white border border-stone-100 rounded-2xl overflow-hidden hover:shadow-warm hover:border-amber-100 transition-all duration-300 h-full flex flex-col">
+                        <div className="p-5 pb-0 flex items-center gap-3">
+                          <div className={`w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold text-sm ${
+                            ["bg-amber-600", "bg-emerald-600", "bg-sky-600", "bg-violet-600", "bg-rose-600"][origIdx % 5]
+                          }`}>
+                            {t.name.split(" ").map(n => n[0]).join("")}
+                          </div>
+                          <div>
+                            <p className="text-sm font-semibold text-[#1C1917]">{t.name}</p>
+                            <p className="text-xs text-[#A8A29E]">{t.title}</p>
+                          </div>
+                          <span className="ml-auto inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-[10px] font-semibold text-emerald-700">
+                            <Check size={10} /> Verified
+                          </span>
+                        </div>
+                        <div className="p-5 flex-1 flex flex-col">
+                          <div className="flex gap-0.5 mb-2">
+                            {[...Array(t.rating)].map((_, j) => (
+                              <Star key={j} size={14} className="fill-[#D97706] text-[#D97706]" />
+                            ))}
+                          </div>
+                          <p className="text-sm text-[#44403C] leading-relaxed line-clamp-4 flex-1">"{t.quote}"</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-sm font-semibold text-[#1C1917]">{t.name}</p>
-                        <p className="text-xs text-[#A8A29E]">{t.title}</p>
-                      </div>
-                      <span className="ml-auto inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-[10px] font-semibold text-emerald-700">
-                        <Check size={10} /> Verified
-                      </span>
-                    </div>
-                    <div className="p-5 flex-1 flex flex-col">
-                      <div className="flex gap-0.5 mb-2">
-                        {[...Array(t.rating)].map((_, j) => (
-                          <Star key={j} size={14} className="fill-[#D97706] text-[#D97706]" />
-                        ))}
-                      </div>
-                      <p className="text-sm text-[#44403C] leading-relaxed line-clamp-4 flex-1">"{t.quote}"</p>
-                    </div>
+                    )}
                   </div>
-                )}
-              </FadeUp>
-            ))}
+                );
+              })}
+            </div>
           </div>
 
-          {/* Mobile scroll arrows */}
-          <div className="flex md:hidden justify-center gap-2 mt-4">
+          {/* Manual scroll arrows */}
+          <div className="flex justify-center gap-2 mt-4">
             <button
               onClick={() => scrollTestimonials("left")}
-              className="w-10 h-10 rounded-full border border-stone-200 flex items-center justify-center text-[#78716C]"
+              className="w-10 h-10 rounded-full border border-stone-200 flex items-center justify-center text-[#78716C] hover:text-[#1C1917] hover:border-stone-300 transition-colors"
             >
               <ChevronLeft size={18} />
             </button>
             <button
               onClick={() => scrollTestimonials("right")}
-              className="w-10 h-10 rounded-full border border-stone-200 flex items-center justify-center text-[#78716C]"
+              className="w-10 h-10 rounded-full border border-stone-200 flex items-center justify-center text-[#78716C] hover:text-[#1C1917] hover:border-stone-300 transition-colors"
             >
               <ChevronRight size={18} />
             </button>
