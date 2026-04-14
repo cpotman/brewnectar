@@ -1282,7 +1282,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════ SUBSCRIBE & SAVE — FULL OFFER ═══════════ */}
-      <section id="offers" className="py-20 md:py-28 bg-white scroll-mt-20">
+      <section id="offers" className="py-20 md:py-28 bg-white scroll-mt-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Heading above the two-column layout */}
           <FadeUp>
