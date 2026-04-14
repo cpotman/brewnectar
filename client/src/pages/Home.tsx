@@ -14,6 +14,7 @@ import EnergyClaritySlider from "@/components/EnergyClaritySlider";
 import VideoCard from "@/components/VideoCard";
 import { AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
+import { useUserState } from "@/hooks/useUserState";
 
 /* ─── Fade-up animation wrapper ─── */
 function FadeUp({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -639,6 +640,7 @@ export default function Home() {
   const [selectedImage, setSelectedImage] = useState(0);
   const [showMobileCta, setShowMobileCta] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const userRegion = useUserState();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -732,13 +734,14 @@ export default function Home() {
 
               <FadeUp delay={0.3}>
                 <div className="flex flex-col sm:flex-row gap-3 mb-8 md:mb-10">
-                  <Link
-                    href="/product"
-                    className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg group"
+                  <a
+                    href="#offers"
+                    onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
+                    className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg group cursor-pointer"
                   >
                     Upgrade My Coffee
                     <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Link>
+                  </a>
                 </div>
               </FadeUp>
 
@@ -962,12 +965,13 @@ export default function Home() {
             </h2>
           </FadeUp>
           <FadeUp delay={0.3}>
-            <Link
-              href="/product"
-              className="inline-flex items-center px-8 py-4 text-base font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg"
+            <a
+              href="#offers"
+              onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="inline-flex items-center px-8 py-4 text-base font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg cursor-pointer"
             >
               Try BrewNectar Today
-            </Link>
+            </a>
           </FadeUp>
         </div>
       </section>
@@ -1265,9 +1269,13 @@ export default function Home() {
                 <p className="text-xs text-stone-400">keep-the-bottle guarantee</p>
               </div>
               <div className="hidden sm:block w-px h-10 bg-stone-700" />
-              <Link href="/product" className="px-6 py-2.5 rounded-full bg-[#B45309] hover:bg-[#92400E] text-sm font-bold transition-colors">
+              <a
+                href="#offers"
+                onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
+                className="px-6 py-2.5 rounded-full bg-[#B45309] hover:bg-[#92400E] text-sm font-bold transition-colors cursor-pointer"
+              >
                 Try BrewNectar →
-              </Link>
+              </a>
             </div>
           </FadeUp>
         </div>
@@ -1284,7 +1292,7 @@ export default function Home() {
                 Keep Your Coffee. Upgrade Your Brain.
               </h2>
               <p className="text-[#78716C] text-lg leading-relaxed max-w-3xl mx-auto">
-                Formulated with clinical-dose Lion's Mane, patented Cognizin®, and L-Theanine, one pump transforms any coffee into a precision nootropic stack—delivering calm focus, faster recall, and sustained mental energy without the jitters, crash, or need to change your coffee.
+                Formulated with clinical-dose <span className="font-bold text-gradient-warm">Lion's Mane</span>, patented <span className="font-bold text-gradient-warm">Cognizin®</span>, and <span className="font-bold text-gradient-warm">L-Theanine</span>, one pump transforms any coffee into a precision nootropic stack—delivering calm focus, faster recall, and sustained mental energy without the jitters, crash, or need to change your coffee.
               </p>
             </div>
           </FadeUp>
@@ -1564,11 +1572,29 @@ export default function Home() {
                     : `START MY ${PLANS[selectedPlan].label.toUpperCase()} PLAN — $${PLANS[selectedPlan].perMonth}/MO`}
                 </button>
 
-                {/* Shipping notice */}
-                <div className="mt-4 flex flex-col items-center gap-2">
+                {/* Discount auto-applied + Trust badges + Shipping notice */}
+                <div className="flex items-center justify-center gap-2 mt-3 mb-3">
+                  <Check size={14} className="text-emerald-600" />
+                  <span className="text-xs text-[#78716C]">Limited Time Discount Auto-Applied</span>
+                </div>
+
+                <div className="grid grid-cols-3 gap-3 mb-4">
+                  {[
+                    { icon: ShieldCheck, label: "30-Day Keep-the-Bottle Guarantee" },
+                    { icon: Truck, label: "Free Shipping" },
+                    { icon: RotateCcw, label: "Cancel Anytime" },
+                  ].map((badge) => (
+                    <div key={badge.label} className="flex flex-col items-center gap-1.5 text-center">
+                      <badge.icon size={18} className="text-[#B45309]" />
+                      <span className="text-[#78716C] text-[11px] font-medium">{badge.label}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-col items-center gap-2">
                   <div className="flex items-center gap-2 text-sm text-[#57534E]">
                     <Truck size={14} className="text-[#78716C]" />
-                    <span>Ships to United States in 4–5 days</span>
+                    <span>Ships to {userRegion} in 4–5 days</span>
                   </div>
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/60 text-xs font-semibold text-[#92400E]">
                     <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" /></span>
@@ -1793,12 +1819,13 @@ export default function Home() {
           {/* Bottom CTA */}
           <FadeUp delay={0.3}>
             <div className="text-center mt-12">
-              <Link
-                href="/product"
-                className="inline-flex items-center px-8 py-4 text-base font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg"
+              <a
+                href="#offers"
+                onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
+                className="inline-flex items-center px-8 py-4 text-base font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg cursor-pointer"
               >
                 Join 12,000+ High Performers
-              </Link>
+              </a>
               <p className="text-xs text-[#A8A29E] mt-3">30-day keep-the-bottle guarantee · Free shipping on subscriptions</p>
             </div>
           </FadeUp>
