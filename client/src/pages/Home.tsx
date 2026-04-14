@@ -1157,60 +1157,117 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════════ COMPARISON TABLE ═══════════ */}
+      {/* ═══════════ COMPARISON TABLE — REDESIGNED ═══════════ */}
       <section className="py-20 md:py-28 bg-[#FDFBF7]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Compare</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">
-              Not All Upgrades Are Equal.
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Why BrewNectar Wins</p>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">
+              Stop Settling. Start Upgrading.
             </h2>
-            <p className="text-center text-[#78716C] text-lg mb-12 max-w-2xl mx-auto">
-              Unlike nootropic coffees that force you to switch brands, BrewNectar works with the coffee you already love.
+            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">
+              Other options force you to compromise — bad taste, new coffee, hidden blends, or sugar crashes. BrewNectar is the only upgrade with zero trade-offs.
             </p>
           </FadeUp>
 
+          {/* Visual comparison cards */}
           <FadeUp delay={0.1}>
-            <div className="overflow-x-auto -mx-4 px-4">
-              <table className="w-full text-xs md:text-sm min-w-[480px]">
-                <thead>
-                  <tr className="border-b-2 border-stone-200">
-                    <th className="text-left py-4 pr-4 font-display font-semibold text-[#78716C]">Feature</th>
-                    <th className="py-4 px-3 font-display font-bold text-[#1C1917] bg-amber-50/50 rounded-t-xl">BrewNectar</th>
-                    <th className="py-4 px-3 font-display font-semibold text-[#A8A29E]">Regular Coffee</th>
-                    <th className="py-4 px-3 font-display font-semibold text-[#A8A29E] hidden sm:table-cell">Sugary Syrups</th>
-                    <th className="py-4 px-3 font-display font-semibold text-[#A8A29E] hidden sm:table-cell">Nootropic Coffees</th>
-                  </tr>
-                </thead>
-                <tbody>
+            <div className="grid md:grid-cols-2 gap-6 mb-10">
+              {/* BrewNectar — the winner */}
+              <div className="relative rounded-2xl border-2 border-[#B45309] bg-white p-6 md:p-8 shadow-warm">
+                <div className="absolute -top-3.5 left-6 px-4 py-1 bg-[#B45309] text-white text-xs font-bold rounded-full uppercase tracking-wide">The Upgrade</div>
+                <h3 className="font-display text-2xl font-bold text-[#1C1917] mt-2 mb-1">BrewNectar</h3>
+                <p className="text-sm text-[#78716C] mb-5">Add to your existing coffee. Done.</p>
+                <div className="space-y-3">
                   {[
-                    { feature: "Calm Focus", bn: true, rc: false, ss: false, cn: true },
-                    { feature: "Zero Sugar", bn: true, rc: true, ss: false, cn: true },
-                    { feature: "No Crash", bn: true, rc: false, ss: false, cn: true },
-                    { feature: "Tastes Great", bn: true, rc: true, ss: true, cn: false },
-                    { feature: "Use YOUR Own Coffee", bn: true, rc: true, ss: true, cn: false },
-                    { feature: "No Pills Required", bn: true, rc: true, ss: true, cn: false },
-                    { feature: "Supports Neurogenesis", bn: true, rc: false, ss: false, cn: true },
-                    { feature: "Daily Ritual Friendly", bn: true, rc: true, ss: false, cn: false },
-                  ].map((row, i) => (
-                    <tr key={row.feature} className="border-b border-stone-100">
-                      <td className="py-3.5 pr-4 font-medium text-[#44403C]">{row.feature}</td>
-                      <td className="py-3.5 px-3 text-center bg-amber-50/30">
-                        {row.bn ? <Check size={18} className="mx-auto text-[#16A34A]" /> : <XIcon size={16} className="mx-auto text-stone-300" />}
-                      </td>
-                      <td className="py-3.5 px-3 text-center">
-                        {row.rc ? <Check size={18} className="mx-auto text-[#16A34A]" /> : <XIcon size={16} className="mx-auto text-stone-300" />}
-                      </td>
-                      <td className="py-3.5 px-3 text-center hidden sm:table-cell">
-                        {row.ss ? <Check size={18} className="mx-auto text-[#16A34A]" /> : <XIcon size={16} className="mx-auto text-stone-300" />}
-                      </td>
-                      <td className="py-3.5 px-3 text-center hidden sm:table-cell">
-                        {row.cn ? <Check size={18} className="mx-auto text-[#16A34A]" /> : <XIcon size={16} className="mx-auto text-stone-300" />}
-                      </td>
-                    </tr>
+                    { text: "Clinical-dose nootropics (Lion's Mane 1.2g, Cognizin® 250mg)", bold: true },
+                    { text: "Works with ANY coffee you already love" },
+                    { text: "Zero sugar, zero calories" },
+                    { text: "Calm focus without jitters or crash" },
+                    { text: "100% transparent label — every mg disclosed" },
+                    { text: "Supports neurogenesis & long-term brain health" },
+                    { text: "Vanilla bean flavor that actually tastes good" },
+                    { text: "From $0.90/day (less than your coffee)" },
+                  ].map((item) => (
+                    <div key={item.text} className="flex items-start gap-2.5">
+                      <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check size={12} strokeWidth={3} className="text-emerald-600" />
+                      </div>
+                      <span className={`text-sm ${item.bold ? "font-semibold text-[#1C1917]" : "text-[#44403C]"}`}>{item.text}</span>
+                    </div>
                   ))}
-                </tbody>
-              </table>
+                </div>
+                <div className="mt-6 pt-4 border-t border-stone-100">
+                  <div className="flex items-center gap-2">
+                    <div className="flex">{[...Array(5)].map((_, i) => <Star key={i} size={12} className="fill-amber-400 text-amber-400" />)}</div>
+                    <span className="text-xs font-semibold text-[#1C1917]">4.9/5</span>
+                    <span className="text-xs text-[#78716C]">from 2,400+ reviews</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* The alternatives — stacked losers */}
+              <div className="space-y-4">
+                {[
+                  {
+                    name: "Mushroom Coffees",
+                    subtitle: "Ryze, Everyday Dose, Four Sigmatic",
+                    cons: ["Forces you to switch your coffee", "Earthy taste most people dislike", "Proprietary blends hide real dosages", "48 BBB complaints (Ryze alone)"],
+                  },
+                  {
+                    name: "Sugary Coffee Syrups",
+                    subtitle: "Torani, Monin, Starbucks",
+                    cons: ["10-15g sugar per pump", "Zero cognitive benefits", "Blood sugar spike → crash", "Empty calories, no function"],
+                  },
+                  {
+                    name: "Nootropic Pills",
+                    subtitle: "Alpha Brain, Thesis, etc.",
+                    cons: ["Another pill to remember", "Doesn't integrate into your routine", "Often underdosed ingredients", "No ritual, no enjoyment"],
+                  },
+                ].map((alt) => (
+                  <div key={alt.name} className="rounded-xl border border-stone-200 bg-white/60 p-5">
+                    <div className="flex items-center justify-between mb-2">
+                      <div>
+                        <h4 className="font-display font-bold text-[#1C1917] text-sm">{alt.name}</h4>
+                        <p className="text-xs text-[#A8A29E]">{alt.subtitle}</p>
+                      </div>
+                      <span className="text-xs font-semibold text-red-500 bg-red-50 px-2 py-0.5 rounded-full">Trade-offs</span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+                      {alt.cons.map((con) => (
+                        <div key={con} className="flex items-start gap-1.5">
+                          <XIcon size={12} strokeWidth={3} className="text-red-400 flex-shrink-0 mt-0.5" />
+                          <span className="text-xs text-[#78716C]">{con}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeUp>
+
+          {/* Bottom verdict strip */}
+          <FadeUp delay={0.2}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 p-5 rounded-2xl bg-[#1C1917] text-white">
+              <div className="text-center">
+                <p className="text-2xl font-display font-bold">8/8</p>
+                <p className="text-xs text-stone-400">features checked</p>
+              </div>
+              <div className="hidden sm:block w-px h-10 bg-stone-700" />
+              <div className="text-center">
+                <p className="text-2xl font-display font-bold">$0.90</p>
+                <p className="text-xs text-stone-400">per day (3-bottle plan)</p>
+              </div>
+              <div className="hidden sm:block w-px h-10 bg-stone-700" />
+              <div className="text-center">
+                <p className="text-2xl font-display font-bold">0</p>
+                <p className="text-xs text-stone-400">trade-offs</p>
+              </div>
+              <div className="hidden sm:block w-px h-10 bg-stone-700" />
+              <Link href="/product" className="px-6 py-2.5 rounded-full bg-[#B45309] hover:bg-[#92400E] text-sm font-bold transition-colors">
+                Try BrewNectar →
+              </Link>
             </div>
           </FadeUp>
         </div>
@@ -1316,6 +1373,27 @@ export default function Home() {
             {/* Right: Full offer */}
             <FadeUp delay={0.15}>
               <div>
+                {/* Trust strip — Back in Stock + Stars + Reviews + Members */}
+                <div className="flex flex-wrap items-center gap-3 mb-5 p-3 rounded-xl bg-[#FDFBF7] border border-stone-100">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-xs font-semibold text-emerald-700">
+                    <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" /></span>
+                    Back in Stock
+                  </span>
+                  <div className="flex items-center gap-1.5">
+                    <div className="flex">
+                      {[...Array(5)].map((_, i) => <Star key={i} size={14} className="fill-amber-400 text-amber-400" />)}
+                    </div>
+                    <span className="text-sm font-bold text-[#1C1917]">4.9</span>
+                    <span className="text-sm text-[#78716C]">stars from</span>
+                    <span className="text-sm font-bold text-[#1C1917]">2,400+</span>
+                    <span className="text-sm text-[#78716C]">reviews</span>
+                  </div>
+                  <div className="hidden sm:flex items-center gap-1.5 border-l border-stone-200 pl-3">
+                    <span className="text-sm font-bold text-[#1C1917]">12,000+</span>
+                    <span className="text-sm text-[#78716C]">members</span>
+                  </div>
+                </div>
+
                 {/* Plan cards */}
                 <div className="space-y-3 mb-4">
                   {PLAN_ORDER.map((planKey) => {
