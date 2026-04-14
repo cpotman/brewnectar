@@ -45,8 +45,13 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-14 md:h-[72px]">
           {/* Logo */}
           <a
-            href="#"
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            href="/"
+            onClick={(e) => {
+              if (location === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
             className="font-display text-xl md:text-2xl font-bold tracking-tight text-[#1C1917] cursor-pointer"
           >
             BrewNectar
