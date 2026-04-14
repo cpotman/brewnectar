@@ -1251,8 +1251,8 @@ export default function Home() {
           <FadeUp delay={0.2}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 p-5 rounded-2xl bg-[#1C1917] text-white">
               <div className="text-center">
-                <p className="text-2xl font-display font-bold">8/8</p>
-                <p className="text-xs text-stone-400">features checked</p>
+                <p className="text-2xl font-display font-bold">4 Clinically-Dosed</p>
+                <p className="text-xs text-stone-400">nootropic ingredients</p>
               </div>
               <div className="hidden sm:block w-px h-10 bg-stone-700" />
               <div className="text-center">
@@ -1261,8 +1261,8 @@ export default function Home() {
               </div>
               <div className="hidden sm:block w-px h-10 bg-stone-700" />
               <div className="text-center">
-                <p className="text-2xl font-display font-bold">0</p>
-                <p className="text-xs text-stone-400">trade-offs</p>
+                <p className="text-2xl font-display font-bold">30-Day</p>
+                <p className="text-xs text-stone-400">keep-the-bottle guarantee</p>
               </div>
               <div className="hidden sm:block w-px h-10 bg-stone-700" />
               <Link href="/product" className="px-6 py-2.5 rounded-full bg-[#B45309] hover:bg-[#92400E] text-sm font-bold transition-colors">
@@ -1373,24 +1373,31 @@ export default function Home() {
             {/* Right: Full offer */}
             <FadeUp delay={0.15}>
               <div>
-                {/* Trust strip — Back in Stock + Stars + Reviews + Members */}
-                <div className="flex flex-wrap items-center gap-3 mb-5 p-3 rounded-xl bg-[#FDFBF7] border border-stone-100">
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-xs font-semibold text-emerald-700">
+                {/* Trust strip — 3 rows */}
+                <div className="flex flex-col gap-2.5 mb-5">
+                  {/* Row 1: Back in Stock */}
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-xs font-semibold text-emerald-700 w-fit">
                     <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" /></span>
                     Back in Stock
                   </span>
+                  {/* Row 2: Built for real results */}
+                  <div className="flex items-center gap-2 text-sm text-[#44403C]">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0 text-[#78716C]">
+                      <rect x="1" y="3" width="14" height="12" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                      <path d="M1 7h14" stroke="currentColor" strokeWidth="1.5" />
+                      <path d="M5 1v4M11 1v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                    </svg>
+                    <span>Built for real results in <strong className="text-[#1C1917]">3 months</strong></span>
+                  </div>
+                  {/* Row 3: Stars + reviews */}
                   <div className="flex items-center gap-1.5">
                     <div className="flex">
                       {[...Array(5)].map((_, i) => <Star key={i} size={14} className="fill-amber-400 text-amber-400" />)}
                     </div>
                     <span className="text-sm font-bold text-[#1C1917]">4.9</span>
-                    <span className="text-sm text-[#78716C]">stars from</span>
+                    <span className="text-sm text-[#78716C]">from</span>
                     <span className="text-sm font-bold text-[#1C1917]">2,400+</span>
                     <span className="text-sm text-[#78716C]">reviews</span>
-                  </div>
-                  <div className="hidden sm:flex items-center gap-1.5 border-l border-stone-200 pl-3">
-                    <span className="text-sm font-bold text-[#1C1917]">12,000+</span>
-                    <span className="text-sm text-[#78716C]">members</span>
                   </div>
                 </div>
 
