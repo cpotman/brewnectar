@@ -1456,34 +1456,29 @@ export default function Home() {
                             <p className="text-[11px] text-[#78716C]">${plan.perDay} USD / DAY</p>
                           </div>
                         </div>
-                        <AnimatePresence initial={false}>
-                          {isSelected && (
-                            <motion.div
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: "auto", opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                              className="overflow-hidden"
-                            >
-                              <div className="px-4 md:px-5 pb-4 md:pb-5 pt-0 border-t border-stone-100 mt-0">
-                                <div className="pt-3 space-y-1.5">
-                                  {plan.perks.map((perk) => (
-                                    <div key={perk.text} className="flex items-center gap-2">
-                                      {perk.positive ? (
-                                        <Check size={16} strokeWidth={3} className="text-emerald-600 flex-shrink-0" />
-                                      ) : (
-                                        <XIcon size={16} strokeWidth={3} className="text-red-500 flex-shrink-0" />
-                                      )}
-                                      <span className={`text-sm ${perk.positive ? "text-[#44403C]" : "text-red-500 font-semibold"}`}>
-                                        {perk.text}
-                                      </span>
-                                    </div>
-                                  ))}
-                                </div>
+                        <div
+                          className="grid transition-[grid-template-rows] duration-200 ease-out"
+                          style={{ gridTemplateRows: isSelected ? "1fr" : "0fr" }}
+                        >
+                          <div className="overflow-hidden">
+                            <div className="px-4 md:px-5 pb-4 md:pb-5 pt-0 border-t border-stone-100 mt-0">
+                              <div className="pt-3 space-y-1.5">
+                                {plan.perks.map((perk) => (
+                                  <div key={perk.text} className="flex items-center gap-2">
+                                    {perk.positive ? (
+                                      <Check size={16} strokeWidth={3} className="text-emerald-600 flex-shrink-0" />
+                                    ) : (
+                                      <XIcon size={16} strokeWidth={3} className="text-red-500 flex-shrink-0" />
+                                    )}
+                                    <span className={`text-sm ${perk.positive ? "text-[#44403C]" : "text-red-500 font-semibold"}`}>
+                                      {perk.text}
+                                    </span>
+                                  </div>
+                                ))}
                               </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
+                            </div>
+                          </div>
+                        </div>
                       </button>
                     );
                   })}
