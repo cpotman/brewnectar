@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 /**
- * Detects the user's US state from their IP address using a free geolocation API.
+ * Detects the user's US state from their IP address using free HTTPS geolocation APIs.
  * Falls back to "United States" if detection fails or user is outside the US.
  */
 export function useUserState() {
@@ -12,21 +12,36 @@ export function useUserState() {
 
     async function detect() {
       try {
-        // Try ip-api.com first (free, no key, 45 req/min)
-        const res = await fetch("http://ip-api.com/json/?fields=status,countryCode,regionName", {
+        // ipapi.co — free HTTPS, 1k/day, no key needed
+        const res = await fetch("https://ipapi.co/json/", {
           signal: controller.signal,
         });
         const data = await res.json();
-        if (data.status === "success" && data.countryCode === "US" && data.regionName) {
-          setRegion(data.regionName);
+        if (data.country_code === "US" && data.region) {
+          setRegion(data.region);
           return;
         }
-        // If not US, keep the country-level fallback
-        if (data.status === "success" && data.regionName) {
-          setRegion(data.regionName);
+        // Non-US: show country name
+        if (data.country_name) {
+          setRegion(data.country_name);
         }
       } catch {
-        // Silently fall back to default
+        // First API failed, try fallback
+        try {
+          const res2 = await fetch("https://ipwho.is/", {
+            signal: controller.signal,
+          });
+          const data2 = await res2.json();
+          if (data2.success && data2.country_code === "US" && data2.region) {
+            setRegion(data2.region);
+            return;
+          }
+          if (data2.success && data2.country) {
+            setRegion(data2.country);
+          }
+        } catch {
+          // Silently fall back to default
+        }
       }
     }
 

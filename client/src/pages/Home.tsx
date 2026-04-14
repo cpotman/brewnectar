@@ -500,7 +500,7 @@ const PLANS: Record<PlanType, {
   isSubscription: boolean;
 }> = {
   "subscribe-3": {
-    label: "3 Bottles",
+    label: "90-Day Supply",
     subtitle: "Billed $81 every 12 weeks",
     price: 81,
     originalPrice: 147,
@@ -523,7 +523,7 @@ const PLANS: Record<PlanType, {
     isSubscription: true,
   },
   "subscribe-2": {
-    label: "2 Bottles",
+    label: "60-Day Supply",
     subtitle: "Billed $64 every 8 weeks",
     price: 64,
     originalPrice: 98,
@@ -534,7 +534,7 @@ const PLANS: Record<PlanType, {
     badgeColor: "bg-[#B45309]",
     perks: [
       { text: "\ud83c\udf93 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
-      { text: "\ud83d\udcb0 Great value \u2014 $32/bottle, share with a partner", positive: true },
+      { text: "\ud83d\udcb0 Great value \u2014 $32/mo, share with a partner", positive: true },
       { text: "\ud83d\udd12 Lock in savings \u2014 price guaranteed even if we raise it", positive: true },
       { text: "\ud83d\udee1\ufe0f Try it 30 days \u2014 keep the bottle if you're not sharper. Full refund.", positive: true },
       { text: "\ud83c\udfc6 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
@@ -544,7 +544,7 @@ const PLANS: Record<PlanType, {
     isSubscription: true,
   },
   "subscribe-1": {
-    label: "1 Bottle",
+    label: "30-Day Supply",
     subtitle: "Billed $36 every 4 weeks",
     price: 36,
     originalPrice: 49,
@@ -562,7 +562,7 @@ const PLANS: Record<PlanType, {
     isSubscription: true,
   },
   "one-time": {
-    label: "1 Bottle",
+    label: "30-Day Supply",
     subtitle: "One-time purchase",
     price: 49,
     originalPrice: 49,
@@ -1565,11 +1565,16 @@ export default function Home() {
                       description: `${plan.label} (${plan.isSubscription ? "Subscription" : "One-time"}) — $${plan.isSubscription ? plan.perMonth + "/mo" : plan.price}`,
                     });
                   }}
-                  className="w-full py-4 rounded-full text-base font-bold text-white bg-[#1C1917] hover:bg-[#292524] transition-all hover:shadow-lg"
+                  className="group relative w-full py-4 rounded-full text-base font-bold text-white overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(180,83,9,0.4)] hover:scale-[1.02] active:scale-[0.98]"
+                  style={{ background: "linear-gradient(135deg, #B45309 0%, #D97706 50%, #B45309 100%)", backgroundSize: "200% 200%" }}
                 >
-                  {selectedPlan === "one-time"
-                    ? `BUY NOW — $${PLANS["one-time"].price}`
-                    : `START MY ${PLANS[selectedPlan].label.toUpperCase()} PLAN — $${PLANS[selectedPlan].perMonth}/MO`}
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
+                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">
+                    {selectedPlan === "one-time"
+                      ? `BUY NOW — $${PLANS["one-time"].price}`
+                      : `START MY ${PLANS[selectedPlan].label.toUpperCase()} — $${PLANS[selectedPlan].perMonth}/MO`}
+                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  </span>
                 </button>
 
                 {/* Discount auto-applied + Trust badges + Shipping notice */}
