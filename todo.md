@@ -1,7 +1,27 @@
-# Energy Clarity Slider TODO
+# Project TODO
 
-- [ ] Read Home.tsx to find the How It Works section ending
-- [ ] Build EnergyClarity slider component with 3 states, CSS filters, reward animations
-- [ ] Insert the component below How It Works section
-- [ ] Test on desktop and mobile
-- [ ] Save checkpoint
+- [x] Basic homepage layout
+- [x] Navigation menu (Navbar)
+- [x] Footer component
+- [x] Hero section with animations
+- [x] Problem section
+- [x] Ingredients section
+- [x] How It Works section
+- [x] Energy Clarity Slider component
+- [x] Clinical Studies section
+- [x] What to Expect timeline
+- [x] Comparison table
+- [x] Subscribe & Save offer section
+- [x] Social Proof video testimonials
+- [x] FAQ accordion
+- [x] Extended text reviews
+- [x] Sticky mobile CTA bar
+- [x] VideoCard component
+- [x] Product page
+- [x] Full-stack upgrade (db, server, user capabilities)
+- [x] Resolve merge conflicts from full-stack upgrade (Home.tsx, vite.config.ts)
+- [x] Set up database schema and run migrations
+- [x] Integrate File Storage (S3) - backend procedures
+- [x] Integrate File Storage (S3) - frontend upload UI
+- [x] Write tests for file storage integration
+- [x] Verify end-to-end file upload/download flow

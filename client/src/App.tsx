@@ -10,8 +10,9 @@ import Product from "./pages/Product";
 import Advertorial from "./pages/Advertorial";
 import Compare from "./pages/Compare";
 import Quiz from "./pages/Quiz";
-
+import FileManager from "./pages/FileManager";
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return (
     <>
       <ScrollToTop />
@@ -21,6 +22,7 @@ function Router() {
         <Route path={"/learn"} component={Advertorial} />
         <Route path={"/compare"} component={Compare} />
         <Route path={"/quiz"} component={Quiz} />
+        <Route path={"/files"} component={FileManager} />
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />
       </Switch>
