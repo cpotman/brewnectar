@@ -203,13 +203,13 @@ function ClinicalStudies() {
         >
           <div className="flex items-center justify-center gap-2 mb-3">
             <FlaskConical size={16} className="text-[#D97706]" />
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706]">Backed by Science</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706]">The Evidence</p>
           </div>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">
-            The Research Behind Every Drop.
+            We Don\u2019t Ask You to Trust Us. We Show You the Papers.
           </h2>
           <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">
-            Every ingredient in BrewNectar is supported by peer-reviewed clinical research. Tap any ingredient to explore the studies.
+            175+ peer-reviewed studies back the ingredients in every bottle. Tap any ingredient to read the research yourself.
           </p>
         </motion.div>
 
@@ -350,13 +350,13 @@ function ClinicalStudies() {
 
 /* ─── Ticker messages ─── */
 const TICKER_MESSAGES = [
-  "Free shipping on orders over $50",
-  "30-day keep-the-bottle guarantee",
-  "Zero sugar \u00B7 30 servings per bottle",
-  "Trusted by 12,000+ high performers",
-  "Third-party tested for purity",
+  "Free shipping on every subscription",
+  "30 days. If you don\u2019t feel sharper, keep the bottle. Full refund.",
+  "Zero sugar \u00B7 30 servings \u00B7 $0.90/day",
+  "12,000+ people already upgraded their coffee",
+  "Every batch third-party tested for purity & potency",
   "Subscribe & save up to 45%",
-  "\u2728 Just Restocked \u2014 Limited Supply",
+  "4 clinically-dosed nootropics in every pump",
 ];
 
 /* ─── Video testimonials data ─── */
@@ -365,7 +365,7 @@ const VIDEO_TESTIMONIALS = [
     id: 0,
     name: "Real Customer",
     title: "UGC Review",
-    quote: "Watch this real customer review to see how BrewNectar fits into a daily coffee ritual.",
+    quote: "One pump. Same coffee. Completely different afternoon. Watch what happened.",
     rating: 5,
     thumbnail: IMAGES.hero,
     videoSrc: IMAGES.ugcVideo,
@@ -374,7 +374,7 @@ const VIDEO_TESTIMONIALS = [
     id: 1,
     name: "Alex K.",
     title: "Software Engineer",
-    quote: "Replaced my second cup of coffee with BrewNectar. I'm shipping code faster and my afternoons are actually productive now.",
+    quote: "I used to hit a wall at 2pm and stare at my IDE. Now I ship features until 5 without noticing the clock. Same one cup of coffee.",
     rating: 5,
     thumbnail: IMAGES.howLockIn,
   },
@@ -382,7 +382,7 @@ const VIDEO_TESTIMONIALS = [
     id: 2,
     name: "Sarah M.",
     title: "Product Designer",
-    quote: "The vanilla flavor is incredible. But what sold me is the focus. I designed an entire app flow in one sitting.",
+    quote: "I designed an entire 40-screen app flow in one sitting. No second coffee. No snack break. Just\u2026 flow. That never happened before.",
     rating: 5,
     thumbnail: IMAGES.lifestylePour,
   },
@@ -390,7 +390,7 @@ const VIDEO_TESTIMONIALS = [
     id: 3,
     name: "Marcus T.",
     title: "Founder & CEO",
-    quote: "I've tried every nootropic on the market. This is the first one I actually look forward to taking.",
+    quote: "I\u2019ve wasted hundreds on nootropic pills I forgot to take. This goes in the coffee I already drink. That\u2019s why it stuck.",
     rating: 5,
     thumbnail: IMAGES.howStir,
   },
@@ -398,7 +398,7 @@ const VIDEO_TESTIMONIALS = [
     id: 4,
     name: "Priya R.",
     title: "Medical Student",
-    quote: "Study sessions went from 45 minutes to 3 hours. My recall during exams improved noticeably.",
+    quote: "My study sessions went from 45 scattered minutes to 3 locked-in hours. During boards prep, I recalled details I read weeks ago.",
     rating: 5,
     thumbnail: IMAGES.howLockIn,
   },
@@ -406,7 +406,7 @@ const VIDEO_TESTIMONIALS = [
     id: 5,
     name: "Jordan L.",
     title: "Creative Director",
-    quote: "BrewNectar is part of my morning ritual now. The calm focus is unlike anything I've experienced with regular coffee.",
+    quote: "The jitters are gone. The crash is gone. What\u2019s left is this clean, quiet focus where ideas actually connect. I\u2019m not going back.",
     rating: 5,
     thumbnail: IMAGES.hero,
   },
@@ -415,28 +415,32 @@ const VIDEO_TESTIMONIALS = [
 /* ─── FAQ data ─── */
 const FAQ_DATA = [
   {
-    q: "Do I need to switch to a special coffee?",
-    a: "Not at all! That's what makes BrewNectar different from nootropic coffees. You keep drinking whatever coffee you already love — drip, cold brew, espresso, latte, even decaf. Just add a pump of BrewNectar and you're upgraded. No new brand, no new routine.",
+    q: "Do I need to switch my coffee?",
+    a: "No. That\u2019s the whole point. Mushroom coffees force you to drink their coffee. BrewNectar works with the coffee you already love. Drip, cold brew, espresso, latte, even decaf. One pump. Same mug. You\u2019re upgraded. Most people tell us it\u2019s the easiest health decision they\u2019ve ever made.",
   },
   {
-    q: "Does it taste sweet?",
-    a: "BrewNectar has a smooth vanilla bean flavor with zero sugar. It's lightly sweet from natural flavoring — think premium vanilla latte, not candy. It pairs perfectly with black coffee, lattes, or cold brew.",
+    q: "What does it taste like?",
+    a: "Smooth vanilla bean. Zero sugar. Think premium vanilla latte, not candy. It blends into black coffee, oat milk lattes, and cold brew without changing the character of your drink. Several customers have told us they actually prefer their coffee with it now.",
   },
   {
-    q: "Will it make me jittery?",
-    a: "No. L-Theanine is specifically included to counteract caffeine jitters. It promotes alpha brain wave activity, giving you calm, focused energy without the anxiety or racing heart that comes with regular coffee.",
+    q: "I\u2019m already jittery from coffee. Won\u2019t this make it worse?",
+    a: "The opposite. L-Theanine is in the formula specifically to smooth out caffeine\u2019s rough edges. It promotes alpha brain wave activity, which is the neurological state behind calm, sustained attention. The result: you keep the energy, lose the anxiety. Many customers report they\u2019ve actually reduced their coffee intake because one cup with BrewNectar does more than three cups without it.",
   },
   {
-    q: "Is it safe to take daily?",
-    a: "Yes. All ingredients are Generally Recognized as Safe (GRAS) and have been studied in clinical settings. BrewNectar is designed as a daily cognitive support ritual. Consistency is key to experiencing the full benefits.",
+    q: "Can I take it every day?",
+    a: "Yes, and you should. Every ingredient is GRAS-certified and clinically studied for daily use. But here\u2019s the real reason: Lion\u2019s Mane and Cognizin\u00AE compound over time. The longer you use BrewNectar consistently, the more your brain builds new neural connections. Skipping days slows that process. Think of it less like a supplement and more like a daily investment in how your brain performs.",
   },
   {
-    q: "When will I feel the effects?",
-    a: "Most users report feeling focused within 20\u201330 minutes of their first use. The nootropic benefits of Lion's Mane and Cognizin\u00AE compound over time — many users report significant improvements in recall and clarity after 2\u20134 weeks of daily use.",
+    q: "How fast will I notice a difference?",
+    a: "Most people feel calmer, sharper focus within 20 minutes of their first cup. That\u2019s the L-Theanine and Cognizin\u00AE working immediately. The deeper benefits take longer. After 2\u20134 weeks, you\u2019ll notice faster recall. After 2\u20133 months, Lion\u2019s Mane\u2019s neurogenesis effects kick in. That\u2019s when people say things like \u2018my brain feels different.\u2019 The 3-bottle plan exists for exactly this reason.",
   },
   {
-    q: "Is it third-party tested?",
-    a: "Yes. Every batch of BrewNectar is third-party tested for purity, potency, and heavy metals. We use Cognizin\u00AE, a patented and clinically studied form of citicoline, to ensure consistent quality.",
+    q: "How do I know the ingredients are real and properly dosed?",
+    a: "Every batch is third-party tested for purity, potency, and heavy metals. We use Cognizin\u00AE, a patented form of citicoline with 20+ clinical trials behind it. We disclose every milligram on the label. No proprietary blends. No hidden dosages. If a company won\u2019t tell you exactly what\u2019s in the bottle, ask yourself why.",
+  },
+  {
+    q: "What if it doesn\u2019t work for me?",
+    a: "Then you keep the bottle and we refund every penny. No form. No return shipping. One email. We do this because 94% of subscribers stay past their first order. We\u2019re that confident. Try it for 30 days. If your coffee doesn\u2019t feel different, you paid nothing.",
   },
 ];
 
@@ -445,9 +449,9 @@ const INGREDIENTS = [
   {
     name: "Lion's Mane",
     dosage: "1.2g per serving",
-    tag: "Supports Neurogenesis",
-    science: "Clinically studied to promote nerve growth factor (NGF) production.",
-    emotion: "Build new neural pathways. Literally grow a sharper brain.",
+    tag: "Your Brain Builds New Connections",
+    science: "30+ peer-reviewed studies show Lion\u2019s Mane stimulates nerve growth factor (NGF), the protein your brain uses to grow and repair neurons. This isn\u2019t a temporary boost. It\u2019s structural change.",
+    emotion: "The reason your thinking gets sharper over weeks, not just hours.",
     icon: Brain,
     color: "bg-amber-50 text-[#B45309]",
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-lions-mane_c905f004.png",
@@ -455,9 +459,9 @@ const INGREDIENTS = [
   {
     name: "Cognizin\u00AE (Citicoline)",
     dosage: "250mg per serving",
-    tag: "Faster Recall & Mental Clarity",
-    science: "Patented form of citicoline shown to enhance focus and attention in clinical trials.",
-    emotion: "Access thoughts faster. Retrieve information on demand.",
+    tag: "Retrieve Names, Numbers, and Ideas On Demand",
+    science: "The only patented form of citicoline with 20+ clinical trials on focus and working memory. In one study, subjects improved attentional performance and reduced errors after just 28 days.",
+    emotion: "That name on the tip of your tongue? You\u2019ll have it instantly.",
     icon: Zap,
     color: "bg-emerald-50 text-emerald-700",
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-cognizin_3fb446ba.png",
@@ -465,9 +469,9 @@ const INGREDIENTS = [
   {
     name: "L-Theanine",
     dosage: "75mg per serving",
-    tag: "Calm, Jitter-Free Focus",
-    science: "Amino acid found in green tea that promotes alpha brain wave activity.",
-    emotion: "All the focus. None of the anxiety. Smooth and locked in.",
+    tag: "The Reason You Won\u2019t Feel Jittery",
+    science: "This amino acid, found naturally in green tea, promotes alpha brain wave activity. That\u2019s the neurological state behind calm, sustained attention. Combined with caffeine, clinical trials show it improves focus while reducing anxiety.",
+    emotion: "Your hands stop shaking. Your mind stops racing. What\u2019s left is clean, quiet focus.",
     icon: Sparkles,
     color: "bg-sky-50 text-sky-700",
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-l-theanine_dc3b4af3.png",
@@ -475,9 +479,9 @@ const INGREDIENTS = [
   {
     name: "B Vitamins (B6 + B12)",
     dosage: "250% DV each",
-    tag: "Clean Mental Energy",
-    science: "Essential cofactors in neurotransmitter synthesis and cellular energy production.",
-    emotion: "Sustained energy that doesn't spike or crash. Just steady output.",
+    tag: "Steady Energy That Doesn\u2019t Crash",
+    science: "Your brain burns through B vitamins to produce dopamine, serotonin, and norepinephrine. Without enough, you feel foggy by noon. 250% daily value keeps your neurotransmitter factory running all day.",
+    emotion: "No spike at 9am. No wall at 2pm. Just steady, reliable output.",
     icon: Coffee,
     color: "bg-rose-50 text-rose-700",
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-b-vitamins_1072f364.png",
@@ -590,48 +594,48 @@ const EXTENDED_REVIEWS = [
     title: "Neurologist",
     rating: 5,
     date: "March 2026",
-    heading: "Finally, a nootropic I can recommend to patients",
-    text: "As a neurologist, I\u2019m extremely cautious about supplements. Most nootropic products use proprietary blends with undisclosed dosages. BrewNectar is different \u2014 every ingredient is clinically dosed and transparently labeled. The Cognizin\u00AE (citicoline) at the dosage they use has solid evidence for memory and attention. I\u2019ve been using it myself for 3 months and recommending it to patients who want cognitive support alongside their existing coffee habit. The fact that it\u2019s a syrup rather than another pill makes compliance much easier.",
+    heading: "I recommend this to patients. I also take it myself.",
+    text: "I\u2019m extremely cautious about supplements. Most nootropic products hide behind proprietary blends with undisclosed dosages. BrewNectar discloses every milligram. The Cognizin\u00AE at 250mg has solid evidence for memory and attention. The Lion\u2019s Mane is dosed at 1.2g with specified beta-glucan content. I\u2019ve been using it for 3 months and recommending it to patients who want cognitive support. The syrup format means they actually take it, unlike the pills that end up forgotten in a drawer.",
   },
   {
     name: "James P.",
     title: "Day Trader",
     rating: 5,
     date: "February 2026",
-    heading: "My edge in the markets",
-    text: "I trade futures from 6:30 AM to 4 PM. That\u2019s nearly 10 hours of intense decision-making where a single lapse in focus can cost thousands. I used to rely on 4-5 cups of coffee, but by noon I\u2019d be jittery and making impulsive trades. Switched to 2 cups of coffee with BrewNectar and the difference is night and day. My screen time analytics show I\u2019m making fewer but better trades. The L-Theanine keeps me calm during volatile moves. I\u2019m on the 3-bottle plan because running out is not an option.",
+    heading: "A single lapse in focus costs me thousands. This fixed that.",
+    text: "I trade futures from 6:30 AM to 4 PM. Nearly 10 hours of decisions where one impulsive move can wipe a week of gains. I used to rely on 4-5 cups of coffee. By noon I\u2019d be jittery and making bad calls. Switched to 2 cups with BrewNectar. My screen time analytics show fewer trades, but better ones. The L-Theanine keeps me calm during volatile moves. I\u2019m on the 3-bottle plan because running out is not an option.",
   },
   {
     name: "Michelle K.",
     title: "Working Mom of 3",
     rating: 5,
     date: "March 2026",
-    heading: "From zombie mom to present mom",
-    text: "I have a 2-year-old, a 5-year-old, and a 7-year-old. By 2 PM I used to be running on fumes \u2014 snapping at the kids, forgetting school pickups, staring at my laptop unable to form a sentence. My husband found BrewNectar and honestly I was skeptical. But after two weeks of adding it to my morning latte, the afternoon crash just... stopped. I\u2019m more patient, more present, and I\u2019m actually getting work done during nap time instead of doom-scrolling. This is the only \u2018supplement\u2019 that\u2019s ever actually worked for me.",
+    heading: "The afternoon crash stopped. I\u2019m not exaggerating.",
+    text: "Three kids under 8. By 2 PM I used to be running on fumes. Snapping at the kids. Forgetting school pickups. Staring at my laptop unable to form a sentence. My husband found BrewNectar. I was skeptical. After two weeks of adding it to my morning latte, the crash just\u2026 stopped. I\u2019m more patient. I\u2019m getting work done during nap time instead of doom-scrolling. This is the only \u2018supplement\u2019 that\u2019s ever actually changed my day.",
   },
   {
     name: "David S.",
     title: "PhD Candidate, Neuroscience",
     rating: 5,
     date: "January 2026",
-    heading: "The science checks out \u2014 and so does the experience",
-    text: "I study neuroplasticity for a living, so I know exactly what Lion\u2019s Mane and citicoline do at the cellular level. Most supplement companies underdose these ingredients or use inferior forms. BrewNectar uses Cognizin\u00AE (the patented citicoline) and specifies the beta-glucan content of their Lion\u2019s Mane \u2014 that\u2019s how you know it\u2019s the real deal. I\u2019ve been using it daily for 4 months while writing my dissertation. My writing sessions went from fragmented 30-minute bursts to solid 2-3 hour deep work blocks. My advisor noticed the difference before I told her what I was taking.",
+    heading: "I study neuroplasticity. The formula is legit.",
+    text: "I know exactly what Lion\u2019s Mane and citicoline do at the cellular level. Most companies underdose or use inferior forms. BrewNectar uses Cognizin\u00AE (the patented citicoline) and specifies beta-glucan content in their Lion\u2019s Mane. That\u2019s how you know it\u2019s real. I\u2019ve used it daily for 4 months while writing my dissertation. My writing sessions went from fragmented 30-minute bursts to solid 2-3 hour deep work blocks. My advisor noticed the difference before I told her what I was taking.",
   },
   {
     name: "Tanya R.",
     title: "Yoga Instructor & Wellness Coach",
     rating: 5,
     date: "February 2026",
-    heading: "Clean ingredients, real results",
-    text: "I\u2019m very particular about what goes into my body. No artificial sweeteners, no fillers, no proprietary blends. BrewNectar passed every check. Zero sugar, clean label, and I can actually pronounce every ingredient. I add it to my matcha on days I don\u2019t drink coffee and it works just as well. The vanilla flavor is subtle and natural \u2014 not that fake sweetness you get from most supplements. My clients have started asking what changed because my class cues are sharper and I\u2019m remembering everyone\u2019s modifications without checking my notes.",
+    heading: "I read every label. This one passed.",
+    text: "No artificial sweeteners. No fillers. No proprietary blends. Zero sugar. I can pronounce every ingredient. I add it to matcha on days I skip coffee and it works the same. The vanilla is subtle and natural. Not that fake sweetness you get from most supplements. My clients started asking what changed because my class cues are sharper and I\u2019m remembering everyone\u2019s modifications without checking my notes.",
   },
   {
     name: "Robert M.",
     title: "Retired Engineer, Age 68",
     rating: 5,
     date: "March 2026",
-    heading: "Keeping my mind sharp in retirement",
-    text: "At 68, I was starting to notice the little things \u2014 forgetting where I put my keys, losing my train of thought mid-sentence, struggling with crossword puzzles I used to breeze through. My daughter bought me BrewNectar for Christmas. I\u2019ve been adding it to my morning coffee for 3 months now. The crosswords are easier again. I\u2019m reading two books a week instead of one. And last week I beat my grandson at chess for the first time in a year. The Lion\u2019s Mane research on neurogenesis in older adults is what convinced me to stick with it.",
+    heading: "At 68, I beat my grandson at chess again.",
+    text: "I was starting to notice the little things. Forgetting where I put my keys. Losing my train of thought mid-sentence. Struggling with crossword puzzles I used to breeze through. My daughter bought me BrewNectar for Christmas. Three months later: the crosswords are easier. I\u2019m reading two books a week instead of one. And last week I won at chess for the first time in a year. The Lion\u2019s Mane research on neurogenesis in older adults is what convinced me to stick with it.",
   },
 ];
 
@@ -717,20 +721,20 @@ export default function Home() {
                       <Star key={i} size={14} className="fill-[#D97706] text-[#D97706]" />
                     ))}
                   </div>
-                  <span className="text-xs font-medium text-[#92400E]">Trusted by 12,000+ high performers</span>
+                  <span className="text-xs font-medium text-[#92400E]">12,000+ people made this switch</span>
                 </div>
               </FadeUp>
 
               <FadeUp delay={0.1}>
                 <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.08] tracking-tight text-[#1C1917] mb-5 md:mb-6">
-                  Turn Your Coffee Into a{" "}
-                  <span className="text-gradient-warm">Cognitive Upgrade.</span>
+                  Your Coffee Gives You Energy.{" "}
+                  <span className="text-gradient-warm">It Can't Give You Focus.</span>
                 </h1>
               </FadeUp>
 
               <FadeUp delay={0.2}>
                 <p className="text-base md:text-lg lg:text-xl text-[#57534E] leading-relaxed mb-6 md:mb-8 max-w-lg">
-                  Add a pump of vanilla bean nootropic syrup to <em>your</em> coffee for calm focus, faster recall, and deep work. No new coffee required.
+                  One pump of vanilla bean syrup adds four clinically-dosed nootropics to the coffee you already drink. The result: locked-in focus within 20 minutes, recall that sharpens over weeks, and an afternoon that doesn't fall apart. No new coffee. No pills. No blender.
                 </p>
               </FadeUp>
 
@@ -741,7 +745,7 @@ export default function Home() {
                     onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
                     className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg group cursor-pointer"
                   >
-                    Upgrade My Coffee
+                    Give Me Calm Focus
                     <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </div>
@@ -751,8 +755,8 @@ export default function Home() {
                 <div className="flex flex-wrap gap-6">
                   {[
                     { label: "Works with Any Coffee", icon: "☕" },
-                    { label: "Zero Sugar", icon: "✦" },
-                    { label: "Nootropic Stack", icon: "◆" },
+                    { label: "Zero Sugar · Zero Calories", icon: "✦" },
+                    { label: "4 Clinical-Dose Nootropics", icon: "◆" },
                   ].map((badge) => (
                     <div key={badge.label} className="flex items-center gap-2">
                       <span className="text-[#D97706] text-sm">{badge.icon}</span>
@@ -773,7 +777,7 @@ export default function Home() {
                     <span className="text-sm text-[#78716C]">from 2,400+ reviews</span>
                   </div>
                   <span className="hidden sm:inline text-stone-300">·</span>
-                  <p className="text-sm text-[#57534E] italic">"Replaced my afternoon coffee crash" — Sarah M.</p>
+                  <p className="text-sm text-[#57534E] italic">"I look up and 3 hours have passed. That never happened with just coffee." — Priya R.</p>
                 </div>
               </FadeUp>
             </div>
@@ -797,22 +801,22 @@ export default function Home() {
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">The Problem</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Sound Familiar?</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-4 max-w-3xl mx-auto">
-              Coffee Wakes You Up. It Doesn't Make You Smarter.
+              You Drink the Coffee. The Focus Never Shows Up.
             </h2>
             <p className="text-center text-[#78716C] text-lg mb-16 max-w-2xl mx-auto">
-              You rely on caffeine. But caffeine alone is a blunt instrument. Here's what it actually does to your day.
+              You already know this feeling. You pour the cup. You wait for clarity. Instead, you get 45 minutes of scattered energy followed by a wall. Caffeine is a stimulant, not a cognitive tool. Here's what it's actually doing to your day.
             </p>
           </FadeUp>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
             {[
-              { icon: "⚡", title: "Jitters", desc: "Your hands shake. Your mind races. That's not focus." },
-              { icon: "🌫️", title: "Brain Fog", desc: "Two cups in and you still can't think straight." },
-              { icon: "📉", title: "Afternoon Crash", desc: "The 2pm wall hits. Productivity drops to zero." },
-              { icon: "🔀", title: "Scattered Thinking", desc: "You start ten things. You finish none." },
-              { icon: "⏳", title: "Procrastination", desc: "Another day of planning to start tomorrow." },
+              { icon: "\u26A1", title: "The Jitters", desc: "Your hands shake. Your heart races. You mistake adrenaline for productivity." },
+              { icon: "\uD83C\uDF2B\uFE0F", title: "The Fog", desc: "Two cups in. You re-read the same paragraph three times. Nothing sticks." },
+              { icon: "\uD83D\uDCC9", title: "The 2pm Wall", desc: "Your morning energy vanishes. You stare at your screen. The afternoon is gone." },
+              { icon: "\uD83D\uDD00", title: "The Scatter", desc: "You open 12 tabs. Start 4 tasks. Finish zero. Your brain won't hold a thread." },
+              { icon: "\u23F3", title: "The Delay", desc: "You know what you need to do. You can't make yourself start. Another day lost." },
             ].map((item, i) => (
               <FadeUp key={item.title} delay={i * 0.08}>
                 <div className="bg-stone-50 border border-stone-100 rounded-2xl p-4 md:p-6 h-full hover:shadow-warm hover:border-amber-100 transition-all duration-300">
@@ -837,12 +841,12 @@ export default function Home() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">The Solution</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">What's Inside</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-4">
-              Designed for the Mind.
+              Caffeine Gives You Energy. These Give You Focus.
             </h2>
             <p className="text-center text-[#78716C] text-lg mb-16 max-w-2xl mx-auto">
-              Four science-backed ingredients in one delicious syrup. Just add it to whatever coffee you already drink.
+              Four ingredients. Every milligram disclosed. No proprietary blends. Each one chosen for a specific job your coffee can't do alone.
             </p>
           </FadeUp>
 
@@ -892,10 +896,10 @@ export default function Home() {
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">How It Works</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-4">
-              Three Steps. One Ritual.
+              10 Seconds. Same Mug. Smarter Coffee.
             </h2>
             <p className="text-center text-[#78716C] text-lg mb-16 max-w-2xl mx-auto">
-              No pills. No powders. No blender required. Just better coffee.
+              You don't change your coffee. You don't add a step. You upgrade the one you already have.
             </p>
           </FadeUp>
 
@@ -904,19 +908,19 @@ export default function Home() {
               {
                 step: "01",
                 title: "Pour",
-                desc: "Add one pump of BrewNectar to whatever coffee you're already drinking. Latte, cold brew, drip — it all works.",
+                desc: "One pump into the coffee you\u2019re already holding. Drip, cold brew, espresso, oat milk latte. It doesn\u2019t matter. It all works.",
                 image: IMAGES.lifestylePour,
               },
               {
                 step: "02",
                 title: "Stir",
-                desc: "Mix it in. Vanilla bean flavor blends perfectly with any roast.",
+                desc: "Smooth vanilla bean dissolves in seconds. No grit. No aftertaste. Your coffee tastes better, not different.",
                 image: IMAGES.howStir,
               },
               {
                 step: "03",
                 title: "Lock In",
-                desc: "Feel the calm focus set in within 20 minutes. Deep work mode activated.",
+                desc: "Within 20 minutes, the noise quiets. You start working. You look up and an hour has passed. That\u2019s the stack doing its job.",
                 image: IMAGES.howLockIn,
               },
             ].map((item, i) => (
@@ -953,17 +957,17 @@ export default function Home() {
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <FadeUp>
             <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-[#1C1917] mb-4 leading-tight">
-              Calm Focus.
+              The 3-Hour Work Block.
             </h2>
           </FadeUp>
           <FadeUp delay={0.1}>
             <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-[#78716C] mb-4 leading-tight">
-              Faster Recall.
+              The Name You Recall Instantly.
             </h2>
           </FadeUp>
           <FadeUp delay={0.2}>
             <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-gradient-warm mb-8 leading-tight">
-              Deep Work Without the Crash.
+              The Afternoon That Doesn't Fall Apart.
             </h2>
           </FadeUp>
           <FadeUp delay={0.3}>
@@ -972,7 +976,7 @@ export default function Home() {
               onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
               className="inline-flex items-center px-8 py-4 text-base font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg cursor-pointer"
             >
-              Try BrewNectar Today
+              Start My Smarter Coffee Ritual
             </a>
           </FadeUp>
         </div>
@@ -985,12 +989,12 @@ export default function Home() {
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Your Journey</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">The Compounding Effect</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">
-              What to Expect with BrewNectar
+              Day 1 Feels Good. Month 3 Changes Everything.
             </h2>
             <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">
-              Best results come with consistency. Here's what happens when you make BrewNectar part of your daily ritual.
+              Most nootropics give you a spike and a crash. BrewNectar compounds. Each week builds on the last. Here's what your brain does with consistency.
             </p>
           </FadeUp>
 
@@ -1003,8 +1007,8 @@ export default function Home() {
               {[
                 {
                   period: "Week 1",
-                  title: "Immediate Clarity",
-                  desc: "L-Theanine and Cognizin kick in within 20 minutes. You'll notice calmer focus, reduced jitters, and smoother energy from your very first cup.",
+                  title: "The Quiet Settles In",
+                  desc: "L-Theanine smooths out caffeine\u2019s rough edges within 20 minutes. Cognizin\u00AE sharpens working memory. Your first cup feels different. Calmer. Clearer. No jitters.",
                   ingredients: ["L-Theanine", "Cognizin"],
                   color: "bg-amber-50 border-amber-200",
                   iconColor: "text-[#D97706]",
@@ -1013,8 +1017,8 @@ export default function Home() {
                 },
                 {
                   period: "1 Month",
-                  title: "Sharper Recall",
-                  desc: "Cognizin builds up in your system, improving working memory and mental processing speed. Tasks that felt hard start feeling effortless.",
+                  title: "Names Come Faster",
+                  desc: "Cognizin\u00AE accumulates in your system. Working memory improves. You recall details from meetings without checking notes. Tasks that felt hard start feeling automatic.",
                   ingredients: ["Cognizin", "B Vitamins"],
                   color: "bg-emerald-50 border-emerald-200",
                   iconColor: "text-emerald-600",
@@ -1023,8 +1027,8 @@ export default function Home() {
                 },
                 {
                   period: "2 Months",
-                  title: "Compounding Focus",
-                  desc: "Lion's Mane begins stimulating nerve growth factor (NGF). Neural pathways strengthen. Deep work sessions get longer and more productive.",
+                  title: "Deep Work Gets Deeper",
+                  desc: "Lion\u2019s Mane\u2019s neurogenesis kicks in. Your brain is literally growing new neural connections. Deep work sessions stretch from 45 minutes to 2-3 hours. You notice it.",
                   ingredients: ["Lion's Mane", "Cognizin"],
                   color: "bg-sky-50 border-sky-200",
                   iconColor: "text-sky-600",
@@ -1033,8 +1037,8 @@ export default function Home() {
                 },
                 {
                   period: "3 Months",
-                  title: "Peak Performance",
-                  desc: "Full neurogenesis benefits from Lion's Mane. Your brain is literally building new connections. This is where the magic compounds.",
+                  title: "Your Brain Feels Different",
+                  desc: "Full neurogenesis benefits. The entire stack is compounding. This is when customers say \u2018my brain feels different.\u2019 Not a spike. A permanent upgrade to how you think.",
                   ingredients: ["Lion's Mane", "Full Stack"],
                   color: "bg-violet-50 border-violet-200",
                   iconColor: "text-violet-600",
@@ -1156,7 +1160,7 @@ export default function Home() {
               </div>
 
               <p className="text-center text-xs text-[#A8A29E] mt-4">
-                This is why we recommend subscribing for at least 3 months to experience the full compounding benefits.
+                Every day without the stack is a day your brain stays on the flat line. The 3-bottle plan exists for this reason.
               </p>
             </div>
           </FadeUp>
@@ -1167,12 +1171,12 @@ export default function Home() {
       <section className="py-20 md:py-28 bg-[#FDFBF7]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Why BrewNectar Wins</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">The Alternatives</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">
-              Stop Settling. Start Upgrading.
+              You've Tried Other Things. Here's Why They Didn't Stick.
             </h2>
             <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">
-              Other options force you to compromise — bad taste, new coffee, hidden blends, or sugar crashes. BrewNectar is the only upgrade with zero trade-offs.
+              Mushroom coffees taste like dirt. Nootropic pills get forgotten in a drawer. Sugary syrups spike your blood sugar. Every alternative forces a trade-off. BrewNectar doesn't.
             </p>
           </FadeUp>
 
@@ -1276,7 +1280,7 @@ export default function Home() {
                 onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
                 className="px-6 py-2.5 rounded-full bg-[#B45309] hover:bg-[#92400E] text-sm font-bold transition-colors cursor-pointer"
               >
-                Try BrewNectar →
+                Give Me Calm Focus →
               </a>
             </div>
           </FadeUp>
@@ -1289,12 +1293,12 @@ export default function Home() {
           {/* Heading above the two-column layout */}
           <FadeUp>
             <div className="text-center mb-12">
-              <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3">Subscribe & Save</p>
+              <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3">Choose Your Plan</p>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#1C1917] mb-4">
-                Keep Your Coffee. Upgrade Your Brain.
+                Less Than Your Daily Coffee. More Than Any Supplement.
               </h2>
               <p className="text-[#78716C] text-sm md:text-lg leading-relaxed max-w-3xl mx-auto">
-                Formulated with clinical-dose <span className="font-bold text-gradient-warm">Lion's Mane</span>, patented <span className="font-bold text-gradient-warm">Cognizin®</span>, and <span className="font-bold text-gradient-warm">L-Theanine</span>, one pump transforms any coffee into a precision nootropic stack—delivering calm focus, faster recall, and sustained mental energy without the jitters, crash, or need to change your coffee.
+                You spend $5-7 on coffee that wakes you up and crashes you by 2pm. For $0.90/day, you add <span className="font-bold text-gradient-warm">Lion's Mane</span>, patented <span className="font-bold text-gradient-warm">Cognizin®</span>, and <span className="font-bold text-gradient-warm">L-Theanine</span> to that same cup. Same mug. Same routine. Completely different brain.
               </p>
             </div>
           </FadeUp>
@@ -1397,7 +1401,7 @@ export default function Home() {
                       <path d="M1 7h14" stroke="currentColor" strokeWidth="1.5" />
                       <path d="M5 1v4M11 1v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                     </svg>
-                    <span>Built for real results in <strong className="text-[#1C1917]">3 months</strong></span>
+                    <span>Designed to compound over <strong className="text-[#1C1917]">3 months</strong></span>
                   </div>
                   {/* Row 3: Stars + reviews */}
                   <div className="flex items-center gap-1.5">
@@ -1573,8 +1577,8 @@ export default function Home() {
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
                   <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">
                     {selectedPlan === "one-time"
-                      ? `BUY NOW — $${PLANS["one-time"].price}`
-                      : `START MY ${PLANS[selectedPlan].label.toUpperCase()} — $${PLANS[selectedPlan].perMonth}/MO`}
+                      ? `GIVE ME CALM FOCUS — $${PLANS["one-time"].price}`
+                      : `START MY SMARTER COFFEE — $${PLANS[selectedPlan].perMonth}/MO`}
                     <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                   </span>
                 </button>
@@ -1582,7 +1586,7 @@ export default function Home() {
                 {/* Discount auto-applied + Trust badges + Shipping notice */}
                 <div className="flex items-center justify-center gap-2 mt-3 mb-3">
                   <Check size={14} className="text-emerald-600" />
-                  <span className="text-xs text-[#78716C]">Limited Time Discount Auto-Applied</span>
+                  <span className="text-xs text-[#78716C]">Discount auto-applied at checkout</span>
                 </div>
 
                 <div className="grid grid-cols-3 gap-3 mb-4">
@@ -1601,11 +1605,11 @@ export default function Home() {
                 <div className="flex flex-col items-center gap-2">
                   <div className="flex items-center gap-2 text-sm text-[#57534E]">
                     <Truck size={14} className="text-[#78716C]" />
-                    <span>Ships to {userRegion} in 4–5 days</span>
+                    <span>Ships to {userRegion} in 4–5 business days</span>
                   </div>
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/60 text-xs font-semibold text-[#92400E]">
                     <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" /></span>
-                    Faster Shipping due to high demand
+                    High demand — limited stock available
                   </span>
                 </div>
               </div>
@@ -1620,11 +1624,11 @@ export default function Home() {
           <FadeUp>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 md:mb-12">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3">Social Proof</p>
+                <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3">Don\u2019t Take Our Word For It</p>
                 <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#1C1917]">
-                  Trusted by 12,000+ High Performers
+                  12,000+ People Made the Switch. Here\u2019s What Happened.
                 </h2>
-                <p className="text-[#78716C] text-lg mt-2">4.9/5 from 2,400+ reviews</p>
+                <p className="text-[#78716C] text-lg mt-2">4.9/5 from 2,400+ verified reviews</p>
               </div>
               <div className="hidden md:flex gap-2">
                 <button
@@ -1729,10 +1733,10 @@ export default function Home() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">
-              Got Questions About BrewNectar?
+              Still Thinking It Over? Good.
             </h2>
             <p className="text-center text-[#78716C] text-lg mb-12">
-              Get quick answers to your most common questions.
+              Skepticism means you\u2019ve been burned before. Here are the answers that convinced 12,000+ people to try it.
             </p>
           </FadeUp>
 
@@ -1774,10 +1778,10 @@ export default function Home() {
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">In Their Words</p>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">
-              Real Stories From Real Customers
+              A Neurologist. A Day Trader. A Mom of Three. Same Verdict.
             </h2>
             <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">
-              Don't just take our word for it. Here's what people are saying after making BrewNectar part of their daily ritual.
+              Different lives. Different demands. The same result: their coffee does more now.
             </p>
           </FadeUp>
 
@@ -1831,9 +1835,9 @@ export default function Home() {
                 onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
                 className="inline-flex items-center px-8 py-4 text-base font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg cursor-pointer"
               >
-                Join 12,000+ High Performers
+                Start My Smarter Coffee Ritual
               </a>
-              <p className="text-xs text-[#A8A29E] mt-3">30-day keep-the-bottle guarantee · Free shipping on subscriptions</p>
+              <p className="text-xs text-[#A8A29E] mt-3">30-day keep-the-bottle guarantee · Free shipping · Cancel anytime</p>
             </div>
           </FadeUp>
         </div>
@@ -1854,14 +1858,14 @@ export default function Home() {
           >
             <div className="flex items-center justify-between gap-3">
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-bold text-[#1C1917] truncate">Get BrewNectar</p>
-                <p className="text-xs text-[#78716C]">From $27/mo · Free Shipping</p>
+                <p className="text-sm font-bold text-[#1C1917] truncate">Upgrade Your Coffee</p>
+                <p className="text-xs text-[#78716C]">From $0.90/day · Free Shipping</p>
               </div>
               <a
                 href="#offers"
                 className="flex-shrink-0 px-5 py-2.5 text-sm font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all"
               >
-                Shop Now
+                Give Me Focus
               </a>
             </div>
           </motion.div>

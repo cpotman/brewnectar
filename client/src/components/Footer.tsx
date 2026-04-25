@@ -47,7 +47,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <h3 className="font-display font-bold text-xl text-[#1C1917] mb-3">BrewNectar</h3>
             <p className="text-sm text-[#78716C] leading-relaxed mb-5">
-              Nootropic coffee syrup for calm focus, faster recall, and deep work.
+              One pump turns your coffee into a cognitive upgrade. Calm focus. Faster recall. No crash.
             </p>
             <div className="flex gap-3">
               {SOCIAL_ICONS.map(({ name, icon: Icon }) => (
@@ -101,7 +101,7 @@ export default function Footer() {
           {/* Newsletter */}
           <div className="col-span-2 md:col-span-1">
             <h4 className="font-display font-semibold text-sm text-[#1C1917] uppercase tracking-wider mb-4">Stay in the loop</h4>
-            <p className="text-sm text-[#78716C] mb-4">Get 10% off your first order and early access to new products.</p>
+            <p className="text-sm text-[#78716C] mb-4">Get 10% off your first order plus brain performance tips from our research team.</p>
             <div className="flex gap-2">
               <input
                 type="email"

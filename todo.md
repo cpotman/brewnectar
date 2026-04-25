@@ -25,14 +25,14 @@
 - [x] Integrate File Storage (S3) - frontend upload UI
 - [x] Write tests for file storage integration
 - [x] Verify end-to-end file upload/download flow
-- [ ] Save pre-rewrite checkpoint (revert point)
-- [ ] Rewrite Hero/Headline section copy
-- [ ] Rewrite Problem section copy
-- [ ] Rewrite Ingredients/Science section copy
-- [ ] Rewrite How It Works section copy
-- [ ] Rewrite Social Proof section copy
-- [ ] Rewrite Offer/Pricing section copy
-- [ ] Rewrite all CTA button text
-- [ ] Rewrite FAQ section copy
-- [ ] Rewrite remaining copy (ticker, comparison table, What to Expect, etc.)
-- [ ] Verify all sections render correctly
+- [x] Save pre-rewrite checkpoint (revert point) — version fc91c1d4
+- [x] Rewrite Hero/Headline section copy
+- [x] Rewrite Problem section copy
+- [x] Rewrite Ingredients/Science section copy
+- [x] Rewrite How It Works section copy
+- [x] Rewrite Social Proof section copy
+- [x] Rewrite Offer/Pricing section copy
+- [x] Rewrite all CTA button text
+- [x] Rewrite FAQ section copy
+- [x] Rewrite remaining copy (ticker, comparison table, What to Expect, etc.)
+- [x] Verify all sections render correctly

@@ -76,7 +76,7 @@ export default function Navbar() {
               href="/product"
               className="inline-flex items-center px-5 py-2.5 text-sm font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg"
             >
-              Shop Now
+              Give Me Focus
             </Link>
           </div>
 
@@ -112,7 +112,7 @@ export default function Navbar() {
             onClick={() => setMobileOpen(false)}
             className="mt-4 block text-center px-5 py-3 text-sm font-semibold text-white bg-[#1C1917] rounded-full"
           >
-            Shop Now
+            Give Me Focus
           </Link>
         </div>
       )}
