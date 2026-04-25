@@ -36,3 +36,5 @@
 - [x] Rewrite FAQ section copy
 - [x] Rewrite remaining copy (ticker, comparison table, What to Expect, etc.)
 - [x] Verify all sections render correctly
+- [x] Rewrite the benefit block ("The 3-Hour Work Block" section)
+- [x] Fix escaped unicode apostrophes showing as literal \u2019 in rendered text

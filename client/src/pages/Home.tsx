@@ -49,7 +49,7 @@ const IMAGES = {
 /* ─── Clinical studies data ─── */
 const CLINICAL_STUDIES = [
   {
-    ingredient: "Lion\u2019s Mane",
+    ingredient: "Lion’s Mane",
     studyCount: "30+",
     tagline: "Peer-reviewed studies on neurogenesis & cognitive function",
     icon: Brain,
@@ -57,7 +57,7 @@ const CLINICAL_STUDIES = [
     dotColor: "bg-[#D97706]",
     studies: [
       {
-        title: "Acute and Chronic Effects of Lion\u2019s Mane on Cognitive Function",
+        title: "Acute and Chronic Effects of Lion’s Mane on Cognitive Function",
         authors: "Docherty et al.",
         journal: "Nutrients",
         year: 2023,
@@ -77,13 +77,13 @@ const CLINICAL_STUDIES = [
         authors: "Szućko-Kociuba et al.",
         journal: "Int J Mol Sci",
         year: 2023,
-        finding: "Comprehensive review confirming Lion\u2019s Mane promotes nerve growth factor (NGF) production and neuronal differentiation.",
+        finding: "Comprehensive review confirming Lion’s Mane promotes nerve growth factor (NGF) production and neuronal differentiation.",
         url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10650066/",
       },
     ],
   },
   {
-    ingredient: "Cognizin\u00AE",
+    ingredient: "Cognizin®",
     studyCount: "20+",
     tagline: "Clinical trials on memory, focus & attentional performance",
     icon: Zap,
@@ -95,7 +95,7 @@ const CLINICAL_STUDIES = [
         authors: "Nakazaki et al.",
         journal: "The Journal of Nutrition",
         year: 2021,
-        finding: "12 weeks of Cognizin\u00AE supplementation improved overall memory performance, especially episodic memory.",
+        finding: "12 weeks of Cognizin® supplementation improved overall memory performance, especially episodic memory.",
         url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8349115/",
       },
       {
@@ -176,7 +176,7 @@ const CLINICAL_STUDIES = [
       },
       {
         title: "B Vitamins in the Nervous System: Current Knowledge",
-        authors: "Calder\u00F3n-Ospina & Nava-Mesa",
+        authors: "Calderón-Ospina & Nava-Mesa",
         journal: "Nutrients",
         year: 2019,
         finding: "B vitamins are critical for myelin formation, neurotransmitter synthesis, and overall nervous system function.",
@@ -206,7 +206,7 @@ function ClinicalStudies() {
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706]">The Evidence</p>
           </div>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">
-            We Don\u2019t Ask You to Trust Us. We Show You the Papers.
+            We Don’t Ask You to Trust Us. We Show You the Papers.
           </h2>
           <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">
             175+ peer-reviewed studies back the ingredients in every bottle. Tap any ingredient to read the research yourself.
@@ -351,8 +351,8 @@ function ClinicalStudies() {
 /* ─── Ticker messages ─── */
 const TICKER_MESSAGES = [
   "Free shipping on every subscription",
-  "30 days. If you don\u2019t feel sharper, keep the bottle. Full refund.",
-  "Zero sugar \u00B7 30 servings \u00B7 $0.90/day",
+  "30 days. If you don’t feel sharper, keep the bottle. Full refund.",
+  "Zero sugar · 30 servings · $0.90/day",
   "12,000+ people already upgraded their coffee",
   "Every batch third-party tested for purity & potency",
   "Subscribe & save up to 45%",
@@ -382,7 +382,7 @@ const VIDEO_TESTIMONIALS = [
     id: 2,
     name: "Sarah M.",
     title: "Product Designer",
-    quote: "I designed an entire 40-screen app flow in one sitting. No second coffee. No snack break. Just\u2026 flow. That never happened before.",
+    quote: "I designed an entire 40-screen app flow in one sitting. No second coffee. No snack break. Just… flow. That never happened before.",
     rating: 5,
     thumbnail: IMAGES.lifestylePour,
   },
@@ -390,7 +390,7 @@ const VIDEO_TESTIMONIALS = [
     id: 3,
     name: "Marcus T.",
     title: "Founder & CEO",
-    quote: "I\u2019ve wasted hundreds on nootropic pills I forgot to take. This goes in the coffee I already drink. That\u2019s why it stuck.",
+    quote: "I’ve wasted hundreds on nootropic pills I forgot to take. This goes in the coffee I already drink. That’s why it stuck.",
     rating: 5,
     thumbnail: IMAGES.howStir,
   },
@@ -406,7 +406,7 @@ const VIDEO_TESTIMONIALS = [
     id: 5,
     name: "Jordan L.",
     title: "Creative Director",
-    quote: "The jitters are gone. The crash is gone. What\u2019s left is this clean, quiet focus where ideas actually connect. I\u2019m not going back.",
+    quote: "The jitters are gone. The crash is gone. What’s left is this clean, quiet focus where ideas actually connect. I’m not going back.",
     rating: 5,
     thumbnail: IMAGES.hero,
   },
@@ -416,31 +416,31 @@ const VIDEO_TESTIMONIALS = [
 const FAQ_DATA = [
   {
     q: "Do I need to switch my coffee?",
-    a: "No. That\u2019s the whole point. Mushroom coffees force you to drink their coffee. BrewNectar works with the coffee you already love. Drip, cold brew, espresso, latte, even decaf. One pump. Same mug. You\u2019re upgraded. Most people tell us it\u2019s the easiest health decision they\u2019ve ever made.",
+    a: "No. That’s the whole point. Mushroom coffees force you to drink their coffee. BrewNectar works with the coffee you already love. Drip, cold brew, espresso, latte, even decaf. One pump. Same mug. You’re upgraded. Most people tell us it’s the easiest health decision they’ve ever made.",
   },
   {
     q: "What does it taste like?",
     a: "Smooth vanilla bean. Zero sugar. Think premium vanilla latte, not candy. It blends into black coffee, oat milk lattes, and cold brew without changing the character of your drink. Several customers have told us they actually prefer their coffee with it now.",
   },
   {
-    q: "I\u2019m already jittery from coffee. Won\u2019t this make it worse?",
-    a: "The opposite. L-Theanine is in the formula specifically to smooth out caffeine\u2019s rough edges. It promotes alpha brain wave activity, which is the neurological state behind calm, sustained attention. The result: you keep the energy, lose the anxiety. Many customers report they\u2019ve actually reduced their coffee intake because one cup with BrewNectar does more than three cups without it.",
+    q: "I’m already jittery from coffee. Won’t this make it worse?",
+    a: "The opposite. L-Theanine is in the formula specifically to smooth out caffeine’s rough edges. It promotes alpha brain wave activity, which is the neurological state behind calm, sustained attention. The result: you keep the energy, lose the anxiety. Many customers report they’ve actually reduced their coffee intake because one cup with BrewNectar does more than three cups without it.",
   },
   {
     q: "Can I take it every day?",
-    a: "Yes, and you should. Every ingredient is GRAS-certified and clinically studied for daily use. But here\u2019s the real reason: Lion\u2019s Mane and Cognizin\u00AE compound over time. The longer you use BrewNectar consistently, the more your brain builds new neural connections. Skipping days slows that process. Think of it less like a supplement and more like a daily investment in how your brain performs.",
+    a: "Yes, and you should. Every ingredient is GRAS-certified and clinically studied for daily use. But here’s the real reason: Lion’s Mane and Cognizin® compound over time. The longer you use BrewNectar consistently, the more your brain builds new neural connections. Skipping days slows that process. Think of it less like a supplement and more like a daily investment in how your brain performs.",
   },
   {
     q: "How fast will I notice a difference?",
-    a: "Most people feel calmer, sharper focus within 20 minutes of their first cup. That\u2019s the L-Theanine and Cognizin\u00AE working immediately. The deeper benefits take longer. After 2\u20134 weeks, you\u2019ll notice faster recall. After 2\u20133 months, Lion\u2019s Mane\u2019s neurogenesis effects kick in. That\u2019s when people say things like \u2018my brain feels different.\u2019 The 3-bottle plan exists for exactly this reason.",
+    a: "Most people feel calmer, sharper focus within 20 minutes of their first cup. That’s the L-Theanine and Cognizin® working immediately. The deeper benefits take longer. After 2–4 weeks, you’ll notice faster recall. After 2–3 months, Lion’s Mane’s neurogenesis effects kick in. That’s when people say things like ‘my brain feels different.’ The 3-bottle plan exists for exactly this reason.",
   },
   {
     q: "How do I know the ingredients are real and properly dosed?",
-    a: "Every batch is third-party tested for purity, potency, and heavy metals. We use Cognizin\u00AE, a patented form of citicoline with 20+ clinical trials behind it. We disclose every milligram on the label. No proprietary blends. No hidden dosages. If a company won\u2019t tell you exactly what\u2019s in the bottle, ask yourself why.",
+    a: "Every batch is third-party tested for purity, potency, and heavy metals. We use Cognizin®, a patented form of citicoline with 20+ clinical trials behind it. We disclose every milligram on the label. No proprietary blends. No hidden dosages. If a company won’t tell you exactly what’s in the bottle, ask yourself why.",
   },
   {
-    q: "What if it doesn\u2019t work for me?",
-    a: "Then you keep the bottle and we refund every penny. No form. No return shipping. One email. We do this because 94% of subscribers stay past their first order. We\u2019re that confident. Try it for 30 days. If your coffee doesn\u2019t feel different, you paid nothing.",
+    q: "What if it doesn’t work for me?",
+    a: "Then you keep the bottle and we refund every penny. No form. No return shipping. One email. We do this because 94% of subscribers stay past their first order. We’re that confident. Try it for 30 days. If your coffee doesn’t feel different, you paid nothing.",
   },
 ];
 
@@ -450,18 +450,18 @@ const INGREDIENTS = [
     name: "Lion's Mane",
     dosage: "1.2g per serving",
     tag: "Your Brain Builds New Connections",
-    science: "30+ peer-reviewed studies show Lion\u2019s Mane stimulates nerve growth factor (NGF), the protein your brain uses to grow and repair neurons. This isn\u2019t a temporary boost. It\u2019s structural change.",
+    science: "30+ peer-reviewed studies show Lion’s Mane stimulates nerve growth factor (NGF), the protein your brain uses to grow and repair neurons. This isn’t a temporary boost. It’s structural change.",
     emotion: "The reason your thinking gets sharper over weeks, not just hours.",
     icon: Brain,
     color: "bg-amber-50 text-[#B45309]",
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-lions-mane_c905f004.png",
   },
   {
-    name: "Cognizin\u00AE (Citicoline)",
+    name: "Cognizin® (Citicoline)",
     dosage: "250mg per serving",
     tag: "Retrieve Names, Numbers, and Ideas On Demand",
     science: "The only patented form of citicoline with 20+ clinical trials on focus and working memory. In one study, subjects improved attentional performance and reduced errors after just 28 days.",
-    emotion: "That name on the tip of your tongue? You\u2019ll have it instantly.",
+    emotion: "That name on the tip of your tongue? You’ll have it instantly.",
     icon: Zap,
     color: "bg-emerald-50 text-emerald-700",
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-cognizin_3fb446ba.png",
@@ -469,9 +469,9 @@ const INGREDIENTS = [
   {
     name: "L-Theanine",
     dosage: "75mg per serving",
-    tag: "The Reason You Won\u2019t Feel Jittery",
-    science: "This amino acid, found naturally in green tea, promotes alpha brain wave activity. That\u2019s the neurological state behind calm, sustained attention. Combined with caffeine, clinical trials show it improves focus while reducing anxiety.",
-    emotion: "Your hands stop shaking. Your mind stops racing. What\u2019s left is clean, quiet focus.",
+    tag: "The Reason You Won’t Feel Jittery",
+    science: "This amino acid, found naturally in green tea, promotes alpha brain wave activity. That’s the neurological state behind calm, sustained attention. Combined with caffeine, clinical trials show it improves focus while reducing anxiety.",
+    emotion: "Your hands stop shaking. Your mind stops racing. What’s left is clean, quiet focus.",
     icon: Sparkles,
     color: "bg-sky-50 text-sky-700",
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-l-theanine_dc3b4af3.png",
@@ -479,7 +479,7 @@ const INGREDIENTS = [
   {
     name: "B Vitamins (B6 + B12)",
     dosage: "250% DV each",
-    tag: "Steady Energy That Doesn\u2019t Crash",
+    tag: "Steady Energy That Doesn’t Crash",
     science: "Your brain burns through B vitamins to produce dopamine, serotonin, and norepinephrine. Without enough, you feel foggy by noon. 250% daily value keeps your neurotransmitter factory running all day.",
     emotion: "No spike at 9am. No wall at 2pm. Just steady, reliable output.",
     icon: Coffee,
@@ -516,8 +516,8 @@ const PLANS: Record<PlanType, {
     badgeColor: "bg-emerald-600",
     perks: [
       { text: "\ud83c\udf93 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
-      { text: "\ud83d\udcb0 Maximum savings \u2014 lowest price per serving", positive: true },
-      { text: "\ud83d\udd12 Lock in savings \u2014 price guaranteed even if we raise it", positive: true },
+      { text: "\ud83d\udcb0 Maximum savings — lowest price per serving", positive: true },
+      { text: "\ud83d\udd12 Lock in savings — price guaranteed even if we raise it", positive: true },
       { text: "🛡️ Try it 30 days — if you don't feel sharper, keep the bottle. We'll refund every penny.", positive: true },
       { text: "🏆 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
       { text: "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67 Share with family and friends", positive: true },
@@ -539,9 +539,9 @@ const PLANS: Record<PlanType, {
     badgeColor: "bg-[#B45309]",
     perks: [
       { text: "\ud83c\udf93 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
-      { text: "\ud83d\udcb0 Great value \u2014 $32/mo, share with a partner", positive: true },
-      { text: "\ud83d\udd12 Lock in savings \u2014 price guaranteed even if we raise it", positive: true },
-      { text: "\ud83d\udee1\ufe0f Try it 30 days \u2014 keep the bottle if you're not sharper. Full refund.", positive: true },
+      { text: "\ud83d\udcb0 Great value — $32/mo, share with a partner", positive: true },
+      { text: "\ud83d\udd12 Lock in savings — price guaranteed even if we raise it", positive: true },
+      { text: "\ud83d\udee1\ufe0f Try it 30 days — keep the bottle if you're not sharper. Full refund.", positive: true },
       { text: "\ud83c\udfc6 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
       { text: "\ud83d\ude9a Fast & FREE Shipping", positive: true },
       { text: "\ud83d\udd04 Cancel or pause anytime", positive: true },
@@ -595,7 +595,7 @@ const EXTENDED_REVIEWS = [
     rating: 5,
     date: "March 2026",
     heading: "I recommend this to patients. I also take it myself.",
-    text: "I\u2019m extremely cautious about supplements. Most nootropic products hide behind proprietary blends with undisclosed dosages. BrewNectar discloses every milligram. The Cognizin\u00AE at 250mg has solid evidence for memory and attention. The Lion\u2019s Mane is dosed at 1.2g with specified beta-glucan content. I\u2019ve been using it for 3 months and recommending it to patients who want cognitive support. The syrup format means they actually take it, unlike the pills that end up forgotten in a drawer.",
+    text: "I’m extremely cautious about supplements. Most nootropic products hide behind proprietary blends with undisclosed dosages. BrewNectar discloses every milligram. The Cognizin® at 250mg has solid evidence for memory and attention. The Lion’s Mane is dosed at 1.2g with specified beta-glucan content. I’ve been using it for 3 months and recommending it to patients who want cognitive support. The syrup format means they actually take it, unlike the pills that end up forgotten in a drawer.",
   },
   {
     name: "James P.",
@@ -603,15 +603,15 @@ const EXTENDED_REVIEWS = [
     rating: 5,
     date: "February 2026",
     heading: "A single lapse in focus costs me thousands. This fixed that.",
-    text: "I trade futures from 6:30 AM to 4 PM. Nearly 10 hours of decisions where one impulsive move can wipe a week of gains. I used to rely on 4-5 cups of coffee. By noon I\u2019d be jittery and making bad calls. Switched to 2 cups with BrewNectar. My screen time analytics show fewer trades, but better ones. The L-Theanine keeps me calm during volatile moves. I\u2019m on the 3-bottle plan because running out is not an option.",
+    text: "I trade futures from 6:30 AM to 4 PM. Nearly 10 hours of decisions where one impulsive move can wipe a week of gains. I used to rely on 4-5 cups of coffee. By noon I’d be jittery and making bad calls. Switched to 2 cups with BrewNectar. My screen time analytics show fewer trades, but better ones. The L-Theanine keeps me calm during volatile moves. I’m on the 3-bottle plan because running out is not an option.",
   },
   {
     name: "Michelle K.",
     title: "Working Mom of 3",
     rating: 5,
     date: "March 2026",
-    heading: "The afternoon crash stopped. I\u2019m not exaggerating.",
-    text: "Three kids under 8. By 2 PM I used to be running on fumes. Snapping at the kids. Forgetting school pickups. Staring at my laptop unable to form a sentence. My husband found BrewNectar. I was skeptical. After two weeks of adding it to my morning latte, the crash just\u2026 stopped. I\u2019m more patient. I\u2019m getting work done during nap time instead of doom-scrolling. This is the only \u2018supplement\u2019 that\u2019s ever actually changed my day.",
+    heading: "The afternoon crash stopped. I’m not exaggerating.",
+    text: "Three kids under 8. By 2 PM I used to be running on fumes. Snapping at the kids. Forgetting school pickups. Staring at my laptop unable to form a sentence. My husband found BrewNectar. I was skeptical. After two weeks of adding it to my morning latte, the crash just… stopped. I’m more patient. I’m getting work done during nap time instead of doom-scrolling. This is the only ‘supplement’ that’s ever actually changed my day.",
   },
   {
     name: "David S.",
@@ -619,7 +619,7 @@ const EXTENDED_REVIEWS = [
     rating: 5,
     date: "January 2026",
     heading: "I study neuroplasticity. The formula is legit.",
-    text: "I know exactly what Lion\u2019s Mane and citicoline do at the cellular level. Most companies underdose or use inferior forms. BrewNectar uses Cognizin\u00AE (the patented citicoline) and specifies beta-glucan content in their Lion\u2019s Mane. That\u2019s how you know it\u2019s real. I\u2019ve used it daily for 4 months while writing my dissertation. My writing sessions went from fragmented 30-minute bursts to solid 2-3 hour deep work blocks. My advisor noticed the difference before I told her what I was taking.",
+    text: "I know exactly what Lion’s Mane and citicoline do at the cellular level. Most companies underdose or use inferior forms. BrewNectar uses Cognizin® (the patented citicoline) and specifies beta-glucan content in their Lion’s Mane. That’s how you know it’s real. I’ve used it daily for 4 months while writing my dissertation. My writing sessions went from fragmented 30-minute bursts to solid 2-3 hour deep work blocks. My advisor noticed the difference before I told her what I was taking.",
   },
   {
     name: "Tanya R.",
@@ -627,7 +627,7 @@ const EXTENDED_REVIEWS = [
     rating: 5,
     date: "February 2026",
     heading: "I read every label. This one passed.",
-    text: "No artificial sweeteners. No fillers. No proprietary blends. Zero sugar. I can pronounce every ingredient. I add it to matcha on days I skip coffee and it works the same. The vanilla is subtle and natural. Not that fake sweetness you get from most supplements. My clients started asking what changed because my class cues are sharper and I\u2019m remembering everyone\u2019s modifications without checking my notes.",
+    text: "No artificial sweeteners. No fillers. No proprietary blends. Zero sugar. I can pronounce every ingredient. I add it to matcha on days I skip coffee and it works the same. The vanilla is subtle and natural. Not that fake sweetness you get from most supplements. My clients started asking what changed because my class cues are sharper and I’m remembering everyone’s modifications without checking my notes.",
   },
   {
     name: "Robert M.",
@@ -635,7 +635,7 @@ const EXTENDED_REVIEWS = [
     rating: 5,
     date: "March 2026",
     heading: "At 68, I beat my grandson at chess again.",
-    text: "I was starting to notice the little things. Forgetting where I put my keys. Losing my train of thought mid-sentence. Struggling with crossword puzzles I used to breeze through. My daughter bought me BrewNectar for Christmas. Three months later: the crosswords are easier. I\u2019m reading two books a week instead of one. And last week I won at chess for the first time in a year. The Lion\u2019s Mane research on neurogenesis in older adults is what convinced me to stick with it.",
+    text: "I was starting to notice the little things. Forgetting where I put my keys. Losing my train of thought mid-sentence. Struggling with crossword puzzles I used to breeze through. My daughter bought me BrewNectar for Christmas. Three months later: the crosswords are easier. I’m reading two books a week instead of one. And last week I won at chess for the first time in a year. The Lion’s Mane research on neurogenesis in older adults is what convinced me to stick with it.",
   },
 ];
 
@@ -908,7 +908,7 @@ export default function Home() {
               {
                 step: "01",
                 title: "Pour",
-                desc: "One pump into the coffee you\u2019re already holding. Drip, cold brew, espresso, oat milk latte. It doesn\u2019t matter. It all works.",
+                desc: "One pump into the coffee you’re already holding. Drip, cold brew, espresso, oat milk latte. It doesn’t matter. It all works.",
                 image: IMAGES.lifestylePour,
               },
               {
@@ -920,7 +920,7 @@ export default function Home() {
               {
                 step: "03",
                 title: "Lock In",
-                desc: "Within 20 minutes, the noise quiets. You start working. You look up and an hour has passed. That\u2019s the stack doing its job.",
+                desc: "Within 20 minutes, the noise quiets. You start working. You look up and an hour has passed. That’s the stack doing its job.",
                 image: IMAGES.howLockIn,
               },
             ].map((item, i) => (
@@ -957,17 +957,17 @@ export default function Home() {
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <FadeUp>
             <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-[#1C1917] mb-4 leading-tight">
-              The 3-Hour Work Block.
+              Same Coffee. Same Mug.
             </h2>
           </FadeUp>
           <FadeUp delay={0.1}>
             <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-[#78716C] mb-4 leading-tight">
-              The Name You Recall Instantly.
+              Completely Different Brain.
             </h2>
           </FadeUp>
           <FadeUp delay={0.2}>
             <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-gradient-warm mb-8 leading-tight">
-              The Afternoon That Doesn't Fall Apart.
+              One Pump Is All It Takes.
             </h2>
           </FadeUp>
           <FadeUp delay={0.3}>
@@ -1008,7 +1008,7 @@ export default function Home() {
                 {
                   period: "Week 1",
                   title: "The Quiet Settles In",
-                  desc: "L-Theanine smooths out caffeine\u2019s rough edges within 20 minutes. Cognizin\u00AE sharpens working memory. Your first cup feels different. Calmer. Clearer. No jitters.",
+                  desc: "L-Theanine smooths out caffeine’s rough edges within 20 minutes. Cognizin® sharpens working memory. Your first cup feels different. Calmer. Clearer. No jitters.",
                   ingredients: ["L-Theanine", "Cognizin"],
                   color: "bg-amber-50 border-amber-200",
                   iconColor: "text-[#D97706]",
@@ -1018,7 +1018,7 @@ export default function Home() {
                 {
                   period: "1 Month",
                   title: "Names Come Faster",
-                  desc: "Cognizin\u00AE accumulates in your system. Working memory improves. You recall details from meetings without checking notes. Tasks that felt hard start feeling automatic.",
+                  desc: "Cognizin® accumulates in your system. Working memory improves. You recall details from meetings without checking notes. Tasks that felt hard start feeling automatic.",
                   ingredients: ["Cognizin", "B Vitamins"],
                   color: "bg-emerald-50 border-emerald-200",
                   iconColor: "text-emerald-600",
@@ -1028,7 +1028,7 @@ export default function Home() {
                 {
                   period: "2 Months",
                   title: "Deep Work Gets Deeper",
-                  desc: "Lion\u2019s Mane\u2019s neurogenesis kicks in. Your brain is literally growing new neural connections. Deep work sessions stretch from 45 minutes to 2-3 hours. You notice it.",
+                  desc: "Lion’s Mane’s neurogenesis kicks in. Your brain is literally growing new neural connections. Deep work sessions stretch from 45 minutes to 2-3 hours. You notice it.",
                   ingredients: ["Lion's Mane", "Cognizin"],
                   color: "bg-sky-50 border-sky-200",
                   iconColor: "text-sky-600",
@@ -1038,7 +1038,7 @@ export default function Home() {
                 {
                   period: "3 Months",
                   title: "Your Brain Feels Different",
-                  desc: "Full neurogenesis benefits. The entire stack is compounding. This is when customers say \u2018my brain feels different.\u2019 Not a spike. A permanent upgrade to how you think.",
+                  desc: "Full neurogenesis benefits. The entire stack is compounding. This is when customers say ‘my brain feels different.’ Not a spike. A permanent upgrade to how you think.",
                   ingredients: ["Lion's Mane", "Full Stack"],
                   color: "bg-violet-50 border-violet-200",
                   iconColor: "text-violet-600",
@@ -1624,9 +1624,9 @@ export default function Home() {
           <FadeUp>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 md:mb-12">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3">Don\u2019t Take Our Word For It</p>
+                <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3">Don’t Take Our Word For It</p>
                 <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#1C1917]">
-                  12,000+ People Made the Switch. Here\u2019s What Happened.
+                  12,000+ People Made the Switch. Here’s What Happened.
                 </h2>
                 <p className="text-[#78716C] text-lg mt-2">4.9/5 from 2,400+ verified reviews</p>
               </div>
@@ -1736,7 +1736,7 @@ export default function Home() {
               Still Thinking It Over? Good.
             </h2>
             <p className="text-center text-[#78716C] text-lg mb-12">
-              Skepticism means you\u2019ve been burned before. Here are the answers that convinced 12,000+ people to try it.
+              Skepticism means you’ve been burned before. Here are the answers that convinced 12,000+ people to try it.
             </p>
           </FadeUp>
 
