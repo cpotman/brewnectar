@@ -47,7 +47,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <h3 className="font-display font-bold text-xl text-[#1C1917] mb-3">BrewNectar</h3>
             <p className="text-sm text-[#78716C] leading-relaxed mb-5">
-              One pump turns your coffee into a cognitive upgrade. Calm focus. Faster recall. No crash.
+              One pump adds research-backed nootropics to your daily coffee. Designed for calm focus and sustained mental clarity.
             </p>
             <div className="flex gap-3">
               {SOCIAL_ICONS.map(({ name, icon: Icon }) => (
@@ -101,7 +101,7 @@ export default function Footer() {
           {/* Newsletter */}
           <div className="col-span-2 md:col-span-1">
             <h4 className="font-display font-semibold text-sm text-[#1C1917] uppercase tracking-wider mb-4">Stay in the loop</h4>
-            <p className="text-sm text-[#78716C] mb-4">Get 10% off your first order plus brain performance tips from our research team.</p>
+            <p className="text-sm text-[#78716C] mb-4">Get 10% off your first order plus science-backed brain performance tips delivered weekly.</p>
             <div className="flex gap-2">
               <input
                 type="email"
@@ -121,7 +121,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="border-t border-stone-200/60 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-[#A8A29E]">&copy; {new Date().getFullYear()} BrewNectar. All rights reserved.</p>
-          <p className="text-xs text-[#A8A29E]">These statements have not been evaluated by the FDA.</p>
+          <p className="text-xs text-[#A8A29E]">*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
         </div>
       </div>
     </footer>

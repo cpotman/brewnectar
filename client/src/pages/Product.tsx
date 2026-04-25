@@ -380,7 +380,7 @@ export default function Product() {
                   </span>
                 </div>
                 <p className="text-[#57534E] text-base mb-5 leading-relaxed hidden lg:block">
-                  Formulated with clinical-dose <span className="font-bold text-gradient-warm">Lion's Mane</span>, patented <span className="font-bold text-gradient-warm">Cognizin®</span>, and <span className="font-bold text-gradient-warm">L-Theanine</span>. One tablespoon transforms any coffee into a precision nootropic stack.
+                  Formulated with research-backed <span className="font-bold text-gradient-warm">Lion's Mane</span>, patented <span className="font-bold text-gradient-warm">Cognizin®</span>, and <span className="font-bold text-gradient-warm">L-Theanine</span>. One tablespoon transforms any coffee into a precision nootropic stack.
                 </p>
 
                 {/* Trust strip — 2 rows (ported from homepage, Back in Stock already shown above) */}
@@ -818,7 +818,7 @@ export default function Product() {
                 <p className="text-sm text-[#78716C] mb-5">Add to your existing coffee. Done.</p>
                 <div className="space-y-3">
                   {[
-                    { text: "Clinical-dose nootropics (Lion's Mane 1.2g, Cognizin® 250mg)", bold: true },
+                    { text: "Research-backed nootropics (Lion's Mane 1.2g, Cognizin® 250mg)", bold: true },
                     { text: "Works with ANY coffee you already love" },
                     { text: "Zero sugar, zero calories" },
                     { text: "Calm focus without jitters or crash" },
@@ -1022,7 +1022,7 @@ export default function Product() {
             {[
               {
                 objection: "\"I've tried nootropics before and they didn't work.\"",
-                answer: "Most nootropics underdose ingredients or use proprietary blends. BrewNectar uses clinical doses of patented ingredients (Cognizin®, not generic citicoline) with transparent labeling. Plus, it integrates into your existing coffee — no new habit required.",
+                answer: "Most nootropics underdose ingredients or use proprietary blends. BrewNectar uses research-backed doses of patented ingredients (Cognizin®, not generic citicoline) with transparent labeling. Plus, it integrates into your existing coffee — no new habit required.",
                 icon: AlertCircle,
               },
               {

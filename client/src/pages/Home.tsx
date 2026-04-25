@@ -353,10 +353,10 @@ const TICKER_MESSAGES = [
   "Free shipping on every subscription",
   "30 days. If you don’t feel sharper, keep the bottle. Full refund.",
   "Zero sugar · 30 servings · $0.90/day",
-  "12,000+ people already upgraded their coffee",
+  "Thousands of people already upgraded their coffee",
   "Every batch third-party tested for purity & potency",
   "Subscribe & save up to 45%",
-  "4 clinically-dosed nootropics in every pump",
+  "4 research-backed nootropics in every pump",
 ];
 
 /* ─── Video testimonials data ─── */
@@ -440,7 +440,7 @@ const FAQ_DATA = [
   },
   {
     q: "What if it doesn’t work for me?",
-    a: "Then you keep the bottle and we refund every penny. No form. No return shipping. One email. We do this because 94% of subscribers stay past their first order. We’re that confident. Try it for 30 days. If your coffee doesn’t feel different, you paid nothing.",
+    a: "Then you keep the bottle and we refund every penny. No form. No return shipping. One email. We do this because the vast majority of subscribers stay past their first order. We're that confident. Try it for 30 days. If your coffee doesn’t feel different, you paid nothing.",
   },
 ];
 
@@ -480,7 +480,7 @@ const INGREDIENTS = [
     name: "B Vitamins (B6 + B12)",
     dosage: "250% DV each",
     tag: "Steady Energy That Doesn’t Crash",
-    science: "Your brain burns through B vitamins to produce dopamine, serotonin, and norepinephrine. Without enough, you feel foggy by noon. 250% daily value keeps your neurotransmitter factory running all day.",
+    science: "B vitamins are essential cofactors in the production of dopamine, serotonin, and norepinephrine. They support your brain's natural energy metabolism and neurotransmitter synthesis throughout the day.",
     emotion: "No spike at 9am. No wall at 2pm. Just steady, reliable output.",
     icon: Coffee,
     color: "bg-rose-50 text-rose-700",
@@ -721,7 +721,7 @@ export default function Home() {
                       <Star key={i} size={14} className="fill-[#D97706] text-[#D97706]" />
                     ))}
                   </div>
-                  <span className="text-xs font-medium text-[#92400E]">12,000+ people made this switch</span>
+                  <span className="text-xs font-medium text-[#92400E]">Thousands of people made this switch</span>
                 </div>
               </FadeUp>
 
@@ -734,7 +734,7 @@ export default function Home() {
 
               <FadeUp delay={0.2}>
                 <p className="text-base md:text-lg lg:text-xl text-[#57534E] leading-relaxed mb-6 md:mb-8 max-w-lg">
-                  One pump of vanilla bean syrup adds four clinically-dosed nootropics to the coffee you already drink. The result: locked-in focus within 20 minutes, recall that sharpens over weeks, and an afternoon that doesn't fall apart. No new coffee. No pills. No blender.
+                  One pump of vanilla bean syrup adds four research-backed nootropics to the coffee you already drink. The result: calmer, sharper focus that many users notice within the first 20 minutes, recall that may improve with consistent use, and an afternoon that doesn't fall apart. No new coffee. No pills. No blender.
                 </p>
               </FadeUp>
 
@@ -756,7 +756,7 @@ export default function Home() {
                   {[
                     { label: "Works with Any Coffee", icon: "☕" },
                     { label: "Zero Sugar · Zero Calories", icon: "✦" },
-                    { label: "4 Clinical-Dose Nootropics", icon: "◆" },
+                    { label: "4 Research-Backed Nootropics", icon: "◆" },
                   ].map((badge) => (
                     <div key={badge.label} className="flex items-center gap-2">
                       <span className="text-[#D97706] text-sm">{badge.icon}</span>
@@ -806,7 +806,7 @@ export default function Home() {
               You Drink the Coffee. The Focus Never Shows Up.
             </h2>
             <p className="text-center text-[#78716C] text-lg mb-16 max-w-2xl mx-auto">
-              You already know this feeling. You pour the cup. You wait for clarity. Instead, you get 45 minutes of scattered energy followed by a wall. Caffeine is a stimulant, not a cognitive tool. Here's what it's actually doing to your day.
+              You already know this feeling. You pour the cup. You wait for clarity. Instead, you get 45 minutes of scattered energy followed by a wall. Caffeine is a stimulant — it boosts alertness, but it doesn't support memory, recall, or sustained focus on its own. Here's what it's actually doing to your day.
             </p>
           </FadeUp>
 
@@ -920,7 +920,7 @@ export default function Home() {
               {
                 step: "03",
                 title: "Lock In",
-                desc: "Within 20 minutes, the noise quiets. You start working. You look up and an hour has passed. That’s the stack doing its job.",
+                desc: "Many users report feeling calmer and more focused within the first 20 minutes. You start working. You look up and an hour has passed. That's the stack doing its job.",
                 image: IMAGES.howLockIn,
               },
             ].map((item, i) => (
@@ -1028,7 +1028,7 @@ export default function Home() {
                 {
                   period: "2 Months",
                   title: "Deep Work Gets Deeper",
-                  desc: "Lion’s Mane’s neurogenesis kicks in. Your brain is literally growing new neural connections. Deep work sessions stretch from 45 minutes to 2-3 hours. You notice it.",
+                  desc: "Lion's Mane has been studied for its role in supporting nerve growth factor (NGF) production, which may support the formation of new neural connections over time. Many users report deeper, longer focus sessions around this stage.",
                   ingredients: ["Lion's Mane", "Cognizin"],
                   color: "bg-sky-50 border-sky-200",
                   iconColor: "text-sky-600",
@@ -1038,7 +1038,7 @@ export default function Home() {
                 {
                   period: "3 Months",
                   title: "Your Brain Feels Different",
-                  desc: "Full neurogenesis benefits. The entire stack is compounding. This is when customers say ‘my brain feels different.’ Not a spike. A permanent upgrade to how you think.",
+                  desc: "The full stack is compounding. This is when many customers say 'my brain feels different.' Not a spike. A sustained improvement in how you think, built through consistent daily use.",
                   ingredients: ["Lion's Mane", "Full Stack"],
                   color: "bg-violet-50 border-violet-200",
                   iconColor: "text-violet-600",
@@ -1160,7 +1160,7 @@ export default function Home() {
               </div>
 
               <p className="text-center text-xs text-[#A8A29E] mt-4">
-                Every day without the stack is a day your brain stays on the flat line. The 3-bottle plan exists for this reason.
+                Consistency is key. The ingredients in BrewNectar are designed to compound with daily use. The 3-bottle plan helps you stay on track.
               </p>
             </div>
           </FadeUp>
@@ -1190,12 +1190,12 @@ export default function Home() {
                 <p className="text-sm text-[#78716C] mb-5">Add to your existing coffee. Done.</p>
                 <div className="space-y-3">
                   {[
-                    { text: "Clinical-dose nootropics (Lion's Mane 1.2g, Cognizin® 250mg)", bold: true },
+                    { text: "Research-backed nootropics (Lion's Mane 1.2g, Cognizin® 250mg)", bold: true },
                     { text: "Works with ANY coffee you already love" },
                     { text: "Zero sugar, zero calories" },
                     { text: "Calm focus without jitters or crash" },
                     { text: "100% transparent label — every mg disclosed" },
-                    { text: "Supports neurogenesis & long-term brain health" },
+                    { text: "Ingredients studied for long-term cognitive support" },
                     { text: "Vanilla bean flavor that actually tastes good" },
                     { text: "From $0.90/day (less than your coffee)" },
                   ].map((item) => (
@@ -1221,17 +1221,17 @@ export default function Home() {
                 {[
                   {
                     name: "Mushroom Coffees",
-                    subtitle: "Ryze, Everyday Dose, Four Sigmatic",
-                    cons: ["Forces you to switch your coffee", "Earthy taste most people dislike", "Proprietary blends hide real dosages", "48 BBB complaints (Ryze alone)"],
+                    subtitle: "Popular mushroom coffee brands",
+                    cons: ["Forces you to switch your coffee", "Earthy taste most people dislike", "Proprietary blends hide real dosages", "Mixed customer satisfaction reviews"],
                   },
                   {
                     name: "Sugary Coffee Syrups",
-                    subtitle: "Torani, Monin, Starbucks",
+                    subtitle: "Popular flavored syrup brands",
                     cons: ["10-15g sugar per pump", "Zero cognitive benefits", "Blood sugar spike → crash", "Empty calories, no function"],
                   },
                   {
                     name: "Nootropic Pills",
-                    subtitle: "Alpha Brain, Thesis, etc.",
+                    subtitle: "Popular nootropic capsule brands",
                     cons: ["Another pill to remember", "Doesn't integrate into your routine", "Often underdosed ingredients", "No ritual, no enjoyment"],
                   },
                 ].map((alt) => (
@@ -1261,7 +1261,7 @@ export default function Home() {
           <FadeUp delay={0.2}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 p-5 rounded-2xl bg-[#1C1917] text-white">
               <div className="text-center">
-                <p className="text-2xl font-display font-bold">4 Clinically-Dosed</p>
+                <p className="text-2xl font-display font-bold">4 Research-Backed</p>
                 <p className="text-xs text-stone-400">nootropic ingredients</p>
               </div>
               <div className="hidden sm:block w-px h-10 bg-stone-700" />
@@ -1389,10 +1389,10 @@ export default function Home() {
               <div>
                 {/* Trust strip — 3 rows */}
                 <div className="flex flex-col gap-2.5 mb-5">
-                  {/* Row 1: Back in Stock */}
+                  {/* Row 1: Now Shipping */}
                   <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-xs font-semibold text-emerald-700 w-fit">
                     <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" /></span>
-                    Back in Stock
+                    Now Shipping
                   </span>
                   {/* Row 2: Built for real results */}
                   <div className="flex items-center gap-2 text-sm text-[#44403C]">
@@ -1609,7 +1609,7 @@ export default function Home() {
                   </div>
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/60 text-xs font-semibold text-[#92400E]">
                     <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" /></span>
-                    High demand — limited stock available
+                    Ships within 24 hours — order today
                   </span>
                 </div>
               </div>
@@ -1626,7 +1626,7 @@ export default function Home() {
               <div>
                 <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3">Don’t Take Our Word For It</p>
                 <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#1C1917]">
-                  12,000+ People Made the Switch. Here’s What Happened.
+                  Thousands Made the Switch. Here's What Happened.
                 </h2>
                 <p className="text-[#78716C] text-lg mt-2">4.9/5 from 2,400+ verified reviews</p>
               </div>
@@ -1736,7 +1736,7 @@ export default function Home() {
               Still Thinking It Over? Good.
             </h2>
             <p className="text-center text-[#78716C] text-lg mb-12">
-              Skepticism means you’ve been burned before. Here are the answers that convinced 12,000+ people to try it.
+              Skepticism means you've been burned before. Here are the answers that convinced thousands of people to try it.
             </p>
           </FadeUp>
 

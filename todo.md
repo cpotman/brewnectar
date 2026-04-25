@@ -38,3 +38,18 @@
 - [x] Verify all sections render correctly
 - [x] Rewrite the benefit block ("The 3-Hour Work Block" section)
 - [x] Fix escaped unicode apostrophes showing as literal \u2019 in rendered text
+- [x] HIGH: Soften "locked-in focus within 20 minutes" — changed to "many users notice"
+- [x] HIGH: Fix "your brain is literally growing new neural connections" — softened to NGF research language
+- [x] HIGH: Fix "a permanent upgrade to how you think" — changed to "sustained improvement"
+- [x] HIGH: Remove named competitor comparisons and BBB claim — genericized brand names
+- [x] HIGH: Soften unverifiable statistics (12,000+, 2,400+, 94%) — changed to "thousands" / "vast majority"
+- [x] HIGH: Soften graph caption fear-based language
+- [x] HIGH: Fix "Supports neurogenesis" — changed to "studied for long-term cognitive support"
+- [x] HIGH: Replace "limited stock available" false scarcity — changed to "Ships within 24 hours"
+- [x] HIGH: Replace "Back in Stock" badge — changed to "Now Shipping"
+- [x] MEDIUM: Change "clinically-dosed" to "research-backed" throughout (Home, Product, ticker)
+- [x] MEDIUM: Soften "caffeine is not a cognitive tool" to accurate language
+- [x] MEDIUM: Soften B-vitamin deficiency implication
+- [x] MEDIUM: Complete FDA disclaimer in footer (full standard language)
+- [x] MEDIUM: Soften "our research team" in footer newsletter
+- [x] MEDIUM: Soften footer brand description
