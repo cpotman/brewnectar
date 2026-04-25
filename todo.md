@@ -25,3 +25,14 @@
 - [x] Integrate File Storage (S3) - frontend upload UI
 - [x] Write tests for file storage integration
 - [x] Verify end-to-end file upload/download flow
+- [ ] Save pre-rewrite checkpoint (revert point)
+- [ ] Rewrite Hero/Headline section copy
+- [ ] Rewrite Problem section copy
+- [ ] Rewrite Ingredients/Science section copy
+- [ ] Rewrite How It Works section copy
+- [ ] Rewrite Social Proof section copy
+- [ ] Rewrite Offer/Pricing section copy
+- [ ] Rewrite all CTA button text
+- [ ] Rewrite FAQ section copy
+- [ ] Rewrite remaining copy (ticker, comparison table, What to Expect, etc.)
+- [ ] Verify all sections render correctly
