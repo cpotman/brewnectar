@@ -121,7 +121,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="border-t border-stone-200/60 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-[#A8A29E]">&copy; {new Date().getFullYear()} BrewNectar. All rights reserved.</p>
-          <p className="text-xs text-[#A8A29E]">*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+          <p className="text-xs text-[#A8A29E] text-center sm:text-right max-w-xl">*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary.</p>
         </div>
       </div>
     </footer>

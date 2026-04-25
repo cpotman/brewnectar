@@ -119,15 +119,15 @@ const FEATURES: Feature[] = [
     label: "Subscription Trust",
     icon: <ShieldCheck size={16} />,
     brewnectar: { value: "One-click cancel, no traps", good: true },
-    ryze: { value: "Class-action lawsuit, 48 pages BBB complaints", good: false },
-    everydayDose: { value: "BBB F rating, 56 complaints", good: false },
+    ryze: { value: "Significant customer complaints reported", good: false },
+    everydayDose: { value: "Multiple customer complaints reported", good: false },
     magicMind: { value: "15-bottle minimum commitment", good: false },
   },
   {
     label: "Ad Claims",
     icon: <AlertTriangle size={16} />,
     brewnectar: { value: "Backed by ingredient-level clinical data", good: true },
-    ryze: { value: "NAD forced them to pull health claims (Sept 2025)", good: false },
+    ryze: { value: "Some health claims discontinued after scrutiny", good: false },
     everydayDose: { value: "No third-party testing certification", good: false },
     magicMind: { value: "Many report no noticeable effects", good: false },
   },
@@ -142,9 +142,9 @@ const COMPETITOR_DIVES = [
     color: "from-rose-50 to-rose-100/30",
     borderColor: "border-rose-200/60",
     issues: [
-      "NAD (BBB's advertising division) forced Ryze to permanently discontinue claims about \"all-day energy\" and \"sharper focus\" in September 2025",
-      "Class-action lawsuit pending in California + 48 pages of BBB complaints for subscription fraud",
-      "Proprietary blend hides individual ingredient amounts — experts say doses are sub-therapeutic",
+      "Advertising claims have faced regulatory scrutiny — some health claims were discontinued",
+      "Significant number of customer complaints regarding subscription practices",
+      "Proprietary blend hides individual ingredient amounts — experts say doses may be sub-therapeutic",
       "Taste is deeply polarizing: \"earthy,\" \"metallic,\" spoiled batches reported",
       "Only 48mg caffeine per serving — many users say it's not enough energy",
     ],
@@ -157,9 +157,9 @@ const COMPETITOR_DIVES = [
     color: "from-violet-50 to-violet-100/30",
     borderColor: "border-violet-200/60",
     issues: [
-      "F rating on the BBB with 56 total complaints — same subscription trap pattern as Ryze",
+      "Significant customer complaints regarding subscription and billing practices",
       "Proprietary blend (700mg) — no transparency on individual mushroom amounts",
-      "No third-party testing certification — Garage Gym Reviews gave it 1/5 for transparency",
+      "Limited third-party testing certification — reviewers have noted transparency concerns",
       "Contains bovine collagen — excludes vegans and vegetarians entirely",
       "Monthly \"gifts\" (confetti, booklets) feel wasteful and add to perceived overpricing",
     ],
@@ -328,7 +328,7 @@ export default function Compare() {
 
           <FadeUp delay={0.1}>
             <p className="text-base md:text-lg text-[#57534E] leading-relaxed max-w-2xl mx-auto mb-8">
-              We read thousands of reviews, BBB complaints, and clinical studies so you don't have to. Here's how BrewNectar stacks up against Ryze, Everyday Dose, and Magic Mind.
+              We read thousands of reviews and clinical studies so you don't have to. Here's how BrewNectar stacks up against the leading alternatives.
             </p>
           </FadeUp>
 
@@ -415,7 +415,7 @@ export default function Compare() {
                 Every major competitor forces you to <em>replace</em> your coffee. Consumers don't want that.
               </h2>
               <p className="text-[#57534E] text-base md:text-lg leading-relaxed">
-                After analyzing thousands of reviews across Ryze, Everyday Dose, Magic Mind, and Four Sigmatic, the pattern is clear: people love their coffee. They don't love earthy instant powder. BrewNectar is the only product that <strong className="text-[#1C1917]">upgrades your existing coffee</strong> instead of replacing it.
+                After analyzing thousands of reviews across the leading mushroom coffees and nootropic shots, the pattern is clear: people love their coffee. They don't love earthy instant powder. BrewNectar is the only product that <strong className="text-[#1C1917]">upgrades your existing coffee</strong> instead of replacing it.
               </p>
             </div>
           </FadeUp>
@@ -431,7 +431,7 @@ export default function Compare() {
               How BrewNectar Compares
             </h2>
             <p className="text-center text-[#78716C] text-base mb-12 max-w-xl mx-auto">
-              Every claim below is sourced from public reviews, BBB filings, and clinical research.
+              Every claim below is sourced from public reviews and clinical research.
             </p>
           </FadeUp>
 
@@ -584,7 +584,7 @@ export default function Compare() {
               What the Reviews Actually Say
             </h2>
             <p className="text-center text-[#78716C] text-base mb-12 max-w-xl mx-auto">
-              We dug into BBB complaints, Reddit threads, Amazon reviews, and expert analyses. Here's what we found.
+              We dug into customer reviews, Reddit threads, and expert analyses. Here's what we found.
             </p>
           </FadeUp>
 
@@ -646,8 +646,8 @@ export default function Compare() {
                       <div className="mx-5 md:mx-6 mb-5 md:mb-6 bg-emerald-50 rounded-xl p-4 border border-emerald-200/50">
                         <p className="text-sm font-semibold text-emerald-800 mb-1">Why BrewNectar instead?</p>
                         <p className="text-sm text-[#57534E] leading-relaxed">
-                          {comp.name === "Ryze Mushroom Coffee" && "Keep your real coffee. Get clinically-dosed nootropics with full label transparency — no proprietary blends, no subscription traps, no class-action lawsuits."}
-                          {comp.name === "Everyday Dose" && "Skip the mystery blend and bovine collagen. BrewNectar shows every milligram, works with any coffee, and has zero BBB complaints."}
+                          {comp.name === "Ryze Mushroom Coffee" && "Keep your real coffee. Get research-backed nootropics with full label transparency — no proprietary blends, no subscription hassles."}
+                          {comp.name === "Everyday Dose" && "Skip the mystery blend and bovine collagen. BrewNectar shows every milligram and works with any coffee you already love."}
                           {comp.name === "Magic Mind" && "Get the same Cognizin® at a fraction of the price. BrewNectar costs ~$0.96/day vs $3.50/day — that's $76/month in savings."}
                         </p>
                       </div>
@@ -845,7 +845,7 @@ export default function Compare() {
               <div className="bg-white rounded-2xl p-6 border border-stone-100 text-center">
                 <p className="text-3xl font-bold text-[#1C1917] mb-1">0</p>
                 <p className="text-sm text-[#78716C]">BBB complaints</p>
-                <p className="text-xs text-emerald-600 font-semibold mt-2">vs 48 pages for Ryze</p>
+                <p className="text-xs text-emerald-600 font-semibold mt-2">vs significant complaints for competitors</p>
               </div>
             </div>
           </FadeUp>
@@ -867,7 +867,7 @@ export default function Compare() {
                   Ready to Upgrade Your Coffee?
                 </h2>
                 <p className="text-stone-400 text-base md:text-lg mb-4 max-w-lg mx-auto">
-                  Keep your coffee. Upgrade your brain. Join 12,000+ high performers who made the switch.
+                  Keep your coffee. Upgrade your brain. Join thousands of high performers who made the switch.
                 </p>
                 <p className="text-stone-500 text-sm mb-8">
                   30-day money-back guarantee · Cancel anytime · Free shipping on 2+ bottles

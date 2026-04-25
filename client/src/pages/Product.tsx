@@ -225,9 +225,9 @@ export default function Product() {
     { q: "Can I cancel my subscription?", a: "Absolutely. Cancel anytime with one click from your account dashboard. No contracts, no fees, no hassle. You can also pause or skip deliveries." },
     { q: "How should I store it?", a: "Store in a cool, dry place. Refrigerate after opening for best freshness. Good for 60 days after opening." },
     { q: "Is it safe to take daily?", a: "Yes. All ingredients are GRAS-certified and backed by clinical research. BrewNectar is manufactured in a GMP-certified facility in the USA." },
-    { q: "When will I feel the effects?", a: "Most people notice improved focus within 20-30 minutes of their first cup. Cumulative benefits like better recall and reduced brain fog typically appear after 2-3 weeks of daily use." },
+    { q: "When will I feel the effects?", a: "Many users notice improved focus within 20-30 minutes of their first cup.* Cumulative benefits like better recall and reduced brain fog may appear after 2-3 weeks of daily use." },
     { q: "Does it contain caffeine?", a: "No. BrewNectar is caffeine-free — it's designed to enhance the coffee you already drink, not add more stimulants." },
-    { q: "What if it doesn't work for me?", a: "We have a 30-day keep-the-bottle guarantee. If you don't feel sharper, more focused, and more mentally clear after 30 days, keep the bottle and we'll refund every penny. No questions asked." },
+    { q: "What if it doesn't work for me?", a: "We have a 30-day keep-the-bottle guarantee. If you're not satisfied after 30 days, keep the bottle and we'll refund every penny. No questions asked." },
   ];
 
   const planOrder: PlanType[] = ["subscribe-3", "subscribe-2", "subscribe-1"];
@@ -257,7 +257,7 @@ export default function Product() {
               <div className="flex flex-wrap items-center gap-3 mb-3">
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-[11px] font-semibold text-emerald-700">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  Back in Stock
+                  Now Shipping
                 </span>
                 <div className="flex -space-x-0.5">
                   {[...Array(5)].map((_, i) => (
@@ -364,7 +364,7 @@ export default function Product() {
                 <div className="hidden lg:flex flex-wrap items-center gap-3 mb-3">
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-[11px] font-semibold text-emerald-700">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    Back in Stock
+                    Now Shipping
                   </span>
                   <div className="flex -space-x-0.5">
                     {[...Array(5)].map((_, i) => (
@@ -376,7 +376,7 @@ export default function Product() {
                   </span>
                   <span className="text-[#D4D0CA]">|</span>
                   <span className="text-sm text-[#57534E]">
-                    <strong className="text-[#1C1917]">12,000+</strong> members
+                    <strong className="text-[#1C1917]">Thousands of</strong> members
                   </span>
                 </div>
                 <p className="text-[#57534E] text-base mb-5 leading-relaxed hidden lg:block">
@@ -391,7 +391,7 @@ export default function Product() {
                       <path d="M1 7h14" stroke="currentColor" strokeWidth="1.5" />
                       <path d="M5 1v4M11 1v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                     </svg>
-                    <span>Built for real results in <strong className="text-[#1C1917]">3 months</strong></span>
+                    <span>Designed to compound over <strong className="text-[#1C1917]">3 months</strong></span>
                   </div>
                   <div className="flex items-center gap-1.5">
                     <div className="flex">
@@ -596,7 +596,7 @@ export default function Product() {
                 {/* Discount + Trust badges + Shipping (ported from homepage) */}
                 <div className="flex items-center justify-center gap-2 mt-3 mb-3">
                   <Check size={14} className="text-emerald-600" />
-                  <span className="text-xs text-[#78716C]">Limited Time Discount Auto-Applied</span>
+                  <span className="text-xs text-[#78716C]">Discount Auto-Applied</span>
                 </div>
 
                 <div className="grid grid-cols-3 gap-3 mb-4">
@@ -619,7 +619,7 @@ export default function Product() {
                   </div>
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/60 text-xs font-semibold text-[#92400E]">
                     <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" /></span>
-                    Faster Shipping due to high demand
+                    Ships within 24 hours
                   </span>
                 </div>
               </div>
@@ -647,7 +647,7 @@ export default function Product() {
                 icon: Clock,
                 time: "Day 1",
                 title: "Immediate Clarity",
-                desc: "L-Theanine kicks in within 20 minutes. You'll feel calmer, more present, and focused without the jittery edge of plain coffee.",
+                desc: "L-Theanine kicks in within 20 minutes.* You may feel calmer, more present, and focused without the jittery edge of plain coffee.",
                 color: "bg-sky-50 border-sky-200/60 text-sky-700",
                 iconColor: "text-sky-600",
               },
@@ -655,7 +655,7 @@ export default function Product() {
                 icon: Zap,
                 time: "Week 1",
                 title: "Sharper Focus",
-                desc: "Cognizin® begins fueling brain cell membranes. Expect longer focus sessions, fewer distractions, and smoother energy throughout the day.",
+                desc: "Cognizin® begins fueling brain cell membranes.* Many users report longer focus sessions, fewer distractions, and smoother energy throughout the day.",
                 color: "bg-emerald-50 border-emerald-200/60 text-emerald-700",
                 iconColor: "text-emerald-600",
               },
@@ -663,7 +663,7 @@ export default function Product() {
                 icon: Brain,
                 time: "Month 1",
                 title: "Better Recall",
-                desc: "Lion's Mane promotes nerve growth factor (NGF) production. You'll notice improved memory, faster word retrieval, and reduced brain fog.",
+                desc: "Lion's Mane has been studied for its role in supporting nerve growth factor (NGF) production.* You may notice improved memory, faster word retrieval, and reduced brain fog.",
                 color: "bg-amber-50 border-amber-200/60 text-amber-700",
                 iconColor: "text-[#B45309]",
               },
@@ -671,7 +671,7 @@ export default function Product() {
                 icon: TrendingUp,
                 time: "Month 3",
                 title: "Full Potential",
-                desc: "All four ingredients compound. Neurogenesis, sustained energy, calm focus, and cognitive resilience become your new baseline.",
+                desc: "All four ingredients compound.* Sustained energy, calm focus, and cognitive resilience may become your new baseline.",
                 color: "bg-rose-50 border-rose-200/60 text-rose-700",
                 iconColor: "text-rose-600",
               },
@@ -719,7 +719,7 @@ export default function Product() {
                   </div>
                   <h3 className="font-display font-bold text-lg text-[#1C1917] mb-1">Cognitive Clarity</h3>
                   <p className="text-sm text-[#78716C] leading-relaxed">
-                    Lion's Mane promotes nerve growth factor (NGF) production, supporting neurogenesis and sharper thinking.
+                    Lion's Mane has been studied for its role in supporting nerve growth factor (NGF) production, which may support sharper thinking over time.*
                   </p>
                 </div>
               </FadeUp>
@@ -730,7 +730,7 @@ export default function Product() {
                   </div>
                   <h3 className="font-display font-bold text-lg text-[#1C1917] mb-1">Clean Energy</h3>
                   <p className="text-sm text-[#78716C] leading-relaxed">
-                    Cognizin (Citicoline) fuels brain cells directly, enhancing mental energy without jitters or crash.
+                    Cognizin (Citicoline) fuels brain cells directly, supporting mental energy without jitters or crash.*
                   </p>
                 </div>
               </FadeUp>
@@ -750,7 +750,7 @@ export default function Product() {
                   </div>
                   <h3 className="font-display font-bold text-lg text-[#1C1917] mb-1">Calm Focus</h3>
                   <p className="text-sm text-[#78716C] leading-relaxed">
-                    L-Theanine promotes alpha brain waves — the same state achieved during meditation. Focus without anxiety.
+                    L-Theanine promotes alpha brain waves — the same state associated with meditation. Focus without anxiety.*
                   </p>
                 </div>
               </FadeUp>
@@ -761,7 +761,7 @@ export default function Product() {
                   </div>
                   <h3 className="font-display font-bold text-lg text-[#1C1917] mb-1">Sustained Performance</h3>
                   <p className="text-sm text-[#78716C] leading-relaxed">
-                    B-Vitamins support cellular energy metabolism, keeping your brain fueled throughout the entire workday.
+                    B-Vitamins support cellular energy metabolism, helping keep your brain fueled throughout the workday.*
                   </p>
                 </div>
               </FadeUp>
@@ -777,10 +777,10 @@ export default function Product() {
             </FadeUp>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { icon: Brain, color: "bg-amber-50 border-amber-100 text-[#B45309]", title: "Cognitive Clarity", desc: "Lion's Mane supports neurogenesis and sharper thinking." },
-                { icon: Zap, color: "bg-emerald-50 border-emerald-100 text-emerald-600", title: "Clean Energy", desc: "Cognizin fuels brain cells without jitters or crash." },
-                { icon: Sparkles, color: "bg-sky-50 border-sky-100 text-sky-600", title: "Calm Focus", desc: "L-Theanine promotes alpha brain waves for focus." },
-                { icon: TrendingUp, color: "bg-rose-50 border-rose-100 text-rose-500", title: "Sustained Performance", desc: "B-Vitamins keep your brain fueled all day." },
+                { icon: Brain, color: "bg-amber-50 border-amber-100 text-[#B45309]", title: "Cognitive Clarity", desc: "Lion's Mane may support sharper thinking over time.*" },
+                { icon: Zap, color: "bg-emerald-50 border-emerald-100 text-emerald-600", title: "Clean Energy", desc: "Cognizin supports brain cell energy without jitters.*" },
+                { icon: Sparkles, color: "bg-sky-50 border-sky-100 text-sky-600", title: "Calm Focus", desc: "L-Theanine promotes alpha brain waves for focus.*" },
+                { icon: TrendingUp, color: "bg-rose-50 border-rose-100 text-rose-500", title: "Sustained Performance", desc: "B-Vitamins support brain energy all day.*" },
               ].map((b, i) => (
                 <FadeUp key={b.title} delay={i * 0.08}>
                   <div className="bg-white rounded-2xl border border-stone-100 p-4 text-center h-full">
@@ -821,9 +821,9 @@ export default function Product() {
                     { text: "Research-backed nootropics (Lion's Mane 1.2g, Cognizin® 250mg)", bold: true },
                     { text: "Works with ANY coffee you already love" },
                     { text: "Zero sugar, zero calories" },
-                    { text: "Calm focus without jitters or crash" },
+                    { text: "Calm focus without jitters or crash*" },
                     { text: "100% transparent label — every mg disclosed" },
-                    { text: "Supports neurogenesis & long-term brain health" },
+                    { text: "Ingredients studied for long-term cognitive support*" },
                     { text: "Vanilla bean flavor that actually tastes good" },
                     { text: "From $0.90/day (less than your coffee)" },
                   ].map((item) => (
@@ -848,17 +848,17 @@ export default function Product() {
                 {[
                   {
                     name: "Mushroom Coffees",
-                    subtitle: "Ryze, Everyday Dose, Four Sigmatic",
-                    cons: ["Forces you to switch your coffee", "Earthy taste most people dislike", "Proprietary blends hide real dosages", "48 BBB complaints (Ryze alone)"],
+                    subtitle: "Popular brands",
+                    cons: ["Forces you to switch your coffee", "Earthy taste most people dislike", "Proprietary blends hide real dosages", "Frequent customer complaints"],
                   },
                   {
                     name: "Sugary Coffee Syrups",
-                    subtitle: "Torani, Monin, Starbucks",
+                    subtitle: "Popular brands",
                     cons: ["10-15g sugar per pump", "Zero cognitive benefits", "Blood sugar spike → crash", "Empty calories, no function"],
                   },
                   {
                     name: "Nootropic Pills",
-                    subtitle: "Alpha Brain, Thesis, etc.",
+                    subtitle: "Popular brands",
                     cons: ["Another pill to remember", "Doesn't integrate into your routine", "Often underdosed ingredients", "No ritual, no enjoyment"],
                   },
                 ].map((alt) => (
@@ -887,7 +887,7 @@ export default function Product() {
           <FadeUp delay={0.2}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 p-5 rounded-2xl bg-[#1C1917] text-white">
               <div className="text-center">
-                <p className="text-2xl font-display font-bold">4 Clinically-Dosed</p>
+                <p className="text-2xl font-display font-bold">4 Research-Backed</p>
                 <p className="text-xs text-stone-400">nootropic ingredients</p>
               </div>
               <div className="hidden sm:block w-px h-10 bg-stone-700" />
@@ -1014,7 +1014,7 @@ export default function Product() {
               We Get It. Here's What Others Asked.
             </h2>
             <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">
-              These are the most common hesitations — and why 12,000+ people decided to try it anyway.
+              These are the most common hesitations — and why thousands of people decided to try it anyway.
             </p>
           </FadeUp>
 
@@ -1027,7 +1027,7 @@ export default function Product() {
               },
               {
                 objection: "\"$27/month seems expensive for a syrup.\"",
-                answer: "That's $0.90/day — less than a single Starbucks pump. You're getting 4 clinically-dosed nootropics, a free masterclass, and giveaway entries. Compare that to $60-80/month for pills that don't even taste good.",
+                answer: "That's $0.90/day — less than a single Starbucks pump. You're getting 4 research-backed nootropics, a free masterclass, and giveaway entries. Compare that to $60-80/month for pills that don't even taste good.",
                 icon: ThumbsUp,
               },
               {
@@ -1116,7 +1116,7 @@ export default function Product() {
               Ready to Upgrade Your Coffee?
             </h2>
             <p className="text-[#78716C] text-lg mb-8 max-w-lg mx-auto">
-              Join 12,000+ high performers. Try it for 30 days — if you don't feel sharper, keep the bottle and we'll refund every penny.
+              Join thousands of high performers. Try it for 30 days — if you don't feel sharper, keep the bottle and we'll refund every penny.
             </p>
             <a
               href="#offers"

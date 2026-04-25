@@ -71,7 +71,7 @@ const QUESTIONS: QuizQuestion[] = [
       { label: "Regular drip coffee", icon: <Coffee size={22} />, description: "Classic home brew or office pot", value: "drip" },
       { label: "Espresso or latte", icon: <Coffee size={22} />, description: "Nespresso, espresso machine, or café", value: "espresso" },
       { label: "Cold brew or iced coffee", icon: <Coffee size={22} />, description: "I like it cold", value: "coldbrew" },
-      { label: "I've tried mushroom coffee", icon: <Brain size={22} />, description: "Ryze, Everyday Dose, etc.", value: "mushroom" },
+      { label: "I've tried mushroom coffee", icon: <Brain size={22} />, description: "Other mushroom coffee brands", value: "mushroom" },
     ],
   },
   {
@@ -780,7 +780,7 @@ export default function Quiz() {
                     {[
                       { step: "1", title: "Brew your coffee", desc: "Any coffee you love — drip, espresso, cold brew, latte.", img: IMAGES.pour },
                       { step: "2", title: "Add one pump", desc: "Vanilla bean flavor, zero sugar. Dissolves instantly.", img: IMAGES.stir },
-                      { step: "3", title: "Lock in & focus", desc: "Calm energy and sharp focus within 20 minutes.", img: IMAGES.lockIn },
+                      { step: "3", title: "Lock in & focus", desc: "Many users report calm energy and sharp focus within minutes.*", img: IMAGES.lockIn },
                     ].map((s) => (
                       <div key={s.step} className="text-center">
                         <div className="w-full aspect-[4/3] rounded-xl overflow-hidden mb-3 border border-amber-100/40">
@@ -800,7 +800,7 @@ export default function Quiz() {
                     Ready to Upgrade Your Coffee?
                   </h3>
                   <p className="text-stone-400 text-sm mb-6 max-w-md mx-auto">
-                    Join 12,000+ high performers. 30-day money-back guarantee.
+                    Join thousands of high performers. 30-day money-back guarantee.
                   </p>
                   <Link
                     href="/product"

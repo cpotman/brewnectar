@@ -227,7 +227,7 @@ export default function Advertorial() {
                   <Star key={i} size={14} className="fill-[#D97706] text-[#D97706]" />
                 ))}
               </div>
-              <span className="text-sm text-[#78716C]">Trusted by <strong className="text-[#1C1917]">12,000+</strong> high performers</span>
+              <span className="text-sm text-[#78716C]">Trusted by <strong className="text-[#1C1917]">thousands of</strong> high performers</span>
             </div>
           </FadeUp>
 
@@ -240,7 +240,7 @@ export default function Advertorial() {
 
           <FadeUp delay={0.1}>
             <p className="text-lg md:text-xl text-[#57534E] leading-relaxed mb-6 max-w-2xl">
-              The science-backed way to upgrade your focus, memory, and mental clarity — without switching your coffee.
+              The science-backed way to support your focus, memory, and mental clarity — without switching your coffee.*
             </p>
           </FadeUp>
 
@@ -324,7 +324,7 @@ export default function Advertorial() {
             </FadeUp>
           </section>
 
-          <CTABanner text="Ready to upgrade your morning coffee? Join 12,000+ high performers." />
+          <CTABanner text="Ready to upgrade your morning coffee? Join thousands of high performers." />
 
           {/* ---------- 2. HOW IT WORKS ---------- */}
           <section id="mechanism" className="scroll-mt-24">
@@ -363,7 +363,7 @@ export default function Advertorial() {
                     icon: <Zap size={20} />,
                     time: "45 min – 4 hrs",
                     title: "Lion's Mane stimulates Nerve Growth Factor",
-                    desc: "NGF is the protein that builds and repairs neurons. Lion's Mane is the only known food compound that crosses the blood-brain barrier to stimulate it.",
+                    desc: "NGF is the protein that supports neuron growth and repair. Lion's Mane has been studied for its potential to support NGF production.*",
                   },
                   {
                     icon: <Shield size={20} />,
@@ -426,7 +426,7 @@ export default function Advertorial() {
                     studies: "30+",
                     icon: <Brain size={20} />,
                     color: "bg-purple-50 text-purple-600 border-purple-100",
-                    desc: "The only known natural compound that stimulates Nerve Growth Factor (NGF) in the brain. A 2023 study in Nutrients found significant improvements in cognitive function after just 28 days of supplementation.",
+                    desc: "Studied for its potential to support Nerve Growth Factor (NGF) production.* A 2023 study in Nutrients found improvements in cognitive performance after 28 days of supplementation.",
                     source: "Docherty et al., Nutrients, 2023",
                   },
                   {
@@ -442,7 +442,7 @@ export default function Advertorial() {
                     studies: "25+",
                     icon: <Shield size={20} />,
                     color: "bg-green-50 text-green-600 border-green-100",
-                    desc: "An amino acid found in green tea that promotes alpha brain waves — the state associated with calm alertness. When paired with caffeine, it eliminates jitters while enhancing focus and attention.",
+                    desc: "An amino acid found in green tea that promotes alpha brain waves — the state associated with calm alertness.* When paired with caffeine, it may help reduce jitters while supporting focus and attention.",
                     source: "Hidese et al., Nutrients, 2019",
                   },
                   {
@@ -450,7 +450,7 @@ export default function Advertorial() {
                     studies: "100+",
                     icon: <Sparkles size={20} />,
                     color: "bg-amber-50 text-amber-600 border-amber-100",
-                    desc: "Essential cofactors for neurotransmitter synthesis and cellular energy production. The VITACOG trial showed B vitamins slowed brain atrophy by 30% in participants with elevated homocysteine.",
+                    desc: "Essential cofactors for neurotransmitter synthesis and cellular energy production.* The VITACOG trial found B vitamins slowed brain atrophy by 30% in participants with elevated homocysteine.",
                     source: "Smith et al., PLoS ONE, 2010",
                   },
                 ].map((ingredient, i) => (
@@ -509,7 +509,7 @@ export default function Advertorial() {
                   {
                     period: "Month 2",
                     title: "Sustained Cognitive Performance",
-                    desc: "Lion's Mane NGF stimulation reaches peak effect. You'll find yourself maintaining focus for longer stretches without the mid-afternoon mental fade.",
+                    desc: "Lion's Mane's studied NGF-supporting effects may reach their full potential.* Many users report maintaining focus for longer stretches without the mid-afternoon mental fade.",
                     color: "border-l-amber-600",
                   },
                   {
@@ -535,7 +535,7 @@ export default function Advertorial() {
               <div className="bg-[#FEF3C7]/50 rounded-2xl p-6 md:p-8 border border-amber-200/40 mb-6">
                 <p className="text-[#78350F] font-semibold text-base mb-2">Why this matters for your subscription:</p>
                 <p className="text-[#92400E] text-sm leading-relaxed">
-                  The biggest cognitive gains happen between months 2 and 3. That's when Lion's Mane NGF stimulation reaches full effect and Cognizin® has rebuilt enough brain cell membranes to produce measurable improvements. Stopping before month 3 means leaving the best results on the table.
+                  Many users report the biggest cognitive improvements between months 2 and 3. That's when Lion's Mane's studied NGF-supporting effects and Cognizin®'s role in brain cell membrane support may reach their full potential.* Stopping before month 3 means you may miss the compounding benefits.
                 </p>
               </div>
             </FadeUp>
@@ -548,7 +548,7 @@ export default function Advertorial() {
             <FadeUp>
               <div className="flex items-center gap-3 mb-6">
                 <span className="flex items-center justify-center w-9 h-9 rounded-full bg-[#FEF3C7] text-[#B45309] font-bold text-sm">5</span>
-                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1C1917]">What 12,000+ Members Are Saying</h2>
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1C1917]">What Our Members Are Saying</h2>
               </div>
             </FadeUp>
 
@@ -606,7 +606,7 @@ export default function Advertorial() {
             </FadeUp>
           </section>
 
-          <CTABanner text="Join 12,000+ members. 30-day money-back guarantee." />
+          <CTABanner text="Join thousands of members. 30-day money-back guarantee." />
 
           {/* ---------- 6. WHY US / DIFFERENCE ---------- */}
           <section id="difference" className="scroll-mt-24">
@@ -724,7 +724,7 @@ export default function Advertorial() {
                   Ready to Upgrade Your Coffee?
                 </h2>
                 <p className="text-stone-300 text-base md:text-lg mb-6 max-w-lg mx-auto">
-                  Join 12,000+ high performers who've made BrewNectar part of their morning ritual. Save up to 45% with a subscription.
+                  Join thousands of high performers who've made BrewNectar part of their morning ritual. Save up to 45% with a subscription.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Link href="/product">

@@ -449,9 +449,9 @@ const INGREDIENTS = [
   {
     name: "Lion's Mane",
     dosage: "1.2g per serving",
-    tag: "Your Brain Builds New Connections",
+    tag: "Your Brain Builds New Connections*",
     science: "30+ peer-reviewed studies show Lion’s Mane stimulates nerve growth factor (NGF), the protein your brain uses to grow and repair neurons. This isn’t a temporary boost. It’s structural change.",
-    emotion: "The reason your thinking gets sharper over weeks, not just hours.",
+    emotion: "The reason your thinking may get sharper over weeks, not just hours.*",
     icon: Brain,
     color: "bg-amber-50 text-[#B45309]",
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-lions-mane_c905f004.png",
@@ -459,9 +459,9 @@ const INGREDIENTS = [
   {
     name: "Cognizin® (Citicoline)",
     dosage: "250mg per serving",
-    tag: "Retrieve Names, Numbers, and Ideas On Demand",
+    tag: "Retrieve Names, Numbers, and Ideas On Demand*",
     science: "The only patented form of citicoline with 20+ clinical trials on focus and working memory. In one study, subjects improved attentional performance and reduced errors after just 28 days.",
-    emotion: "That name on the tip of your tongue? You’ll have it instantly.",
+    emotion: "That name on the tip of your tongue? You'll recall it faster.*",
     icon: Zap,
     color: "bg-emerald-50 text-emerald-700",
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-cognizin_3fb446ba.png",
@@ -469,9 +469,9 @@ const INGREDIENTS = [
   {
     name: "L-Theanine",
     dosage: "75mg per serving",
-    tag: "The Reason You Won’t Feel Jittery",
+    tag: "The Reason You Won't Feel Jittery*",
     science: "This amino acid, found naturally in green tea, promotes alpha brain wave activity. That’s the neurological state behind calm, sustained attention. Combined with caffeine, clinical trials show it improves focus while reducing anxiety.",
-    emotion: "Your hands stop shaking. Your mind stops racing. What’s left is clean, quiet focus.",
+    emotion: "Your hands stop shaking. Your mind stops racing. What's left is clean, quiet focus.*",
     icon: Sparkles,
     color: "bg-sky-50 text-sky-700",
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-l-theanine_dc3b4af3.png",
@@ -481,7 +481,7 @@ const INGREDIENTS = [
     dosage: "250% DV each",
     tag: "Steady Energy That Doesn’t Crash",
     science: "B vitamins are essential cofactors in the production of dopamine, serotonin, and norepinephrine. They support your brain's natural energy metabolism and neurotransmitter synthesis throughout the day.",
-    emotion: "No spike at 9am. No wall at 2pm. Just steady, reliable output.",
+    emotion: "No spike at 9am. No wall at 2pm. Just steady, reliable output.*",
     icon: Coffee,
     color: "bg-rose-50 text-rose-700",
     image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-b-vitamins_1072f364.png",
@@ -734,7 +734,7 @@ export default function Home() {
 
               <FadeUp delay={0.2}>
                 <p className="text-base md:text-lg lg:text-xl text-[#57534E] leading-relaxed mb-6 md:mb-8 max-w-lg">
-                  One pump of vanilla bean syrup adds four research-backed nootropics to the coffee you already drink. The result: calmer, sharper focus that many users notice within the first 20 minutes, recall that may improve with consistent use, and an afternoon that doesn't fall apart. No new coffee. No pills. No blender.
+                  One pump of vanilla bean syrup adds four research-backed nootropics to the coffee you already drink. The result: calmer, sharper focus that many users notice within the first 20 minutes,* recall that may improve with consistent use,* and an afternoon that doesn't fall apart. No new coffee. No pills. No blender.
                 </p>
               </FadeUp>
 
@@ -920,7 +920,7 @@ export default function Home() {
               {
                 step: "03",
                 title: "Lock In",
-                desc: "Many users report feeling calmer and more focused within the first 20 minutes. You start working. You look up and an hour has passed. That's the stack doing its job.",
+                desc: "Many users report feeling calmer and more focused within the first 20 minutes.* You start working. You look up and an hour has passed. That's the stack doing its job.",
                 image: IMAGES.howLockIn,
               },
             ].map((item, i) => (
@@ -956,18 +956,13 @@ export default function Home() {
         <div className="absolute inset-0 grain-overlay" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <FadeUp>
-            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-[#1C1917] mb-4 leading-tight">
-              Same Coffee. Same Mug.
+            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-[#1C1917] leading-tight">
+              Your coffee, upgraded.
             </h2>
           </FadeUp>
-          <FadeUp delay={0.1}>
-            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-[#78716C] mb-4 leading-tight">
-              Completely Different Brain.
-            </h2>
-          </FadeUp>
-          <FadeUp delay={0.2}>
+          <FadeUp delay={0.15}>
             <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-gradient-warm mb-8 leading-tight">
-              One Pump Is All It Takes.
+              One pump. Real focus.*
             </h2>
           </FadeUp>
           <FadeUp delay={0.3}>
@@ -1008,7 +1003,7 @@ export default function Home() {
                 {
                   period: "Week 1",
                   title: "The Quiet Settles In",
-                  desc: "L-Theanine smooths out caffeine’s rough edges within 20 minutes. Cognizin® sharpens working memory. Your first cup feels different. Calmer. Clearer. No jitters.",
+                  desc: "L-Theanine smooths out caffeine's rough edges within 20 minutes.* Cognizin® sharpens working memory.* Your first cup feels different. Calmer. Clearer. No jitters.",
                   ingredients: ["L-Theanine", "Cognizin"],
                   color: "bg-amber-50 border-amber-200",
                   iconColor: "text-[#D97706]",
@@ -1018,7 +1013,7 @@ export default function Home() {
                 {
                   period: "1 Month",
                   title: "Names Come Faster",
-                  desc: "Cognizin® accumulates in your system. Working memory improves. You recall details from meetings without checking notes. Tasks that felt hard start feeling automatic.",
+                  desc: "Cognizin® accumulates in your system. Working memory may improve.* You recall details from meetings without checking notes. Tasks that felt hard start feeling automatic.",
                   ingredients: ["Cognizin", "B Vitamins"],
                   color: "bg-emerald-50 border-emerald-200",
                   iconColor: "text-emerald-600",
@@ -1028,7 +1023,7 @@ export default function Home() {
                 {
                   period: "2 Months",
                   title: "Deep Work Gets Deeper",
-                  desc: "Lion's Mane has been studied for its role in supporting nerve growth factor (NGF) production, which may support the formation of new neural connections over time. Many users report deeper, longer focus sessions around this stage.",
+                  desc: "Lion's Mane has been studied for its role in supporting nerve growth factor (NGF) production, which may support the formation of new neural connections over time.* Many users report deeper, longer focus sessions around this stage.",
                   ingredients: ["Lion's Mane", "Cognizin"],
                   color: "bg-sky-50 border-sky-200",
                   iconColor: "text-sky-600",
@@ -1038,7 +1033,7 @@ export default function Home() {
                 {
                   period: "3 Months",
                   title: "Your Brain Feels Different",
-                  desc: "The full stack is compounding. This is when many customers say 'my brain feels different.' Not a spike. A sustained improvement in how you think, built through consistent daily use.",
+                  desc: "The full stack is compounding. This is when many customers say 'my brain feels different.'* Not a spike. A sustained improvement in how you think, built through consistent daily use.",
                   ingredients: ["Lion's Mane", "Full Stack"],
                   color: "bg-violet-50 border-violet-200",
                   iconColor: "text-violet-600",
@@ -1160,7 +1155,7 @@ export default function Home() {
               </div>
 
               <p className="text-center text-xs text-[#A8A29E] mt-4">
-                Consistency is key. The ingredients in BrewNectar are designed to compound with daily use. The 3-bottle plan helps you stay on track.
+                Consistency is key. The ingredients in BrewNectar are designed to compound with daily use.* The 3-bottle plan helps you stay on track. Graph is illustrative and based on published research of individual ingredients, not a clinical trial of BrewNectar.
               </p>
             </div>
           </FadeUp>
@@ -1193,9 +1188,9 @@ export default function Home() {
                     { text: "Research-backed nootropics (Lion's Mane 1.2g, Cognizin® 250mg)", bold: true },
                     { text: "Works with ANY coffee you already love" },
                     { text: "Zero sugar, zero calories" },
-                    { text: "Calm focus without jitters or crash" },
+                    { text: "Calm focus without jitters or crash*" },
                     { text: "100% transparent label — every mg disclosed" },
-                    { text: "Ingredients studied for long-term cognitive support" },
+                    { text: "Ingredients studied for long-term cognitive support*" },
                     { text: "Vanilla bean flavor that actually tastes good" },
                     { text: "From $0.90/day (less than your coffee)" },
                   ].map((item) => (
@@ -1298,7 +1293,7 @@ export default function Home() {
                 Less Than Your Daily Coffee. More Than Any Supplement.
               </h2>
               <p className="text-[#78716C] text-sm md:text-lg leading-relaxed max-w-3xl mx-auto">
-                You spend $5-7 on coffee that wakes you up and crashes you by 2pm. For $0.90/day, you add <span className="font-bold text-gradient-warm">Lion's Mane</span>, patented <span className="font-bold text-gradient-warm">Cognizin®</span>, and <span className="font-bold text-gradient-warm">L-Theanine</span> to that same cup. Same mug. Same routine. Completely different brain.
+                You spend $5-7 on coffee that wakes you up and crashes you by 2pm. For $0.90/day, you add <span className="font-bold text-gradient-warm">Lion's Mane</span>, patented <span className="font-bold text-gradient-warm">Cognizin®</span>, and <span className="font-bold text-gradient-warm">L-Theanine</span> to that same cup. Same mug. Same routine. Completely different results.*
               </p>
             </div>
           </FadeUp>

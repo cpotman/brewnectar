@@ -53,3 +53,10 @@
 - [x] MEDIUM: Complete FDA disclaimer in footer (full standard language)
 - [x] MEDIUM: Soften "our research team" in footer newsletter
 - [x] MEDIUM: Soften footer brand description
+- [x] Rewrite benefit block to be shorter and stronger
+- [x] Add asterisk disclaimers to health-related claims (Home.tsx)
+- [x] Add asterisk disclaimer footer note
+- [x] Propagate compliance fixes to Product.tsx
+- [x] Propagate compliance fixes to Advertorial.tsx
+- [x] Propagate compliance fixes to Compare.tsx
+- [x] Propagate compliance fixes to Quiz.tsx
