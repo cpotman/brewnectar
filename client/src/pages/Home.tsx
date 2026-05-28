@@ -351,9 +351,9 @@ function ClinicalStudies() {
 /* ─── Ticker messages ─── */
 const TICKER_MESSAGES = [
   "Free shipping on every subscription",
-  "30 days. If you don’t feel sharper, keep the bottle. Full refund.",
+  "30 days. If you don't feel sharper, keep the bottle. Full refund.",
   "Zero sugar · 30 servings · $0.90/day",
-  "Thousands of people already upgraded their coffee",
+  "Smooth vanilla bean — not earthy, not bitter, not mushroom",
   "Every batch third-party tested for purity & potency",
   "Subscribe & save up to 45%",
   "4 research-backed nootropics in every pump",
@@ -419,8 +419,8 @@ const FAQ_DATA = [
     a: "No. That’s the whole point. Mushroom coffees force you to drink their coffee. BrewNectar works with the coffee you already love. Drip, cold brew, espresso, latte, even decaf. One pump. Same mug. You’re upgraded. Most people tell us it’s the easiest health decision they’ve ever made.",
   },
   {
-    q: "What does it taste like?",
-    a: "Smooth vanilla bean. Zero sugar. Think premium vanilla latte, not candy. It blends into black coffee, oat milk lattes, and cold brew without changing the character of your drink. Several customers have told us they actually prefer their coffee with it now.",
+    q: "What does it taste like? (Mushroom coffee tastes awful.)",
+    a: "We know. Most mushroom coffees taste like dirt mixed with cardboard. That's because they ARE the coffee. BrewNectar is a vanilla bean syrup — smooth, mildly sweet (zero sugar), and designed to make your existing coffee taste better. Think premium vanilla latte, not earthy supplement. It blends into black coffee, oat milk lattes, and cold brew without changing the character of your drink. Many customers tell us they actually prefer their coffee with it now. That's the difference between replacing your coffee and upgrading it.",
   },
   {
     q: "I’m already jittery from coffee. Won’t this make it worse?",
@@ -755,6 +755,7 @@ export default function Home() {
                 <div className="flex flex-wrap gap-6">
                   {[
                     { label: "Works with Any Coffee", icon: "☕" },
+                    { label: "Smooth Vanilla Bean Flavor", icon: "🌿" },
                     { label: "Zero Sugar · Zero Calories", icon: "✦" },
                     { label: "4 Research-Backed Nootropics", icon: "◆" },
                   ].map((badge) => (
@@ -914,7 +915,7 @@ export default function Home() {
               {
                 step: "02",
                 title: "Stir",
-                desc: "Smooth vanilla bean dissolves in seconds. No grit. No aftertaste. Your coffee tastes better, not different.",
+                desc: "Smooth vanilla bean dissolves in seconds. No grit. No earthy mushroom taste. No chalky residue. Your coffee actually tastes better — like a premium vanilla latte, not a health supplement.",
                 image: IMAGES.howStir,
               },
               {
@@ -947,35 +948,6 @@ export default function Home() {
 
       {/* ═══════════ ENERGY CLARITY SLIDER (hidden — uncomment to restore) ═══════════ */}
       {/* <EnergyClaritySlider /> */}
-
-      {/* ═══════════ BENEFIT BLOCK ═══════════ */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={IMAGES.benefitTexture} alt="" className="w-full h-full object-cover" />
-        </div>
-        <div className="absolute inset-0 grain-overlay" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <FadeUp>
-            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-[#1C1917] leading-tight">
-              Your coffee, upgraded.
-            </h2>
-          </FadeUp>
-          <FadeUp delay={0.15}>
-            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-gradient-warm mb-8 leading-tight">
-              One pump. Real focus.*
-            </h2>
-          </FadeUp>
-          <FadeUp delay={0.3}>
-            <a
-              href="#offers"
-              onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
-              className="inline-flex items-center px-8 py-4 text-base font-semibold text-white bg-[#1C1917] rounded-full hover:bg-[#292524] transition-all hover:shadow-lg cursor-pointer"
-            >
-              Start My Smarter Coffee Ritual
-            </a>
-          </FadeUp>
-        </div>
-      </section>
 
       {/* ═══════════ CLINICAL STUDIES ═══════════ */}
       <ClinicalStudies />
@@ -1067,213 +1039,69 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Visual energy graph */}
-          <FadeUp delay={0.3}>
-            <div className="bg-[#FDFBF7] rounded-2xl border border-stone-100 p-6 md:p-8">
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h3 className="font-display font-bold text-lg text-[#1C1917]">Cognitive Performance Over Time</h3>
-                  <p className="text-xs text-[#78716C] mt-1">Based on clinical research of individual ingredients</p>
-                </div>
-                <div className="hidden sm:flex items-center gap-4">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-0.5 bg-stone-300" style={{ borderTop: '2px dotted #A8A29E' }} />
-                    <span className="text-xs text-[#A8A29E] font-medium">Coffee Only</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-0.5 bg-[#D97706]" style={{ borderTop: '2px dotted #D97706' }} />
-                    <span className="text-xs text-[#D97706] font-medium">With BrewNectar</span>
-                  </div>
-                </div>
-              </div>
 
-              {/* SVG Graph */}
-              <div className="relative w-full" style={{ aspectRatio: '3/1' }}>
-                <svg viewBox="0 0 600 200" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
-                  {/* Grid lines */}
-                  <line x1="50" y1="30" x2="50" y2="170" stroke="#E7E5E4" strokeWidth="1" />
-                  <line x1="50" y1="170" x2="570" y2="170" stroke="#E7E5E4" strokeWidth="1" />
-                  {/* Y-axis labels */}
-                  <text x="40" y="35" textAnchor="end" className="fill-[#A8A29E]" fontSize="9" fontFamily="system-ui">High</text>
-                  <text x="40" y="105" textAnchor="end" className="fill-[#A8A29E]" fontSize="9" fontFamily="system-ui">Med</text>
-                  <text x="40" y="170" textAnchor="end" className="fill-[#A8A29E]" fontSize="9" fontFamily="system-ui">Low</text>
-                  {/* X-axis labels */}
-                  <text x="115" y="190" textAnchor="middle" className="fill-[#78716C]" fontSize="9" fontWeight="600" fontFamily="system-ui">Week 1</text>
-                  <text x="245" y="190" textAnchor="middle" className="fill-[#78716C]" fontSize="9" fontWeight="600" fontFamily="system-ui">Month 1</text>
-                  <text x="375" y="190" textAnchor="middle" className="fill-[#78716C]" fontSize="9" fontWeight="600" fontFamily="system-ui">Month 2</text>
-                  <text x="505" y="190" textAnchor="middle" className="fill-[#78716C]" fontSize="9" fontWeight="600" fontFamily="system-ui">Month 3</text>
-
-                  {/* Coffee Only line — peaks early then crashes */}
-                  <path
-                    d="M 70 120 Q 115 70, 160 95 Q 200 110, 245 130 Q 310 145, 375 140 Q 440 138, 505 142 L 550 145"
-                    fill="none"
-                    stroke="#A8A29E"
-                    strokeWidth="2.5"
-                    strokeDasharray="6 4"
-                    strokeLinecap="round"
-                  />
-                  {/* BrewNectar line — steady climb */}
-                  <path
-                    d="M 70 120 Q 115 80, 160 72 Q 200 65, 245 55 Q 310 45, 375 38 Q 440 33, 505 30 L 550 28"
-                    fill="none"
-                    stroke="#D97706"
-                    strokeWidth="2.5"
-                    strokeDasharray="6 4"
-                    strokeLinecap="round"
-                  />
-
-                  {/* Milestone dots on BrewNectar line */}
-                  <circle cx="115" cy="80" r="5" fill="#D97706" />
-                  <circle cx="245" cy="55" r="5" fill="#D97706" />
-                  <circle cx="375" cy="38" r="5" fill="#D97706" />
-                  <circle cx="505" cy="30" r="5" fill="#D97706" />
-
-                  {/* Milestone labels */}
-                  <text x="115" y="68" textAnchor="middle" className="fill-[#B45309]" fontSize="7" fontWeight="600" fontFamily="system-ui">L-Theanine</text>
-                  <text x="245" y="43" textAnchor="middle" className="fill-[#B45309]" fontSize="7" fontWeight="600" fontFamily="system-ui">Cognizin</text>
-                  <text x="375" y="26" textAnchor="middle" className="fill-[#B45309]" fontSize="7" fontWeight="600" fontFamily="system-ui">Lion's Mane</text>
-                  <text x="505" y="18" textAnchor="middle" className="fill-[#B45309]" fontSize="7" fontWeight="600" fontFamily="system-ui">Full Stack</text>
-
-                  {/* Milestone dots on Coffee Only line */}
-                  <circle cx="115" cy="70" r="4" fill="#A8A29E" />
-                  <circle cx="245" cy="130" r="4" fill="#A8A29E" />
-                  <circle cx="375" cy="140" r="4" fill="#A8A29E" />
-                  <circle cx="505" cy="142" r="4" fill="#A8A29E" />
-                </svg>
-              </div>
-
-              {/* Mobile legend */}
-              <div className="flex sm:hidden items-center justify-center gap-6 mt-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-0.5 bg-stone-300" />
-                  <span className="text-xs text-[#A8A29E] font-medium">Coffee Only</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-0.5 bg-[#D97706]" />
-                  <span className="text-xs text-[#D97706] font-medium">With BrewNectar</span>
-                </div>
-              </div>
-
-              <p className="text-center text-xs text-[#A8A29E] mt-4">
-                Consistency is key. The ingredients in BrewNectar are designed to compound with daily use.* The 3-bottle plan helps you stay on track. Graph is illustrative and based on published research of individual ingredients, not a clinical trial of BrewNectar.
-              </p>
-            </div>
-          </FadeUp>
         </div>
       </section>
 
-      {/* ═══════════ COMPARISON TABLE — REDESIGNED ═══════════ */}
+      {/* ═══════════ COMPARISON TABLE — BrewNectar vs Mushroom Coffee ═══════════ */}
       <section className="py-20 md:py-28 bg-[#FDFBF7]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">The Alternatives</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Side-by-Side</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">
-              You've Tried Other Things. Here's Why They Didn't Stick.
+              BrewNectar vs. Mushroom Coffee
             </h2>
-            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">
-              Mushroom coffees taste like dirt. Nootropic pills get forgotten in a drawer. Sugary syrups spike your blood sugar. Every alternative forces a trade-off. BrewNectar doesn't.
+            <p className="text-center text-[#78716C] text-lg mb-12 max-w-2xl mx-auto">
+              You shouldn't have to switch your coffee or choke down an earthy aftertaste to get cognitive support. Here's how we compare.
             </p>
           </FadeUp>
 
-          {/* Visual comparison cards */}
           <FadeUp delay={0.1}>
-            <div className="grid md:grid-cols-2 gap-6 mb-10">
-              {/* BrewNectar — the winner */}
-              <div className="relative rounded-2xl border-2 border-[#B45309] bg-white p-6 md:p-8 shadow-warm">
-                <div className="absolute -top-3.5 left-6 px-4 py-1 bg-[#B45309] text-white text-xs font-bold rounded-full uppercase tracking-wide">The Upgrade</div>
-                <h3 className="font-display text-2xl font-bold text-[#1C1917] mt-2 mb-1">BrewNectar</h3>
-                <p className="text-sm text-[#78716C] mb-5">Add to your existing coffee. Done.</p>
-                <div className="space-y-3">
+            <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
+              <table className="w-full text-left text-sm">
+                <thead>
+                  <tr className="bg-[#1C1917] text-white">
+                    <th className="py-4 px-5 font-semibold text-xs uppercase tracking-wider w-[40%]">Feature</th>
+                    <th className="py-4 px-5 font-semibold text-xs uppercase tracking-wider text-center">
+                      <span className="text-amber-300">BrewNectar</span>
+                    </th>
+                    <th className="py-4 px-5 font-semibold text-xs uppercase tracking-wider text-center text-stone-400">Mushroom Coffee</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-stone-100">
                   {[
-                    { text: "Research-backed nootropics (Lion's Mane 1.2g, Cognizin® 250mg)", bold: true },
-                    { text: "Works with ANY coffee you already love" },
-                    { text: "Zero sugar, zero calories" },
-                    { text: "Calm focus without jitters or crash*" },
-                    { text: "100% transparent label — every mg disclosed" },
-                    { text: "Ingredients studied for long-term cognitive support*" },
-                    { text: "Vanilla bean flavor that actually tastes good" },
-                    { text: "From $0.90/day (less than your coffee)" },
-                  ].map((item) => (
-                    <div key={item.text} className="flex items-start gap-2.5">
-                      <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check size={12} strokeWidth={3} className="text-emerald-600" />
-                      </div>
-                      <span className={`text-sm ${item.bold ? "font-semibold text-[#1C1917]" : "text-[#44403C]"}`}>{item.text}</span>
-                    </div>
+                    { feature: "Taste", brew: "Smooth vanilla bean — enhances your coffee", mush: "Earthy, bitter — replaces your coffee", highlight: true },
+                    { feature: "Your coffee routine", brew: "Keep it. Just add one pump.", mush: "Gone. You drink theirs instead." },
+                    { feature: "Lion's Mane dose", brew: "1,200mg (transparent label)", mush: "Unknown (proprietary blend)" },
+                    { feature: "Cognizin® (Citicoline)", brew: "250mg patented form", mush: "Not included" },
+                    { feature: "L-Theanine", brew: "75mg for calm focus*", mush: "Not included" },
+                    { feature: "Sugar", brew: "0g", mush: "Varies (0–5g)" },
+                    { feature: "Calories", brew: "0", mush: "15–40 per serving" },
+                    { feature: "Label transparency", brew: "Every mg disclosed", mush: "Proprietary blends common" },
+                    { feature: "Works with any coffee", brew: "Yes — drip, espresso, cold brew, latte", mush: "No — it IS the coffee" },
+                    { feature: "Price per day", brew: "From $0.90", mush: "$1.50–$2.50" },
+                  ].map((row) => (
+                    <tr key={row.feature} className={row.highlight ? "bg-amber-50/50" : "hover:bg-stone-50 transition-colors"}>
+                      <td className="py-3.5 px-5 font-medium text-[#1C1917]">{row.feature}</td>
+                      <td className="py-3.5 px-5 text-center">
+                        <span className="text-[#44403C] font-medium">{row.brew}</span>
+                      </td>
+                      <td className="py-3.5 px-5 text-center text-[#78716C]">{row.mush}</td>
+                    </tr>
                   ))}
-                </div>
-                <div className="mt-6 pt-4 border-t border-stone-100">
-                  <div className="flex items-center gap-2">
-                    <div className="flex">{[...Array(5)].map((_, i) => <Star key={i} size={12} className="fill-amber-400 text-amber-400" />)}</div>
-                    <span className="text-xs font-semibold text-[#1C1917]">4.9/5</span>
-                    <span className="text-xs text-[#78716C]">from 2,400+ reviews</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* The alternatives — stacked losers */}
-              <div className="space-y-4">
-                {[
-                  {
-                    name: "Mushroom Coffees",
-                    subtitle: "Popular mushroom coffee brands",
-                    cons: ["Forces you to switch your coffee", "Earthy taste most people dislike", "Proprietary blends hide real dosages", "Mixed customer satisfaction reviews"],
-                  },
-                  {
-                    name: "Sugary Coffee Syrups",
-                    subtitle: "Popular flavored syrup brands",
-                    cons: ["10-15g sugar per pump", "Zero cognitive benefits", "Blood sugar spike → crash", "Empty calories, no function"],
-                  },
-                  {
-                    name: "Nootropic Pills",
-                    subtitle: "Popular nootropic capsule brands",
-                    cons: ["Another pill to remember", "Doesn't integrate into your routine", "Often underdosed ingredients", "No ritual, no enjoyment"],
-                  },
-                ].map((alt) => (
-                  <div key={alt.name} className="rounded-xl border border-stone-200 bg-white/60 p-5">
-                    <div className="flex items-center justify-between mb-2">
-                      <div>
-                        <h4 className="font-display font-bold text-[#1C1917] text-sm">{alt.name}</h4>
-                        <p className="text-xs text-[#A8A29E]">{alt.subtitle}</p>
-                      </div>
-                      <span className="text-xs font-semibold text-red-500 bg-red-50 px-2 py-0.5 rounded-full">Trade-offs</span>
-                    </div>
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
-                      {alt.cons.map((con) => (
-                        <div key={con} className="flex items-start gap-1.5">
-                          <XIcon size={12} strokeWidth={3} className="text-red-400 flex-shrink-0 mt-0.5" />
-                          <span className="text-xs text-[#78716C]">{con}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
+                </tbody>
+              </table>
             </div>
-          </FadeUp>
 
-          {/* Bottom verdict strip */}
-          <FadeUp delay={0.2}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 p-5 rounded-2xl bg-[#1C1917] text-white">
-              <div className="text-center">
-                <p className="text-2xl font-display font-bold">4 Research-Backed</p>
-                <p className="text-xs text-stone-400">nootropic ingredients</p>
-              </div>
-              <div className="hidden sm:block w-px h-10 bg-stone-700" />
-              <div className="text-center">
-                <p className="text-2xl font-display font-bold">$0.90</p>
-                <p className="text-xs text-stone-400">per day (3-bottle plan)</p>
-              </div>
-              <div className="hidden sm:block w-px h-10 bg-stone-700" />
-              <div className="text-center">
-                <p className="text-2xl font-display font-bold">30-Day</p>
-                <p className="text-xs text-stone-400">keep-the-bottle guarantee</p>
-              </div>
-              <div className="hidden sm:block w-px h-10 bg-stone-700" />
+            {/* Bottom CTA strip */}
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 p-5 rounded-2xl bg-[#1C1917] text-white">
+              <p className="text-sm text-stone-300 text-center sm:text-left">
+                Same cognitive ingredients. Better taste. No coffee switch required.
+              </p>
               <a
                 href="#offers"
                 onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
-                className="px-6 py-2.5 rounded-full bg-[#B45309] hover:bg-[#92400E] text-sm font-bold transition-colors cursor-pointer"
+                className="px-6 py-2.5 rounded-full bg-[#B45309] hover:bg-[#92400E] text-sm font-bold transition-colors cursor-pointer whitespace-nowrap"
               >
                 Give Me Calm Focus →
               </a>
@@ -1293,7 +1121,7 @@ export default function Home() {
                 Less Than Your Daily Coffee. More Than Any Supplement.
               </h2>
               <p className="text-[#78716C] text-sm md:text-lg leading-relaxed max-w-3xl mx-auto">
-                You spend $5-7 on coffee that wakes you up and crashes you by 2pm. For $0.90/day, you add <span className="font-bold text-gradient-warm">Lion's Mane</span>, patented <span className="font-bold text-gradient-warm">Cognizin®</span>, and <span className="font-bold text-gradient-warm">L-Theanine</span> to that same cup. Same mug. Same routine. Completely different results.*
+                You spend $5-7 on coffee that wakes you up and crashes you by 2pm. For $0.90/day, you add <span className="font-bold text-gradient-warm">Lion's Mane</span>, patented <span className="font-bold text-gradient-warm">Cognizin®</span>, and <span className="font-bold text-gradient-warm">L-Theanine</span> to that same cup — in a smooth vanilla bean syrup that makes your coffee taste better, not worse. Same mug. Same routine. Completely different results.*
               </p>
             </div>
           </FadeUp>

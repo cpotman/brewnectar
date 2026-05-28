@@ -60,3 +60,7 @@
 - [x] Propagate compliance fixes to Advertorial.tsx
 - [x] Propagate compliance fixes to Compare.tsx
 - [x] Propagate compliance fixes to Quiz.tsx
+- [x] Remove "Cognitive Performance Over Time" graph section (save for PDP image later)
+- [x] Remove "Your coffee, upgraded. One pump. Real focus.*" benefit block
+- [x] Replace "The Alternatives" comparison with simple BrewNectar vs Mushroom Coffee table
+- [x] Add taste callouts (vanilla bean flavor, no mushroom taste) throughout the page
