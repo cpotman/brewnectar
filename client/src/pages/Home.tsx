@@ -1119,10 +1119,10 @@ export default function Home() {
             <div className="text-center mb-12">
               <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3">Choose Your Plan</p>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#1C1917] mb-4">
-                You'll Spend $5 on Coffee Today. Add $0.90 and Actually Think Clearly.
+                Ditch the Dirt Coffee. Keep the Focus.
               </h2>
               <p className="text-[#78716C] text-sm md:text-lg leading-relaxed max-w-3xl mx-auto">
-                You spend $5-7 on coffee that wakes you up and crashes you by 2pm. For $0.90/day, you add <span className="font-bold text-gradient-warm">Lion's Mane</span>, patented <span className="font-bold text-gradient-warm">Cognizin®</span>, and <span className="font-bold text-gradient-warm">L-Theanine</span> to that same cup — in a smooth vanilla bean syrup that makes your coffee taste better, not worse. Same mug. Same routine. Completely different results.*
+                Mushroom coffee tastes like wet soil and replaces the cup you love. BrewNectar is a <span className="font-bold text-gradient-warm">smooth vanilla bean syrup</span> that goes into your existing coffee — same mug, better flavor, real nootropics. From $0.90/day.*
               </p>
             </div>
           </FadeUp>
