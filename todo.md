@@ -64,3 +64,4 @@
 - [x] Remove "Your coffee, upgraded. One pump. Real focus.*" benefit block
 - [x] Replace "The Alternatives" comparison with simple BrewNectar vs Mushroom Coffee table
 - [x] Add taste callouts (vanilla bean flavor, no mushroom taste) throughout the page
+- [x] Add visual flavor comparison callout in How It Works section (BrewNectar vs mushroom coffee - messy, smelly, dirt)
