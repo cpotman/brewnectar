@@ -944,44 +944,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* ─── Flavor Comparison Callout ─── */}
-          <FadeUp>
-            <div className="mt-16 md:mt-20 rounded-3xl overflow-hidden border border-stone-100 shadow-warm">
-              <div className="grid md:grid-cols-2">
-                {/* BrewNectar side */}
-                <div className="bg-gradient-to-br from-amber-50 to-white p-8 md:p-10 relative">
-                  <div className="absolute top-4 right-4 bg-emerald-100 text-emerald-700 text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">BrewNectar</div>
-                  <div className="text-4xl mb-4">☕</div>
-                  <h4 className="font-display font-bold text-xl text-[#1C1917] mb-3">One clean pump. Done.</h4>
-                  <ul className="space-y-2.5 text-sm text-[#44403C]">
-                    <li className="flex items-start gap-2"><span className="text-emerald-500 mt-0.5">✓</span>Smooth vanilla bean — enhances your coffee's flavor</li>
-                    <li className="flex items-start gap-2"><span className="text-emerald-500 mt-0.5">✓</span>No mess. No powder. No measuring scoops.</li>
-                    <li className="flex items-start gap-2"><span className="text-emerald-500 mt-0.5">✓</span>Dissolves in 3 seconds. No grit. No residue.</li>
-                    <li className="flex items-start gap-2"><span className="text-emerald-500 mt-0.5">✓</span>Smells like vanilla and coffee. Because it is.</li>
-                    <li className="flex items-start gap-2"><span className="text-emerald-500 mt-0.5">✓</span>Keep the coffee you love. Just make it smarter.</li>
-                  </ul>
-                </div>
-                {/* Mushroom Coffee side */}
-                <div className="bg-stone-100 p-8 md:p-10 relative border-t md:border-t-0 md:border-l border-stone-200">
-                  <div className="absolute top-4 right-4 bg-stone-200 text-stone-500 text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">Mushroom Coffee</div>
-                  <div className="text-4xl mb-4">🍄</div>
-                  <h4 className="font-display font-bold text-xl text-[#78716C] mb-3">A whole new (worse) ritual.</h4>
-                  <ul className="space-y-2.5 text-sm text-[#78716C]">
-                    <li className="flex items-start gap-2"><span className="text-red-400 mt-0.5">✗</span>Earthy, bitter taste — replaces your coffee entirely</li>
-                    <li className="flex items-start gap-2"><span className="text-red-400 mt-0.5">✗</span>Messy powder everywhere. Scoops, spills, clumps.</li>
-                    <li className="flex items-start gap-2"><span className="text-red-400 mt-0.5">✗</span>Gritty texture that never fully dissolves</li>
-                    <li className="flex items-start gap-2"><span className="text-red-400 mt-0.5">✗</span>Smells like wet dirt. Your kitchen smells like wet dirt.</li>
-                    <li className="flex items-start gap-2"><span className="text-red-400 mt-0.5">✗</span>Forces you to give up the coffee you actually enjoy</li>
-                  </ul>
-                </div>
-              </div>
-              {/* Bottom strip */}
-              <div className="bg-[#1C1917] px-6 py-4 flex items-center justify-center gap-3">
-                <span className="text-white/80 text-sm font-medium">Same cognitive ingredients. Better taste. No coffee switch required.</span>
-              </div>
-            </div>
-          </FadeUp>
-
         </div>
       </section>
 
@@ -1157,7 +1119,7 @@ export default function Home() {
             <div className="text-center mb-12">
               <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3">Choose Your Plan</p>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#1C1917] mb-4">
-                Less Than Your Daily Coffee. More Than Any Supplement.
+                You'll Spend $5 on Coffee Today. Add $0.90 and Actually Think Clearly.
               </h2>
               <p className="text-[#78716C] text-sm md:text-lg leading-relaxed max-w-3xl mx-auto">
                 You spend $5-7 on coffee that wakes you up and crashes you by 2pm. For $0.90/day, you add <span className="font-bold text-gradient-warm">Lion's Mane</span>, patented <span className="font-bold text-gradient-warm">Cognizin®</span>, and <span className="font-bold text-gradient-warm">L-Theanine</span> to that same cup — in a smooth vanilla bean syrup that makes your coffee taste better, not worse. Same mug. Same routine. Completely different results.*
