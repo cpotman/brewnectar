@@ -916,6 +916,7 @@ export default function Home() {
                 step: "02",
                 title: "Stir",
                 desc: "Smooth vanilla bean dissolves in seconds. No grit. No earthy mushroom taste. No chalky residue. Your coffee actually tastes better — like a premium vanilla latte, not a health supplement.",
+                highlight: "Smooth vanilla bean dissolves in seconds.",
                 image: IMAGES.howStir,
               },
               {
@@ -938,7 +939,14 @@ export default function Home() {
                     </div>
                   </div>
                   <h3 className="font-display font-bold text-xl text-[#1C1917] mb-2">{item.title}</h3>
-                  <p className="text-[#78716C] leading-relaxed">{item.desc}</p>
+                  <p className="text-[#78716C] leading-relaxed">
+                    {item.highlight ? (
+                      <>
+                        <span className="bg-amber-100 text-[#B45309] font-semibold px-1 rounded">{item.highlight}</span>{" "}
+                        {item.desc.replace(item.highlight, "").trim()}
+                      </>
+                    ) : item.desc}
+                  </p>
                 </div>
               </FadeUp>
             ))}
