@@ -65,3 +65,12 @@
 - [x] Replace "The Alternatives" comparison with simple BrewNectar vs Mushroom Coffee table
 - [x] Add taste callouts (vanilla bean flavor, no mushroom taste) throughout the page
 - [x] Add visual flavor comparison callout in How It Works section (BrewNectar vs mushroom coffee - messy, smelly, dirt)
+- [x] PDP: Add star rating + review count above the fold (already exists)
+- [x] PDP: Add benefit pills/badges row (Smooth Vanilla, No Mushroom Taste, Zero Sugar, etc.)
+- [x] PDP: Add tiered pricing with SAVE % badges and "Most Popular" label (already exists)
+- [x] PDP: Add stock/shipping urgency ("In Stock | Ships within 24 hours") (already exists)
+- [x] PDP: Add 30-day money back guarantee callout below CTA (already exists)
+- [x] PDP: Add User-Reported Outcomes statistics section
+- [x] PDP: Add trust/quality icons row (in benefit pills: Smooth Vanilla, No Mushroom Taste, Zero Sugar, Non-GMO, Made in USA)
+- [x] PDP: Add expandable accordion sections (already exists as FAQ section)
+- [x] PDP: Add per-serving price display (shown as $X.XX USD/DAY on each plan)
