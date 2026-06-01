@@ -74,3 +74,12 @@
 - [x] PDP: Add trust/quality icons row (in benefit pills: Smooth Vanilla, No Mushroom Taste, Zero Sugar, Non-GMO, Made in USA)
 - [x] PDP: Add expandable accordion sections (already exists as FAQ section)
 - [x] PDP: Add per-serving price display (shown as $X.XX USD/DAY on each plan)
+- [ ] PDP Overhaul: Selling point icons row (No Earthy Taste, No Mess, Zero Sugar, Non-GMO, Made in USA)
+- [ ] PDP Overhaul: User-reported outcomes section (large bold %, Earthwise style)
+- [ ] PDP Overhaul: Visually distinct review section with warm background (Earthwise style cards)
+- [ ] PDP Overhaul: Straightforward comparison table (BrewNectar vs Mushroom Coffee)
+- [ ] PDP Overhaul: Lifestyle outcomes section with large stats on colored background
+- [ ] PDP Overhaul: 30-day guarantee section
+- [ ] PDP Overhaul: FAQ section
+- [ ] PDP Overhaul: Keep "What Happens When You Start" and "Still Deciding?" sections
+- [ ] PDP Overhaul: Follow Earthwise full-page sequence order
