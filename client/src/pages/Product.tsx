@@ -820,10 +820,10 @@ export default function Product() {
             </p>
           </FadeUp>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             {EXTENDED_REVIEWS.map((review, i) => (
               <FadeUp key={review.name} delay={i * 0.08}>
-                <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-7 hover:bg-white/15 transition-all duration-300">
+                <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-7 hover:bg-white/15 transition-all duration-300 min-w-[320px] md:min-w-[380px] snap-start">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div>
                       <div className="flex gap-0.5 mb-2">
@@ -935,49 +935,59 @@ export default function Product() {
         </div>
       </section>
 
-      {/* ═══════════ COMPARISON TABLE (Clean minimal Earthwise style) ═══════════ */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ═══════════ COMPARISON TABLE (Earthwise highlighted column style) ═══════════ */}
+      <section className="py-20 md:py-28 bg-[#FDFBF7]">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-12">
-              BrewNectar vs. Mushroom Coffee
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1C1917] mb-2">
+              Why BrewNectar Outperforms
             </h2>
+            <p className="text-sm md:text-base text-[#57534E] mb-10">
+              Compare the benefits of research-backed nootropic syrup vs. mushroom coffee alternatives.
+            </p>
           </FadeUp>
 
           <FadeUp delay={0.1}>
-            <div className="overflow-hidden">
-              {/* Table header */}
-              <div className="grid grid-cols-[1fr_100px_100px] md:grid-cols-[1fr_140px_140px] items-center pb-4 border-b-2 border-[#1C1917]">
-                <div />
-                <p className="text-center font-display font-bold text-sm md:text-base text-[#B45309]">BrewNectar</p>
-                <p className="text-center font-display font-bold text-sm md:text-base text-[#78716C]">Mushroom<br className="md:hidden" /> Coffee</p>
-              </div>
-
-              {/* Table rows */}
-              {[
-                "Smooth vanilla taste",
-                "Keep your own coffee",
-                "One pump — no mess",
-                "Full label transparency",
-                "Zero sugar, zero calories",
-                "Research-backed doses",
-                "From $0.90/day",
-                "30-day guarantee",
-              ].map((feature, i) => (
-                <div key={feature} className={`grid grid-cols-[1fr_100px_100px] md:grid-cols-[1fr_140px_140px] items-center py-4 ${i < 7 ? "border-b border-stone-100" : ""}`}>
-                  <span className="text-sm md:text-base text-[#1C1917]">{feature}</span>
+            <div className="relative border border-stone-200 rounded-2xl bg-white overflow-hidden">
+              {/* Column highlight strip for BrewNectar */}
+              <div className="absolute top-0 bottom-0 right-[60px] md:right-[70px] w-[60px] md:w-[70px] bg-[#D97706] rounded-xl z-0" style={{ right: 'calc(60px + 60px)', width: '60px' }} />
+              
+              {/* Actual table using precise positioning */}
+              <div className="relative z-10">
+                {/* Header row */}
+                <div className="grid grid-cols-[1fr_60px_60px] md:grid-cols-[1fr_70px_70px] items-center px-5 py-4">
+                  <div />
                   <div className="flex justify-center">
-                    <div className="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center">
-                      <Check size={15} strokeWidth={3} className="text-emerald-600" />
-                    </div>
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/product-hero-bright-8KqxBvhAMqVkGPJJLXzjxb.webp" alt="BrewNectar" className="w-10 h-10 md:w-12 md:h-12 object-contain rounded-lg" />
                   </div>
-                  <div className="flex justify-center">
-                    <div className="w-7 h-7 rounded-full bg-red-50 flex items-center justify-center">
-                      <XIcon size={15} strokeWidth={3} className="text-red-400" />
-                    </div>
-                  </div>
+                  <div />
                 </div>
-              ))}
+
+                {/* Table rows */}
+                {[
+                  "No earthy taste or grit",
+                  "Smooth daily ritual",
+                  "Keep your own coffee",
+                  "Full label transparency",
+                  "Zero sugar, zero calories",
+                  "Easy to remember to take",
+                  "No mushroom aftertaste",
+                ].map((feature, i) => (
+                  <div key={feature} className={`grid grid-cols-[1fr_60px_60px] md:grid-cols-[1fr_70px_70px] items-center px-5 py-3.5 ${i < 6 ? "border-b border-stone-100" : ""}`}>
+                    <span className="text-sm text-[#1C1917]">{feature}</span>
+                    <div className="flex justify-center">
+                      <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center shadow-sm">
+                        <Check size={14} strokeWidth={3} className="text-[#D97706]" />
+                      </div>
+                    </div>
+                    <div className="flex justify-center">
+                      <div className="w-6 h-6 rounded-full bg-stone-100 flex items-center justify-center">
+                        <XIcon size={12} strokeWidth={2.5} className="text-stone-400" />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </FadeUp>
 
