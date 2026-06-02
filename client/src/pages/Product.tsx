@@ -948,45 +948,48 @@ export default function Product() {
           </FadeUp>
 
           <FadeUp delay={0.1}>
-            <div className="relative border border-stone-200 rounded-2xl bg-white overflow-hidden">
-              {/* Column highlight strip for BrewNectar */}
-              <div className="absolute top-0 bottom-0 right-[60px] md:right-[70px] w-[60px] md:w-[70px] bg-[#D97706] rounded-xl z-0" style={{ right: 'calc(60px + 60px)', width: '60px' }} />
-              
-              {/* Actual table using precise positioning */}
-              <div className="relative z-10">
-                {/* Header row */}
-                <div className="grid grid-cols-[1fr_60px_60px] md:grid-cols-[1fr_70px_70px] items-center px-5 py-4">
-                  <div />
-                  <div className="flex justify-center">
-                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/product-hero-bright-8KqxBvhAMqVkGPJJLXzjxb.webp" alt="BrewNectar" className="w-10 h-10 md:w-12 md:h-12 object-contain rounded-lg" />
-                  </div>
-                  <div />
+            <div className="border border-stone-200 rounded-2xl bg-white overflow-hidden">
+              {/* Header row */}
+              <div className="grid grid-cols-[1fr_60px_60px] md:grid-cols-[1fr_70px_70px] items-center">
+                <div />
+                <div className="flex justify-center items-center py-4 bg-[#D97706] rounded-t-xl">
+                  <span className="text-xs font-bold text-white">BrewNectar</span>
                 </div>
+                <div className="flex justify-center items-center py-4">
+                  <span className="text-xs font-medium text-stone-400">Others</span>
+                </div>
+              </div>
 
-                {/* Table rows */}
-                {[
-                  "No earthy taste or grit",
-                  "Smooth daily ritual",
-                  "Keep your own coffee",
-                  "Full label transparency",
-                  "Zero sugar, zero calories",
-                  "Easy to remember to take",
-                  "No mushroom aftertaste",
-                ].map((feature, i) => (
-                  <div key={feature} className={`grid grid-cols-[1fr_60px_60px] md:grid-cols-[1fr_70px_70px] items-center px-5 py-3.5 ${i < 6 ? "border-b border-stone-100" : ""}`}>
-                    <span className="text-sm text-[#1C1917]">{feature}</span>
-                    <div className="flex justify-center">
-                      <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center shadow-sm">
-                        <Check size={14} strokeWidth={3} className="text-[#D97706]" />
-                      </div>
-                    </div>
-                    <div className="flex justify-center">
-                      <div className="w-6 h-6 rounded-full bg-stone-100 flex items-center justify-center">
-                        <XIcon size={12} strokeWidth={2.5} className="text-stone-400" />
-                      </div>
+              {/* Table rows */}
+              {[
+                "No earthy taste or grit",
+                "Smooth daily ritual",
+                "Keep your own coffee",
+                "Full label transparency",
+                "Zero sugar, zero calories",
+                "Easy to remember to take",
+                "No mushroom aftertaste",
+              ].map((feature, i) => (
+                <div key={feature} className={`grid grid-cols-[1fr_60px_60px] md:grid-cols-[1fr_70px_70px] items-center ${i < 6 ? "border-b border-stone-50" : ""}`}>
+                  <span className="text-sm text-[#1C1917] px-5 py-3.5">{feature}</span>
+                  <div className="flex justify-center py-3.5 bg-[#D97706]">
+                    <div className="w-6 h-6 rounded-full bg-white/90 flex items-center justify-center">
+                      <Check size={14} strokeWidth={3} className="text-[#D97706]" />
                     </div>
                   </div>
-                ))}
+                  <div className="flex justify-center py-3.5">
+                    <div className="w-6 h-6 rounded-full bg-stone-100 flex items-center justify-center">
+                      <XIcon size={12} strokeWidth={2.5} className="text-stone-400" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {/* Bottom rounded corner for the orange column */}
+              <div className="grid grid-cols-[1fr_60px_60px] md:grid-cols-[1fr_70px_70px]">
+                <div />
+                <div className="h-3 bg-[#D97706] rounded-b-xl" />
+                <div />
               </div>
             </div>
           </FadeUp>
