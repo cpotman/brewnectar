@@ -85,3 +85,5 @@
 - [x] PDP Overhaul: Follow Earthwise full-page sequence order
 - [x] PDP Fix: Add Non-GMO and No Mess to selling-point icons row
 - [x] PDP Fix: Add lifestyle outcomes section with lifestyle images and large stats on colored background
+- [x] PDP: Change dark review section background from black to sleek orange gradient
+- [x] PDP: Redesign comparison table to be cleaner and simpler (Earthwise reference style)

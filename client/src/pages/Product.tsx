@@ -803,23 +803,23 @@ export default function Product() {
       </section>
 
       {/* ═══════════ REVIEWS — DARK CONTRASTING SECTION (Earthwise style) ═══════════ */}
-      <section className="py-20 md:py-28 bg-[#1C1917] relative overflow-hidden">
+      <section className="py-20 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #7C2D12 0%, #9A3412 25%, #C2410C 50%, #D97706 80%, #F59E0B 100%)" }}>
         {/* Subtle texture overlay */}
-        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle at 20% 50%, rgba(217,119,6,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(217,119,6,0.2) 0%, transparent 50%)" }} />
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(0,0,0,0.2) 0%, transparent 40%)" }} />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <div className="flex items-center justify-center gap-2 mb-3">
               <div className="flex -space-x-0.5">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={18} className="fill-[#D97706] text-[#D97706]" />
+                  <Star key={i} size={18} className="fill-yellow-300 text-yellow-300" />
                 ))}
               </div>
-              <span className="text-sm font-semibold text-[#D97706]">4.9/5</span>
+              <span className="text-sm font-semibold text-white">4.9/5</span>
             </div>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-white mb-3">
               Real Stories From Real Customers
             </h2>
-            <p className="text-center text-stone-400 text-lg mb-14 max-w-2xl mx-auto">
+            <p className="text-center text-white/70 text-lg mb-14 max-w-2xl mx-auto">
               Don't just take our word for it. Here's what people are saying after making BrewNectar part of their daily ritual.
             </p>
           </FadeUp>
@@ -827,31 +827,31 @@ export default function Product() {
           <div className="grid md:grid-cols-2 gap-6">
             {EXTENDED_REVIEWS.map((review, i) => (
               <FadeUp key={review.name} delay={i * 0.08}>
-                <div className="bg-[#292524] border border-stone-700/50 rounded-2xl p-6 md:p-7 hover:border-[#D97706]/30 transition-all duration-300">
+                <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-7 hover:bg-white/15 transition-all duration-300">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div>
                       <div className="flex gap-0.5 mb-2">
                         {[...Array(review.rating)].map((_, j) => (
-                          <Star key={j} size={14} className="fill-[#D97706] text-[#D97706]" />
+                          <Star key={j} size={14} className="fill-yellow-300 text-yellow-300" />
                         ))}
                       </div>
-                      <h3 className="font-display font-bold text-lg text-white">{review.heading}</h3>
+                      <h3 className="font-display font-bold text-lg text-white drop-shadow-sm">{review.heading}</h3>
                     </div>
-                    <span className="text-xs text-stone-500 whitespace-nowrap mt-1">{review.date}</span>
+                    <span className="text-xs text-white/50 whitespace-nowrap mt-1">{review.date}</span>
                   </div>
-                  <p className="text-stone-300 leading-relaxed mb-5 text-sm">
+                  <p className="text-white/80 leading-relaxed mb-5 text-sm">
                     "{review.text}"
                   </p>
-                  <div className="flex items-center gap-3 pt-4 border-t border-stone-700/50">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#B45309] to-[#D97706] flex items-center justify-center">
+                  <div className="flex items-center gap-3 pt-4 border-t border-white/15">
+                    <div className="w-10 h-10 rounded-full bg-white/20 border border-white/30 flex items-center justify-center">
                       <span className="font-display font-bold text-sm text-white">{review.name.charAt(0)}</span>
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-white">{review.name}</p>
-                      <p className="text-xs text-stone-500">{review.title}</p>
+                      <p className="text-xs text-white/60">{review.title}</p>
                     </div>
                     <div className="ml-auto">
-                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-900/40 border border-emerald-700/30 text-[10px] font-semibold text-emerald-400">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/15 border border-white/25 text-[10px] font-semibold text-emerald-300">
                         <Check size={10} /> Verified Buyer
                       </span>
                     </div>
@@ -865,7 +865,7 @@ export default function Product() {
             <div className="mt-10 text-center">
               <a
                 href="#offers"
-                className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold text-[#1C1917] rounded-full bg-[#D97706] hover:bg-[#B45309] transition-colors"
+                className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold text-[#1C1917] rounded-full bg-white hover:bg-white/90 transition-colors shadow-lg"
                 onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
               >
                 Join Them — Try BrewNectar
@@ -939,59 +939,46 @@ export default function Product() {
         </div>
       </section>
 
-      {/* ═══════════ COMPARISON TABLE (Clean Earthwise style) ═══════════ */}
-      <section className="py-20 md:py-28 bg-[#FDFBF7]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ═══════════ COMPARISON TABLE (Clean minimal Earthwise style) ═══════════ */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">The Clear Choice</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-12">
               BrewNectar vs. Mushroom Coffee
             </h2>
-            <p className="text-center text-[#78716C] text-lg mb-12 max-w-2xl mx-auto">
-              One adds to your coffee. The other replaces it. See how they compare.
-            </p>
           </FadeUp>
 
           <FadeUp delay={0.1}>
-            <div className="rounded-2xl border border-stone-200 overflow-hidden bg-white shadow-sm">
+            <div className="overflow-hidden">
               {/* Table header */}
-              <div className="grid grid-cols-3 bg-stone-50 border-b border-stone-200">
-                <div className="p-4 md:p-5" />
-                <div className="p-4 md:p-5 text-center border-x border-stone-200 bg-amber-50/50">
-                  <p className="font-display font-bold text-sm md:text-base text-[#B45309]">BrewNectar</p>
-                </div>
-                <div className="p-4 md:p-5 text-center">
-                  <p className="font-display font-bold text-sm md:text-base text-[#78716C]">Mushroom Coffee</p>
-                </div>
+              <div className="grid grid-cols-[1fr_100px_100px] md:grid-cols-[1fr_140px_140px] items-center pb-4 border-b-2 border-[#1C1917]">
+                <div />
+                <p className="text-center font-display font-bold text-sm md:text-base text-[#B45309]">BrewNectar</p>
+                <p className="text-center font-display font-bold text-sm md:text-base text-[#78716C]">Mushroom<br className="md:hidden" /> Coffee</p>
               </div>
 
               {/* Table rows */}
               {[
-                { feature: "Taste", brew: "Smooth vanilla bean", mush: "Earthy, gritty, dirt-like", highlight: true },
-                { feature: "Your Coffee", brew: "Keep your favorite", mush: "Must replace it" },
-                { feature: "Format", brew: "One pump into any cup", mush: "Instant powder only" },
-                { feature: "Label Transparency", brew: "Every mg disclosed", mush: "Proprietary blends" },
-                { feature: "Sugar", brew: "Zero", mush: "Varies (often added)" },
-                { feature: "Nootropic Dose", brew: "Research-backed doses", mush: "Often underdosed" },
-                { feature: "Caffeine Source", brew: "Your own coffee", mush: "Instant coffee base" },
-                { feature: "Price / Serving", brew: "From $0.90/day", mush: "$1.50-2.50/day" },
-                { feature: "Guarantee", brew: "30-day keep-the-bottle", mush: "Standard returns" },
-              ].map((row, i) => (
-                <div key={row.feature} className={`grid grid-cols-3 ${i % 2 === 0 ? "bg-white" : "bg-stone-50/50"} ${row.highlight ? "bg-amber-50/40" : ""} ${i < 8 ? "border-b border-stone-100" : ""}`}>
-                  <div className="p-3.5 md:p-4 flex items-center">
-                    <span className={`text-xs md:text-sm font-semibold ${row.highlight ? "text-[#B45309]" : "text-[#1C1917]"}`}>{row.feature}</span>
-                  </div>
-                  <div className="p-3.5 md:p-4 text-center border-x border-stone-100 flex items-center justify-center gap-2">
-                    <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                      <Check size={11} strokeWidth={3} className="text-emerald-600" />
+                "Smooth vanilla taste",
+                "Keep your own coffee",
+                "One pump — no mess",
+                "Full label transparency",
+                "Zero sugar, zero calories",
+                "Research-backed doses",
+                "From $0.90/day",
+                "30-day guarantee",
+              ].map((feature, i) => (
+                <div key={feature} className={`grid grid-cols-[1fr_100px_100px] md:grid-cols-[1fr_140px_140px] items-center py-4 ${i < 7 ? "border-b border-stone-100" : ""}`}>
+                  <span className="text-sm md:text-base text-[#1C1917]">{feature}</span>
+                  <div className="flex justify-center">
+                    <div className="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center">
+                      <Check size={15} strokeWidth={3} className="text-emerald-600" />
                     </div>
-                    <span className="text-xs md:text-sm text-[#1C1917] font-medium">{row.brew}</span>
                   </div>
-                  <div className="p-3.5 md:p-4 text-center flex items-center justify-center gap-2">
-                    <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
-                      <XIcon size={11} strokeWidth={3} className="text-red-400" />
+                  <div className="flex justify-center">
+                    <div className="w-7 h-7 rounded-full bg-red-50 flex items-center justify-center">
+                      <XIcon size={15} strokeWidth={3} className="text-red-400" />
                     </div>
-                    <span className="text-xs md:text-sm text-[#78716C]">{row.mush}</span>
                   </div>
                 </div>
               ))}
@@ -999,7 +986,7 @@ export default function Product() {
           </FadeUp>
 
           <FadeUp delay={0.2}>
-            <div className="mt-8 text-center">
+            <div className="mt-10 text-center">
               <a
                 href="#offers"
                 className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold text-white rounded-full bg-[#1C1917] hover:bg-[#292524] transition-colors"
