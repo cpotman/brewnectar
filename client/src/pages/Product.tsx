@@ -673,25 +673,62 @@ export default function Product() {
         </div>
       </section>
 
-      {/* ═══════════ USER-REPORTED OUTCOMES (Earthwise style) ═══════════ */}
-      <section className="py-12 md:py-16 bg-[#FDFBF7] border-y border-stone-100">
+      {/* ═══════════ SELLING POINT ICONS ROW (Earthwise style) ═══════════ */}
+      <section className="py-12 md:py-16 bg-white border-y border-stone-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
-            <p className="text-center text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-6">User-Reported Results*</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            <div className="grid grid-cols-4 md:grid-cols-8 gap-4 md:gap-3">
               {[
-                { stat: "87%", label: "report improved focus within the first week" },
-                { stat: "4.9", label: "average rating from verified buyers" },
-                { stat: "92%", label: "say it tastes better than mushroom coffee" },
-                { stat: "3.2h", label: "avg. additional deep work time reported" },
+                { icon: "🍦", label: "Smooth Vanilla", sub: "No earthy taste" },
+                { icon: "☕", label: "Any Coffee", sub: "Hot, iced, or cold brew" },
+                { icon: "✨", label: "Zero Sugar", sub: "Zero calories" },
+                { icon: "🚫", label: "No Mushroom Taste", sub: "No gritty texture" },
+                { icon: "💧", label: "No Mess", sub: "One pump, done" },
+                { icon: "🌱", label: "Non-GMO", sub: "Clean ingredients" },
+                { icon: "🔬", label: "Research-Backed", sub: "Transparent dosing" },
+                { icon: "🇺🇸", label: "Made in USA", sub: "GMP certified" },
               ].map((item) => (
-                <div key={item.stat} className="text-center">
-                  <p className="font-display text-3xl md:text-4xl font-bold text-[#1C1917] mb-1">{item.stat}</p>
-                  <p className="text-xs text-[#78716C] leading-snug">{item.label}</p>
+                <div key={item.label} className="flex flex-col items-center text-center gap-2">
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center">
+                    <span className="text-2xl md:text-3xl">{item.icon}</span>
+                  </div>
+                  <div>
+                    <p className="text-xs md:text-sm font-bold text-[#1C1917] leading-tight">{item.label}</p>
+                    <p className="text-[10px] md:text-xs text-[#78716C] mt-0.5">{item.sub}</p>
+                  </div>
                 </div>
               ))}
             </div>
-            <p className="text-center text-[10px] text-[#A8A29E] mt-6">*Based on a voluntary survey of subscribers. Individual results may vary.</p>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ═══════════ USER-REPORTED OUTCOMES (Earthwise style — large bold) ═══════════ */}
+      <section className="py-14 md:py-20 bg-[#FDFBF7]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeUp>
+            <p className="text-center text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3">User-Reported Results*</p>
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-center text-[#1C1917] mb-10">
+              Numbers That Speak for Themselves
+            </h2>
+          </FadeUp>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            {[
+              { stat: "87%", label: "report improved focus within the first week", color: "text-[#B45309]" },
+              { stat: "4.9", label: "average rating from verified buyers", color: "text-emerald-600" },
+              { stat: "92%", label: "say it tastes better than mushroom coffee", color: "text-[#B45309]" },
+              { stat: "3.2h", label: "avg. additional deep work time reported", color: "text-emerald-600" },
+            ].map((item, i) => (
+              <FadeUp key={item.stat} delay={i * 0.08}>
+                <div className="text-center p-4 md:p-6 rounded-2xl bg-white border border-stone-100 shadow-sm">
+                  <p className={`font-display text-4xl md:text-5xl font-black ${item.color} mb-2`}>{item.stat}</p>
+                  <p className="text-xs md:text-sm text-[#78716C] leading-snug">{item.label}</p>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+          <FadeUp delay={0.3}>
+            <p className="text-center text-[10px] text-[#A8A29E] mt-8">*Based on a voluntary survey of subscribers. Individual results may vary.</p>
           </FadeUp>
         </div>
       </section>
@@ -765,272 +802,32 @@ export default function Product() {
         </div>
       </section>
 
-      {/* ═══════════ TRANSFORM YOUR FOCUS — Benefit Visuals ═══════════ */}
-      <section className="py-16 md:py-24 bg-[#FDFBF7]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ═══════════ REVIEWS — DARK CONTRASTING SECTION (Earthwise style) ═══════════ */}
+      <section className="py-20 md:py-28 bg-[#1C1917] relative overflow-hidden">
+        {/* Subtle texture overlay */}
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle at 20% 50%, rgba(217,119,6,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(217,119,6,0.2) 0%, transparent 50%)" }} />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Transform Your Focus</p>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">
-              One Syrup. Four Superpowers.
-            </h2>
-            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">
-              Over 175+ peer-reviewed studies support the ingredients in BrewNectar.
-            </p>
-          </FadeUp>
-
-          <div className="hidden lg:grid lg:grid-cols-3 gap-8 items-center">
-            <div className="space-y-10">
-              <FadeUp delay={0.1}>
-                <div className="text-right">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-amber-50 border border-amber-100 mb-3 ml-auto">
-                    <Brain size={22} className="text-[#B45309]" />
-                  </div>
-                  <h3 className="font-display font-bold text-lg text-[#1C1917] mb-1">Cognitive Clarity</h3>
-                  <p className="text-sm text-[#78716C] leading-relaxed">
-                    Lion's Mane has been studied for its role in supporting nerve growth factor (NGF) production, which may support sharper thinking over time.*
-                  </p>
-                </div>
-              </FadeUp>
-              <FadeUp delay={0.2}>
-                <div className="text-right">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 mb-3 ml-auto">
-                    <Zap size={22} className="text-emerald-600" />
-                  </div>
-                  <h3 className="font-display font-bold text-lg text-[#1C1917] mb-1">Clean Energy</h3>
-                  <p className="text-sm text-[#78716C] leading-relaxed">
-                    Cognizin (Citicoline) fuels brain cells directly, supporting mental energy without jitters or crash.*
-                  </p>
-                </div>
-              </FadeUp>
-            </div>
-
-            <FadeUp delay={0.15}>
-              <div className="flex justify-center">
-                <img src={IMAGES.productClean} alt="BrewNectar bottle" className="w-72 h-72 object-contain drop-shadow-xl" />
-              </div>
-            </FadeUp>
-
-            <div className="space-y-10">
-              <FadeUp delay={0.1}>
-                <div>
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-sky-50 border border-sky-100 mb-3">
-                    <Sparkles size={22} className="text-sky-600" />
-                  </div>
-                  <h3 className="font-display font-bold text-lg text-[#1C1917] mb-1">Calm Focus</h3>
-                  <p className="text-sm text-[#78716C] leading-relaxed">
-                    L-Theanine promotes alpha brain waves — the same state associated with meditation. Focus without anxiety.*
-                  </p>
-                </div>
-              </FadeUp>
-              <FadeUp delay={0.2}>
-                <div>
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-rose-50 border border-rose-100 mb-3">
-                    <TrendingUp size={22} className="text-rose-500" />
-                  </div>
-                  <h3 className="font-display font-bold text-lg text-[#1C1917] mb-1">Sustained Performance</h3>
-                  <p className="text-sm text-[#78716C] leading-relaxed">
-                    B-Vitamins support cellular energy metabolism, helping keep your brain fueled throughout the workday.*
-                  </p>
-                </div>
-              </FadeUp>
-            </div>
-          </div>
-
-          {/* Mobile: stacked layout */}
-          <div className="lg:hidden">
-            <FadeUp>
-              <div className="flex justify-center mb-10">
-                <img src={IMAGES.productClean} alt="BrewNectar bottle" className="w-48 h-48 object-contain drop-shadow-xl" />
-              </div>
-            </FadeUp>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { icon: Brain, color: "bg-amber-50 border-amber-100 text-[#B45309]", title: "Cognitive Clarity", desc: "Lion's Mane may support sharper thinking over time.*" },
-                { icon: Zap, color: "bg-emerald-50 border-emerald-100 text-emerald-600", title: "Clean Energy", desc: "Cognizin supports brain cell energy without jitters.*" },
-                { icon: Sparkles, color: "bg-sky-50 border-sky-100 text-sky-600", title: "Calm Focus", desc: "L-Theanine promotes alpha brain waves for focus.*" },
-                { icon: TrendingUp, color: "bg-rose-50 border-rose-100 text-rose-500", title: "Sustained Performance", desc: "B-Vitamins support brain energy all day.*" },
-              ].map((b, i) => (
-                <FadeUp key={b.title} delay={i * 0.08}>
-                  <div className="bg-white rounded-2xl border border-stone-100 p-4 text-center h-full">
-                    <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl border ${b.color} mb-2`}>
-                      <b.icon size={18} />
-                    </div>
-                    <h3 className="font-display font-bold text-sm text-[#1C1917] mb-1">{b.title}</h3>
-                    <p className="text-xs text-[#78716C] leading-relaxed">{b.desc}</p>
-                  </div>
-                </FadeUp>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════ COMPARISON CHART (Redesigned — ported from homepage) ═══════════ */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeUp>
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Why BrewNectar Wins</p>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">
-              Stop Settling. Start Upgrading.
-            </h2>
-            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">
-              Other options force you to compromise — bad taste, new coffee, hidden blends, or sugar crashes. BrewNectar is the only upgrade with zero trade-offs.
-            </p>
-          </FadeUp>
-
-          <FadeUp delay={0.1}>
-            <div className="grid md:grid-cols-2 gap-6 mb-10">
-              <div className="relative rounded-2xl border-2 border-[#B45309] bg-white p-6 md:p-8 shadow-warm">
-                <div className="absolute -top-3.5 left-6 px-4 py-1 bg-[#B45309] text-white text-xs font-bold rounded-full uppercase tracking-wide">The Upgrade</div>
-                <h3 className="font-display text-2xl font-bold text-[#1C1917] mt-2 mb-1">BrewNectar</h3>
-                <p className="text-sm text-[#78716C] mb-5">Add to your existing coffee. Done.</p>
-                <div className="space-y-3">
-                  {[
-                    { text: "Research-backed nootropics (Lion's Mane 1.2g, Cognizin® 250mg)", bold: true },
-                    { text: "Works with ANY coffee you already love" },
-                    { text: "Zero sugar, zero calories" },
-                    { text: "Calm focus without jitters or crash*" },
-                    { text: "100% transparent label — every mg disclosed" },
-                    { text: "Ingredients studied for long-term cognitive support*" },
-                    { text: "Vanilla bean flavor that actually tastes good" },
-                    { text: "From $0.90/day (less than your coffee)" },
-                  ].map((item) => (
-                    <div key={item.text} className="flex items-start gap-2.5">
-                      <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check size={12} strokeWidth={3} className="text-emerald-600" />
-                      </div>
-                      <span className={`text-sm ${item.bold ? "font-semibold text-[#1C1917]" : "text-[#44403C]"}`}>{item.text}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-6 pt-4 border-t border-stone-100">
-                  <div className="flex items-center gap-2">
-                    <div className="flex">{[...Array(5)].map((_, i) => <Star key={i} size={12} className="fill-amber-400 text-amber-400" />)}</div>
-                    <span className="text-xs font-semibold text-[#1C1917]">4.9/5</span>
-                    <span className="text-xs text-[#78716C]">from 2,400+ reviews</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                {[
-                  {
-                    name: "Mushroom Coffees",
-                    subtitle: "Popular brands",
-                    cons: ["Forces you to switch your coffee", "Earthy taste most people dislike", "Proprietary blends hide real dosages", "Frequent customer complaints"],
-                  },
-                  {
-                    name: "Sugary Coffee Syrups",
-                    subtitle: "Popular brands",
-                    cons: ["10-15g sugar per pump", "Zero cognitive benefits", "Blood sugar spike → crash", "Empty calories, no function"],
-                  },
-                  {
-                    name: "Nootropic Pills",
-                    subtitle: "Popular brands",
-                    cons: ["Another pill to remember", "Doesn't integrate into your routine", "Often underdosed ingredients", "No ritual, no enjoyment"],
-                  },
-                ].map((alt) => (
-                  <div key={alt.name} className="rounded-xl border border-stone-200 bg-white/60 p-5">
-                    <div className="flex items-center justify-between mb-2">
-                      <div>
-                        <h4 className="font-display font-bold text-[#1C1917] text-sm">{alt.name}</h4>
-                        <p className="text-xs text-[#A8A29E]">{alt.subtitle}</p>
-                      </div>
-                      <span className="text-xs font-semibold text-red-500 bg-red-50 px-2 py-0.5 rounded-full">Trade-offs</span>
-                    </div>
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
-                      {alt.cons.map((con) => (
-                        <div key={con} className="flex items-start gap-1.5">
-                          <XIcon size={12} strokeWidth={3} className="text-red-400 flex-shrink-0 mt-0.5" />
-                          <span className="text-xs text-[#78716C]">{con}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <div className="flex -space-x-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={18} className="fill-[#D97706] text-[#D97706]" />
                 ))}
               </div>
+              <span className="text-sm font-semibold text-[#D97706]">4.9/5</span>
             </div>
-          </FadeUp>
-
-          <FadeUp delay={0.2}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 p-5 rounded-2xl bg-[#1C1917] text-white">
-              <div className="text-center">
-                <p className="text-2xl font-display font-bold">4 Research-Backed</p>
-                <p className="text-xs text-stone-400">nootropic ingredients</p>
-              </div>
-              <div className="hidden sm:block w-px h-10 bg-stone-700" />
-              <div className="text-center">
-                <p className="text-2xl font-display font-bold">$0.90</p>
-                <p className="text-xs text-stone-400">per day (90-day plan)</p>
-              </div>
-              <div className="hidden sm:block w-px h-10 bg-stone-700" />
-              <div className="text-center">
-                <p className="text-2xl font-display font-bold">30-Day</p>
-                <p className="text-xs text-stone-400">keep-the-bottle guarantee</p>
-              </div>
-              <div className="hidden sm:block w-px h-10 bg-stone-700" />
-              <a
-                href="#offers"
-                onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
-                className="px-6 py-2.5 rounded-full bg-[#B45309] hover:bg-[#92400E] text-sm font-bold transition-colors cursor-pointer"
-              >
-                Try BrewNectar →
-              </a>
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* ═══════════ 30-DAY GUARANTEE (Earthwise style — compact banner) ═══════════ */}
-      <section className="py-10 md:py-14 bg-[#FDFBF7]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeUp>
-            <div className="bg-white rounded-2xl border border-emerald-200/60 p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center gap-5">
-              <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200/60 flex items-center justify-center flex-shrink-0">
-                <ShieldCheck size={28} className="text-emerald-600" />
-              </div>
-              <div className="flex-1">
-                <h2 className="font-display text-xl md:text-2xl font-bold text-[#1C1917] mb-1">30-Day Keep-the-Bottle Guarantee</h2>
-                <p className="text-sm text-[#57534E] leading-relaxed">
-                  Don't love it? <strong className="text-[#1C1917]">Keep the bottle. Full refund within 48 hours.</strong> No return shipping, no restocking fees, no questions asked.
-                </p>
-              </div>
-              <div className="flex gap-4 flex-shrink-0">
-                <div className="text-center">
-                  <Heart size={18} className="text-emerald-600 mx-auto mb-1" />
-                  <p className="text-[10px] font-semibold text-[#1C1917]">Keep It</p>
-                </div>
-                <div className="text-center">
-                  <Clock size={18} className="text-emerald-600 mx-auto mb-1" />
-                  <p className="text-[10px] font-semibold text-[#1C1917]">48hr Refund</p>
-                </div>
-                <div className="text-center">
-                  <MessageCircle size={18} className="text-emerald-600 mx-auto mb-1" />
-                  <p className="text-[10px] font-semibold text-[#1C1917]">No Questions</p>
-                </div>
-              </div>
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* ═══════════ EXTENDED REVIEWS (ported from homepage) ═══════════ */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeUp>
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">In Their Words</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-white mb-3">
               Real Stories From Real Customers
             </h2>
-            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">
+            <p className="text-center text-stone-400 text-lg mb-14 max-w-2xl mx-auto">
               Don't just take our word for it. Here's what people are saying after making BrewNectar part of their daily ritual.
             </p>
           </FadeUp>
 
-          <div className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-6">
             {EXTENDED_REVIEWS.map((review, i) => (
               <FadeUp key={review.name} delay={i * 0.08}>
-                <div className="bg-[#FDFBF7] border border-stone-100 rounded-2xl p-6 md:p-8 hover:shadow-warm hover:border-amber-100 transition-all duration-300">
+                <div className="bg-[#292524] border border-stone-700/50 rounded-2xl p-6 md:p-7 hover:border-[#D97706]/30 transition-all duration-300">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div>
                       <div className="flex gap-0.5 mb-2">
@@ -1038,24 +835,24 @@ export default function Product() {
                           <Star key={j} size={14} className="fill-[#D97706] text-[#D97706]" />
                         ))}
                       </div>
-                      <h3 className="font-display font-bold text-lg text-[#1C1917]">{review.heading}</h3>
+                      <h3 className="font-display font-bold text-lg text-white">{review.heading}</h3>
                     </div>
-                    <span className="text-xs text-[#A8A29E] whitespace-nowrap mt-1">{review.date}</span>
+                    <span className="text-xs text-stone-500 whitespace-nowrap mt-1">{review.date}</span>
                   </div>
-                  <p className="text-[#57534E] leading-relaxed mb-4 text-sm md:text-base">
+                  <p className="text-stone-300 leading-relaxed mb-5 text-sm">
                     "{review.text}"
                   </p>
-                  <div className="flex items-center gap-3 pt-4 border-t border-stone-100">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center">
-                      <span className="font-display font-bold text-sm text-[#B45309]">{review.name.charAt(0)}</span>
+                  <div className="flex items-center gap-3 pt-4 border-t border-stone-700/50">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#B45309] to-[#D97706] flex items-center justify-center">
+                      <span className="font-display font-bold text-sm text-white">{review.name.charAt(0)}</span>
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-[#1C1917]">{review.name}</p>
-                      <p className="text-xs text-[#A8A29E]">{review.title} · Verified Buyer</p>
+                      <p className="text-sm font-semibold text-white">{review.name}</p>
+                      <p className="text-xs text-stone-500">{review.title}</p>
                     </div>
                     <div className="ml-auto">
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-[10px] font-semibold text-emerald-700">
-                        <Check size={10} /> Verified
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-900/40 border border-emerald-700/30 text-[10px] font-semibold text-emerald-400">
+                        <Check size={10} /> Verified Buyer
                       </span>
                     </div>
                   </div>
@@ -1063,6 +860,206 @@ export default function Product() {
               </FadeUp>
             ))}
           </div>
+
+          <FadeUp delay={0.3}>
+            <div className="mt-10 text-center">
+              <a
+                href="#offers"
+                className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold text-[#1C1917] rounded-full bg-[#D97706] hover:bg-[#B45309] transition-colors"
+                onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
+              >
+                Join Them — Try BrewNectar
+                <ArrowRight size={16} />
+              </a>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ═══════════ LIFESTYLE OUTCOMES (Earthwise style — stats with lifestyle images) ═══════════ */}
+      <section className="py-20 md:py-28 bg-gradient-to-b from-amber-50/80 to-[#FDFBF7]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeUp>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">The BrewNectar Difference</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">
+              More Than a Supplement. A Daily Ritual.
+            </h2>
+            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">
+              BrewNectar fits into the coffee you already drink. No new habit. No pills. Just better mornings.
+            </p>
+          </FadeUp>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                image: IMAGES.pour,
+                stat: "87%",
+                label: "report improved focus within the first week*",
+                caption: "One pump. Same coffee. Sharper mind.",
+              },
+              {
+                image: IMAGES.stir,
+                stat: "3.2h",
+                label: "avg. additional deep work time reported*",
+                caption: "More deep work. Less afternoon fog.",
+              },
+              {
+                image: IMAGES.lockIn,
+                stat: "92%",
+                label: "say it tastes better than mushroom coffee*",
+                caption: "Smooth vanilla. Zero earthy aftertaste.",
+              },
+            ].map((item, i) => (
+              <FadeUp key={item.stat} delay={i * 0.1}>
+                <div className="group rounded-2xl overflow-hidden bg-white border border-stone-100 shadow-sm hover:shadow-warm transition-all duration-300">
+                  <div className="relative h-56 md:h-64 overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.caption}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <p className="font-display text-3xl md:text-4xl font-bold text-white drop-shadow-lg">{item.stat}</p>
+                    </div>
+                  </div>
+                  <div className="p-5">
+                    <p className="text-sm font-semibold text-[#1C1917] mb-1">{item.label}</p>
+                    <p className="text-xs text-[#78716C]">{item.caption}</p>
+                  </div>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+
+          <FadeUp delay={0.3}>
+            <p className="text-center text-[10px] text-[#A8A29E] mt-8">*Based on a voluntary survey of subscribers. Individual results may vary.</p>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ═══════════ COMPARISON TABLE (Clean Earthwise style) ═══════════ */}
+      <section className="py-20 md:py-28 bg-[#FDFBF7]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeUp>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">The Clear Choice</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">
+              BrewNectar vs. Mushroom Coffee
+            </h2>
+            <p className="text-center text-[#78716C] text-lg mb-12 max-w-2xl mx-auto">
+              One adds to your coffee. The other replaces it. See how they compare.
+            </p>
+          </FadeUp>
+
+          <FadeUp delay={0.1}>
+            <div className="rounded-2xl border border-stone-200 overflow-hidden bg-white shadow-sm">
+              {/* Table header */}
+              <div className="grid grid-cols-3 bg-stone-50 border-b border-stone-200">
+                <div className="p-4 md:p-5" />
+                <div className="p-4 md:p-5 text-center border-x border-stone-200 bg-amber-50/50">
+                  <p className="font-display font-bold text-sm md:text-base text-[#B45309]">BrewNectar</p>
+                </div>
+                <div className="p-4 md:p-5 text-center">
+                  <p className="font-display font-bold text-sm md:text-base text-[#78716C]">Mushroom Coffee</p>
+                </div>
+              </div>
+
+              {/* Table rows */}
+              {[
+                { feature: "Taste", brew: "Smooth vanilla bean", mush: "Earthy, gritty, dirt-like", highlight: true },
+                { feature: "Your Coffee", brew: "Keep your favorite", mush: "Must replace it" },
+                { feature: "Format", brew: "One pump into any cup", mush: "Instant powder only" },
+                { feature: "Label Transparency", brew: "Every mg disclosed", mush: "Proprietary blends" },
+                { feature: "Sugar", brew: "Zero", mush: "Varies (often added)" },
+                { feature: "Nootropic Dose", brew: "Research-backed doses", mush: "Often underdosed" },
+                { feature: "Caffeine Source", brew: "Your own coffee", mush: "Instant coffee base" },
+                { feature: "Price / Serving", brew: "From $0.90/day", mush: "$1.50-2.50/day" },
+                { feature: "Guarantee", brew: "30-day keep-the-bottle", mush: "Standard returns" },
+              ].map((row, i) => (
+                <div key={row.feature} className={`grid grid-cols-3 ${i % 2 === 0 ? "bg-white" : "bg-stone-50/50"} ${row.highlight ? "bg-amber-50/40" : ""} ${i < 8 ? "border-b border-stone-100" : ""}`}>
+                  <div className="p-3.5 md:p-4 flex items-center">
+                    <span className={`text-xs md:text-sm font-semibold ${row.highlight ? "text-[#B45309]" : "text-[#1C1917]"}`}>{row.feature}</span>
+                  </div>
+                  <div className="p-3.5 md:p-4 text-center border-x border-stone-100 flex items-center justify-center gap-2">
+                    <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                      <Check size={11} strokeWidth={3} className="text-emerald-600" />
+                    </div>
+                    <span className="text-xs md:text-sm text-[#1C1917] font-medium">{row.brew}</span>
+                  </div>
+                  <div className="p-3.5 md:p-4 text-center flex items-center justify-center gap-2">
+                    <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
+                      <XIcon size={11} strokeWidth={3} className="text-red-400" />
+                    </div>
+                    <span className="text-xs md:text-sm text-[#78716C]">{row.mush}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </FadeUp>
+
+          <FadeUp delay={0.2}>
+            <div className="mt-8 text-center">
+              <a
+                href="#offers"
+                className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold text-white rounded-full bg-[#1C1917] hover:bg-[#292524] transition-colors"
+                onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
+              >
+                Choose BrewNectar
+                <ArrowRight size={16} />
+              </a>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ═══════════ 30-DAY GUARANTEE (Enhanced Earthwise style) ═══════════ */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeUp>
+            <div className="relative rounded-3xl overflow-hidden">
+              {/* Emerald gradient background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-800" />
+              <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 30% 20%, rgba(255,255,255,0.3) 0%, transparent 50%)" }} />
+              
+              <div className="relative p-8 md:p-12 text-center">
+                <div className="w-20 h-20 rounded-full bg-white/15 border-2 border-white/30 flex items-center justify-center mx-auto mb-6">
+                  <ShieldCheck size={40} className="text-white" />
+                </div>
+                <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3">
+                  30-Day Keep-the-Bottle Guarantee
+                </h2>
+                <p className="text-emerald-100 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+                  Don't love it? <strong className="text-white">Keep the bottle. Full refund within 48 hours.</strong> No return shipping, no restocking fees, no questions asked. We believe in BrewNectar so much, we'll take all the risk.
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+                  {[
+                    { icon: Heart, label: "Keep the Bottle" },
+                    { icon: Clock, label: "48-Hour Refund" },
+                    { icon: MessageCircle, label: "No Questions Asked" },
+                    { icon: Truck, label: "No Return Shipping" },
+                  ].map((item) => (
+                    <div key={item.label} className="flex flex-col items-center gap-2">
+                      <div className="w-12 h-12 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center">
+                        <item.icon size={22} className="text-white" />
+                      </div>
+                      <span className="text-xs font-semibold text-emerald-100">{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-8">
+                  <a
+                    href="#offers"
+                    className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold text-emerald-800 rounded-full bg-white hover:bg-emerald-50 transition-colors"
+                    onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
+                  >
+                    Try It Risk-Free
+                    <ArrowRight size={16} />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </FadeUp>
         </div>
       </section>
 
