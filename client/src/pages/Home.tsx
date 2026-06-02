@@ -734,7 +734,7 @@ export default function Home() {
 
               <FadeUp delay={0.2}>
                 <p className="text-base md:text-lg lg:text-xl text-[#57534E] leading-relaxed mb-6 md:mb-8 max-w-lg">
-                  One pump of vanilla bean syrup adds four research-backed nootropics to the coffee you already drink. The result: calmer, sharper focus that many users notice within the first 20 minutes,* recall that may improve with consistent use,* and an afternoon that doesn't fall apart. No new coffee. No pills. No blender.
+                  One pump. Four clinically-dosed nootropics. Add it to the coffee you already drink — sharper focus in minutes, no crash all afternoon.
                 </p>
               </FadeUp>
 
@@ -844,7 +844,7 @@ export default function Home() {
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">What's Inside</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-4">
-              Caffeine Gives You Energy. These Give You Focus.
+              Four Ingredients. One Purpose.
             </h2>
             <p className="text-center text-[#78716C] text-lg mb-16 max-w-2xl mx-auto">
               Four ingredients. Every milligram disclosed. No proprietary blends. Each one chosen for a specific job your coffee can't do alone.
