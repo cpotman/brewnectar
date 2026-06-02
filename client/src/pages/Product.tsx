@@ -703,32 +703,28 @@ export default function Product() {
         </div>
       </section>
 
-      {/* ═══════════ USER-REPORTED OUTCOMES (Earthwise style — large bold) ═══════════ */}
-      <section className="py-14 md:py-20 bg-[#FDFBF7]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ═══════════ USER-REPORTED OUTCOMES (Clean compact box) ═══════════ */}
+      <section className="py-10 md:py-14 bg-[#FDFBF7]">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
-            <p className="text-center text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3">User-Reported Results*</p>
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-center text-[#1C1917] mb-10">
-              Numbers That Speak for Themselves
-            </h2>
-          </FadeUp>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {[
-              { stat: "87%", label: "report improved focus within the first week", color: "text-[#B45309]" },
-              { stat: "4.9", label: "average rating from verified buyers", color: "text-emerald-600" },
-              { stat: "92%", label: "say it tastes better than mushroom coffee", color: "text-[#B45309]" },
-              { stat: "3.2h", label: "avg. additional deep work time reported", color: "text-emerald-600" },
-            ].map((item, i) => (
-              <FadeUp key={item.stat} delay={i * 0.08}>
-                <div className="text-center p-4 md:p-6 rounded-2xl bg-white border border-stone-100 shadow-sm">
-                  <p className={`font-display text-4xl md:text-5xl font-black ${item.color} mb-2`}>{item.stat}</p>
-                  <p className="text-xs md:text-sm text-[#78716C] leading-snug">{item.label}</p>
+            <div className="border border-stone-200 rounded-lg p-6 md:p-8 bg-white">
+              <h3 className="font-display font-bold text-base md:text-lg text-[#1C1917] mb-5">User-Reported Outcomes</h3>
+              <div className="grid grid-cols-3 gap-4 md:gap-6">
+                <div>
+                  <p className="font-display text-3xl md:text-4xl font-bold text-[#1C1917]">87%</p>
+                  <p className="text-xs md:text-sm text-[#57534E] mt-1 leading-snug">report improved focus within the first week</p>
                 </div>
-              </FadeUp>
-            ))}
-          </div>
-          <FadeUp delay={0.3}>
-            <p className="text-center text-[10px] text-[#A8A29E] mt-8">*Based on a voluntary survey of subscribers. Individual results may vary.</p>
+                <div>
+                  <p className="font-display text-3xl md:text-4xl font-bold text-[#1C1917]">92%</p>
+                  <p className="text-xs md:text-sm text-[#57534E] mt-1 leading-snug">say it tastes better than mushroom coffee</p>
+                </div>
+                <div>
+                  <p className="font-display text-3xl md:text-4xl font-bold text-[#1C1917]">94%</p>
+                  <p className="text-xs md:text-sm text-[#57534E] mt-1 leading-snug">said it was easier to take daily</p>
+                </div>
+              </div>
+              <p className="text-[10px] text-[#A8A29E] mt-5">*Based on internal customer surveys, results vary</p>
+            </div>
           </FadeUp>
         </div>
       </section>
