@@ -56,61 +56,76 @@ function FadeUp({ children, className = "", delay = 0 }: { children: React.React
   );
 }
 
-/* ─── Review Carousel with scroll arrows ─── */
-function ReviewCarousel({ reviews }: { reviews: { name: string; title: string; heading: string; text: string; rating: number; date: string }[] }) {
+/* ─── Review Carousel with scroll arrows (Earthwise-style cards) ─── */
+function ReviewCarousel({ reviews }: { reviews: { name: string; title: string; heading: string; text: string; rating: number; date: string; photo: string; purchased: string }[] }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   return (
     <div className="relative">
       {/* Left arrow */}
       <button
-        onClick={() => scrollRef.current?.scrollBy({ left: -400, behavior: 'smooth' })}
-        className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 items-center justify-center text-white hover:bg-white/30 transition-colors"
+        onClick={() => scrollRef.current?.scrollBy({ left: -380, behavior: 'smooth' })}
+        className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 z-20 w-11 h-11 rounded-full bg-white shadow-lg border border-stone-200 items-center justify-center text-stone-700 hover:bg-stone-50 transition-colors"
         aria-label="Scroll left"
       >
         <ChevronLeft size={20} />
       </button>
       {/* Right arrow */}
       <button
-        onClick={() => scrollRef.current?.scrollBy({ left: 400, behavior: 'smooth' })}
-        className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 items-center justify-center text-white hover:bg-white/30 transition-colors"
+        onClick={() => scrollRef.current?.scrollBy({ left: 380, behavior: 'smooth' })}
+        className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 z-20 w-11 h-11 rounded-full bg-white shadow-lg border border-stone-200 items-center justify-center text-stone-700 hover:bg-stone-50 transition-colors"
         aria-label="Scroll right"
       >
         <ChevronRight size={20} />
       </button>
       <div
         ref={scrollRef}
-        className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory cursor-grab active:cursor-grabbing"
+        className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory cursor-grab active:cursor-grabbing"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {reviews.map((review, i) => (
           <FadeUp key={review.name} delay={i * 0.08}>
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-7 hover:bg-white/15 transition-all duration-300 min-w-[320px] md:min-w-[380px] snap-start flex-shrink-0">
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <div>
-                  <div className="flex gap-0.5 mb-2">
-                    {[...Array(review.rating)].map((_, j) => (
-                      <Star key={j} size={14} className="fill-yellow-300 text-yellow-300" />
-                    ))}
-                  </div>
-                  <h3 className="font-display font-bold text-lg text-white drop-shadow-sm">{review.heading}</h3>
-                </div>
-                <span className="text-xs text-white/50 whitespace-nowrap mt-1">{review.date}</span>
+            <div className="bg-white rounded-3xl shadow-lg border border-stone-100 overflow-hidden min-w-[320px] md:min-w-[360px] snap-start flex-shrink-0 flex flex-col">
+              {/* Large customer photo */}
+              <div className="relative w-full aspect-[4/3] overflow-hidden">
+                <img
+                  src={review.photo}
+                  alt={review.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <p className="text-white/80 leading-relaxed mb-5 text-sm">
-                "{review.text}"
-              </p>
-              <div className="flex items-center gap-3 pt-4 border-t border-white/15">
-                <div className="w-10 h-10 rounded-full bg-white/20 border border-white/30 flex items-center justify-center">
-                  <span className="font-display font-bold text-sm text-white">{review.name.charAt(0)}</span>
+              {/* Review content */}
+              <div className="p-6 flex flex-col flex-1">
+                {/* Stars */}
+                <div className="flex gap-0.5 mb-3">
+                  {[...Array(review.rating)].map((_, j) => (
+                    <Star key={j} size={18} className="fill-amber-400 text-amber-400" />
+                  ))}
                 </div>
+                {/* Bold heading */}
+                <h3 className="font-display font-bold text-xl text-[#1C1917] mb-3 leading-tight">{review.heading}</h3>
+                {/* Review text */}
+                <p className="text-[#57534E] leading-relaxed text-[15px] mb-5 flex-1">
+                  {review.text}
+                </p>
+                {/* Verified customer badge */}
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center">
+                    <Check size={12} className="text-white" />
+                  </div>
+                  <span className="font-semibold text-sm text-[#1C1917]">{review.name}</span>
+                  <span className="text-sm text-emerald-600 font-medium">• Verified Customer</span>
+                </div>
+              </div>
+              {/* Purchased product footer */}
+              <div className="bg-stone-50 border-t border-stone-100 px-6 py-4 flex items-center gap-3">
+                <img
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/product-hero-clean-2JryfYKGcicCXzETS5MKKr.webp"
+                  alt="BrewNectar"
+                  className="w-10 h-10 rounded-lg object-cover"
+                />
                 <div>
-                  <p className="text-sm font-semibold text-white">{review.name}</p>
-                  <p className="text-xs text-white/60">{review.title}</p>
-                </div>
-                <div className="ml-auto">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/15 border border-white/25 text-[10px] font-semibold text-emerald-300">
-                    <Check size={10} /> Verified Buyer
-                  </span>
+                  <p className="text-xs text-[#78716C]">Purchased</p>
+                  <p className="text-sm font-bold text-[#1C1917]">{review.purchased}</p>
                 </div>
               </div>
             </div>
@@ -140,7 +155,9 @@ const EXTENDED_REVIEWS = [
     rating: 5,
     date: "March 2026",
     heading: "Finally, a nootropic I can recommend to patients",
-    text: "As a neurologist, I’m extremely cautious about supplements. Most nootropic products use proprietary blends with undisclosed dosages. BrewNectar is different — every ingredient is clinically dosed and transparently labeled. The Cognizin® (citicoline) at the dosage they use has solid evidence for memory and attention. I’ve been using it myself for 3 months and recommending it to patients who want cognitive support alongside their existing coffee habit.",
+    text: "As a neurologist, I'm extremely cautious about supplements. BrewNectar is different — every ingredient is clinically dosed and transparently labeled. The Cognizin® at the dosage they use has solid evidence for memory and attention. I've been using it myself for 3 months.",
+    photo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/review-customer-1-DjvmGLQff8vcW4cvUiMv9f.webp",
+    purchased: "90-Day Supply",
   },
   {
     name: "James P.",
@@ -148,7 +165,9 @@ const EXTENDED_REVIEWS = [
     rating: 5,
     date: "February 2026",
     heading: "My edge in the markets",
-    text: "I trade futures from 6:30 AM to 4 PM. That’s nearly 10 hours of intense decision-making where a single lapse in focus can cost thousands. I used to rely on 4-5 cups of coffee, but by noon I’d be jittery and making impulsive trades. Switched to 2 cups of coffee with BrewNectar and the difference is night and day. My screen time analytics show I’m making fewer but better trades.",
+    text: "I trade futures from 6:30 AM to 4 PM — nearly 10 hours of intense decision-making. I used to rely on 4-5 cups of coffee, but by noon I'd be jittery. Switched to 2 cups with BrewNectar and the difference is night and day. Fewer but better trades.",
+    photo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/review-customer-4-D3DYeAjTb6fvbVuekQXbdM.webp",
+    purchased: "60-Day Supply",
   },
   {
     name: "Michelle K.",
@@ -156,15 +175,19 @@ const EXTENDED_REVIEWS = [
     rating: 5,
     date: "March 2026",
     heading: "From zombie mom to present mom",
-    text: "I have a 2-year-old, a 5-year-old, and a 7-year-old. By 2 PM I used to be running on fumes — snapping at the kids, forgetting school pickups, staring at my laptop unable to form a sentence. After two weeks of adding it to my morning latte, the afternoon crash just... stopped. I’m more patient, more present, and I’m actually getting work done during nap time instead of doom-scrolling.",
+    text: "By 2 PM I used to be running on fumes — snapping at the kids, forgetting school pickups. After two weeks of adding it to my morning latte, the afternoon crash just... stopped. I'm more patient, more present, and actually getting work done during nap time.",
+    photo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/review-customer-3-kpFVo4DS2zfrmQmTvahuCU.webp",
+    purchased: "90-Day Supply",
   },
   {
     name: "David S.",
     title: "PhD Candidate, Neuroscience",
     rating: 5,
     date: "January 2026",
-    heading: "The science checks out — and so does the experience",
-    text: "I study neuroplasticity for a living, so I know exactly what Lion’s Mane and citicoline do at the cellular level. Most supplement companies underdose these ingredients or use inferior forms. BrewNectar uses Cognizin® (the patented citicoline) and specifies the beta-glucan content of their Lion’s Mane — that’s how you know it’s the real deal. My writing sessions went from fragmented 30-minute bursts to solid 2-3 hour deep work blocks.",
+    heading: "The science checks out",
+    text: "I study neuroplasticity for a living. Most supplement companies underdose these ingredients. BrewNectar uses Cognizin® (the patented citicoline) and specifies the beta-glucan content of their Lion's Mane. My writing sessions went from 30-minute bursts to solid 2-3 hour deep work blocks.",
+    photo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/review-customer-2-DhWQzEi4Fkg7wGS7hnRtTo.webp",
+    purchased: "60-Day Supply",
   },
 ];
 
@@ -865,24 +888,22 @@ export default function Product() {
         </div>
       </section>
 
-      {/* ═══════════ REVIEWS — DARK CONTRASTING SECTION (Earthwise style) ═══════════ */}
-      <section className="py-20 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #7C2D12 0%, #9A3412 25%, #C2410C 50%, #D97706 80%, #F59E0B 100%)" }}>
-        {/* Subtle texture overlay */}
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(0,0,0,0.2) 0%, transparent 40%)" }} />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ═══════════ REVIEWS — Earthwise-style with customer photos ═══════════ */}
+      <section className="py-20 md:py-28 relative overflow-hidden bg-[#F5F0E8]">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <div className="flex items-center justify-center gap-2 mb-3">
               <div className="flex -space-x-0.5">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={18} className="fill-yellow-300 text-yellow-300" />
+                  <Star key={i} size={18} className="fill-amber-500 text-amber-500" />
                 ))}
               </div>
-              <span className="text-sm font-semibold text-white">4.9/5</span>
+              <span className="text-sm font-semibold text-[#1C1917]">4.9/5 from 2,400+ reviews</span>
             </div>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-white mb-3">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">
               Real Stories From Real Customers
             </h2>
-            <p className="text-center text-white/70 text-lg mb-14 max-w-2xl mx-auto">
+            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">
               Don't just take our word for it. Here's what people are saying after making BrewNectar part of their daily ritual.
             </p>
           </FadeUp>
@@ -893,7 +914,7 @@ export default function Product() {
             <div className="mt-10 text-center">
               <a
                 href="#offers"
-                className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold text-[#1C1917] rounded-full bg-white hover:bg-white/90 transition-colors shadow-lg"
+                className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold text-white rounded-full bg-[#1C1917] hover:bg-[#292524] transition-colors shadow-lg"
                 onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
               >
                 Join Them — Try BrewNectar

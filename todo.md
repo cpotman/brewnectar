@@ -87,3 +87,5 @@
 - [x] PDP Fix: Add lifestyle outcomes section with lifestyle images and large stats on colored background
 - [x] PDP: Change dark review section background from black to sleek orange gradient
 - [x] PDP: Redesign comparison table to be cleaner and simpler (Earthwise reference style)
+- [x] PDP: Redesign review cards to Earthwise format with large customer photos, bold headings, verified badge, and purchased product footer
+- [x] PDP: Change review section background to warm cream (#F5F0E8) to complement white cards
