@@ -79,50 +79,51 @@ function ReviewCarousel({ reviews }: { reviews: { name: string; title: string; h
       </button>
       <div
         ref={scrollRef}
-        className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory cursor-grab active:cursor-grabbing"
+        className="flex gap-5 overflow-x-auto pb-4 pt-14 snap-x snap-mandatory cursor-grab active:cursor-grabbing"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {reviews.map((review, i) => (
           <FadeUp key={review.name} delay={i * 0.08}>
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-7 hover:bg-white/15 transition-all duration-300 min-w-[320px] md:min-w-[380px] snap-start flex-shrink-0">
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <div>
-                  <div className="flex gap-0.5 mb-2">
-                    {[...Array(review.rating)].map((_, j) => (
-                      <Star key={j} size={14} className="fill-yellow-300 text-yellow-300" />
-                    ))}
-                  </div>
-                  <h3 className="font-display font-bold text-lg text-white drop-shadow-sm">{review.heading}</h3>
-                </div>
-                <span className="text-xs text-white/50 whitespace-nowrap mt-1">{review.date}</span>
-              </div>
-              <p className="text-white/80 leading-relaxed mb-5 text-sm">
-                "{review.text}"
-              </p>
-              <div className="flex items-center gap-3 pt-4 border-t border-white/15">
+            <div className="relative bg-white/95 backdrop-blur-sm rounded-3xl min-w-[300px] md:min-w-[340px] snap-start flex-shrink-0 pt-16 pb-5 px-6 flex flex-col">
+              {/* Large circular photo bubble at top — overlaps card edge */}
+              <div className="absolute -top-10 left-6">
                 <img
                   src={review.photo}
                   alt={review.name}
-                  className="w-10 h-10 rounded-full object-cover border-2 border-white/30"
+                  className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg"
                 />
-                <div>
-                  <p className="text-sm font-semibold text-white">{review.name}</p>
-                  <p className="text-xs text-white/60">{review.title}</p>
-                </div>
-                <div className="ml-auto">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/15 border border-white/25 text-[10px] font-semibold text-emerald-300">
-                    <Check size={10} /> Verified
-                  </span>
-                </div>
               </div>
-              {/* Purchased footer */}
-              <div className="flex items-center gap-2 mt-4 pt-3 border-t border-white/10">
+              {/* Stars */}
+              <div className="flex gap-0.5 mb-3">
+                {[...Array(review.rating)].map((_, j) => (
+                  <Star key={j} size={20} className="fill-[#D97706] text-[#D97706]" />
+                ))}
+              </div>
+              {/* Bold heading */}
+              <h3 className="font-display font-bold text-xl text-[#1C1917] mb-3 leading-tight">{review.heading}</h3>
+              {/* Review text */}
+              <p className="text-[#57534E] leading-relaxed text-[15px] mb-5 flex-1 italic">
+                {review.text}
+              </p>
+              {/* Verified customer badge */}
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center">
+                  <Check size={12} className="text-white" />
+                </div>
+                <span className="font-semibold text-sm text-[#1C1917]">{review.name}</span>
+                <span className="text-sm text-emerald-600 font-medium">• Verified Customer</span>
+              </div>
+              {/* Purchased product footer */}
+              <div className="bg-stone-100 rounded-xl px-4 py-3 flex items-center gap-3">
                 <img
                   src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/product-hero-clean-2JryfYKGcicCXzETS5MKKr.webp"
                   alt="BrewNectar"
-                  className="w-7 h-7 rounded-md object-cover"
+                  className="w-10 h-10 rounded-lg object-cover"
                 />
-                <p className="text-xs text-white/60">Purchased <span className="font-semibold text-white/80">{review.purchased}</span></p>
+                <div>
+                  <p className="text-xs text-[#78716C]">Purchased</p>
+                  <p className="text-sm font-bold text-[#1C1917]">{review.purchased}</p>
+                </div>
               </div>
             </div>
           </FadeUp>
