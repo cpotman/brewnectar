@@ -33,6 +33,8 @@ import {
   Award,
   Heart,
   AlertCircle,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { useUserState } from "@/hooks/useUserState";
 import { useVisualViewport } from "@/hooks/useVisualViewport";
@@ -51,6 +53,71 @@ function FadeUp({ children, className = "", delay = 0 }: { children: React.React
     >
       {children}
     </motion.div>
+  );
+}
+
+/* ─── Review Carousel with scroll arrows ─── */
+function ReviewCarousel({ reviews }: { reviews: { name: string; title: string; heading: string; text: string; rating: number; date: string }[] }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  return (
+    <div className="relative">
+      {/* Left arrow */}
+      <button
+        onClick={() => scrollRef.current?.scrollBy({ left: -400, behavior: 'smooth' })}
+        className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 items-center justify-center text-white hover:bg-white/30 transition-colors"
+        aria-label="Scroll left"
+      >
+        <ChevronLeft size={20} />
+      </button>
+      {/* Right arrow */}
+      <button
+        onClick={() => scrollRef.current?.scrollBy({ left: 400, behavior: 'smooth' })}
+        className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 items-center justify-center text-white hover:bg-white/30 transition-colors"
+        aria-label="Scroll right"
+      >
+        <ChevronRight size={20} />
+      </button>
+      <div
+        ref={scrollRef}
+        className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory cursor-grab active:cursor-grabbing"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        {reviews.map((review, i) => (
+          <FadeUp key={review.name} delay={i * 0.08}>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-7 hover:bg-white/15 transition-all duration-300 min-w-[320px] md:min-w-[380px] snap-start flex-shrink-0">
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <div>
+                  <div className="flex gap-0.5 mb-2">
+                    {[...Array(review.rating)].map((_, j) => (
+                      <Star key={j} size={14} className="fill-yellow-300 text-yellow-300" />
+                    ))}
+                  </div>
+                  <h3 className="font-display font-bold text-lg text-white drop-shadow-sm">{review.heading}</h3>
+                </div>
+                <span className="text-xs text-white/50 whitespace-nowrap mt-1">{review.date}</span>
+              </div>
+              <p className="text-white/80 leading-relaxed mb-5 text-sm">
+                "{review.text}"
+              </p>
+              <div className="flex items-center gap-3 pt-4 border-t border-white/15">
+                <div className="w-10 h-10 rounded-full bg-white/20 border border-white/30 flex items-center justify-center">
+                  <span className="font-display font-bold text-sm text-white">{review.name.charAt(0)}</span>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-white">{review.name}</p>
+                  <p className="text-xs text-white/60">{review.title}</p>
+                </div>
+                <div className="ml-auto">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/15 border border-white/25 text-[10px] font-semibold text-emerald-300">
+                    <Check size={10} /> Verified Buyer
+                  </span>
+                </div>
+              </div>
+            </div>
+          </FadeUp>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -820,42 +887,7 @@ export default function Product() {
             </p>
           </FadeUp>
 
-          <div className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-            {EXTENDED_REVIEWS.map((review, i) => (
-              <FadeUp key={review.name} delay={i * 0.08}>
-                <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-7 hover:bg-white/15 transition-all duration-300 min-w-[320px] md:min-w-[380px] snap-start">
-                  <div className="flex items-start justify-between gap-4 mb-4">
-                    <div>
-                      <div className="flex gap-0.5 mb-2">
-                        {[...Array(review.rating)].map((_, j) => (
-                          <Star key={j} size={14} className="fill-yellow-300 text-yellow-300" />
-                        ))}
-                      </div>
-                      <h3 className="font-display font-bold text-lg text-white drop-shadow-sm">{review.heading}</h3>
-                    </div>
-                    <span className="text-xs text-white/50 whitespace-nowrap mt-1">{review.date}</span>
-                  </div>
-                  <p className="text-white/80 leading-relaxed mb-5 text-sm">
-                    "{review.text}"
-                  </p>
-                  <div className="flex items-center gap-3 pt-4 border-t border-white/15">
-                    <div className="w-10 h-10 rounded-full bg-white/20 border border-white/30 flex items-center justify-center">
-                      <span className="font-display font-bold text-sm text-white">{review.name.charAt(0)}</span>
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-white">{review.name}</p>
-                      <p className="text-xs text-white/60">{review.title}</p>
-                    </div>
-                    <div className="ml-auto">
-                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/15 border border-white/25 text-[10px] font-semibold text-emerald-300">
-                        <Check size={10} /> Verified Buyer
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </FadeUp>
-            ))}
-          </div>
+          <ReviewCarousel reviews={EXTENDED_REVIEWS} />
 
           <FadeUp delay={0.3}>
             <div className="mt-10 text-center">
@@ -948,19 +980,19 @@ export default function Product() {
           </FadeUp>
 
           <FadeUp delay={0.1}>
-            <div className="border border-stone-200 rounded-2xl bg-white overflow-hidden">
-              {/* Header row */}
-              <div className="grid grid-cols-[1fr_60px_60px] md:grid-cols-[1fr_70px_70px] items-center">
-                <div />
-                <div className="flex justify-center items-center py-4 bg-[#D97706] rounded-t-xl">
-                  <span className="text-xs font-bold text-white">BrewNectar</span>
+            <div className="rounded-2xl border border-stone-200 bg-white overflow-hidden shadow-sm">
+              {/* Header */}
+              <div className="grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_100px_100px]">
+                <div className="px-5 py-5" />
+                <div className="flex flex-col items-center justify-end py-4 bg-gradient-to-b from-amber-500 to-[#D97706] rounded-t-2xl">
+                  <span className="text-[11px] md:text-xs font-bold text-white tracking-wide">BrewNectar</span>
                 </div>
-                <div className="flex justify-center items-center py-4">
-                  <span className="text-xs font-medium text-stone-400">Others</span>
+                <div className="flex flex-col items-center justify-end py-4">
+                  <span className="text-[11px] md:text-xs font-medium text-stone-400">Others</span>
                 </div>
               </div>
 
-              {/* Table rows */}
+              {/* Rows */}
               {[
                 "No earthy taste or grit",
                 "Smooth daily ritual",
@@ -969,28 +1001,21 @@ export default function Product() {
                 "Zero sugar, zero calories",
                 "Easy to remember to take",
                 "No mushroom aftertaste",
-              ].map((feature, i) => (
-                <div key={feature} className={`grid grid-cols-[1fr_60px_60px] md:grid-cols-[1fr_70px_70px] items-center ${i < 6 ? "border-b border-stone-50" : ""}`}>
-                  <span className="text-sm text-[#1C1917] px-5 py-3.5">{feature}</span>
-                  <div className="flex justify-center py-3.5 bg-[#D97706]">
-                    <div className="w-6 h-6 rounded-full bg-white/90 flex items-center justify-center">
-                      <Check size={14} strokeWidth={3} className="text-[#D97706]" />
+              ].map((feature, i, arr) => (
+                <div key={feature} className={`grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_100px_100px] items-center ${i < arr.length - 1 ? "border-b border-stone-100" : ""}`}>
+                  <span className="text-[13px] md:text-sm text-[#1C1917] font-medium px-5 py-4">{feature}</span>
+                  <div className="flex justify-center py-4 bg-[#D97706]/10">
+                    <div className="w-7 h-7 rounded-full bg-[#D97706] flex items-center justify-center shadow-sm">
+                      <Check size={14} strokeWidth={3} className="text-white" />
                     </div>
                   </div>
-                  <div className="flex justify-center py-3.5">
-                    <div className="w-6 h-6 rounded-full bg-stone-100 flex items-center justify-center">
+                  <div className="flex justify-center py-4">
+                    <div className="w-7 h-7 rounded-full bg-stone-100 flex items-center justify-center">
                       <XIcon size={12} strokeWidth={2.5} className="text-stone-400" />
                     </div>
                   </div>
                 </div>
               ))}
-
-              {/* Bottom rounded corner for the orange column */}
-              <div className="grid grid-cols-[1fr_60px_60px] md:grid-cols-[1fr_70px_70px]">
-                <div />
-                <div className="h-3 bg-[#D97706] rounded-b-xl" />
-                <div />
-              </div>
             </div>
           </FadeUp>
 
