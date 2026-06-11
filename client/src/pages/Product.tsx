@@ -56,77 +56,73 @@ function FadeUp({ children, className = "", delay = 0 }: { children: React.React
   );
 }
 
-/* ─── Review Carousel with scroll arrows (Earthwise-style cards) ─── */
+/* ─── Review Carousel with scroll arrows ─── */
 function ReviewCarousel({ reviews }: { reviews: { name: string; title: string; heading: string; text: string; rating: number; date: string; photo: string; purchased: string }[] }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   return (
     <div className="relative">
       {/* Left arrow */}
       <button
-        onClick={() => scrollRef.current?.scrollBy({ left: -380, behavior: 'smooth' })}
-        className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 z-20 w-11 h-11 rounded-full bg-white shadow-lg border border-stone-200 items-center justify-center text-stone-700 hover:bg-stone-50 transition-colors"
+        onClick={() => scrollRef.current?.scrollBy({ left: -400, behavior: 'smooth' })}
+        className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 items-center justify-center text-white hover:bg-white/30 transition-colors"
         aria-label="Scroll left"
       >
         <ChevronLeft size={20} />
       </button>
       {/* Right arrow */}
       <button
-        onClick={() => scrollRef.current?.scrollBy({ left: 380, behavior: 'smooth' })}
-        className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 z-20 w-11 h-11 rounded-full bg-white shadow-lg border border-stone-200 items-center justify-center text-stone-700 hover:bg-stone-50 transition-colors"
+        onClick={() => scrollRef.current?.scrollBy({ left: 400, behavior: 'smooth' })}
+        className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 items-center justify-center text-white hover:bg-white/30 transition-colors"
         aria-label="Scroll right"
       >
         <ChevronRight size={20} />
       </button>
       <div
         ref={scrollRef}
-        className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory cursor-grab active:cursor-grabbing"
+        className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory cursor-grab active:cursor-grabbing"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {reviews.map((review, i) => (
           <FadeUp key={review.name} delay={i * 0.08}>
-            <div className="bg-white rounded-3xl shadow-lg border border-stone-100 overflow-hidden min-w-[320px] md:min-w-[360px] snap-start flex-shrink-0 flex flex-col">
-              {/* Large customer photo */}
-              <div className="relative w-full aspect-[4/3] overflow-hidden">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 md:p-7 hover:bg-white/15 transition-all duration-300 min-w-[320px] md:min-w-[380px] snap-start flex-shrink-0">
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <div>
+                  <div className="flex gap-0.5 mb-2">
+                    {[...Array(review.rating)].map((_, j) => (
+                      <Star key={j} size={14} className="fill-yellow-300 text-yellow-300" />
+                    ))}
+                  </div>
+                  <h3 className="font-display font-bold text-lg text-white drop-shadow-sm">{review.heading}</h3>
+                </div>
+                <span className="text-xs text-white/50 whitespace-nowrap mt-1">{review.date}</span>
+              </div>
+              <p className="text-white/80 leading-relaxed mb-5 text-sm">
+                "{review.text}"
+              </p>
+              <div className="flex items-center gap-3 pt-4 border-t border-white/15">
                 <img
                   src={review.photo}
                   alt={review.name}
-                  className="w-full h-full object-cover"
+                  className="w-10 h-10 rounded-full object-cover border-2 border-white/30"
                 />
-              </div>
-              {/* Review content */}
-              <div className="p-6 flex flex-col flex-1">
-                {/* Stars */}
-                <div className="flex gap-0.5 mb-3">
-                  {[...Array(review.rating)].map((_, j) => (
-                    <Star key={j} size={18} className="fill-amber-400 text-amber-400" />
-                  ))}
+                <div>
+                  <p className="text-sm font-semibold text-white">{review.name}</p>
+                  <p className="text-xs text-white/60">{review.title}</p>
                 </div>
-                {/* Bold heading */}
-                <h3 className="font-display font-bold text-xl text-[#1C1917] mb-3 leading-tight">{review.heading}</h3>
-                {/* Review text */}
-                <p className="text-[#57534E] leading-relaxed text-[15px] mb-5 flex-1">
-                  {review.text}
-                </p>
-                {/* Verified customer badge */}
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center">
-                    <Check size={12} className="text-white" />
-                  </div>
-                  <span className="font-semibold text-sm text-[#1C1917]">{review.name}</span>
-                  <span className="text-sm text-emerald-600 font-medium">• Verified Customer</span>
+                <div className="ml-auto">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/15 border border-white/25 text-[10px] font-semibold text-emerald-300">
+                    <Check size={10} /> Verified
+                  </span>
                 </div>
               </div>
-              {/* Purchased product footer */}
-              <div className="bg-stone-50 border-t border-stone-100 px-6 py-4 flex items-center gap-3">
+              {/* Purchased footer */}
+              <div className="flex items-center gap-2 mt-4 pt-3 border-t border-white/10">
                 <img
                   src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/product-hero-clean-2JryfYKGcicCXzETS5MKKr.webp"
                   alt="BrewNectar"
-                  className="w-10 h-10 rounded-lg object-cover"
+                  className="w-7 h-7 rounded-md object-cover"
                 />
-                <div>
-                  <p className="text-xs text-[#78716C]">Purchased</p>
-                  <p className="text-sm font-bold text-[#1C1917]">{review.purchased}</p>
-                </div>
+                <p className="text-xs text-white/60">Purchased <span className="font-semibold text-white/80">{review.purchased}</span></p>
               </div>
             </div>
           </FadeUp>
@@ -888,22 +884,24 @@ export default function Product() {
         </div>
       </section>
 
-      {/* ═══════════ REVIEWS — Earthwise-style with customer photos ═══════════ */}
-      <section className="py-20 md:py-28 relative overflow-hidden bg-[#F5F0E8]">
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ═══════════ REVIEWS — Orange gradient background ═══════════ */}
+      <section className="py-20 md:py-28 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #7C2D12 0%, #9A3412 25%, #C2410C 50%, #D97706 80%, #F59E0B 100%)" }}>
+        {/* Subtle texture overlay */}
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(0,0,0,0.2) 0%, transparent 40%)" }} />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <div className="flex items-center justify-center gap-2 mb-3">
               <div className="flex -space-x-0.5">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={18} className="fill-amber-500 text-amber-500" />
+                  <Star key={i} size={18} className="fill-yellow-300 text-yellow-300" />
                 ))}
               </div>
-              <span className="text-sm font-semibold text-[#1C1917]">4.9/5 from 2,400+ reviews</span>
+              <span className="text-sm font-semibold text-white">4.9/5 from 2,400+ reviews</span>
             </div>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-white mb-3">
               Real Stories From Real Customers
             </h2>
-            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">
+            <p className="text-center text-white/70 text-lg mb-14 max-w-2xl mx-auto">
               Don't just take our word for it. Here's what people are saying after making BrewNectar part of their daily ritual.
             </p>
           </FadeUp>
@@ -914,7 +912,7 @@ export default function Product() {
             <div className="mt-10 text-center">
               <a
                 href="#offers"
-                className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold text-white rounded-full bg-[#1C1917] hover:bg-[#292524] transition-colors shadow-lg"
+                className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold text-[#1C1917] rounded-full bg-white hover:bg-white/90 transition-colors shadow-lg"
                 onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
               >
                 Join Them — Try BrewNectar
