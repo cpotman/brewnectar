@@ -84,7 +84,7 @@ function ReviewCarousel({ reviews }: { reviews: { name: string; title: string; h
       >
         {reviews.map((review, i) => (
           <FadeUp key={review.name} delay={i * 0.08}>
-            <div className="relative bg-white/95 backdrop-blur-sm rounded-3xl min-w-[300px] md:min-w-[340px] snap-start flex-shrink-0 pt-16 pb-5 px-6 flex flex-col">
+            <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl min-w-[300px] md:min-w-[340px] snap-start flex-shrink-0 pt-16 pb-5 px-6 flex flex-col">
               {/* Large circular photo bubble at top — overlaps card edge */}
               <div className="absolute -top-10 left-6">
                 <img
@@ -96,33 +96,33 @@ function ReviewCarousel({ reviews }: { reviews: { name: string; title: string; h
               {/* Stars */}
               <div className="flex gap-0.5 mb-3">
                 {[...Array(review.rating)].map((_, j) => (
-                  <Star key={j} size={20} className="fill-[#D97706] text-[#D97706]" />
+                  <Star key={j} size={20} className="fill-yellow-300 text-yellow-300" />
                 ))}
               </div>
               {/* Bold heading */}
-              <h3 className="font-display font-bold text-xl text-[#1C1917] mb-3 leading-tight">{review.heading}</h3>
+              <h3 className="font-display font-bold text-xl text-white mb-3 leading-tight">{review.heading}</h3>
               {/* Review text */}
-              <p className="text-[#57534E] leading-relaxed text-[15px] mb-5 flex-1 italic">
+              <p className="text-white/80 leading-relaxed text-[15px] mb-5 flex-1 italic">
                 {review.text}
               </p>
               {/* Verified customer badge */}
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center">
+                <div className="w-5 h-5 rounded-full bg-emerald-400 flex items-center justify-center">
                   <Check size={12} className="text-white" />
                 </div>
-                <span className="font-semibold text-sm text-[#1C1917]">{review.name}</span>
-                <span className="text-sm text-emerald-600 font-medium">• Verified Customer</span>
+                <span className="font-semibold text-sm text-white">{review.name}</span>
+                <span className="text-sm text-emerald-300 font-medium">• Verified Customer</span>
               </div>
               {/* Purchased product footer */}
-              <div className="bg-stone-100 rounded-xl px-4 py-3 flex items-center gap-3">
+              <div className="bg-white/10 rounded-xl px-4 py-3 flex items-center gap-3 border border-white/15">
                 <img
                   src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/product-hero-clean-2JryfYKGcicCXzETS5MKKr.webp"
                   alt="BrewNectar"
                   className="w-10 h-10 rounded-lg object-cover"
                 />
                 <div>
-                  <p className="text-xs text-[#78716C]">Purchased</p>
-                  <p className="text-sm font-bold text-[#1C1917]">{review.purchased}</p>
+                  <p className="text-xs text-white/60">Purchased</p>
+                  <p className="text-sm font-bold text-white/90">{review.purchased}</p>
                 </div>
               </div>
             </div>
