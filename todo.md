@@ -89,3 +89,12 @@
 - [x] PDP: Redesign comparison table to be cleaner and simpler (Earthwise reference style)
 - [x] PDP: Redesign review cards to Earthwise format with large customer photos, bold headings, verified badge, and purchased product footer
 - [x] PDP: Change review section background to warm cream (#F5F0E8) to complement white cards
+- [x] Create /pages/about page with polished design
+- [x] Create /pages/contact page with polished design
+- [x] Create /policies/privacy-policy page
+- [x] Create /policies/terms-of-service page
+- [x] Create /policies/refund-policy page
+- [x] Create /policies/shipping-policy page
+- [x] Register all new routes in App.tsx
+- [x] Wire footer links to new pages (replaced toast placeholders)
+- [ ] Wire contact form to real backend (tRPC mutation or notification) — currently shows success toast without sending

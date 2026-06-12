@@ -85,14 +85,16 @@ export default function Footer() {
           <div>
             <h4 className="font-display font-semibold text-sm text-[#1C1917] uppercase tracking-wider mb-4">Company</h4>
             <ul className="space-y-3">
-              {["About", "Contact", "Privacy Policy", "Terms"].map((label) => (
-                <li key={label}>
-                  <button
-                    onClick={() => toast("Coming soon", { description: `${label} page launching soon.` })}
-                    className="text-sm text-[#78716C] hover:text-[#B45309] transition-colors"
-                  >
-                    {label}
-                  </button>
+              {[
+                { label: "About", href: "/about" },
+                { label: "Contact", href: "/contact" },
+                { label: "Privacy Policy", href: "/policies/privacy-policy" },
+                { label: "Terms", href: "/policies/terms-of-service" },
+              ].map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="text-sm text-[#78716C] hover:text-[#B45309] transition-colors">
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
