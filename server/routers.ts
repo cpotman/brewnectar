@@ -1,10 +1,12 @@
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
+import { notifyOwner } from "./_core/notification";
 import { publicProcedure, protectedProcedure, router } from "./_core/trpc";
 import { createFileRecord, getFilesByUser, getFileById, deleteFileRecord } from "./db";
 import { storagePut } from "./storage";
 import { z } from "zod";
+import { TRPCError } from "@trpc/server";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -18,6 +20,31 @@ export const appRouter = router({
         success: true,
       } as const;
     }),
+  }),
+
+  contact: router({
+    /** Submit a contact form message — notifies the site owner */
+    submit: publicProcedure
+      .input(
+        z.object({
+          name: z.string().min(1).max(200),
+          email: z.string().email().max(320),
+          message: z.string().min(1).max(5000),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const sent = await notifyOwner({
+          title: `New Contact Form: ${input.name}`,
+          content: `From: ${input.name} <${input.email}>\n\n${input.message}`,
+        });
+        if (!sent) {
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "Failed to deliver message. Please try again later.",
+          });
+        }
+        return { success: true };
+      }),
   }),
 
   files: router({

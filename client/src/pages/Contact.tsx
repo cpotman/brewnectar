@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { toast } from "sonner";
 import { Mail, Clock, MessageCircle } from "lucide-react";
+import { trpc } from "@/lib/trpc";
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -14,16 +15,24 @@ export default function Contact() {
   const [message, setMessage] = useState("");
   const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSending(true);
-    setTimeout(() => {
+  const submitMutation = trpc.contact.submit.useMutation({
+    onSuccess: () => {
       setSending(false);
       setName("");
       setEmail("");
       setMessage("");
       toast.success("Message sent!", { description: "We'll get back to you within 24 hours." });
-    }, 1000);
+    },
+    onError: () => {
+      setSending(false);
+      toast.error("Failed to send", { description: "Please try again or email us directly." });
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSending(true);
+    submitMutation.mutate({ name, email, message });
   };
 
   return (

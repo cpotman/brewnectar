@@ -97,4 +97,4 @@
 - [x] Create /policies/shipping-policy page
 - [x] Register all new routes in App.tsx
 - [x] Wire footer links to new pages (replaced toast placeholders)
-- [ ] Wire contact form to real backend (tRPC mutation or notification) — currently shows success toast without sending
+- [x] Wire contact form to real backend (tRPC mutation or notification) — uses notifyOwner
