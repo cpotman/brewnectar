@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
-  Star, Check, X as XIcon, ChevronDown, ArrowRight, Clock,
+  Star, Check, X as XIcon, ChevronDown, ArrowRight, Clock, Sparkles,
   Brain, Zap, Shield, Leaf, Coffee, Heart, ShieldCheck, Truck,
   RotateCcw, FlaskConical, ExternalLink, BookOpen,
 } from "lucide-react";
@@ -32,6 +32,14 @@ const IMAGES = {
   stir: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/how-stir-3pNJBKzkQVwxqm57DvYdyL.webp",
   lockin: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/how-lockin-BGjMpAAVV2Cfd7diTUnZWZ.webp",
 };
+
+/* --- What's Inside visual cards --- */
+const WHATS_INSIDE = [
+  { name: "Lion's Mane", dosage: "500 mg (10:1 extract)", tag: "Your Brain Builds New Connections*", science: "30+ peer-reviewed studies show Lion's Mane stimulates nerve growth factor (NGF), the protein your brain uses to grow and repair neurons. At 10:1 concentration, each stick delivers ~5 g raw equivalent.", emotion: "The reason your thinking may get sharper over weeks, not just hours.*", icon: Brain, color: "bg-amber-50 text-[#B45309]", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-lions-mane_c905f004.png" },
+  { name: "Citicoline", dosage: "500 mg per serving", tag: "Retrieve Names, Numbers, and Ideas On Demand*", science: "The only patented form of citicoline with 20+ clinical trials on focus and working memory. In one study, brain ATP increased by 14% after just 6 weeks at this exact dose.", emotion: "That name on the tip of your tongue? You'll recall it faster.*", icon: Zap, color: "bg-emerald-50 text-emerald-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-cognizin_3fb446ba.png" },
+  { name: "L-Theanine", dosage: "200 mg per serving", tag: "The Reason You Won't Feel Jittery*", science: "This amino acid promotes alpha brain wave activity \u2014 the neurological state behind calm, sustained attention. At 200 mg, nearly 3x the dose in our syrup, paired with your own caffeine.", emotion: "Your hands stop shaking. Your mind stops racing. What's left is clean, quiet focus.*", icon: Sparkles, color: "bg-sky-50 text-sky-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-l-theanine_dc3b4af3.png" },
+  { name: "B Vitamins (B6 + B12)", dosage: "100% DV each", tag: "Steady Energy That Doesn't Crash", science: "B vitamins are essential cofactors in the production of dopamine, serotonin, and norepinephrine. They support your brain's natural energy metabolism and neurotransmitter synthesis throughout the day.", emotion: "No spike at 9am. No wall at 2pm. Just steady, reliable output.*", icon: Coffee, color: "bg-rose-50 text-rose-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-b-vitamins_1072f364.png" },
+];
 
 /* --- Ingredient data with studies --- */
 const INGREDIENTS = [
@@ -107,6 +115,16 @@ const INGREDIENTS = [
       { title: "Inulin Increases Bifidobacteria in Humans", authors: "Kolida et al.", journal: "British Journal of Nutrition", year: 2007, finding: "6-week trial at 10 g/day significantly increased Bifidobacteria populations in the human gut.", url: "https://pubmed.ncbi.nlm.nih.gov/17445349/" },
     ],
   },
+  {
+    name: "B Vitamins (B6 + B12)", dose: "100% DV each", clock: "Daily cofactors",
+    pullStat: "100%", pullLabel: "Daily Value of B6 and B12 per stick",
+    icon: Coffee, color: "bg-rose-50 border-rose-200/60 text-rose-700", dotColor: "bg-rose-500",
+    studyCount: "100+", tagline: "Research on neural energy, neurotransmitter synthesis & brain health",
+    studies: [
+      { title: "B Vitamins and the Brain: Mechanisms, Dose and Efficacy", authors: "Kennedy", journal: "Nutrients", year: 2016, finding: "Comprehensive review establishing B vitamins as essential cofactors in neurotransmitter synthesis and cellular energy production.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4772032/" },
+      { title: "B Vitamins in the Nervous System: Current Knowledge", authors: "Calderon-Ospina & Nava-Mesa", journal: "Nutrients", year: 2019, finding: "B vitamins are critical for myelin formation, neurotransmitter synthesis, and overall nervous system function.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6930825/" },
+    ],
+  },
 ];
 
 /* --- Plans --- */
@@ -116,12 +134,12 @@ const PLANS = [
   { id: "1mo", name: "1-Month Supply", savings: "Save 27%", price: "$36", perDay: "$1.29/day", billed: "Billed $36 every 4 weeks", badge: "", perks: [] },
 ];
 
-/* --- Four Clocks --- */
-const FOUR_CLOCKS = [
-  { time: "20-45 min", title: "The First Morning", ingredients: "L-Theanine + Citicoline", body: "Alpha waves rise within 40 minutes. Citicoline has acute attentional effects at 1-3 hours. Your existing caffeine works better, not harder." },
-  { time: "~2 weeks", title: "The Afternoon Wall Disappears", ingredients: "Rhodiola", body: "The fastest adaptogen in the stack. Anti-fatigue benefits emerge within roughly two weeks — carrying you through the window where mushroom coffee customers churn." },
-  { time: "Weeks 3-8", title: "Sleep Improves. Energy Compounds.", ingredients: "Ashwagandha + Cordyceps + Gut", body: "Ashwagandha works on the upstream cause — sleep. Cordyceps lands at three weeks. The probiotic and prebiotic rebuild the gut environment." },
-  { time: "Month 2+", title: "The Compounding Tail", ingredients: "Lion's Mane", body: "Hericenones promote nerve growth factor synthesis. Human trials run 12-16 weeks. This is why the 3-month supply exists." },
+/* --- Compounding Effect stages --- */
+const COMPOUNDING_STAGES = [
+  { period: "Week 1", title: "The Quiet Settles In", level: "40%", desc: "L-Theanine smooths out caffeine's rough edges within 20 minutes.* Citicoline sharpens working memory.* Your first cup feels different. Calmer. Clearer. No jitters.", ingredients: ["L-Theanine", "Citicoline"], color: "bg-amber-50 border-amber-200", iconColor: "text-[#D97706]", dotColor: "bg-[#D97706]" },
+  { period: "2 Weeks", title: "The Afternoon Wall Disappears", level: "60%", desc: "Rhodiola is the fastest adaptogen in the stack. Anti-fatigue benefits emerge within roughly two weeks. This is the window where mushroom coffee customers churn \u2014 you won't.", ingredients: ["Rhodiola", "Cordyceps"], color: "bg-emerald-50 border-emerald-200", iconColor: "text-emerald-600", dotColor: "bg-emerald-600" },
+  { period: "2 Months", title: "Sleep Improves. Energy Compounds.", level: "80%", desc: "Ashwagandha works on the upstream cause \u2014 sleep quality. Cordyceps lands at three weeks. The probiotic and prebiotic rebuild the gut environment that feeds your brain.", ingredients: ["Ashwagandha", "Gut Stack"], color: "bg-sky-50 border-sky-200", iconColor: "text-sky-600", dotColor: "bg-sky-600" },
+  { period: "3 Months", title: "Your Brain Feels Different", level: "95%", desc: "Lion's Mane hericenones promote nerve growth factor synthesis. Human trials run 12-16 weeks. This is when the full stack is compounding \u2014 and why the 3-month supply exists.", ingredients: ["Lion's Mane", "Full Stack"], color: "bg-violet-50 border-violet-200", iconColor: "text-violet-600", dotColor: "bg-violet-600" },
 ];
 
 /* --- Comparison rows --- */
@@ -288,27 +306,33 @@ export default function StickPack() {
         </div>
       </section>
 
-      {/* === SECTION 3: FOUR CLOCKS === */}
-      <section className="py-20 md:py-28 bg-[#FDFBF7]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+      {/* === SECTION 3: WHAT'S INSIDE (visual ingredient cards) === */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">The mechanism</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-4">Four timescales. Running at once.</h2>
-            <p className="text-center text-[#78716C] mb-14 max-w-2xl mx-auto">Fast ingredients carry you while slow ones build underneath.</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">What's Inside</p>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">Four Ingredients. One Purpose.</h2>
+            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">Every ingredient is research-backed, precisely dosed, and chosen because it does something your coffee can't.</p>
           </FadeUp>
-          <div className="space-y-6">
-            {FOUR_CLOCKS.map((clock, i) => (
-              <FadeUp key={i} delay={i * 0.1}>
-                <div className="flex gap-6 items-start">
-                  <div className="flex flex-col items-center flex-shrink-0">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#D97706] to-[#B45309] flex items-center justify-center text-white font-bold text-lg shadow-lg">{i + 1}</div>
-                    {i < 3 && <div className="w-0.5 h-16 bg-gradient-to-b from-[#D97706] to-transparent mt-2" />}
+          <div className="grid md:grid-cols-2 gap-6">
+            {WHATS_INSIDE.map((item, i) => (
+              <FadeUp key={item.name} delay={i * 0.1}>
+                <div className="rounded-2xl overflow-hidden border border-stone-100 bg-white shadow-warm hover:shadow-warm-lg transition-shadow duration-300">
+                  <div className="relative h-48 md:h-56 overflow-hidden">
+                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-4 left-4 flex items-center gap-2">
+                      <div className={`w-8 h-8 rounded-lg ${item.color} flex items-center justify-center`}><item.icon size={16} /></div>
+                      <h3 className="font-display font-bold text-lg text-white">{item.name}</h3>
+                    </div>
                   </div>
-                  <div className="pb-6">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#D97706]">{clock.time}</span>
-                    <h3 className="font-display font-bold text-xl text-[#1C1917] mt-1 mb-1">{clock.title}</h3>
-                    <p className="text-xs font-semibold text-[#78716C] mb-2">{clock.ingredients}</p>
-                    <p className="text-[#44403C] leading-relaxed">{clock.body}</p>
+                  <div className="p-5">
+                    <div className="flex items-center gap-3 mb-3">
+                      <p className="text-xs font-semibold uppercase tracking-widest text-[#D97706]">{item.tag}</p>
+                      <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">{item.dosage}</span>
+                    </div>
+                    <p className="text-sm text-[#57534E] leading-relaxed mb-3">{item.science}</p>
+                    <p className="text-sm italic text-[#78716C]">{item.emotion}</p>
                   </div>
                 </div>
               </FadeUp>
@@ -317,15 +341,75 @@ export default function StickPack() {
         </div>
       </section>
 
-      {/* === SECTION 4: INGREDIENTS WITH STUDIES === */}
+      {/* === SECTION 4: THE COMPOUNDING EFFECT === */}
+      <section className="py-20 md:py-28 bg-[#FDFBF7]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeUp>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">The Compounding Effect</p>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">Day 1 Feels Good. Month 3 Changes Everything.</h2>
+            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">Most nootropics give you a spike and a crash. BrewNectar compounds. Each week builds on the last.</p>
+          </FadeUp>
+          <div className="relative mb-16">
+            <div className="hidden md:block absolute top-8 left-[12.5%] right-[12.5%] h-0.5 border-t-2 border-dashed border-[#D97706]/30" />
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4">
+              {COMPOUNDING_STAGES.map((milestone, i) => (
+                <FadeUp key={milestone.period} delay={i * 0.1}>
+                  <div className="flex flex-col items-center text-center">
+                    <div className={`relative z-10 w-16 h-16 rounded-full ${milestone.color} border-2 flex items-center justify-center mb-4`}>
+                      <span className={`font-display font-bold text-sm ${milestone.iconColor}`}>{milestone.level}</span>
+                    </div>
+                    <span className="text-xs font-semibold uppercase tracking-widest text-[#D97706] mb-2">{milestone.period}</span>
+                    <div className={`${milestone.color} border rounded-2xl p-5 w-full`}>
+                      <h3 className="font-display font-bold text-base text-[#1C1917] mb-2">{milestone.title}</h3>
+                      <p className="text-xs text-[#57534E] leading-relaxed mb-3">{milestone.desc}</p>
+                      <div className="flex flex-wrap justify-center gap-1.5">
+                        {milestone.ingredients.map((ing) => (
+                          <span key={ing} className="px-2.5 py-1 rounded-full bg-white/80 text-[10px] font-semibold text-[#44403C] border border-stone-100">{ing}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </FadeUp>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* === SECTION 5: COMPARISON TABLE === */}
       <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+          <FadeUp>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-12">Why BrewNectar wins.</h2>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <div className="rounded-2xl border border-stone-200 overflow-hidden bg-white shadow-warm">
+              <div className="grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_120px_120px] text-center">
+                <div className="p-4 text-left font-bold text-sm text-[#78716C]">Feature</div>
+                <div className="p-4 font-bold text-sm text-[#B45309] bg-amber-50">BrewNectar</div>
+                <div className="p-4 font-bold text-sm text-[#78716C]">Others</div>
+              </div>
+              {COMPARISON_ROWS.map((row, i) => (
+                <div key={i} className={`grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_120px_120px] text-center border-t border-stone-100 ${i % 2 === 0 ? "" : "bg-stone-50/50"}`}>
+                  <div className="p-3 md:p-4 text-left text-sm text-[#44403C]">{row.feature}</div>
+                  <div className="p-3 md:p-4 flex items-center justify-center bg-amber-50/50"><Check size={18} className="text-[#059669]" /></div>
+                  <div className="p-3 md:p-4 flex items-center justify-center">{row.other ? <Check size={18} className="text-[#059669]" /> : <XIcon size={18} className="text-red-400" />}</div>
+                </div>
+              ))}
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* === SECTION 6: THE EVIDENCE (studies, moved below comparison) === */}
+      <section className="py-20 md:py-28 bg-[#FDFBF7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <div className="flex items-center justify-center gap-2 mb-3">
               <FlaskConical size={16} className="text-[#D97706]" />
               <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706]">The Evidence</p>
             </div>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">What's inside — and the papers that back it.</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">We Show You the Papers.</h2>
             <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">Every ingredient earns its place. Tap any to read the research yourself.</p>
           </FadeUp>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6">
@@ -394,32 +478,7 @@ export default function StickPack() {
         </div>
       </section>
 
-      {/* === SECTION 5: COMPARISON TABLE === */}
-      <section className="py-20 md:py-28 bg-[#FDFBF7]">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <FadeUp>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-12">Why BrewNectar wins.</h2>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <div className="rounded-2xl border border-stone-200 overflow-hidden bg-white shadow-warm">
-              <div className="grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_120px_120px] text-center">
-                <div className="p-4 text-left font-bold text-sm text-[#78716C]">Feature</div>
-                <div className="p-4 font-bold text-sm text-[#B45309] bg-amber-50">BrewNectar</div>
-                <div className="p-4 font-bold text-sm text-[#78716C]">Others</div>
-              </div>
-              {COMPARISON_ROWS.map((row, i) => (
-                <div key={i} className={`grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_120px_120px] text-center border-t border-stone-100 ${i % 2 === 0 ? "" : "bg-stone-50/50"}`}>
-                  <div className="p-3 md:p-4 text-left text-sm text-[#44403C]">{row.feature}</div>
-                  <div className="p-3 md:p-4 flex items-center justify-center bg-amber-50/50"><Check size={18} className="text-[#059669]" /></div>
-                  <div className="p-3 md:p-4 flex items-center justify-center">{row.other ? <Check size={18} className="text-[#059669]" /> : <XIcon size={18} className="text-red-400" />}</div>
-                </div>
-              ))}
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* === SECTION 6: GUARANTEE === */}
+      {/* === SECTION 7: GUARANTEE === */}
       <section className="py-16 md:py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <FadeUp>
