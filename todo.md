@@ -102,3 +102,4 @@
 - [x] Move "The Evidence" section below FAQ on StickPack.tsx
 - [x] Fix La Marzocco giveaway click to auto-select the plan that includes it
 - [x] Fix one-time purchase button not working on StickPack.tsx
+- [x] Redesign stick pack comparison table to match syrup page style, rename to BrewNectar vs Mushroom Coffee, 8 rows, give mushroom coffee some checkmarks

@@ -149,18 +149,15 @@ const COMPOUNDING_STAGES = [
 ];
 
 /* --- Comparison rows --- */
-const COMPARISON_ROWS: { feature: string; brew: boolean; other: boolean; brewNote?: string; otherNote?: string }[] = [
-  { feature: "Keep your own coffee", brew: true, other: false, brewNote: "Add to any cup", otherNote: "Replaces it" },
-  { feature: "Your full caffeine", brew: true, other: false, brewNote: "~95 mg, your cup", otherNote: "~35-50 mg" },
-  { feature: "Works on day one", brew: true, other: false },
-  { feature: "Lion's Mane at research dose", brew: true, other: false, brewNote: "~5 g equiv.", otherNote: "~250 mg" },
-  { feature: "Clinical-dose citicoline", brew: true, other: false, brewNote: "500 mg", otherNote: "None" },
-  { feature: "Supports sleep quality", brew: true, other: false },
-  { feature: "Probiotic that survives hot coffee", brew: true, other: false },
+const COMPARISON_ROWS: { feature: string; brew: boolean; other: boolean }[] = [
+  { feature: "Keep your own coffee", brew: true, other: false },
+  { feature: "No earthy taste or grit", brew: true, other: false },
+  { feature: "Clinical-dose nootropics", brew: true, other: false },
+  { feature: "Built-in gut support", brew: true, other: false },
   { feature: "Contains adaptogens", brew: true, other: true },
-  { feature: "Research-backed nootropics", brew: true, other: true },
-  { feature: "Tastes good in your cup", brew: true, other: false, brewNote: "Subtly sweet", otherNote: "Earthy, bitter" },
-  { feature: "Travel-ready", brew: true, other: true },
+  { feature: "Contains Lion's Mane", brew: true, other: true },
+  { feature: "Caffeine-free option", brew: true, other: false },
+  { feature: "Travel-ready format", brew: true, other: true },
 ];
 
 /* --- FAQ --- */
@@ -498,25 +495,64 @@ export default function StickPack() {
       </section>
 
       {/* === SECTION 5: COMPARISON TABLE === */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+      <section className="py-20 md:py-28 bg-[#FDFBF7]">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-12">Why BrewNectar wins.</h2>
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1C1917] mb-2">
+              BrewNectar vs. Mushroom Coffee
+            </h2>
+            <p className="text-sm md:text-base text-[#57534E] mb-10">
+              See how a research-backed nootropic stick pack compares to typical mushroom coffee.
+            </p>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <div className="rounded-2xl border border-stone-200 overflow-hidden bg-white shadow-warm">
-              <div className="grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_120px_120px] text-center">
-                <div className="p-4 text-left font-bold text-sm text-[#78716C]">Feature</div>
-                <div className="p-4 font-bold text-sm text-[#B45309] bg-amber-50">BrewNectar</div>
-                <div className="p-4 font-bold text-sm text-[#78716C]">Others</div>
+            <div className="rounded-2xl border border-stone-200 bg-white overflow-hidden shadow-sm">
+              {/* Header */}
+              <div className="grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_100px_100px]">
+                <div className="px-5 py-5" />
+                <div className="flex flex-col items-center justify-end py-4 bg-gradient-to-b from-amber-500 to-[#D97706] rounded-t-2xl">
+                  <span className="text-[11px] md:text-xs font-bold text-white tracking-wide">BrewNectar</span>
+                </div>
+                <div className="flex flex-col items-center justify-end py-4">
+                  <span className="text-[11px] md:text-xs font-medium text-stone-400">Mushroom Coffee</span>
+                </div>
               </div>
-              {COMPARISON_ROWS.map((row, i) => (
-                <div key={i} className={`grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_120px_120px] text-center border-t border-stone-100 ${i % 2 === 0 ? "" : "bg-stone-50/50"}`}>
-                  <div className="p-3 md:p-4 text-left text-sm text-[#44403C]">{row.feature}</div>
-                  <div className="p-3 md:p-4 flex items-center justify-center bg-amber-50/50"><Check size={18} className="text-[#059669]" /></div>
-                  <div className="p-3 md:p-4 flex items-center justify-center">{row.other ? <Check size={18} className="text-[#059669]" /> : <XIcon size={18} className="text-red-400" />}</div>
+
+              {/* Rows */}
+              {COMPARISON_ROWS.map((row, i, arr) => (
+                <div key={row.feature} className={`grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_100px_100px] items-center ${i < arr.length - 1 ? "border-b border-stone-100" : ""}`}>
+                  <span className="text-[13px] md:text-sm text-[#1C1917] font-medium px-5 py-4">{row.feature}</span>
+                  <div className="flex justify-center py-4 bg-[#D97706]/10">
+                    <div className="w-7 h-7 rounded-full bg-[#D97706] flex items-center justify-center shadow-sm">
+                      <Check size={14} strokeWidth={3} className="text-white" />
+                    </div>
+                  </div>
+                  <div className="flex justify-center py-4">
+                    {row.other ? (
+                      <div className="w-7 h-7 rounded-full bg-stone-200 flex items-center justify-center">
+                        <Check size={14} strokeWidth={3} className="text-stone-500" />
+                      </div>
+                    ) : (
+                      <div className="w-7 h-7 rounded-full bg-stone-100 flex items-center justify-center">
+                        <XIcon size={12} strokeWidth={2.5} className="text-stone-400" />
+                      </div>
+                    )}
+                  </div>
                 </div>
               ))}
+            </div>
+          </FadeUp>
+
+          <FadeUp delay={0.2}>
+            <div className="mt-10 text-center">
+              <a
+                href="#offers"
+                className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold text-white rounded-full bg-[#1C1917] hover:bg-[#292524] transition-colors"
+                onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
+              >
+                Choose BrewNectar
+                <ArrowRight size={16} />
+              </a>
             </div>
           </FadeUp>
         </div>
