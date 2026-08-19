@@ -138,3 +138,4 @@
 - [x] Change all mentions of "box" to "bag"
 - [x] Replace first PDP hero image with updated product shot
 - [x] Add gut-brain axis and vs mushroom coffee PDP images, remove "tear stir think" image, update gallery to 5 images
+- [x] Move PDP info dropdowns below free shipping/cancel anytime on mobile, keep under gallery on desktop
