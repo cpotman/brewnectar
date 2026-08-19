@@ -110,3 +110,4 @@
 - [x] Fix white gaps between orange background rows in comparison table (StickPack.tsx)
 - [x] Fix comparison table header alignment — "Mushroom Coffee" should align with "BrewNectar" column header
 - [x] Replace second offer block with full PDP duplicate (images, title, plans, gifts, guarantees, shipping)
+- [x] Update "Eight Ingredients. One Purpose." copy to reflect four mechanisms (focus, calm energy, brain health, gut-brain)
