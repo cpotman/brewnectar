@@ -128,3 +128,5 @@
 - [x] Move study popout directly under each card in The Evidence section (better mobile UX)
 - [x] Add "4.9 from 2,400+ reviews" star rating callout to User Reported Outcomes card
 - [x] Add scrolling review section (orange gradient, 3 cards) under second offer block
+- [x] Add mobile swipe to duplicate offer block gallery (touch handlers + dot indicators)
+- [x] Verify 3-month supply is auto-selected by default on both offer blocks (already was "3mo")
