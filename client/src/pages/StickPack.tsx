@@ -6,7 +6,7 @@
 */
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Star, Check, X as XIcon, ChevronDown, ArrowRight, Clock, Sparkles,
@@ -180,7 +180,14 @@ export default function StickPack() {
   const [expandedIngredient, setExpandedIngredient] = useState<number | null>(null);
   const [expandedWhatsInside, setExpandedWhatsInside] = useState<number | null>(null);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [showSticky, setShowSticky] = useState(false);
   const currentPlan = PLANS.find(p => p.id === selectedPlan) || PLANS[0];
+
+  useEffect(() => {
+    const handleScroll = () => setShowSticky(window.scrollY > 800);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#FDFBF7]">
@@ -594,6 +601,60 @@ export default function StickPack() {
           </FadeUp>
         </div>
       </section>
+      {/* === DUPLICATE OFFER BLOCK (above FAQ) === */}
+      <section className="py-16 md:py-20 bg-[#FDFBF7]">
+        <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeUp>
+            <div className="text-center mb-8">
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1C1917] mb-2">Ready to Upgrade Your Coffee?</h2>
+              <p className="text-[#57534E] text-sm md:text-base">Choose your plan and start your smarter morning.</p>
+            </div>
+
+            <div className="flex items-center gap-3 mb-5 p-3 rounded-xl bg-emerald-50/80 border border-emerald-200/60">
+              <div className="flex items-center gap-2"><span className="relative flex h-2.5 w-2.5"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" /></span><span className="text-sm font-semibold text-emerald-800">In Stock</span></div>
+              <span className="text-emerald-600">|</span>
+              <span className="text-sm text-emerald-700">Available for <strong>Next-Day Dispatch</strong></span>
+            </div>
+
+            <div className="space-y-3 mb-4">
+              {PLANS.filter(p => p.id !== "one-time").map((plan) => {
+                const isSelected = selectedPlan === plan.id;
+                return (
+                  <button key={plan.id} onClick={() => setSelectedPlan(plan.id)} className={`w-full text-left rounded-2xl border-2 transition-all duration-200 relative overflow-hidden ${isSelected ? "border-[#B45309] bg-white shadow-warm" : "border-stone-200 bg-white hover:border-stone-300"}`}>
+                    {plan.badge && <span className={`absolute -top-0 right-0 px-3 py-1 ${plan.badge === "BEST VALUE" ? "bg-[#B45309]" : "bg-emerald-600"} text-white text-[10px] font-bold rounded-bl-xl uppercase tracking-wide`}>{plan.badge}</span>}
+                    <div className={`flex items-center justify-between gap-3 p-4 md:p-5 ${plan.badge ? "pt-7 md:pt-5" : ""}`}>
+                      <div className="flex items-center gap-3">
+                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${isSelected ? "border-[#B45309]" : "border-stone-300"}`}>{isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#B45309]" />}</div>
+                        <div>
+                          <div className="flex items-center gap-2 flex-wrap"><h3 className="font-display font-bold text-base text-[#1C1917]">{plan.name}</h3>{plan.savings && <span className="text-sm font-semibold text-emerald-600">({plan.savings})</span>}</div>
+                          <p className="text-xs text-[#78716C] mt-0.5">{plan.billed}</p>
+                        </div>
+                      </div>
+                      <div className="text-right flex-shrink-0">
+                        <div className="flex items-baseline gap-1 justify-end"><span className="font-display text-xl sm:text-2xl font-bold text-[#1C1917]">{plan.price}</span><span className="text-sm text-[#57534E] font-medium">/mo</span></div>
+                        <p className="text-[11px] text-[#78716C]">{plan.perDay}</p>
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="text-center mb-5"><button onClick={() => setSelectedPlan("one-time")} className={`text-sm font-medium underline decoration-dotted underline-offset-4 transition-colors ${selectedPlan === "one-time" ? "text-[#B45309] font-semibold" : "text-[#78716C] hover:text-[#B45309]"}`}>One Time Purchase $49</button></div>
+
+            <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="group relative w-full py-4 rounded-full text-base font-bold text-white overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(180,83,9,0.4)] hover:scale-[1.02] active:scale-[0.98] bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] animate-shimmer">
+              <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">{selectedPlan === "one-time" ? "BUY NOW" : "START MY PLAN"} {"•"} {currentPlan.price}{selectedPlan !== "one-time" && "/MO"}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
+            </button>
+
+            <div className="mt-4 flex items-center justify-center gap-6 text-xs text-[#78716C]">
+              <div className="flex items-center gap-1.5"><ShieldCheck size={14} className="text-emerald-600" /><span>30-day guarantee</span></div>
+              <div className="flex items-center gap-1.5"><Truck size={14} /><span>Free shipping</span></div>
+              <div className="flex items-center gap-1.5"><RotateCcw size={14} /><span>Cancel anytime</span></div>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
       {/* === SECTION 7: FAQ === */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
@@ -711,6 +772,36 @@ export default function StickPack() {
           </FadeUp>
         </div>
       </section>
+
+
+      {/* Sticky mobile CTA bar */}
+      <div className="h-20 lg:hidden" />
+      <div
+        className={`sticky-bottom-bar z-50 bg-white/95 backdrop-blur-md border-t border-stone-200 pt-3 px-4 transition-transform duration-500 lg:hidden ${
+          showSticky ? "translate-y-0" : "translate-y-full"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+          <div className="min-w-0">
+            <div className="flex items-baseline gap-2">
+              <p className="font-display font-bold text-[#1C1917] text-lg">{currentPlan.price}{selectedPlan !== "one-time" && "/mo"}</p>
+              {selectedPlan !== "one-time" && currentPlan.savings && (
+                <span className="text-xs font-bold text-emerald-600">{currentPlan.savings}</span>
+              )}
+            </div>
+            <p className="text-[#78716C] text-xs truncate">
+              {selectedPlan === "one-time" ? "One-time purchase" : `Subscribe · ${currentPlan.name}`}
+            </p>
+          </div>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="px-6 sm:px-8 py-3 rounded-full font-display font-bold text-sm text-white hover:shadow-[0_8px_30px_rgba(180,83,9,0.4)] transition-all flex-shrink-0"
+            style={{ background: "linear-gradient(135deg, #B45309 0%, #D97706 50%, #B45309 100%)" }}
+          >
+            {selectedPlan === "one-time" ? "Buy Now" : "Subscribe Now"}
+          </button>
+        </div>
+      </div>
 
       <Footer />
     </div>
