@@ -11,7 +11,8 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Star, Check, X as XIcon, ChevronDown, ArrowRight, Clock, Sparkles,
   Brain, Zap, Shield, Leaf, Coffee, Heart, ShieldCheck, Truck,
-  RotateCcw, FlaskConical, ExternalLink, BookOpen,
+  RotateCcw, FlaskConical, ExternalLink, BookOpen, Gift, Lock,
+  GraduationCap, Trophy, MessageCircle,
 } from "lucide-react";
 
 /* --- Fade-up wrapper --- */
@@ -180,6 +181,7 @@ export default function StickPack() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [expandedIngredient, setExpandedIngredient] = useState<number | null>(null);
   const [expandedWhatsInside, setExpandedWhatsInside] = useState<number | null>(null);
+  const [selectedImage, setSelectedImage] = useState(0);
   const currentPlan = PLANS.find(p => p.id === selectedPlan) || PLANS[0];
 
   return (
@@ -187,95 +189,171 @@ export default function StickPack() {
       <Navbar />
 
       {/* === SECTION 1: HERO / OFFER === */}
-      <section className="pt-24 pb-16 md:pt-32 md:pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            {/* Left: Product Image */}
-            <div className="lg:sticky lg:top-36">
-              <div className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-[#FEF3C7] to-[#FDFBF7] shadow-warm-lg">
-                <img src={IMAGES.hero} alt="BrewNectar Brain + Gut Stick Packs" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex gap-3 mt-4">
-                {[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin].map((img, i) => (
-                  <div key={i} className="w-20 h-20 rounded-xl overflow-hidden border-2 border-transparent hover:border-[#D97706] transition-colors cursor-pointer shadow-warm">
-                    <img src={img} alt="" className="w-full h-full object-cover" />
-                  </div>
+      <section className="pt-24 md:pt-28 pb-10 md:pb-14 relative">
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 120% 80% at 60% 30%, rgba(251,191,114,0.15) 0%, rgba(245,158,66,0.08) 30%, rgba(253,251,247,0.6) 70%, #FDFBF7 100%), #FDFBF7" }} />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Mobile-only: Title, pills, stars above images */}
+          <div className="lg:hidden mb-6">
+            <FadeUp>
+              <h1 className="font-display text-2xl sm:text-3xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">BrewNectar Brain + Gut Nootropic Stick Packs</h1>
+              <div className="flex flex-wrap gap-1.5 mb-3">
+                {[
+                  { label: "Caffeine-Free", emoji: "\u2615", bg: "bg-amber-100 text-amber-800" },
+                  { label: "No Earthy Taste", emoji: "\ud83d\ude4c", bg: "bg-rose-100 text-rose-800" },
+                  { label: "Sugar Free", emoji: "\u2728", bg: "bg-emerald-100 text-emerald-800" },
+                  { label: "Nut-Free", emoji: "\ud83c\udf31", bg: "bg-lime-100 text-lime-800" },
+                  { label: "Vegan", emoji: "\ud83e\udd66", bg: "bg-teal-100 text-teal-800" },
+                  { label: "Made in USA", emoji: "\ud83c\uddfa\ud83c\uddf8", bg: "bg-sky-100 text-sky-800" },
+                ].map((pill) => (
+                  <span key={pill.label} className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold ${pill.bg}`}><span className="text-xs">{pill.emoji}</span>{pill.label}</span>
                 ))}
               </div>
-              <div className="flex items-center justify-center gap-6 mt-6 text-sm text-[#78716C]">
-                <span className="flex items-center gap-1.5"><ShieldCheck size={16} className="text-[#D97706]" /> 30-Day Guarantee</span>
-                <span className="flex items-center gap-1.5"><Truck size={16} className="text-[#D97706]" /> Free Shipping</span>
-                <span className="flex items-center gap-1.5"><RotateCcw size={16} className="text-[#D97706]" /> Cancel Anytime</span>
+              <div className="flex flex-wrap items-center gap-3 mb-3">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-[11px] font-semibold text-emerald-700"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />Now Shipping</span>
+                <div className="flex -space-x-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />)}</div>
+                <span className="text-sm text-[#57534E]"><strong className="text-[#1C1917]">4.9</strong> from <strong className="text-[#1C1917]">2,400+</strong> reviews</span>
               </div>
-            </div>
-            {/* Right: Offer */}
-            <div>
-              <h1 className="font-display text-3xl md:text-4xl font-bold text-[#1C1917] leading-tight mb-3">BrewNectar Brain + Gut<br />Nootropic Stick Packs</h1>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="flex">{[...Array(5)].map((_, i) => <Star key={i} size={16} className={i < 4 ? "fill-[#D97706] text-[#D97706]" : "fill-[#D97706]/40 text-[#D97706]/40"} />)}</div>
-                <span className="text-sm text-[#57534E]"><strong>4.3</strong> from <strong>500+</strong> reviews</span>
-              </div>
-              <div className="space-y-2 mb-6 p-4 rounded-2xl bg-[#FFFBEB] border border-[#FDE68A]/50">
-                {["Works in the coffee you already drink", "Feel it on your first morning — not in two months", "500 mg citicoline + 200 mg L-Theanine", "Lion's Mane at ~5 g raw equivalent", "A probiotic that survives hot coffee", "Subtly sweet almond flavor — no nuts, no mushroom taste"].map((item, i) => (
-                  <div key={i} className="flex items-start gap-2.5"><Check size={16} className="text-[#059669] mt-0.5 flex-shrink-0" /><span className="text-sm text-[#1C1917] leading-relaxed">{item}</span></div>
-                ))}
-              </div>
-              <div className="flex items-center gap-2 mb-6 px-3 py-2 rounded-xl bg-emerald-50 border border-emerald-200/50 text-sm text-emerald-800">
-                <Shield size={14} /> <strong>Almond flavor, zero almonds.</strong> Completely nut-free.
-              </div>
-              {/* Plan selector */}
-              <div className="mb-4">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-display font-bold text-lg text-[#1C1917]">Select Your Plan:</h3>
-                  <span className="text-xs font-semibold text-[#D97706] border border-[#D97706] rounded-full px-3 py-1">Subscribe & Save up to 45%</span>
-                </div>
-                <div className="space-y-3">
-                  {PLANS.map((plan) => (
-                    <button key={plan.id} onClick={() => setSelectedPlan(plan.id)} className={`w-full text-left p-4 rounded-2xl border-2 transition-all duration-200 ${selectedPlan === plan.id ? "border-[#D97706] bg-[#FFFBEB] shadow-warm" : "border-stone-200 hover:border-stone-300 bg-white"}`}>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedPlan === plan.id ? "border-[#D97706]" : "border-stone-300"}`}>
-                            {selectedPlan === plan.id && <div className="w-2.5 h-2.5 rounded-full bg-[#D97706]" />}
-                          </div>
-                          <div>
-                            <span className="font-bold text-[#1C1917]">{plan.name}</span>
-                            <span className="text-[#059669] font-semibold text-sm ml-2">({plan.savings})</span>
-                            <p className="text-xs text-[#78716C] mt-0.5">{plan.billed}</p>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          {plan.badge && <span className="text-[10px] font-bold uppercase bg-[#D97706] text-white px-2 py-0.5 rounded-full">{plan.badge}</span>}
-                          <p className="font-display text-2xl font-bold text-[#1C1917]">{plan.price}<span className="text-sm font-normal text-[#78716C]">/mo</span></p>
-                          <p className="text-xs text-[#A8A29E]">{plan.perDay}</p>
-                        </div>
-                      </div>
-                      {selectedPlan === plan.id && plan.perks.length > 0 && (
-                        <div className="mt-3 pt-3 border-t border-amber-200/50 space-y-1.5">
-                          {plan.perks.map((perk, i) => <div key={i} className="flex items-start gap-2 text-sm text-[#44403C]"><Check size={14} className="text-[#059669] mt-0.5 flex-shrink-0" />{perk}</div>)}
-                        </div>
-                      )}
-                    </button>
+            </FadeUp>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+            {/* Left: Product Images */}
+            <FadeUp delay={0.05} className="lg:sticky lg:top-36 lg:self-start">
+              <div className="relative rounded-2xl overflow-hidden aspect-square bg-stone-50 touch-pan-y"
+                onTouchStart={(e) => { const t = e.touches[0]; (e.currentTarget as any)._sx = t.clientX; (e.currentTarget as any)._sy = t.clientY; }}
+                onTouchEnd={(e) => {
+                  const sx = (e.currentTarget as any)._sx, sy = (e.currentTarget as any)._sy;
+                  if (sx == null) return;
+                  const t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
+                  const imgs = [IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin];
+                  if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+                    if (dx < 0 && selectedImage < imgs.length - 1) setSelectedImage(selectedImage + 1);
+                    else if (dx > 0 && selectedImage > 0) setSelectedImage(selectedImage - 1);
+                  }
+                }}
+              >
+                <motion.img key={selectedImage} src={[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin][selectedImage]} alt="BrewNectar Stick Pack" className="w-full h-full object-cover" initial={{ opacity: 0.6, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.25, ease: "easeOut" }} />
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 lg:hidden">
+                  {[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin].map((_, i) => (
+                    <button key={i} onClick={() => setSelectedImage(i)} className={`rounded-full transition-all ${selectedImage === i ? "w-5 h-2 bg-[#B45309]" : "w-2 h-2 bg-white/70 hover:bg-white"}`} />
                   ))}
                 </div>
               </div>
-              <button className="w-full text-center text-sm text-[#D97706] underline underline-offset-4 mb-4 hover:text-[#B45309]">One Time Purchase $49</button>
-              <button className="w-full py-4 rounded-full bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] text-white font-bold text-lg tracking-wide shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 animate-shimmer">
-                START MY PLAN &bull; {currentPlan.price}/MO <ArrowRight size={18} className="inline ml-2" />
-              </button>
-              <div className="mt-4 p-3 rounded-xl bg-emerald-50 border border-emerald-200/50 flex items-center gap-3">
-                <ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" />
-                <div><p className="text-sm font-bold text-[#1C1917]">30-Day Keep-the-Box Guarantee</p><p className="text-xs text-[#78716C]">Don't love it? Keep the box. Full refund, no questions.</p></div>
+              <div className="grid grid-cols-4 gap-2 mt-3">
+                {[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin].map((img, i) => (
+                  <button key={i} onClick={() => setSelectedImage(i)} className={`rounded-xl overflow-hidden aspect-square border-2 transition-all ${selectedImage === i ? "border-[#B45309] ring-2 ring-amber-200" : "border-stone-200 hover:border-stone-300"}`}>
+                    <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" />
+                  </button>
+                ))}
               </div>
-              <div className="flex items-center justify-between mt-4 text-xs text-[#A8A29E]">
-                <span className="flex items-center gap-1"><Truck size={12} /> Free shipping</span>
-                <span>&bull;</span><span>Ships within 24 hours</span><span>&bull;</span>
-                <span className="flex items-center gap-1"><RotateCcw size={12} /> Cancel anytime</span>
+              <div className="hidden lg:flex items-center justify-center gap-6 mt-4">
+                {[{ icon: ShieldCheck, label: "30-Day Guarantee" }, { icon: Truck, label: "Free Shipping" }, { icon: RotateCcw, label: "Cancel Anytime" }].map((badge) => (
+                  <div key={badge.label} className="flex items-center gap-1.5 text-[#78716C]"><badge.icon size={14} className="text-[#D97706]" /><span className="text-xs">{badge.label}</span></div>
+                ))}
               </div>
-            </div>
+            </FadeUp>
+
+            {/* Right: Plan Selector */}
+            <FadeUp delay={0.1}>
+              <div>
+                <h1 className="hidden lg:block font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">BrewNectar Brain + Gut Nootropic Stick Packs</h1>
+                <div className="hidden lg:flex flex-wrap items-center gap-3 mb-3">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-[11px] font-semibold text-emerald-700"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />Now Shipping</span>
+                  <div className="flex -space-x-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />)}</div>
+                  <span className="text-sm text-[#57534E]"><strong className="text-[#1C1917]">4.9</strong> from <strong className="text-[#1C1917]">2,400+</strong> reviews</span>
+                  <span className="text-[#D4D0CA]">|</span>
+                  <span className="text-sm text-[#57534E]"><strong className="text-[#1C1917]">Thousands of</strong> members</span>
+                </div>
+                <p className="text-[#57534E] text-base mb-5 leading-relaxed hidden lg:block">Eight research-backed nootropics + prebiotics in one caffeine-free stick pack. Add it to the coffee you already drink. <strong className="text-[#1C1917]">Brain + gut support that compounds over time.</strong></p>
+
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {[
+                    { label: "Caffeine-Free", emoji: "\u2615", bg: "bg-amber-100 text-amber-800" },
+                    { label: "No Earthy Taste", emoji: "\ud83d\ude4c", bg: "bg-rose-100 text-rose-800" },
+                    { label: "Sugar Free", emoji: "\u2728", bg: "bg-emerald-100 text-emerald-800" },
+                    { label: "Nut-Free", emoji: "\ud83c\udf31", bg: "bg-lime-100 text-lime-800" },
+                    { label: "Vegan", emoji: "\ud83e\udd66", bg: "bg-teal-100 text-teal-800" },
+                    { label: "Made in USA", emoji: "\ud83c\uddfa\ud83c\uddf8", bg: "bg-sky-100 text-sky-800" },
+                  ].map((pill) => (
+                    <span key={pill.label} className={`hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold ${pill.bg}`}><span className="text-sm">{pill.emoji}</span>{pill.label}</span>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-3 mb-5 p-3 rounded-xl bg-emerald-50/80 border border-emerald-200/60">
+                  <div className="flex items-center gap-2"><span className="relative flex h-2.5 w-2.5"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" /></span><span className="text-sm font-semibold text-emerald-800">In Stock</span></div>
+                  <span className="text-emerald-600">|</span>
+                  <span className="text-sm text-emerald-700">Available for <strong>Next-Day Dispatch</strong></span>
+                </div>
+
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="font-display font-bold text-lg text-[#1C1917]">Select Your Plan:</h3>
+                  <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/60">Subscribe & Save up to 45%</span>
+                </div>
+
+                <div className="space-y-3 mb-4" id="offers">
+                  {PLANS.map((plan) => {
+                    const isSelected = selectedPlan === plan.id;
+                    return (
+                      <button key={plan.id} onClick={() => setSelectedPlan(plan.id)} className={`w-full text-left rounded-2xl border-2 transition-all duration-200 relative overflow-hidden ${isSelected ? "border-[#B45309] bg-white shadow-warm" : "border-stone-200 bg-white hover:border-stone-300"}`}>
+                        {plan.badge && <span className={`absolute -top-0 right-0 px-3 py-1 ${plan.badge === "BEST VALUE" ? "bg-[#B45309]" : "bg-emerald-600"} text-white text-[10px] font-bold rounded-bl-xl uppercase tracking-wide`}>{plan.badge}</span>}
+                        <div className={`flex items-center justify-between gap-3 p-4 md:p-5 ${plan.badge ? "pt-7 md:pt-5" : ""}`}>
+                          <div className="flex items-center gap-3">
+                            <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${isSelected ? "border-[#B45309]" : "border-stone-300"}`}>{isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#B45309]" />}</div>
+                            <div>
+                              <div className="flex items-center gap-2 flex-wrap"><h3 className="font-display font-bold text-base text-[#1C1917]">{plan.name}</h3><span className="text-sm font-semibold text-emerald-600">({plan.savings})</span></div>
+                              <p className="text-xs text-[#78716C] mt-0.5">{plan.billed}</p>
+                            </div>
+                          </div>
+                          <div className="text-right flex-shrink-0">
+                            <div className="flex items-baseline gap-1 justify-end"><span className="font-display text-xl sm:text-2xl font-bold text-[#1C1917]">{plan.price}</span><span className="text-sm text-[#57534E] font-medium">/mo</span></div>
+                            <p className="text-[11px] text-[#78716C]">{plan.perDay}</p>
+                          </div>
+                        </div>
+                        <AnimatePresence initial={false}>
+                          {isSelected && plan.perks.length > 0 && (
+                            <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }} className="overflow-hidden">
+                              <div className="px-4 md:px-5 pb-4 md:pb-5 pt-0 border-t border-stone-100"><div className="pt-3 space-y-1.5">{plan.perks.map((perk) => (<div key={perk} className="flex items-center gap-2"><Check size={16} strokeWidth={3} className="text-emerald-600 flex-shrink-0" /><span className="text-xs text-[#44403C]">{perk}</span></div>))}</div></div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="mb-5">
+                  <div className="flex items-center gap-2 mb-3"><Gift size={16} className="text-[#B45309]" /><span className="text-sm font-bold text-[#1C1917]">Free gifts with your order</span></div>
+                  <div className="flex gap-3">
+                    <div className={`flex-1 relative rounded-xl border-2 p-3 text-left ${selectedPlan !== "one-time" ? "border-[#B45309]/30 bg-amber-50/60" : "border-stone-200 bg-stone-50 opacity-60"}`}>
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 ${selectedPlan !== "one-time" ? "bg-[#B45309]/10" : "bg-stone-200"}`}><GraduationCap size={16} className={selectedPlan !== "one-time" ? "text-[#B45309]" : "text-stone-400"} /></div>
+                      <p className="text-xs font-bold text-[#1C1917] leading-tight">Focus & Clarity Masterclass</p>
+                      <div className="flex items-center gap-1 mt-1"><span className="text-[10px] text-stone-400 line-through">$25</span><span className={`text-[10px] font-bold ${selectedPlan !== "one-time" ? "text-emerald-600" : "text-stone-400"}`}>FREE</span></div>
+                      {selectedPlan !== "one-time" && <div className="absolute -top-1.5 -left-1.5"><div className="w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center"><Check size={10} strokeWidth={3} className="text-white" /></div></div>}
+                    </div>
+                    <div className={`flex-1 relative rounded-xl border-2 p-3 text-left ${selectedPlan === "3mo" || selectedPlan === "2mo" ? "border-[#B45309]/30 bg-amber-50/60" : "border-stone-200 bg-stone-50 opacity-60"}`}>
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 ${selectedPlan === "3mo" || selectedPlan === "2mo" ? "bg-[#B45309]/10" : "bg-stone-200"}`}><Trophy size={16} className={selectedPlan === "3mo" || selectedPlan === "2mo" ? "text-[#B45309]" : "text-stone-400"} /></div>
+                      <p className="text-xs font-bold text-[#1C1917] leading-tight">La Marzocco Espresso Machine ($4500) Giveaway</p>
+                      <div className="flex items-center gap-1 mt-1"><span className="text-[10px] text-stone-400">2+ supplies</span><span className={`text-[10px] font-bold ${selectedPlan === "3mo" || selectedPlan === "2mo" ? "text-emerald-600" : "text-stone-400"}`}>{selectedPlan === "3mo" || selectedPlan === "2mo" ? "ENTERED" : "LOCKED"}</span></div>
+                      {(selectedPlan === "3mo" || selectedPlan === "2mo") && <div className="absolute -top-1.5 -left-1.5"><div className="w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center"><Check size={10} strokeWidth={3} className="text-white" /></div></div>}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="text-center mb-5"><button className="text-sm font-medium text-[#78716C] underline decoration-dotted underline-offset-4 hover:text-[#B45309] transition-colors">One Time Purchase $49</button></div>
+
+                <button className="group relative w-full py-4 rounded-full text-base font-bold text-white overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(180,83,9,0.4)] hover:scale-[1.02] active:scale-[0.98] bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] animate-shimmer">
+                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">START MY PLAN {"\u2022"} {currentPlan.price}/MO<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
+                </button>
+
+                <div className="mt-4 space-y-3">
+                  <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">30-Day Keep-the-Box Guarantee</p><p className="text-[11px] text-[#78716C]">Don't love it? Keep the box. Full refund, no questions.</p></div></div>
+                  <div className="flex items-center justify-between px-1"><div className="flex items-center gap-2"><Truck size={14} className="text-[#78716C]" /><span className="text-xs text-[#57534E]">Free shipping</span></div><div className="flex items-center gap-2"><RotateCcw size={14} className="text-[#78716C]" /><span className="text-xs text-[#57534E]">Cancel anytime</span></div></div>
+                </div>
+              </div>
+            </FadeUp>
           </div>
         </div>
       </section>
-
       {/* === SECTION 2: PROBLEM AGITATION (condensed) === */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
@@ -493,18 +571,39 @@ export default function StickPack() {
       </section>
 
       {/* === SECTION 7: GUARANTEE === */}
-      <section className="py-16 md:py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+      <section className="py-16 md:py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
-            <div className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-emerald-50 to-emerald-100/50 border border-emerald-200/50 text-center">
-              <ShieldCheck size={48} className="text-emerald-600 mx-auto mb-4" />
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1C1917] mb-3">30-Day Keep-the-Box Guarantee</h2>
-              <p className="text-[#44403C] max-w-lg mx-auto">Try it for a full month. If you don't feel sharper, keep the box. We'll refund every penny. No return shipping, no hoops.</p>
+            <div className="relative rounded-3xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-800" />
+              <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 30% 20%, rgba(255,255,255,0.3) 0%, transparent 50%)" }} />
+              <div className="relative p-8 md:p-12 text-center">
+                <div className="w-20 h-20 rounded-full bg-white/15 border-2 border-white/30 flex items-center justify-center mx-auto mb-6">
+                  <ShieldCheck size={40} className="text-white" />
+                </div>
+                <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3">30-Day Keep-the-Box Guarantee</h2>
+                <p className="text-emerald-100 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8">Don't love it? <strong className="text-white">Keep the box. Full refund within 48 hours.</strong> No return shipping, no restocking fees, no questions asked. We believe in BrewNectar so much, we'll take all the risk.</p>
+                <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+                  {[
+                    { icon: Heart, label: "Keep the Box" },
+                    { icon: Clock, label: "48-Hour Refund" },
+                    { icon: MessageCircle, label: "No Questions Asked" },
+                    { icon: Truck, label: "No Return Shipping" },
+                  ].map((item) => (
+                    <div key={item.label} className="flex flex-col items-center gap-2">
+                      <div className="w-12 h-12 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center"><item.icon size={22} className="text-white" /></div>
+                      <span className="text-xs font-semibold text-emerald-100">{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-8">
+                  <a href="#offers" className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold text-emerald-800 rounded-full bg-white hover:bg-emerald-50 transition-colors" onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}>Try It Risk-Free<ArrowRight size={16} /></a>
+                </div>
+              </div>
             </div>
           </FadeUp>
         </div>
       </section>
-
       {/* === SECTION 7: FAQ === */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
