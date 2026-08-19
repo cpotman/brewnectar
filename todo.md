@@ -120,3 +120,6 @@
 - [x] Replace PDP gallery images with actual stick pack product images (4 images)
 - [x] Reduce PDP gallery image size so selected image + 4 thumbnails visible together
 - [x] Add orange gradient circle background image to "Sound Familiar?" section
+- [x] Add desktop-only arrow button on right side of PDP image to cycle through gallery
+- [x] Make bottom offer section image sticky (like top hero section)
+- [x] Reduce spacing above PDP images in top hero section

@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import { useState, useRef, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
-  Star, Check, X as XIcon, ChevronDown, ArrowRight, Clock, Sparkles,
+  Star, Check, X as XIcon, ChevronDown, ChevronRight, ArrowRight, Clock, Sparkles,
   Brain, Zap, Shield, Leaf, Coffee, Heart, ShieldCheck, Truck,
   RotateCcw, FlaskConical, ExternalLink, BookOpen, Gift, Lock,
   GraduationCap, Trophy, MessageCircle,
@@ -194,7 +194,7 @@ export default function StickPack() {
       <Navbar />
 
       {/* === SECTION 1: HERO / OFFER === */}
-      <section className="pt-12 md:pt-16 pb-10 md:pb-14 relative">
+      <section className="pt-6 md:pt-10 pb-10 md:pb-14 relative">
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 120% 80% at 60% 30%, rgba(251,191,114,0.15) 0%, rgba(245,158,66,0.08) 30%, rgba(253,251,247,0.6) 70%, #FDFBF7 100%), #FDFBF7" }} />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mobile-only: Title, pills, stars above images */}
@@ -243,6 +243,10 @@ export default function StickPack() {
                     <button key={i} onClick={() => setSelectedImage(i)} className={`rounded-full transition-all ${selectedImage === i ? "w-5 h-2 bg-[#B45309]" : "w-2 h-2 bg-white/70 hover:bg-white"}`} />
                   ))}
                 </div>
+                {/* Desktop-only next arrow */}
+                <button onClick={() => setSelectedImage((selectedImage + 1) % 4)} className="hidden lg:flex absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-md items-center justify-center hover:bg-white hover:scale-105 transition-all">
+                  <ChevronRight size={20} className="text-[#1C1917]" />
+                </button>
               </div>
               <div className="grid grid-cols-4 gap-2 mt-3">
                 {[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin].map((img, i) => (
@@ -628,10 +632,14 @@ export default function StickPack() {
             </div>
           </FadeUp>
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-            {/* Left: Product Images */}
-            <FadeUp delay={0.05}>
+            {/* Left: Product Images (sticky on desktop) */}
+            <FadeUp delay={0.05} className="lg:sticky lg:top-36 lg:self-start">
               <div className="relative rounded-2xl overflow-hidden aspect-square bg-stone-50">
                 <img src={[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin][selectedImage]} alt="BrewNectar Stick Pack" className="w-full h-full object-cover" />
+                {/* Desktop-only next arrow */}
+                <button onClick={() => setSelectedImage((selectedImage + 1) % 4)} className="hidden lg:flex absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-md items-center justify-center hover:bg-white hover:scale-105 transition-all">
+                  <ChevronRight size={20} className="text-[#1C1917]" />
+                </button>
               </div>
               <div className="grid grid-cols-4 gap-2 mt-3">
                 {[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin].map((img, i) => (
