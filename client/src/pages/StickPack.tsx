@@ -386,7 +386,7 @@ export default function StickPack() {
             ))}
           </div>
           <FadeUp delay={0.3}>
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-[#FFFBEB] to-[#FEF3C7] border border-amber-200/50">
+            <div className="p-6 rounded-2xl bg-white/60 backdrop-blur-sm border border-white/80 shadow-warm">
               <h3 className="font-display font-bold text-xl text-[#1C1917] mb-3">It isn't discipline.</h3>
               <p className="text-[#44403C] leading-relaxed mb-4">A brain running on broken sleep, an inflamed gut, and no raw material for its own neurotransmitters is doing exactly what it should. You can't willpower your way out of a supply problem.</p>
               <div className="space-y-2 text-sm text-[#57534E]">
