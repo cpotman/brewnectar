@@ -384,7 +384,7 @@ export default function StickPack() {
                 <div className="text-center mb-5"><button onClick={() => setSelectedPlan("one-time")} className={`text-sm font-medium underline decoration-dotted underline-offset-4 transition-colors ${selectedPlan === "one-time" ? "text-[#B45309] font-semibold" : "text-[#78716C] hover:text-[#B45309]"}`}>One Time Purchase $49</button></div>
 
                 <button className="group relative w-full py-4 rounded-full text-base font-bold text-white overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(180,83,9,0.4)] hover:scale-[1.02] active:scale-[0.98] bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] animate-shimmer">
-                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">{selectedPlan === "one-time" ? "BUY NOW" : "START MY PLAN"} {"\u2022"} {currentPlan.price}{selectedPlan !== "one-time" && "/MO"}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
+                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">{selectedPlan === "one-time" ? "BUY NOW" : "START NOW"} {"\u2022"} {currentPlan.price}{selectedPlan !== "one-time" && "/MO"}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
                 </button>
 
                 <div className="mt-4 space-y-3">
@@ -776,7 +776,7 @@ export default function StickPack() {
                 <div className="text-center mb-5"><button onClick={() => setSelectedPlan("one-time")} className={`text-sm font-medium underline decoration-dotted underline-offset-4 transition-colors ${selectedPlan === "one-time" ? "text-[#B45309] font-semibold" : "text-[#78716C] hover:text-[#B45309]"}`}>One Time Purchase $49</button></div>
 
                 <button className="group relative w-full py-4 rounded-full text-base font-bold text-white overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(180,83,9,0.4)] hover:scale-[1.02] active:scale-[0.98] bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] animate-shimmer">
-                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">{selectedPlan === "one-time" ? "BUY NOW" : "START MY PLAN"} {"•"} {currentPlan.price}{selectedPlan !== "one-time" && "/MO"}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
+                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">{selectedPlan === "one-time" ? "BUY NOW" : "START NOW"} {"•"} {currentPlan.price}{selectedPlan !== "one-time" && "/MO"}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
                 </button>
 
                 <div className="mt-4 space-y-3">
@@ -955,7 +955,7 @@ export default function StickPack() {
             <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">Keep your coffee. Lose the fog.</h2>
             <p className="text-stone-400 mb-8">One stick pack. Seven ingredients. Works on the first morning.</p>
             <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] text-white font-bold text-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
-              Start My Plan <ArrowRight size={18} />
+              Start Now <ArrowRight size={18} />
             </button>
             <p className="text-xs text-stone-500 mt-4">30-day keep-the-box guarantee &bull; Free shipping &bull; Cancel anytime</p>
           </FadeUp>
@@ -987,7 +987,7 @@ export default function StickPack() {
             className="px-6 sm:px-8 py-3 rounded-full font-display font-bold text-sm text-white hover:shadow-[0_8px_30px_rgba(180,83,9,0.4)] transition-all flex-shrink-0"
             style={{ background: "linear-gradient(135deg, #B45309 0%, #D97706 50%, #B45309 100%)" }}
           >
-            {selectedPlan === "one-time" ? "Buy Now" : "Subscribe Now"}
+            {selectedPlan === "one-time" ? "Buy Now" : "Start Now"}
           </button>
         </div>
       </div>
