@@ -624,7 +624,7 @@ export default function StickPack() {
       </section>
       {/* === DUPLICATE OFFER BLOCK (full PDP copy above FAQ) === */}
       <section className="pt-16 md:pt-20 pb-10 md:pb-14 bg-[#FDFBF7]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <div className="text-center mb-10">
               <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1C1917] mb-2">Ready to Upgrade Your Coffee?</h2>
@@ -633,7 +633,7 @@ export default function StickPack() {
           </FadeUp>
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Left: Product Images (sticky on desktop) */}
-            <FadeUp delay={0.05} className="lg:sticky lg:top-36 lg:self-start">
+            <FadeUp delay={0.05} className="lg:sticky lg:top-20 lg:self-start lg:-mt-6">
               <div className="relative rounded-2xl overflow-hidden aspect-square bg-stone-50">
                 <img src={[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin][selectedImage]} alt="BrewNectar Stick Pack" className="w-full h-full object-cover" />
                 {/* Desktop-only next arrow */}
