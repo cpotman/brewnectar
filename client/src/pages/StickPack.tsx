@@ -35,10 +35,14 @@ const IMAGES = {
 
 /* --- What's Inside visual cards --- */
 const WHATS_INSIDE = [
-  { name: "Lion's Mane", dosage: "500 mg (10:1 extract)", tag: "Your Brain Builds New Connections*", science: "30+ peer-reviewed studies show Lion's Mane stimulates nerve growth factor (NGF), the protein your brain uses to grow and repair neurons. At 10:1 concentration, each stick delivers ~5 g raw equivalent.", emotion: "The reason your thinking may get sharper over weeks, not just hours.*", icon: Brain, color: "bg-amber-50 text-[#B45309]", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-lions-mane_c905f004.png" },
-  { name: "Citicoline", dosage: "500 mg per serving", tag: "Retrieve Names, Numbers, and Ideas On Demand*", science: "The only patented form of citicoline with 20+ clinical trials on focus and working memory. In one study, brain ATP increased by 14% after just 6 weeks at this exact dose.", emotion: "That name on the tip of your tongue? You'll recall it faster.*", icon: Zap, color: "bg-emerald-50 text-emerald-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-cognizin_3fb446ba.png" },
-  { name: "L-Theanine", dosage: "200 mg per serving", tag: "The Reason You Won't Feel Jittery*", science: "This amino acid promotes alpha brain wave activity \u2014 the neurological state behind calm, sustained attention. At 200 mg, nearly 3x the dose in our syrup, paired with your own caffeine.", emotion: "Your hands stop shaking. Your mind stops racing. What's left is clean, quiet focus.*", icon: Sparkles, color: "bg-sky-50 text-sky-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-l-theanine_dc3b4af3.png" },
-  { name: "B Vitamins (B6 + B12)", dosage: "100% DV each", tag: "Steady Energy That Doesn't Crash", science: "B vitamins are essential cofactors in the production of dopamine, serotonin, and norepinephrine. They support your brain's natural energy metabolism and neurotransmitter synthesis throughout the day.", emotion: "No spike at 9am. No wall at 2pm. Just steady, reliable output.*", icon: Coffee, color: "bg-rose-50 text-rose-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-b-vitamins_1072f364.png" },
+  { name: "Citicoline", dosage: "500 mg", tag: "Retrieve Names, Numbers, and Ideas On Demand*", science: "The only patented form of citicoline with 20+ clinical trials on focus and working memory. Brain ATP increased by 14% after just 6 weeks at this exact dose.", icon: Zap, color: "bg-emerald-50 text-emerald-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-cognizin_3fb446ba.png" },
+  { name: "L-Theanine", dosage: "200 mg", tag: "Calm Focus Without the Jitters*", science: "Promotes alpha brain wave activity \u2014 the neurological state behind calm, sustained attention. At 200 mg, paired with your own caffeine for clean, quiet focus.", icon: Sparkles, color: "bg-sky-50 text-sky-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-l-theanine_dc3b4af3.png" },
+  { name: "Lion\u2019s Mane", dosage: "500 mg (10:1)", tag: "Your Brain Builds New Connections*", science: "30+ peer-reviewed studies on nerve growth factor (NGF) production. At 10:1 concentration, each stick delivers ~5 g raw equivalent \u2014 20x a typical mushroom coffee.", icon: Brain, color: "bg-amber-50 text-[#B45309]", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-lions-mane_c905f004.png" },
+  { name: "Rhodiola Rosea", dosage: "300 mg (10:1)", tag: "The Afternoon Wall Disappears*", science: "The fastest adaptogen in the stack. Anti-fatigue benefits emerge within roughly two weeks \u2014 carrying you through the window where most nootropic customers churn.", icon: Heart, color: "bg-rose-50 text-rose-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-b-vitamins_1072f364.png" },
+  { name: "Ashwagandha", dosage: "300 mg (10:1)", tag: "Better Sleep. Better Everything.*", science: "Works on the upstream cause \u2014 sleep quality. Sleep efficiency improved from 75.6% to 83.5% over 10 weeks in a published RCT. Better sleep means a sharper morning.", icon: Shield, color: "bg-purple-50 text-purple-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-l-theanine_dc3b4af3.png" },
+  { name: "Cordyceps", dosage: "300 mg (10:1)", tag: "Sustained Physical + Mental Energy*", science: "28 healthy adults taking cordyceps for 3 weeks saw VO2max improve by 10.9% vs no change in placebo. More oxygen to the brain means more sustained output.", icon: Zap, color: "bg-orange-50 text-orange-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-cognizin_3fb446ba.png" },
+  { name: "Prebiotic Fiber + Probiotic", dosage: "2 g inulin + B. coagulans", tag: "A Gut That Feeds Your Brain*", science: "Bacillus coagulans survives hot coffee (92% spore survival). Inulin feeds beneficial bacteria. Together they rebuild the gut-brain axis that most nootropics ignore.", icon: Coffee, color: "bg-teal-50 text-teal-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-lions-mane_c905f004.png" },
+  { name: "B Vitamins (B6 + B12)", dosage: "100% DV each", tag: "Steady Energy That Doesn\u2019t Crash", science: "Essential cofactors for dopamine, serotonin, and norepinephrine production. They support your brain\u2019s natural energy metabolism and neurotransmitter synthesis all day.", icon: Coffee, color: "bg-rose-50 text-rose-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-b-vitamins_1072f364.png" },
 ];
 
 /* --- Ingredient data with studies --- */
@@ -175,6 +179,7 @@ export default function StickPack() {
   const [selectedPlan, setSelectedPlan] = useState("3mo");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [expandedIngredient, setExpandedIngredient] = useState<number | null>(null);
+  const [expandedWhatsInside, setExpandedWhatsInside] = useState<number | null>(null);
   const currentPlan = PLANS.find(p => p.id === selectedPlan) || PLANS[0];
 
   return (
@@ -311,14 +316,16 @@ export default function StickPack() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">What's Inside</p>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">Four Ingredients. One Purpose.</h2>
-            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">Every ingredient is research-backed, precisely dosed, and chosen because it does something your coffee can't.</p>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">Eight Ingredients. One Purpose.</h2>
+            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">Every ingredient is research-backed, precisely dosed, and chosen because it does something your coffee can't. Tap any to learn more.</p>
           </FadeUp>
           <div className="grid md:grid-cols-2 gap-6">
-            {WHATS_INSIDE.map((item, i) => (
-              <FadeUp key={item.name} delay={i * 0.1}>
-                <div className="rounded-2xl overflow-hidden border border-stone-100 bg-white shadow-warm hover:shadow-warm-lg transition-shadow duration-300">
-                  <div className="relative h-48 md:h-56 overflow-hidden">
+            {WHATS_INSIDE.map((item, i) => {
+              const isOpen = expandedWhatsInside === i;
+              return (
+              <FadeUp key={item.name} delay={i * 0.05}>
+                <button onClick={() => setExpandedWhatsInside(isOpen ? null : i)} className="w-full text-left rounded-2xl overflow-hidden border border-stone-100 bg-white shadow-warm hover:shadow-warm-lg transition-all duration-300">
+                  <div className="relative h-40 md:h-48 overflow-hidden">
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute bottom-4 left-4 flex items-center gap-2">
@@ -326,17 +333,23 @@ export default function StickPack() {
                       <h3 className="font-display font-bold text-lg text-white">{item.name}</h3>
                     </div>
                   </div>
-                  <div className="p-5">
-                    <div className="flex items-center gap-3 mb-3">
-                      <p className="text-xs font-semibold uppercase tracking-widest text-[#D97706]">{item.tag}</p>
+                  <div className="px-5 py-4">
+                    <div className="flex items-center gap-3">
+                      <p className="text-xs font-semibold uppercase tracking-widest text-[#D97706] flex-1">{item.tag}</p>
                       <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">{item.dosage}</span>
                     </div>
-                    <p className="text-sm text-[#57534E] leading-relaxed mb-3">{item.science}</p>
-                    <p className="text-sm italic text-[#78716C]">{item.emotion}</p>
+                    <AnimatePresence>
+                      {isOpen && (
+                        <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }}>
+                          <p className="text-sm text-[#57534E] leading-relaxed mt-3 pt-3 border-t border-stone-100">{item.science}</p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
-                </div>
+                </button>
               </FadeUp>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
