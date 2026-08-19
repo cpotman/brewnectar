@@ -117,3 +117,4 @@
 - [x] Widen ingredient cards on desktop so duplicates are not visible simultaneously
 - [x] Replace "Eight Ingredients. Four Mechanisms." with "The Complete Stack."
 - [x] Compress ingredient section to fit within 1 desktop viewport
+- [x] Replace PDP gallery images with actual stick pack product images (4 images)

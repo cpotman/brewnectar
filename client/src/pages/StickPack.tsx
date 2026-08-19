@@ -28,10 +28,10 @@ function FadeUp({ children, className = "", delay = 0 }: { children: React.React
 
 /* --- Product images --- */
 const IMAGES = {
-  hero: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/product-hero-clean-2JryfYKGcicCXzETS5MKKr.webp",
-  lifestyle: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/lifestyle-pour-bright-Gx24uHuFzUnhzZ4wLHqXvY.webp",
-  stir: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/how-stir-3pNJBKzkQVwxqm57DvYdyL.webp",
-  lockin: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/how-lockin-BGjMpAAVV2Cfd7diTUnZWZ.webp",
+  hero: "/manus-storage/BrewNectarPDPImages-selection_c4f01cd7.png",
+  lifestyle: "/manus-storage/BrewNectarPDPImages-selection(1)_124174b7.webp",
+  stir: "/manus-storage/BrewNectarPDPImages-selection(2)_c7bd3495.png",
+  lockin: "/manus-storage/BrewNectarPDPImages-selection(3)_e9f5cd58.webp",
 };
 
 /* --- What's Inside visual cards --- */
