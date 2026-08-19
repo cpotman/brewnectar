@@ -116,3 +116,4 @@
 - [x] Make ingredient rows auto-scroll and loop continuously (no user interaction)
 - [x] Widen ingredient cards on desktop so duplicates are not visible simultaneously
 - [x] Replace "Eight Ingredients. Four Mechanisms." with "The Complete Stack."
+- [x] Compress ingredient section to fit within 1 desktop viewport

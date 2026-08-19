@@ -395,21 +395,21 @@ export default function StickPack() {
       </section>
 
       {/* === SECTION 3: WHAT'S INSIDE (visual ingredient cards) === */}
-      <section className="py-14 md:py-20 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+      <section className="py-8 md:py-12 lg:py-14 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
           <FadeUp>
-            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">What's Inside</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-2 text-center">What's Inside</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">The Complete Stack.</h2>
-            <p className="text-center text-[#78716C] text-lg max-w-2xl mx-auto">Sharper focus.* Calmer energy.* Long-term brain support.* A healthier gut-brain connection.* Each ingredient targets a specific mechanism.</p>
+            <p className="text-center text-[#78716C] text-sm md:text-base max-w-2xl mx-auto">Sharper focus.* Calmer energy.* Long-term brain support.* A healthier gut-brain connection.* Each ingredient targets a specific mechanism.</p>
           </FadeUp>
         </div>
         {/* Row 1 — auto-scrolls left, infinite loop */}
-        <div className="overflow-hidden pb-4 pointer-events-none select-none">
+        <div className="overflow-hidden pb-2 pointer-events-none select-none">
           <div className="flex gap-4 animate-marquee-left w-max">
             {[...WHATS_INSIDE.slice(0, 4), ...WHATS_INSIDE.slice(0, 4), ...WHATS_INSIDE.slice(0, 4)].map((item, i) => (
               <div key={`r1-${i}`} className="w-[260px] md:w-[360px] lg:w-[420px] flex-shrink-0">
                 <div className="rounded-xl overflow-hidden border border-stone-100 bg-white shadow-warm h-full">
-                  <div className="relative h-32 md:h-40 lg:h-48 overflow-hidden">
+                  <div className="relative h-28 md:h-32 lg:h-36 overflow-hidden">
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover" draggable={false} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute bottom-3 left-3 flex items-center gap-2">
@@ -417,8 +417,8 @@ export default function StickPack() {
                       <h3 className="font-display font-bold text-sm text-white">{item.name}</h3>
                     </div>
                   </div>
-                  <div className="px-4 py-3">
-                    <p className="text-[11px] font-semibold uppercase tracking-widest text-[#D97706] mb-1 leading-tight">{item.tag}</p>
+                  <div className="px-3 py-2">
+                    <p className="text-[11px] font-semibold uppercase tracking-widest text-[#D97706] mb-0.5 leading-tight">{item.tag}</p>
                     <span className="inline-block px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-200">{item.dosage}</span>
                   </div>
                 </div>
@@ -427,12 +427,12 @@ export default function StickPack() {
           </div>
         </div>
         {/* Row 2 — auto-scrolls right, infinite loop */}
-        <div className="overflow-hidden pt-4 pointer-events-none select-none">
+        <div className="overflow-hidden pt-2 pointer-events-none select-none">
           <div className="flex gap-4 animate-marquee-right w-max">
             {[...WHATS_INSIDE.slice(4), ...WHATS_INSIDE.slice(4), ...WHATS_INSIDE.slice(4)].map((item, i) => (
               <div key={`r2-${i}`} className="w-[260px] md:w-[360px] lg:w-[420px] flex-shrink-0">
                 <div className="rounded-xl overflow-hidden border border-stone-100 bg-white shadow-warm h-full">
-                  <div className="relative h-32 md:h-40 lg:h-48 overflow-hidden">
+                  <div className="relative h-28 md:h-32 lg:h-36 overflow-hidden">
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover" draggable={false} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute bottom-3 left-3 flex items-center gap-2">
@@ -440,8 +440,8 @@ export default function StickPack() {
                       <h3 className="font-display font-bold text-sm text-white">{item.name}</h3>
                     </div>
                   </div>
-                  <div className="px-4 py-3">
-                    <p className="text-[11px] font-semibold uppercase tracking-widest text-[#D97706] mb-1 leading-tight">{item.tag}</p>
+                  <div className="px-3 py-2">
+                    <p className="text-[11px] font-semibold uppercase tracking-widest text-[#D97706] mb-0.5 leading-tight">{item.tag}</p>
                     <span className="inline-block px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-200">{item.dosage}</span>
                   </div>
                 </div>
