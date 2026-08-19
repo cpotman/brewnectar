@@ -17,6 +17,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import RefundPolicy from "./pages/RefundPolicy";
 import ShippingPolicy from "./pages/ShippingPolicy";
+import StickPack from "./pages/StickPack";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -25,6 +26,7 @@ function Router() {
       <Switch>
         <Route path={"/"} component={Home} />
         <Route path={"/product"} component={Product} />
+        <Route path={"/stick-pack"} component={StickPack} />
         <Route path={"/learn"} component={Advertorial} />
         <Route path={"/compare"} component={Compare} />
         <Route path={"/quiz"} component={Quiz} />
