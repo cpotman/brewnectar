@@ -39,10 +39,10 @@ const WHATS_INSIDE = [
   { name: "Citicoline", dosage: "500 mg", tag: "Retrieve Names, Numbers, and Ideas On Demand*", science: "The only patented form of citicoline with 20+ clinical trials on focus and working memory. Brain ATP increased by 14% after just 6 weeks at this exact dose.", icon: Zap, color: "bg-emerald-50 text-emerald-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-cognizin_3fb446ba.png" },
   { name: "L-Theanine", dosage: "200 mg", tag: "Calm Focus Without the Jitters*", science: "Promotes alpha brain wave activity \u2014 the neurological state behind calm, sustained attention. At 200 mg, paired with your own caffeine for clean, quiet focus.", icon: Sparkles, color: "bg-sky-50 text-sky-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-l-theanine_dc3b4af3.png" },
   { name: "Lion\u2019s Mane", dosage: "500 mg (10:1)", tag: "Your Brain Builds New Connections*", science: "30+ peer-reviewed studies on nerve growth factor (NGF) production. At 10:1 concentration, each stick delivers ~5 g raw equivalent \u2014 20x a typical mushroom coffee.", icon: Brain, color: "bg-amber-50 text-[#B45309]", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-lions-mane_c905f004.png" },
-  { name: "Rhodiola Rosea", dosage: "300 mg (10:1)", tag: "The Afternoon Wall Disappears*", science: "The fastest adaptogen in the stack. Anti-fatigue benefits emerge within roughly two weeks \u2014 carrying you through the window where most nootropic customers churn.", icon: Heart, color: "bg-rose-50 text-rose-700", image: "/manus-storage/ingredient-rhodiola_4516c912.jpg" },
+  { name: "Rhodiola Rosea", dosage: "300 mg (10:1)", tag: "The Afternoon Wall Disappears*", science: "The fastest adaptogen in the stack. Anti-fatigue benefits emerge within roughly two weeks \u2014 carrying you through the window where most supplement customers churn.", icon: Heart, color: "bg-rose-50 text-rose-700", image: "/manus-storage/ingredient-rhodiola_4516c912.jpg" },
   { name: "Ashwagandha", dosage: "300 mg (10:1)", tag: "Better Sleep. Better Everything.*", science: "Works on the upstream cause \u2014 sleep quality. Sleep efficiency improved from 75.6% to 83.5% over 10 weeks in a published RCT. Better sleep means a sharper morning.", icon: Shield, color: "bg-purple-50 text-purple-700", image: "/manus-storage/ingredient-ashwagandha_1f7c66c5.jpg" },
   { name: "Cordyceps", dosage: "300 mg (10:1)", tag: "Sustained Physical + Mental Energy*", science: "28 healthy adults taking cordyceps for 3 weeks saw VO2max improve by 10.9% vs no change in placebo. More oxygen to the brain means more sustained output.", icon: Zap, color: "bg-orange-50 text-orange-700", image: "/manus-storage/ingredient-cordyceps_ed67f1f5.jpg" },
-  { name: "Prebiotic Fiber + Probiotic", dosage: "2 g inulin + B. coagulans", tag: "A Gut That Feeds Your Brain*", science: "Bacillus coagulans survives hot coffee (92% spore survival). Inulin feeds beneficial bacteria. Together they rebuild the gut-brain axis that most nootropics ignore.", icon: Coffee, color: "bg-teal-50 text-teal-700", image: "/manus-storage/ingredient-prebiotic_a58bccad.jpg" },
+  { name: "Prebiotic Fiber + Probiotic", dosage: "2 g inulin + B. coagulans", tag: "A Gut That Feeds Your Brain*", science: "Bacillus coagulans survives hot coffee (92% spore survival). Inulin feeds beneficial bacteria. Together they rebuild the gut-brain axis that most brain supplements ignore.", icon: Coffee, color: "bg-teal-50 text-teal-700", image: "/manus-storage/ingredient-prebiotic_a58bccad.jpg" },
   { name: "B Vitamins (B6 + B12)", dosage: "100% DV each", tag: "Steady Energy That Doesn\u2019t Crash", science: "Essential cofactors for dopamine, serotonin, and norepinephrine production. They support your brain\u2019s natural energy metabolism and neurotransmitter synthesis all day.", icon: Coffee, color: "bg-rose-50 text-rose-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-b-vitamins_1072f364.png" },
 ];
 
@@ -152,7 +152,7 @@ const COMPOUNDING_STAGES = [
 const COMPARISON_ROWS: { feature: string; brew: boolean; other: boolean }[] = [
   { feature: "Keep your own coffee", brew: true, other: false },
   { feature: "No earthy taste or grit", brew: true, other: false },
-  { feature: "Clinical-dose nootropics", brew: true, other: false },
+  { feature: "Clinical-dose ingredients", brew: true, other: false },
   { feature: "Built-in gut support", brew: true, other: false },
   { feature: "Contains adaptogens", brew: true, other: true },
   { feature: "Contains Lion's Mane", brew: true, other: true },
@@ -200,7 +200,7 @@ export default function StickPack() {
           {/* Mobile-only: Title, pills, stars above images */}
           <div className="lg:hidden mb-6">
             <FadeUp>
-              <h1 className="font-display text-2xl sm:text-3xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">BrewNectar Brain + Gut Nootropic Stick Packs</h1>
+              <h1 className="font-display text-2xl sm:text-3xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">BrewNectar Brain + Gut Stick Packs</h1>
               <div className="flex flex-wrap gap-1.5 mb-3">
                 {[
                   { label: "Caffeine-Free", emoji: "\u2615", bg: "bg-amber-100 text-amber-800" },
@@ -261,7 +261,7 @@ export default function StickPack() {
             {/* Right: Plan Selector */}
             <FadeUp delay={0.1}>
               <div>
-                <h1 className="hidden lg:block font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">BrewNectar Brain + Gut Nootropic Stick Packs</h1>
+                <h1 className="hidden lg:block font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">BrewNectar Brain + Gut Stick Packs</h1>
                 <div className="hidden lg:flex flex-wrap items-center gap-3 mb-3">
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-[11px] font-semibold text-emerald-700"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />Now Shipping</span>
                   <div className="flex -space-x-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />)}</div>
@@ -269,7 +269,7 @@ export default function StickPack() {
                   <span className="text-[#D4D0CA]">|</span>
                   <span className="text-sm text-[#57534E]"><strong className="text-[#1C1917]">Thousands of</strong> members</span>
                 </div>
-                <p className="text-[#57534E] text-base mb-5 leading-relaxed hidden lg:block">Eight research-backed nootropics + prebiotics in one caffeine-free stick pack. Add it to the coffee you already drink. <strong className="text-[#1C1917]">Brain + gut support that compounds over time.</strong></p>
+                <p className="text-[#57534E] text-base mb-5 leading-relaxed hidden lg:block">Eight research-backed ingredients + prebiotics in one caffeine-free stick pack. Add it to the coffee you already drink. <strong className="text-[#1C1917]">Brain + gut support that compounds over time.</strong></p>
 
                 <div className="flex flex-wrap gap-2 mb-5">
                   {[
@@ -387,7 +387,7 @@ export default function StickPack() {
               <div className="space-y-2 text-sm text-[#57534E]">
                 <p><strong className="text-[#1C1917]">More coffee</strong> only blocks the signal that you're tired. It never addressed why.</p>
                 <p><strong className="text-[#1C1917]">Mushroom coffee</strong> asked you to give up a drink you liked and deliver nothing for eight weeks.</p>
-                <p><strong className="text-[#1C1917]">Most nootropics</strong> are underdosed and ignore sleep and gut entirely.</p>
+                <p><strong className="text-[#1C1917]">Most brain supplements</strong> are underdosed and ignore sleep and gut entirely.</p>
               </div>
             </div>
           </FadeUp>
@@ -395,45 +395,58 @@ export default function StickPack() {
       </section>
 
       {/* === SECTION 3: WHAT'S INSIDE (visual ingredient cards) === */}
-      <section className="py-14 md:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-14 md:py-20 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">What's Inside</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">Eight Ingredients. Four Mechanisms.</h2>
-            <p className="text-center text-[#78716C] text-lg mb-10 max-w-2xl mx-auto">Sharper focus.* Calmer energy.* Long-term brain support.* A healthier gut-brain connection.* Each ingredient targets a specific mechanism — tap any to see the research.</p>
+            <p className="text-center text-[#78716C] text-lg max-w-2xl mx-auto">Sharper focus.* Calmer energy.* Long-term brain support.* A healthier gut-brain connection.* Each ingredient targets a specific mechanism.</p>
           </FadeUp>
-          <div className="grid md:grid-cols-2 gap-4">
-            {WHATS_INSIDE.map((item, i) => {
-              const isOpen = expandedWhatsInside === i;
-              return (
-              <FadeUp key={item.name} delay={i * 0.05}>
-                <button onClick={() => setExpandedWhatsInside(isOpen ? null : i)} className="w-full text-left rounded-xl overflow-hidden border border-stone-100 bg-white shadow-warm hover:shadow-warm-lg transition-all duration-300">
-                  <div className="relative h-28 md:h-32 overflow-hidden">
+        </div>
+        {/* Row 1 — first 4 ingredients */}
+        <div className="overflow-x-auto scrollbar-hide pb-4">
+          <div className="flex gap-4 px-4 sm:px-6 lg:px-8 w-max">
+            {WHATS_INSIDE.slice(0, 4).map((item, i) => (
+              <FadeUp key={item.name} delay={i * 0.05} className="w-[260px] md:w-[280px] flex-shrink-0">
+                <div className="rounded-xl overflow-hidden border border-stone-100 bg-white shadow-warm h-full">
+                  <div className="relative h-32 overflow-hidden">
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute bottom-3 left-3 flex items-center gap-2">
                       <div className={`w-7 h-7 rounded-lg ${item.color} flex items-center justify-center`}><item.icon size={14} /></div>
-                      <h3 className="font-display font-bold text-base text-white">{item.name}</h3>
+                      <h3 className="font-display font-bold text-sm text-white">{item.name}</h3>
                     </div>
                   </div>
                   <div className="px-4 py-3">
-                    <div className="flex items-center gap-2">
-                      <p className="text-xs font-semibold uppercase tracking-widest text-[#D97706] flex-1">{item.tag}</p>
-                      <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-200 whitespace-nowrap">{item.dosage}</span>
-                      <ChevronDown size={14} className={`text-[#A8A29E] transition-transform duration-200 flex-shrink-0 ${isOpen ? "rotate-180" : ""}`} />
-                    </div>
-                    <AnimatePresence>
-                      {isOpen && (
-                        <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }}>
-                          <p className="text-xs text-[#57534E] leading-relaxed mt-2 pt-2 border-t border-stone-100">{item.science}</p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    <p className="text-[11px] font-semibold uppercase tracking-widest text-[#D97706] mb-1 leading-tight">{item.tag}</p>
+                    <span className="inline-block px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-200">{item.dosage}</span>
                   </div>
-                </button>
+                </div>
               </FadeUp>
-              );
-            })}
+            ))}
+          </div>
+        </div>
+        {/* Row 2 — last 4 ingredients (offset for stagger) */}
+        <div className="overflow-x-auto scrollbar-hide pt-4">
+          <div className="flex gap-4 px-4 sm:px-6 lg:px-8 pl-12 sm:pl-16 lg:pl-20 w-max">
+            {WHATS_INSIDE.slice(4).map((item, i) => (
+              <FadeUp key={item.name} delay={(i + 4) * 0.05} className="w-[260px] md:w-[280px] flex-shrink-0">
+                <div className="rounded-xl overflow-hidden border border-stone-100 bg-white shadow-warm h-full">
+                  <div className="relative h-32 overflow-hidden">
+                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-3 left-3 flex items-center gap-2">
+                      <div className={`w-7 h-7 rounded-lg ${item.color} flex items-center justify-center`}><item.icon size={14} /></div>
+                      <h3 className="font-display font-bold text-sm text-white">{item.name}</h3>
+                    </div>
+                  </div>
+                  <div className="px-4 py-3">
+                    <p className="text-[11px] font-semibold uppercase tracking-widest text-[#D97706] mb-1 leading-tight">{item.tag}</p>
+                    <span className="inline-block px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-200">{item.dosage}</span>
+                  </div>
+                </div>
+              </FadeUp>
+            ))}
           </div>
         </div>
       </section>
@@ -444,7 +457,7 @@ export default function StickPack() {
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">The Compounding Effect</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">Day 1 Feels Good. Month 3 Changes Everything.</h2>
-            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">Most nootropics give you a spike and a crash. BrewNectar compounds. Each week builds on the last.</p>
+            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">Most supplements give you a spike and a crash. BrewNectar compounds. Each week builds on the last.</p>
           </FadeUp>
           <div className="relative mb-16">
             <div className="hidden md:block absolute top-8 left-[12.5%] right-[12.5%] h-0.5 border-t-2 border-dashed border-[#D97706]/30" />
@@ -509,7 +522,7 @@ export default function StickPack() {
               BrewNectar vs. Mushroom Coffee
             </h2>
             <p className="text-sm md:text-base text-[#57534E] mb-10 text-center">
-              See how a research-backed nootropic stick pack compares to typical mushroom coffee.
+              See how a research-backed stick pack compares to typical mushroom coffee.
             </p>
           </FadeUp>
           <FadeUp delay={0.1}>
@@ -631,7 +644,7 @@ export default function StickPack() {
             {/* Right: Plan Selector */}
             <FadeUp delay={0.1}>
               <div>
-                <h3 className="font-display text-xl md:text-2xl font-bold text-[#1C1917] mb-2">BrewNectar Brain + Gut Nootropic Stick Packs</h3>
+                <h3 className="font-display text-xl md:text-2xl font-bold text-[#1C1917] mb-2">BrewNectar Brain + Gut Stick Packs</h3>
                 <div className="flex flex-wrap items-center gap-3 mb-4">
                   <div className="flex -space-x-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />)}</div>
                   <span className="text-sm text-[#57534E]"><strong className="text-[#1C1917]">4.9</strong> from <strong className="text-[#1C1917]">2,400+</strong> reviews</span>

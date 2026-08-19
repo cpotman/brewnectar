@@ -111,3 +111,5 @@
 - [x] Fix comparison table header alignment — "Mushroom Coffee" should align with "BrewNectar" column header
 - [x] Replace second offer block with full PDP duplicate (images, title, plans, gifts, guarantees, shipping)
 - [x] Update "Eight Ingredients. One Purpose." copy to reflect four mechanisms (focus, calm energy, brain health, gut-brain)
+- [x] Limit "nootropic" usage on StickPack.tsx — replace with consumer-friendly language
+- [x] Redesign ingredient section: remove dropdown, 2-row staggered horizontal scroll
