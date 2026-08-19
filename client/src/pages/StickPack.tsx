@@ -469,6 +469,34 @@ export default function StickPack() {
       </section>
 
       {/* === SECTION 5: COMPARISON TABLE === */}
+      {/* === USER-REPORTED OUTCOMES — Red/orange gradient background with clean box === */}
+      <section className="py-16 md:py-20 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #7C2D12 0%, #9A3412 25%, #C2410C 50%, #D97706 80%, #F59E0B 100%)" }}>
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(0,0,0,0.2) 0%, transparent 40%)" }} />
+        <div className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeUp>
+            <div className="border border-white/20 rounded-lg p-6 md:p-8 bg-white">
+              <h3 className="font-display font-bold text-base md:text-lg text-[#1C1917] mb-5">User-Reported Outcomes</h3>
+              <div className="grid grid-cols-3 gap-4 md:gap-6">
+                <div>
+                  <p className="font-display text-3xl md:text-4xl font-bold text-[#1C1917]">87%<span className="text-base align-super text-[#A8A29E]">*</span></p>
+                  <p className="text-xs md:text-sm text-[#57534E] mt-1 leading-snug">reported improved focus within the first week</p>
+                </div>
+                <div>
+                  <p className="font-display text-3xl md:text-4xl font-bold text-[#1C1917]">92%<span className="text-base align-super text-[#A8A29E]">*</span></p>
+                  <p className="text-xs md:text-sm text-[#57534E] mt-1 leading-snug">noticed reduced afternoon fatigue by week 2</p>
+                </div>
+                <div>
+                  <p className="font-display text-3xl md:text-4xl font-bold text-[#1C1917]">94%<span className="text-base align-super text-[#A8A29E]">*</span></p>
+                  <p className="text-xs md:text-sm text-[#57534E] mt-1 leading-snug">said it dissolved completely without changing their coffee's taste</p>
+                </div>
+              </div>
+              <p className="text-[10px] text-[#A8A29E] mt-5">*Based on internal customer surveys, individual results may vary.</p>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* === SECTION 5: COMPARISON TABLE === */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <FadeUp>

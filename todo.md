@@ -98,3 +98,4 @@
 - [x] Register all new routes in App.tsx
 - [x] Wire footer links to new pages (replaced toast placeholders)
 - [x] Wire contact form to real backend (tRPC mutation or notification) — uses notifyOwner
+- [x] Add User Reported Outcomes section under The Compounding Effect on StickPack.tsx (red/orange gradient bg + clean bordered box)
