@@ -399,7 +399,7 @@ export default function StickPack() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">What's Inside</p>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">Eight Ingredients. Four Mechanisms.</h2>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">The Complete Stack.</h2>
             <p className="text-center text-[#78716C] text-lg max-w-2xl mx-auto">Sharper focus.* Calmer energy.* Long-term brain support.* A healthier gut-brain connection.* Each ingredient targets a specific mechanism.</p>
           </FadeUp>
         </div>

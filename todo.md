@@ -115,3 +115,4 @@
 - [x] Redesign ingredient section: remove dropdown, 2-row staggered horizontal scroll
 - [x] Make ingredient rows auto-scroll and loop continuously (no user interaction)
 - [x] Widen ingredient cards on desktop so duplicates are not visible simultaneously
+- [x] Replace "Eight Ingredients. Four Mechanisms." with "The Complete Stack."
