@@ -516,7 +516,6 @@ export default function StickPack() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className={`font-display font-bold text-sm md:text-base truncate ${isExpanded ? "" : "text-[#1C1917]"}`}>{item.name}</h3>
-                        <p className="text-xs text-[#A8A29E] font-semibold">{item.dose}</p>
                       </div>
                     </div>
                     <div className="flex items-baseline gap-2 mb-2">
@@ -583,7 +582,7 @@ export default function StickPack() {
                 </div>
                 <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3">30-Day Keep-the-Box Guarantee</h2>
                 <p className="text-emerald-100 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8">Don't love it? <strong className="text-white">Keep the box. Full refund within 48 hours.</strong> No return shipping, no restocking fees, no questions asked. We believe in BrewNectar so much, we'll take all the risk.</p>
-                <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 max-w-md md:max-w-none mx-auto">
                   {[
                     { icon: Heart, label: "Keep the Box" },
                     { icon: Clock, label: "48-Hour Refund" },
