@@ -126,3 +126,5 @@
 - [x] Improve "It isn't discipline" block background (frosted glass style)
 - [x] Reduce ingredient marquee scroll speed from 30s to 50s
 - [x] Move study popout directly under each card in The Evidence section (better mobile UX)
+- [x] Add "4.9 from 2,400+ reviews" star rating callout to User Reported Outcomes card
+- [x] Add scrolling review section (orange gradient, 3 cards) under second offer block

@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import { useState, useRef, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
-  Star, Check, X as XIcon, ChevronDown, ChevronRight, ArrowRight, Clock, Sparkles,
+  Star, Check, X as XIcon, ChevronDown, ChevronLeft, ChevronRight, ArrowRight, Clock, Sparkles,
   Brain, Zap, Shield, Leaf, Coffee, Heart, ShieldCheck, Truck,
   RotateCcw, FlaskConical, ExternalLink, BookOpen, Gift, Lock,
   GraduationCap, Trophy, MessageCircle,
@@ -161,6 +161,39 @@ const COMPARISON_ROWS: { feature: string; brew: boolean; other: boolean }[] = [
 ];
 
 /* --- FAQ --- */
+const STICK_REVIEWS = [
+  {
+    name: "Dr. Rachel W.",
+    title: "Neurologist",
+    rating: 5,
+    date: "March 2026",
+    heading: "Finally, a nootropic I can recommend to patients",
+    text: "As a neurologist, I'm extremely cautious about supplements. BrewNectar is different — every ingredient is clinically dosed and transparently labeled. The Cognizin® at the dosage they use has solid evidence for memory and attention.",
+    photo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/review-customer-1-DjvmGLQff8vcW4cvUiMv9f.webp",
+    purchased: "90-Day Supply",
+  },
+  {
+    name: "James P.",
+    title: "Day Trader",
+    rating: 5,
+    date: "February 2026",
+    heading: "My edge in the markets",
+    text: "I trade futures from 6:30 AM to 4 PM. I used to rely on 4-5 cups of coffee, but by noon I'd be jittery. Switched to 2 cups with BrewNectar and the difference is night and day. Fewer but better trades.",
+    photo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/review-customer-4-D3DYeAjTb6fvbVuekQXbdM.webp",
+    purchased: "60-Day Supply",
+  },
+  {
+    name: "Michelle K.",
+    title: "Working Mom of 3",
+    rating: 5,
+    date: "March 2026",
+    heading: "From zombie mom to present mom",
+    text: "By 2 PM I used to be running on fumes. After two weeks of adding it to my morning latte, the afternoon crash just... stopped. I'm more patient, more present, and actually getting work done during nap time.",
+    photo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/review-customer-3-kpFVo4DS2zfrmQmTvahuCU.webp",
+    purchased: "90-Day Supply",
+  },
+];
+
 const FAQ_ITEMS = [
   { q: "Do I have to give up my coffee?", a: "No. You add one stick pack to the coffee you already drink. Keep your mug, your beans, your full caffeine." },
   { q: "What does it taste like?", a: "Subtly sweet almond flavor. No mushroom taste, no earthiness. Dissolves completely in 5 seconds." },
@@ -498,6 +531,10 @@ export default function StickPack() {
         <div className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <div className="border border-white/20 rounded-lg p-6 md:p-8 bg-white">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="flex -space-x-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />)}</div>
+                <span className="text-sm text-[#57534E]"><strong className="text-[#1C1917]">4.9</strong> from <strong className="text-[#1C1917]">2,400+</strong> reviews</span>
+              </div>
               <h3 className="font-display font-bold text-base md:text-lg text-[#1C1917] mb-5">User-Reported Outcomes</h3>
               <div className="grid grid-cols-3 gap-4 md:gap-6">
                 <div>
@@ -731,6 +768,65 @@ export default function StickPack() {
                 </div>
               </div>
             </FadeUp>
+          </div>
+        </div>
+      </section>
+
+
+      {/* === REVIEWS SECTION === */}
+      <section className="py-16 md:py-20 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #7C2D12 0%, #9A3412 25%, #C2410C 50%, #D97706 80%, #F59E0B 100%)" }}>
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(0,0,0,0.2) 0%, transparent 40%)" }} />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeUp>
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <div className="flex -space-x-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={18} className="fill-yellow-300 text-yellow-300" />
+                ))}
+              </div>
+              <span className="text-sm font-semibold text-white">4.9/5 from 2,400+ reviews</span>
+            </div>
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-center text-white mb-3">Real Stories From Real Customers</h2>
+            <p className="text-center text-white/70 text-base mb-10 max-w-xl mx-auto">Here’s what people are saying after making BrewNectar part of their daily ritual.</p>
+          </FadeUp>
+          {/* Scrolling review cards */}
+          <div className="relative">
+            <button onClick={() => { const el = document.getElementById("stick-reviews"); el?.scrollBy({ left: -360, behavior: "smooth" }); }} className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 items-center justify-center text-white hover:bg-white/30 transition-colors" aria-label="Scroll left">
+              <ChevronLeft size={20} />
+            </button>
+            <button onClick={() => { const el = document.getElementById("stick-reviews"); el?.scrollBy({ left: 360, behavior: "smooth" }); }} className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 items-center justify-center text-white hover:bg-white/30 transition-colors" aria-label="Scroll right">
+              <ChevronRight size={20} />
+            </button>
+            <div id="stick-reviews" className="flex gap-5 overflow-x-auto pb-4 pt-14 snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+              {STICK_REVIEWS.map((review, i) => (
+                <FadeUp key={review.name} delay={i * 0.08}>
+                  <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl min-w-[300px] md:min-w-[340px] snap-start flex-shrink-0 pt-16 pb-5 px-6 flex flex-col">
+                    <div className="absolute -top-10 left-6">
+                      <img src={review.photo} alt={review.name} className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg" />
+                    </div>
+                    <div className="flex gap-0.5 mb-3">
+                      {[...Array(review.rating)].map((_, j) => (
+                        <Star key={j} size={20} className="fill-yellow-300 text-yellow-300" />
+                      ))}
+                    </div>
+                    <h3 className="font-display font-bold text-xl text-white mb-3 leading-tight">{review.heading}</h3>
+                    <p className="text-white/80 leading-relaxed text-[15px] mb-5 flex-1 italic">{review.text}</p>
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="w-5 h-5 rounded-full bg-emerald-400 flex items-center justify-center"><Check size={12} className="text-white" /></div>
+                      <span className="font-semibold text-sm text-white">{review.name}</span>
+                      <span className="text-sm text-emerald-300 font-medium">• Verified Customer</span>
+                    </div>
+                    <div className="bg-white/10 rounded-xl px-4 py-3 flex items-center gap-3 border border-white/15">
+                      <img src={IMAGES.hero} alt="BrewNectar Stick Pack" className="w-10 h-10 rounded-lg object-cover" />
+                      <div>
+                        <p className="text-xs text-white/60">Purchased</p>
+                        <p className="text-sm font-bold text-white/90">{review.purchased}</p>
+                      </div>
+                    </div>
+                  </div>
+                </FadeUp>
+              ))}
+            </div>
           </div>
         </div>
       </section>
