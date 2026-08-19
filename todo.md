@@ -108,3 +108,5 @@
 - [x] Fix comparison table title alignment on mobile (StickPack.tsx)
 - [x] Make mushroom coffee checkmarks orange instead of grey (StickPack.tsx)
 - [x] Fix white gaps between orange background rows in comparison table (StickPack.tsx)
+- [x] Fix comparison table header alignment — "Mushroom Coffee" should align with "BrewNectar" column header
+- [x] Replace second offer block with full PDP duplicate (images, title, plans, gifts, guarantees, shipping)

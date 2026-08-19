@@ -520,11 +520,11 @@ export default function StickPack() {
               {/* Header */}
               <div className="relative grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_100px_100px]">
                 <div className="px-5 py-5" />
-                <div className="flex flex-col items-center justify-end py-4 bg-gradient-to-b from-amber-500 to-[#D97706] rounded-t-2xl">
-                  <span className="text-[11px] md:text-xs font-bold text-white tracking-wide">BrewNectar</span>
+                <div className="flex items-center justify-center py-4 px-1 bg-gradient-to-b from-amber-500 to-[#D97706] rounded-t-2xl text-center">
+                  <span className="text-[11px] md:text-xs font-bold text-white tracking-wide leading-tight">BrewNectar</span>
                 </div>
-                <div className="flex flex-col items-center justify-end py-4">
-                  <span className="text-[11px] md:text-xs font-medium text-stone-400">Mushroom Coffee</span>
+                <div className="flex items-center justify-center py-4 px-1 text-center">
+                  <span className="text-[11px] md:text-xs font-medium text-stone-400 leading-tight">Mushroom<br/>Coffee</span>
                 </div>
               </div>
 
@@ -604,57 +604,112 @@ export default function StickPack() {
           </FadeUp>
         </div>
       </section>
-      {/* === DUPLICATE OFFER BLOCK (above FAQ) === */}
-      <section className="py-16 md:py-20 bg-[#FDFBF7]">
-        <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* === DUPLICATE OFFER BLOCK (full PDP copy above FAQ) === */}
+      <section className="pt-16 md:pt-20 pb-10 md:pb-14 bg-[#FDFBF7]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
-            <div className="text-center mb-8">
+            <div className="text-center mb-10">
               <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1C1917] mb-2">Ready to Upgrade Your Coffee?</h2>
               <p className="text-[#57534E] text-sm md:text-base">Choose your plan and start your smarter morning.</p>
             </div>
-
-            <div className="flex items-center gap-3 mb-5 p-3 rounded-xl bg-emerald-50/80 border border-emerald-200/60">
-              <div className="flex items-center gap-2"><span className="relative flex h-2.5 w-2.5"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" /></span><span className="text-sm font-semibold text-emerald-800">In Stock</span></div>
-              <span className="text-emerald-600">|</span>
-              <span className="text-sm text-emerald-700">Available for <strong>Next-Day Dispatch</strong></span>
-            </div>
-
-            <div className="space-y-3 mb-4">
-              {PLANS.filter(p => p.id !== "one-time").map((plan) => {
-                const isSelected = selectedPlan === plan.id;
-                return (
-                  <button key={plan.id} onClick={() => setSelectedPlan(plan.id)} className={`w-full text-left rounded-2xl border-2 transition-all duration-200 relative overflow-hidden ${isSelected ? "border-[#B45309] bg-white shadow-warm" : "border-stone-200 bg-white hover:border-stone-300"}`}>
-                    {plan.badge && <span className={`absolute -top-0 right-0 px-3 py-1 ${plan.badge === "BEST VALUE" ? "bg-[#B45309]" : "bg-emerald-600"} text-white text-[10px] font-bold rounded-bl-xl uppercase tracking-wide`}>{plan.badge}</span>}
-                    <div className={`flex items-center justify-between gap-3 p-4 md:p-5 ${plan.badge ? "pt-7 md:pt-5" : ""}`}>
-                      <div className="flex items-center gap-3">
-                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${isSelected ? "border-[#B45309]" : "border-stone-300"}`}>{isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#B45309]" />}</div>
-                        <div>
-                          <div className="flex items-center gap-2 flex-wrap"><h3 className="font-display font-bold text-base text-[#1C1917]">{plan.name}</h3>{plan.savings && <span className="text-sm font-semibold text-emerald-600">({plan.savings})</span>}</div>
-                          <p className="text-xs text-[#78716C] mt-0.5">{plan.billed}</p>
-                        </div>
-                      </div>
-                      <div className="text-right flex-shrink-0">
-                        <div className="flex items-baseline gap-1 justify-end"><span className="font-display text-xl sm:text-2xl font-bold text-[#1C1917]">{plan.price}</span><span className="text-sm text-[#57534E] font-medium">/mo</span></div>
-                        <p className="text-[11px] text-[#78716C]">{plan.perDay}</p>
-                      </div>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-
-            <div className="text-center mb-5"><button onClick={() => setSelectedPlan("one-time")} className={`text-sm font-medium underline decoration-dotted underline-offset-4 transition-colors ${selectedPlan === "one-time" ? "text-[#B45309] font-semibold" : "text-[#78716C] hover:text-[#B45309]"}`}>One Time Purchase $49</button></div>
-
-            <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="group relative w-full py-4 rounded-full text-base font-bold text-white overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(180,83,9,0.4)] hover:scale-[1.02] active:scale-[0.98] bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] animate-shimmer">
-              <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">{selectedPlan === "one-time" ? "BUY NOW" : "START MY PLAN"} {"•"} {currentPlan.price}{selectedPlan !== "one-time" && "/MO"}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
-            </button>
-
-            <div className="mt-4 flex items-center justify-center gap-6 text-xs text-[#78716C]">
-              <div className="flex items-center gap-1.5"><ShieldCheck size={14} className="text-emerald-600" /><span>30-day guarantee</span></div>
-              <div className="flex items-center gap-1.5"><Truck size={14} /><span>Free shipping</span></div>
-              <div className="flex items-center gap-1.5"><RotateCcw size={14} /><span>Cancel anytime</span></div>
-            </div>
           </FadeUp>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+            {/* Left: Product Images */}
+            <FadeUp delay={0.05}>
+              <div className="relative rounded-2xl overflow-hidden aspect-square bg-stone-50">
+                <img src={[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin][selectedImage]} alt="BrewNectar Stick Pack" className="w-full h-full object-cover" />
+              </div>
+              <div className="grid grid-cols-4 gap-2 mt-3">
+                {[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin].map((img, i) => (
+                  <button key={i} onClick={() => setSelectedImage(i)} className={`rounded-xl overflow-hidden aspect-square border-2 transition-all ${selectedImage === i ? "border-[#B45309] ring-2 ring-amber-200" : "border-stone-200 hover:border-stone-300"}`}>
+                    <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" />
+                  </button>
+                ))}
+              </div>
+            </FadeUp>
+
+            {/* Right: Plan Selector */}
+            <FadeUp delay={0.1}>
+              <div>
+                <h3 className="font-display text-xl md:text-2xl font-bold text-[#1C1917] mb-2">BrewNectar Brain + Gut Nootropic Stick Packs</h3>
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <div className="flex -space-x-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />)}</div>
+                  <span className="text-sm text-[#57534E]"><strong className="text-[#1C1917]">4.9</strong> from <strong className="text-[#1C1917]">2,400+</strong> reviews</span>
+                </div>
+
+                <div className="flex items-center gap-3 mb-5 p-3 rounded-xl bg-emerald-50/80 border border-emerald-200/60">
+                  <div className="flex items-center gap-2"><span className="relative flex h-2.5 w-2.5"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" /></span><span className="text-sm font-semibold text-emerald-800">In Stock</span></div>
+                  <span className="text-emerald-600">|</span>
+                  <span className="text-sm text-emerald-700">Available for <strong>Next-Day Dispatch</strong></span>
+                </div>
+
+                <div className="flex items-center justify-between mb-4">
+                  <h4 className="font-display font-bold text-lg text-[#1C1917]">Select Your Plan:</h4>
+                  <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/60">Subscribe & Save up to 45%</span>
+                </div>
+
+                <div className="space-y-3 mb-4">
+                  {PLANS.filter(p => p.id !== "one-time").map((plan) => {
+                    const isSelected = selectedPlan === plan.id;
+                    return (
+                      <button key={plan.id} onClick={() => setSelectedPlan(plan.id)} className={`w-full text-left rounded-2xl border-2 transition-all duration-200 relative overflow-hidden ${isSelected ? "border-[#B45309] bg-white shadow-warm" : "border-stone-200 bg-white hover:border-stone-300"}`}>
+                        {plan.badge && <span className={`absolute -top-0 right-0 px-3 py-1 ${plan.badge === "BEST VALUE" ? "bg-[#B45309]" : "bg-emerald-600"} text-white text-[10px] font-bold rounded-bl-xl uppercase tracking-wide`}>{plan.badge}</span>}
+                        <div className={`flex items-center justify-between gap-3 p-4 md:p-5 ${plan.badge ? "pt-7 md:pt-5" : ""}`}>
+                          <div className="flex items-center gap-3">
+                            <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${isSelected ? "border-[#B45309]" : "border-stone-300"}`}>{isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#B45309]" />}</div>
+                            <div>
+                              <div className="flex items-center gap-2 flex-wrap"><span className="font-display font-bold text-base text-[#1C1917]">{plan.name}</span><span className="text-sm font-semibold text-emerald-600">({plan.savings})</span></div>
+                              <p className="text-xs text-[#78716C] mt-0.5">{plan.billed}</p>
+                            </div>
+                          </div>
+                          <div className="text-right flex-shrink-0">
+                            <div className="flex items-baseline gap-1 justify-end"><span className="font-display text-xl sm:text-2xl font-bold text-[#1C1917]">{plan.price}</span><span className="text-sm text-[#57534E] font-medium">/mo</span></div>
+                            <p className="text-[11px] text-[#78716C]">{plan.perDay}</p>
+                          </div>
+                        </div>
+                        <AnimatePresence initial={false}>
+                          {isSelected && plan.perks.length > 0 && (
+                            <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }} className="overflow-hidden">
+                              <div className="px-4 md:px-5 pb-4 md:pb-5 pt-0 border-t border-stone-100"><div className="pt-3 space-y-1.5">{plan.perks.map((perk) => (<div key={perk} className="flex items-center gap-2"><Check size={16} strokeWidth={3} className="text-emerald-600 flex-shrink-0" /><span className="text-xs text-[#44403C]">{perk}</span></div>))}</div></div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="mb-5">
+                  <div className="flex items-center gap-2 mb-3"><Gift size={16} className="text-[#B45309]" /><span className="text-sm font-bold text-[#1C1917]">Free gifts with your order</span></div>
+                  <div className="flex gap-3">
+                    <div className={`flex-1 relative rounded-xl border-2 p-3 text-left ${selectedPlan !== "one-time" ? "border-[#B45309]/30 bg-amber-50/60" : "border-stone-200 bg-stone-50 opacity-60"}`}>
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 ${selectedPlan !== "one-time" ? "bg-[#B45309]/10" : "bg-stone-200"}`}><GraduationCap size={16} className={selectedPlan !== "one-time" ? "text-[#B45309]" : "text-stone-400"} /></div>
+                      <p className="text-xs font-bold text-[#1C1917] leading-tight">Focus & Clarity Masterclass</p>
+                      <div className="flex items-center gap-1 mt-1"><span className="text-[10px] text-stone-400 line-through">$25</span><span className={`text-[10px] font-bold ${selectedPlan !== "one-time" ? "text-emerald-600" : "text-stone-400"}`}>FREE</span></div>
+                      {selectedPlan !== "one-time" && <div className="absolute -top-1.5 -left-1.5"><div className="w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center"><Check size={10} strokeWidth={3} className="text-white" /></div></div>}
+                    </div>
+                    <div onClick={() => { if (selectedPlan !== "3mo" && selectedPlan !== "2mo") setSelectedPlan("2mo"); }} className={`flex-1 relative rounded-xl border-2 p-3 text-left cursor-pointer ${selectedPlan === "3mo" || selectedPlan === "2mo" ? "border-[#B45309]/30 bg-amber-50/60" : "border-stone-200 bg-stone-50 opacity-60 hover:opacity-80 hover:border-stone-300"}`}>
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 ${selectedPlan === "3mo" || selectedPlan === "2mo" ? "bg-[#B45309]/10" : "bg-stone-200"}`}><Trophy size={16} className={selectedPlan === "3mo" || selectedPlan === "2mo" ? "text-[#B45309]" : "text-stone-400"} /></div>
+                      <p className="text-xs font-bold text-[#1C1917] leading-tight">La Marzocco Espresso Machine ($4500) Giveaway</p>
+                      <div className="flex items-center gap-1 mt-1"><span className="text-[10px] text-stone-400">2+ supplies</span><span className={`text-[10px] font-bold ${selectedPlan === "3mo" || selectedPlan === "2mo" ? "text-emerald-600" : "text-stone-400"}`}>{selectedPlan === "3mo" || selectedPlan === "2mo" ? "ENTERED" : "LOCKED"}</span></div>
+                      {(selectedPlan === "3mo" || selectedPlan === "2mo") && <div className="absolute -top-1.5 -left-1.5"><div className="w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center"><Check size={10} strokeWidth={3} className="text-white" /></div></div>}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="text-center mb-5"><button onClick={() => setSelectedPlan("one-time")} className={`text-sm font-medium underline decoration-dotted underline-offset-4 transition-colors ${selectedPlan === "one-time" ? "text-[#B45309] font-semibold" : "text-[#78716C] hover:text-[#B45309]"}`}>One Time Purchase $49</button></div>
+
+                <button className="group relative w-full py-4 rounded-full text-base font-bold text-white overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(180,83,9,0.4)] hover:scale-[1.02] active:scale-[0.98] bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] animate-shimmer">
+                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">{selectedPlan === "one-time" ? "BUY NOW" : "START MY PLAN"} {"•"} {currentPlan.price}{selectedPlan !== "one-time" && "/MO"}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
+                </button>
+
+                <div className="mt-4 space-y-3">
+                  <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">30-Day Keep-the-Box Guarantee</p><p className="text-[11px] text-[#78716C]">Don't love it? Keep the box. Full refund, no questions.</p></div></div>
+                  <div className="flex items-center justify-between px-1"><div className="flex items-center gap-2"><Truck size={14} className="text-[#78716C]" /><span className="text-xs text-[#57534E]">Free shipping</span></div><div className="flex items-center gap-2"><RotateCcw size={14} className="text-[#78716C]" /><span className="text-xs text-[#57534E]">Cancel anytime</span></div></div>
+                </div>
+              </div>
+            </FadeUp>
+          </div>
         </div>
       </section>
 
