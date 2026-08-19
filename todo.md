@@ -131,3 +131,4 @@
 - [x] Add mobile swipe to duplicate offer block gallery (touch handlers + dot indicators)
 - [x] Verify 3-month supply is auto-selected by default on both offer blocks (already was "3mo")
 - [x] Change "START MY PLAN" to "START NOW" on both offer blocks and sticky CTA
+- [x] Add PDP info dropdowns (Ingredients, Shipping & Returns, Is It Safe?, 60-Day Guarantee) under both offer galleries

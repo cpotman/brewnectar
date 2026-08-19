@@ -211,6 +211,7 @@ export default function StickPack() {
   const [selectedPlan, setSelectedPlan] = useState("3mo");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [expandedIngredient, setExpandedIngredient] = useState<number | null>(null);
+  const [openPdpInfo, setOpenPdpInfo] = useState<string | null>(null);
   const [expandedWhatsInside, setExpandedWhatsInside] = useState<number | null>(null);
   const [selectedImage, setSelectedImage] = useState(0);
   const [showSticky, setShowSticky] = useState(false);
@@ -291,6 +292,29 @@ export default function StickPack() {
               <div className="hidden lg:flex items-center justify-center gap-6 mt-4">
                 {[{ icon: ShieldCheck, label: "30-Day Guarantee" }, { icon: Truck, label: "Free Shipping" }, { icon: RotateCcw, label: "Cancel Anytime" }].map((badge) => (
                   <div key={badge.label} className="flex items-center gap-1.5 text-[#78716C]"><badge.icon size={14} className="text-[#D97706]" /><span className="text-xs">{badge.label}</span></div>
+                ))}
+              </div>
+              {/* PDP Info Dropdowns */}
+              <div className="mt-4 space-y-0 border border-stone-200 rounded-xl overflow-hidden">
+                {[
+                  { id: "ingredients", title: "Ingredients", content: "Cognizin® (Citicoline) 250mg, L-Theanine 200mg, Lion’s Mane (10:1 extract) 500mg, Rhodiola Rosea 150mg, Ashwagandha (KSM-66®) 300mg, Cordyceps Militaris 250mg, Prebiotic Fiber (Chicory Root Inulin) 2g, B-Vitamin Complex (B6, B9, B12). Other: Natural vanilla bean flavor, monk fruit extract. No caffeine, no sugar, no artificial colors." },
+                  { id: "shipping", title: "Shipping & Returns", content: "Free shipping on all subscription orders. Standard shipping (3–5 business days) on one-time purchases. All orders ship from our US warehouse. Returns accepted within 30 days — keep the box, get a full refund, no questions asked." },
+                  { id: "safety", title: "Is It Safe?", content: "Yes. Every ingredient is Generally Recognized as Safe (GRAS) by the FDA. Manufactured in a cGMP-certified, FDA-registered facility in the USA. Third-party tested for purity and potency. Free from caffeine, gluten, soy, dairy, nuts, and artificial additives. Consult your doctor if you are pregnant, nursing, or on medication." },
+                  { id: "guarantee", title: "60-Day Guarantee", content: "Try BrewNectar risk-free for 60 days. If you don’t notice a difference in your focus, energy, or gut health, contact us for a full refund — no need to return the box. We believe in the product enough to take the risk for you." },
+                ].map((item) => (
+                  <button key={item.id} onClick={() => setOpenPdpInfo(openPdpInfo === item.id ? null : item.id)} className="w-full text-left">
+                    <div className={`flex items-center justify-between px-4 py-3 ${openPdpInfo === item.id ? "" : "border-b border-stone-200 last:border-b-0"} hover:bg-stone-50 transition-colors`}>
+                      <span className="text-sm font-medium text-[#1C1917]">{item.title}</span>
+                      <ChevronDown size={16} className={`text-[#78716C] transition-transform duration-200 ${openPdpInfo === item.id ? "rotate-180" : ""}`} />
+                    </div>
+                    <AnimatePresence>
+                      {openPdpInfo === item.id && (
+                        <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
+                          <p className="px-4 pb-3 text-xs text-[#57534E] leading-relaxed border-b border-stone-200">{item.content}</p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </button>
                 ))}
               </div>
             </FadeUp>
@@ -699,6 +723,29 @@ export default function StickPack() {
                 {[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin].map((img, i) => (
                   <button key={i} onClick={() => setSelectedImage(i)} className={`rounded-xl overflow-hidden aspect-square border-2 transition-all ${selectedImage === i ? "border-[#B45309] ring-2 ring-amber-200" : "border-stone-200 hover:border-stone-300"}`}>
                     <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" />
+                  </button>
+                ))}
+              </div>
+              {/* PDP Info Dropdowns */}
+              <div className="mt-4 space-y-0 border border-stone-200 rounded-xl overflow-hidden">
+                {[
+                  { id: "ingredients", title: "Ingredients", content: "Cognizin® (Citicoline) 250mg, L-Theanine 200mg, Lion’s Mane (10:1 extract) 500mg, Rhodiola Rosea 150mg, Ashwagandha (KSM-66®) 300mg, Cordyceps Militaris 250mg, Prebiotic Fiber (Chicory Root Inulin) 2g, B-Vitamin Complex (B6, B9, B12). Other: Natural vanilla bean flavor, monk fruit extract. No caffeine, no sugar, no artificial colors." },
+                  { id: "shipping", title: "Shipping & Returns", content: "Free shipping on all subscription orders. Standard shipping (3–5 business days) on one-time purchases. All orders ship from our US warehouse. Returns accepted within 30 days — keep the box, get a full refund, no questions asked." },
+                  { id: "safety", title: "Is It Safe?", content: "Yes. Every ingredient is Generally Recognized as Safe (GRAS) by the FDA. Manufactured in a cGMP-certified, FDA-registered facility in the USA. Third-party tested for purity and potency. Free from caffeine, gluten, soy, dairy, nuts, and artificial additives. Consult your doctor if you are pregnant, nursing, or on medication." },
+                  { id: "guarantee", title: "60-Day Guarantee", content: "Try BrewNectar risk-free for 60 days. If you don’t notice a difference in your focus, energy, or gut health, contact us for a full refund — no need to return the box. We believe in the product enough to take the risk for you." },
+                ].map((item) => (
+                  <button key={item.id} onClick={() => setOpenPdpInfo(openPdpInfo === item.id ? null : item.id)} className="w-full text-left">
+                    <div className={`flex items-center justify-between px-4 py-3 ${openPdpInfo === item.id ? "" : "border-b border-stone-200 last:border-b-0"} hover:bg-stone-50 transition-colors`}>
+                      <span className="text-sm font-medium text-[#1C1917]">{item.title}</span>
+                      <ChevronDown size={16} className={`text-[#78716C] transition-transform duration-200 ${openPdpInfo === item.id ? "rotate-180" : ""}`} />
+                    </div>
+                    <AnimatePresence>
+                      {openPdpInfo === item.id && (
+                        <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
+                          <p className="px-4 pb-3 text-xs text-[#57534E] leading-relaxed border-b border-stone-200">{item.content}</p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </button>
                 ))}
               </div>
