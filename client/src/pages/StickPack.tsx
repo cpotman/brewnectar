@@ -194,7 +194,7 @@ export default function StickPack() {
       <Navbar />
 
       {/* === SECTION 1: HERO / OFFER === */}
-      <section className="pt-6 md:pt-10 pb-10 md:pb-14 relative">
+      <section className="pt-20 md:pt-24 pb-10 md:pb-14 relative">
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 120% 80% at 60% 30%, rgba(251,191,114,0.15) 0%, rgba(245,158,66,0.08) 30%, rgba(253,251,247,0.6) 70%, #FDFBF7 100%), #FDFBF7" }} />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mobile-only: Title, pills, stars above images */}
@@ -221,9 +221,9 @@ export default function StickPack() {
             </FadeUp>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <div className="grid lg:grid-cols-[420px_1fr] gap-8 lg:gap-12 items-start">
             {/* Left: Product Images */}
-            <FadeUp delay={0.05} className="lg:sticky lg:top-36 lg:self-start">
+            <FadeUp delay={0.05} className="lg:sticky lg:top-20 lg:self-start lg:-mt-6">
               <div className="relative rounded-2xl overflow-hidden aspect-square bg-stone-50 touch-pan-y"
                 onTouchStart={(e) => { const t = e.touches[0]; (e.currentTarget as any)._sx = t.clientX; (e.currentTarget as any)._sy = t.clientY; }}
                 onTouchEnd={(e) => {
