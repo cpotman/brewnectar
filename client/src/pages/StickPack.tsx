@@ -137,6 +137,7 @@ const PLANS = [
   { id: "3mo", name: "3-Month Supply", savings: "Save 45%", price: "$27", perDay: "$0.96/day", billed: "Billed $81 every 12 weeks", badge: "BEST VALUE", perks: ["Exclusive Focus & Clarity Masterclass ($25 value)", "Maximum savings — lowest price per serving", "Lock in savings — price guaranteed even if we raise it", "Try it 30 days — keep the box. Full refund, no questions.", "La Marzocco Espresso Machine ($4500) Giveaway entries", "Fast & FREE Shipping", "Cancel or pause anytime"] },
   { id: "2mo", name: "2-Month Supply", savings: "Save 35%", price: "$32", perDay: "$1.14/day", billed: "Billed $64 every 8 weeks", badge: "MOST POPULAR", perks: [] },
   { id: "1mo", name: "1-Month Supply", savings: "Save 27%", price: "$36", perDay: "$1.29/day", billed: "Billed $36 every 4 weeks", badge: "", perks: [] },
+  { id: "one-time", name: "One-Time Purchase", savings: "", price: "$49", perDay: "$1.75/day", billed: "One-time payment of $49", badge: "", perks: [] },
 ];
 
 /* --- Compounding Effect stages --- */
@@ -291,7 +292,7 @@ export default function StickPack() {
                 </div>
 
                 <div className="space-y-3 mb-4" id="offers">
-                  {PLANS.map((plan) => {
+                  {PLANS.filter(p => p.id !== "one-time").map((plan) => {
                     const isSelected = selectedPlan === plan.id;
                     return (
                       <button key={plan.id} onClick={() => setSelectedPlan(plan.id)} className={`w-full text-left rounded-2xl border-2 transition-all duration-200 relative overflow-hidden ${isSelected ? "border-[#B45309] bg-white shadow-warm" : "border-stone-200 bg-white hover:border-stone-300"}`}>
@@ -330,7 +331,7 @@ export default function StickPack() {
                       <div className="flex items-center gap-1 mt-1"><span className="text-[10px] text-stone-400 line-through">$25</span><span className={`text-[10px] font-bold ${selectedPlan !== "one-time" ? "text-emerald-600" : "text-stone-400"}`}>FREE</span></div>
                       {selectedPlan !== "one-time" && <div className="absolute -top-1.5 -left-1.5"><div className="w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center"><Check size={10} strokeWidth={3} className="text-white" /></div></div>}
                     </div>
-                    <div className={`flex-1 relative rounded-xl border-2 p-3 text-left ${selectedPlan === "3mo" || selectedPlan === "2mo" ? "border-[#B45309]/30 bg-amber-50/60" : "border-stone-200 bg-stone-50 opacity-60"}`}>
+                    <div onClick={() => { if (selectedPlan !== "3mo" && selectedPlan !== "2mo") setSelectedPlan("2mo"); }} className={`flex-1 relative rounded-xl border-2 p-3 text-left cursor-pointer ${selectedPlan === "3mo" || selectedPlan === "2mo" ? "border-[#B45309]/30 bg-amber-50/60" : "border-stone-200 bg-stone-50 opacity-60 hover:opacity-80 hover:border-stone-300"}`}>
                       <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 ${selectedPlan === "3mo" || selectedPlan === "2mo" ? "bg-[#B45309]/10" : "bg-stone-200"}`}><Trophy size={16} className={selectedPlan === "3mo" || selectedPlan === "2mo" ? "text-[#B45309]" : "text-stone-400"} /></div>
                       <p className="text-xs font-bold text-[#1C1917] leading-tight">La Marzocco Espresso Machine ($4500) Giveaway</p>
                       <div className="flex items-center gap-1 mt-1"><span className="text-[10px] text-stone-400">2+ supplies</span><span className={`text-[10px] font-bold ${selectedPlan === "3mo" || selectedPlan === "2mo" ? "text-emerald-600" : "text-stone-400"}`}>{selectedPlan === "3mo" || selectedPlan === "2mo" ? "ENTERED" : "LOCKED"}</span></div>
@@ -339,10 +340,10 @@ export default function StickPack() {
                   </div>
                 </div>
 
-                <div className="text-center mb-5"><button className="text-sm font-medium text-[#78716C] underline decoration-dotted underline-offset-4 hover:text-[#B45309] transition-colors">One Time Purchase $49</button></div>
+                <div className="text-center mb-5"><button onClick={() => setSelectedPlan("one-time")} className={`text-sm font-medium underline decoration-dotted underline-offset-4 transition-colors ${selectedPlan === "one-time" ? "text-[#B45309] font-semibold" : "text-[#78716C] hover:text-[#B45309]"}`}>One Time Purchase $49</button></div>
 
                 <button className="group relative w-full py-4 rounded-full text-base font-bold text-white overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(180,83,9,0.4)] hover:scale-[1.02] active:scale-[0.98] bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] animate-shimmer">
-                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">START MY PLAN {"\u2022"} {currentPlan.price}/MO<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
+                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">{selectedPlan === "one-time" ? "BUY NOW" : "START MY PLAN"} {"\u2022"} {currentPlan.price}{selectedPlan !== "one-time" && "/MO"}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
                 </button>
 
                 <div className="mt-4 space-y-3">
@@ -521,6 +522,70 @@ export default function StickPack() {
         </div>
       </section>
 
+
+
+      {/* === SECTION 7: GUARANTEE === */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeUp>
+            <div className="relative rounded-3xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-800" />
+              <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 30% 20%, rgba(255,255,255,0.3) 0%, transparent 50%)" }} />
+              <div className="relative p-8 md:p-12 text-center">
+                <div className="w-20 h-20 rounded-full bg-white/15 border-2 border-white/30 flex items-center justify-center mx-auto mb-6">
+                  <ShieldCheck size={40} className="text-white" />
+                </div>
+                <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3">30-Day Keep-the-Box Guarantee</h2>
+                <p className="text-emerald-100 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8">Don't love it? <strong className="text-white">Keep the box. Full refund within 48 hours.</strong> No return shipping, no restocking fees, no questions asked. We believe in BrewNectar so much, we'll take all the risk.</p>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 max-w-md md:max-w-none mx-auto">
+                  {[
+                    { icon: Heart, label: "Keep the Box" },
+                    { icon: Clock, label: "48-Hour Refund" },
+                    { icon: MessageCircle, label: "No Questions Asked" },
+                    { icon: Truck, label: "No Return Shipping" },
+                  ].map((item) => (
+                    <div key={item.label} className="flex flex-col items-center gap-2">
+                      <div className="w-12 h-12 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center"><item.icon size={22} className="text-white" /></div>
+                      <span className="text-xs font-semibold text-emerald-100">{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-8">
+                  <a href="#offers" className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold text-emerald-800 rounded-full bg-white hover:bg-emerald-50 transition-colors" onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}>Try It Risk-Free<ArrowRight size={16} /></a>
+                </div>
+              </div>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+      {/* === SECTION 7: FAQ === */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+          <FadeUp>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-12">Frequently Asked Questions</h2>
+          </FadeUp>
+          <div className="space-y-3">
+            {FAQ_ITEMS.map((item, i) => (
+              <FadeUp key={i} delay={i * 0.05}>
+                <div className="rounded-2xl border border-stone-100 overflow-hidden bg-[#FDFBF7]">
+                  <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between p-5 text-left">
+                    <span className="font-semibold text-[#1C1917] pr-4">{item.q}</span>
+                    <ChevronDown size={18} className={`text-[#A8A29E] transition-transform duration-300 flex-shrink-0 ${openFaq === i ? "rotate-180" : ""}`} />
+                  </button>
+                  <AnimatePresence>
+                    {openFaq === i && (
+                      <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }}>
+                        <div className="px-5 pb-5 text-sm text-[#57534E] leading-relaxed">{item.a}</div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* === SECTION 6: THE EVIDENCE (studies, moved below comparison) === */}
       <section className="py-20 md:py-28 bg-[#FDFBF7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -594,68 +659,6 @@ export default function StickPack() {
               </motion.div>
             )}
           </AnimatePresence>
-        </div>
-      </section>
-
-      {/* === SECTION 7: GUARANTEE === */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeUp>
-            <div className="relative rounded-3xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-800" />
-              <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 30% 20%, rgba(255,255,255,0.3) 0%, transparent 50%)" }} />
-              <div className="relative p-8 md:p-12 text-center">
-                <div className="w-20 h-20 rounded-full bg-white/15 border-2 border-white/30 flex items-center justify-center mx-auto mb-6">
-                  <ShieldCheck size={40} className="text-white" />
-                </div>
-                <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3">30-Day Keep-the-Box Guarantee</h2>
-                <p className="text-emerald-100 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8">Don't love it? <strong className="text-white">Keep the box. Full refund within 48 hours.</strong> No return shipping, no restocking fees, no questions asked. We believe in BrewNectar so much, we'll take all the risk.</p>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 max-w-md md:max-w-none mx-auto">
-                  {[
-                    { icon: Heart, label: "Keep the Box" },
-                    { icon: Clock, label: "48-Hour Refund" },
-                    { icon: MessageCircle, label: "No Questions Asked" },
-                    { icon: Truck, label: "No Return Shipping" },
-                  ].map((item) => (
-                    <div key={item.label} className="flex flex-col items-center gap-2">
-                      <div className="w-12 h-12 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center"><item.icon size={22} className="text-white" /></div>
-                      <span className="text-xs font-semibold text-emerald-100">{item.label}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-8">
-                  <a href="#offers" className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold text-emerald-800 rounded-full bg-white hover:bg-emerald-50 transition-colors" onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}>Try It Risk-Free<ArrowRight size={16} /></a>
-                </div>
-              </div>
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-      {/* === SECTION 7: FAQ === */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <FadeUp>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-12">Frequently Asked Questions</h2>
-          </FadeUp>
-          <div className="space-y-3">
-            {FAQ_ITEMS.map((item, i) => (
-              <FadeUp key={i} delay={i * 0.05}>
-                <div className="rounded-2xl border border-stone-100 overflow-hidden bg-[#FDFBF7]">
-                  <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between p-5 text-left">
-                    <span className="font-semibold text-[#1C1917] pr-4">{item.q}</span>
-                    <ChevronDown size={18} className={`text-[#A8A29E] transition-transform duration-300 flex-shrink-0 ${openFaq === i ? "rotate-180" : ""}`} />
-                  </button>
-                  <AnimatePresence>
-                    {openFaq === i && (
-                      <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }}>
-                        <div className="px-5 pb-5 text-sm text-[#57534E] leading-relaxed">{item.a}</div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </FadeUp>
-            ))}
-          </div>
         </div>
       </section>
 
