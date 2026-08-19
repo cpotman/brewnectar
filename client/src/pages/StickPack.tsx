@@ -505,17 +505,20 @@ export default function StickPack() {
       <section className="py-20 md:py-28 bg-[#FDFBF7]">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1C1917] mb-2">
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1C1917] mb-2 text-center">
               BrewNectar vs. Mushroom Coffee
             </h2>
-            <p className="text-sm md:text-base text-[#57534E] mb-10">
+            <p className="text-sm md:text-base text-[#57534E] mb-10 text-center">
               See how a research-backed nootropic stick pack compares to typical mushroom coffee.
             </p>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <div className="rounded-2xl border border-stone-200 bg-white overflow-hidden shadow-sm">
+            <div className="rounded-2xl border border-stone-200 bg-white overflow-hidden shadow-sm relative">
+              {/* Orange column background — continuous, no gaps */}
+              <div className="absolute top-0 bottom-0 right-[80px] md:right-[100px] w-[80px] md:w-[100px] bg-[#D97706]/10" />
+
               {/* Header */}
-              <div className="grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_100px_100px]">
+              <div className="relative grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_100px_100px]">
                 <div className="px-5 py-5" />
                 <div className="flex flex-col items-center justify-end py-4 bg-gradient-to-b from-amber-500 to-[#D97706] rounded-t-2xl">
                   <span className="text-[11px] md:text-xs font-bold text-white tracking-wide">BrewNectar</span>
@@ -527,17 +530,17 @@ export default function StickPack() {
 
               {/* Rows */}
               {COMPARISON_ROWS.map((row, i, arr) => (
-                <div key={row.feature} className={`grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_100px_100px] items-center ${i < arr.length - 1 ? "border-b border-stone-100" : ""}`}>
+                <div key={row.feature} className={`relative grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_100px_100px] items-center ${i < arr.length - 1 ? "border-b border-stone-100" : ""}`}>
                   <span className="text-[13px] md:text-sm text-[#1C1917] font-medium px-5 py-4">{row.feature}</span>
-                  <div className="flex justify-center py-4 bg-[#D97706]/10">
+                  <div className="flex justify-center py-4">
                     <div className="w-7 h-7 rounded-full bg-[#D97706] flex items-center justify-center shadow-sm">
                       <Check size={14} strokeWidth={3} className="text-white" />
                     </div>
                   </div>
                   <div className="flex justify-center py-4">
                     {row.other ? (
-                      <div className="w-7 h-7 rounded-full bg-stone-200 flex items-center justify-center">
-                        <Check size={14} strokeWidth={3} className="text-stone-500" />
+                      <div className="w-7 h-7 rounded-full bg-[#D97706] flex items-center justify-center shadow-sm">
+                        <Check size={14} strokeWidth={3} className="text-white" />
                       </div>
                     ) : (
                       <div className="w-7 h-7 rounded-full bg-stone-100 flex items-center justify-center">

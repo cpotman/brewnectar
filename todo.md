@@ -105,3 +105,6 @@
 - [x] Redesign stick pack comparison table to match syrup page style, rename to BrewNectar vs Mushroom Coffee, 8 rows, give mushroom coffee some checkmarks
 - [x] Add duplicate offer block above FAQ on StickPack.tsx
 - [x] Add sticky mobile CTA bar on StickPack.tsx
+- [x] Fix comparison table title alignment on mobile (StickPack.tsx)
+- [x] Make mushroom coffee checkmarks orange instead of grey (StickPack.tsx)
+- [x] Fix white gaps between orange background rows in comparison table (StickPack.tsx)
