@@ -407,9 +407,9 @@ export default function StickPack() {
         <div className="overflow-hidden pb-4 pointer-events-none select-none">
           <div className="flex gap-4 animate-marquee-left w-max">
             {[...WHATS_INSIDE.slice(0, 4), ...WHATS_INSIDE.slice(0, 4), ...WHATS_INSIDE.slice(0, 4)].map((item, i) => (
-              <div key={`r1-${i}`} className="w-[260px] md:w-[280px] flex-shrink-0">
+              <div key={`r1-${i}`} className="w-[260px] md:w-[360px] lg:w-[420px] flex-shrink-0">
                 <div className="rounded-xl overflow-hidden border border-stone-100 bg-white shadow-warm h-full">
-                  <div className="relative h-32 overflow-hidden">
+                  <div className="relative h-32 md:h-40 lg:h-48 overflow-hidden">
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover" draggable={false} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute bottom-3 left-3 flex items-center gap-2">
@@ -430,9 +430,9 @@ export default function StickPack() {
         <div className="overflow-hidden pt-4 pointer-events-none select-none">
           <div className="flex gap-4 animate-marquee-right w-max">
             {[...WHATS_INSIDE.slice(4), ...WHATS_INSIDE.slice(4), ...WHATS_INSIDE.slice(4)].map((item, i) => (
-              <div key={`r2-${i}`} className="w-[260px] md:w-[280px] flex-shrink-0">
+              <div key={`r2-${i}`} className="w-[260px] md:w-[360px] lg:w-[420px] flex-shrink-0">
                 <div className="rounded-xl overflow-hidden border border-stone-100 bg-white shadow-warm h-full">
-                  <div className="relative h-32 overflow-hidden">
+                  <div className="relative h-32 md:h-40 lg:h-48 overflow-hidden">
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover" draggable={false} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute bottom-3 left-3 flex items-center gap-2">

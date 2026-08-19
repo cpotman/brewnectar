@@ -114,3 +114,4 @@
 - [x] Limit "nootropic" usage on StickPack.tsx — replace with consumer-friendly language
 - [x] Redesign ingredient section: remove dropdown, 2-row staggered horizontal scroll
 - [x] Make ingredient rows auto-scroll and loop continuously (no user interaction)
+- [x] Widen ingredient cards on desktop so duplicates are not visible simultaneously
