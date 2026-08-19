@@ -125,3 +125,4 @@
 - [x] Reduce spacing above PDP images in top hero section
 - [x] Improve "It isn't discipline" block background (frosted glass style)
 - [x] Reduce ingredient marquee scroll speed from 30s to 50s
+- [x] Move study popout directly under each card in The Evidence section (better mobile UX)

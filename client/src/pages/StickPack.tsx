@@ -774,7 +774,7 @@ export default function StickPack() {
             <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">We Show You the Papers.</h2>
             <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">Every ingredient earns its place. Tap any to read the research yourself.</p>
           </FadeUp>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
             {INGREDIENTS.map((item, i) => {
               const isExpanded = expandedIngredient === i;
               return (
@@ -799,43 +799,39 @@ export default function StickPack() {
                       <ChevronDown size={13} className={`transition-transform duration-300 ${isExpanded ? "rotate-180 opacity-70" : "text-[#A8A29E]"}`} />
                     </div>
                   </button>
+                  <AnimatePresence>
+                    {isExpanded && (
+                      <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }} className="overflow-hidden mt-3">
+                        <div className="bg-white rounded-2xl border border-stone-100 shadow-warm p-4 md:p-5">
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className={`w-2 h-2 rounded-full ${item.dotColor}`} />
+                            <h4 className="font-display font-bold text-sm text-[#1C1917]">Key Studies — {item.name}</h4>
+                          </div>
+                          <p className="text-xs text-[#78716C] mb-4">{item.clock} &bull; <strong className="text-[#1C1917]">{item.pullStat}</strong> {item.pullLabel}</p>
+                          <div className="space-y-3">
+                            {item.studies.map((study, j) => (
+                              <a key={j} href={study.url} target="_blank" rel="noopener noreferrer" className="group block p-4 rounded-xl border border-stone-100 hover:border-amber-200 hover:bg-amber-50/30 transition-all duration-300">
+                                <div className="flex items-start justify-between gap-2 mb-2">
+                                  <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-[#A8A29E]">
+                                    <span className={`w-1.5 h-1.5 rounded-full ${item.dotColor}`} />
+                                    {study.journal} &middot; {study.year}
+                                  </span>
+                                  <ExternalLink size={14} className="text-[#A8A29E] group-hover:text-[#D97706] transition-colors flex-shrink-0" />
+                                </div>
+                                <h5 className="font-display font-semibold text-xs text-[#1C1917] mb-1 leading-snug group-hover:text-[#B45309] transition-colors">{study.title}</h5>
+                                <p className="text-[11px] text-[#A8A29E] mb-2">{study.authors}</p>
+                                <p className="text-[11px] text-[#78716C] leading-relaxed"><span className="font-semibold text-[#44403C]">Finding:</span> {study.finding}</p>
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
               );
             })}
           </div>
-          <AnimatePresence mode="wait">
-            {expandedIngredient !== null && (
-              <motion.div key={expandedIngredient} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }} className="overflow-hidden">
-                <div className="bg-white rounded-2xl border border-stone-100 shadow-warm p-6 md:p-8">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className={`w-2 h-2 rounded-full ${INGREDIENTS[expandedIngredient].dotColor}`} />
-                    <h3 className="font-display font-bold text-lg text-[#1C1917]">Key Studies — {INGREDIENTS[expandedIngredient].name}</h3>
-                  </div>
-                  <p className="text-sm text-[#78716C] mb-6">{INGREDIENTS[expandedIngredient].clock} &bull; Pull-stat: <strong className="text-[#1C1917]">{INGREDIENTS[expandedIngredient].pullStat}</strong> {INGREDIENTS[expandedIngredient].pullLabel}</p>
-                  <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-                    {INGREDIENTS[expandedIngredient].studies.map((study, j) => (
-                      <a key={j} href={study.url} target="_blank" rel="noopener noreferrer" className="group block p-5 rounded-xl border border-stone-100 hover:border-amber-200 hover:bg-amber-50/30 transition-all duration-300">
-                        <div className="flex items-start justify-between gap-2 mb-3">
-                          <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-[#A8A29E]">
-                            <span className={`w-1.5 h-1.5 rounded-full ${INGREDIENTS[expandedIngredient].dotColor}`} />
-                            {study.journal} &middot; {study.year}
-                          </span>
-                          <ExternalLink size={14} className="text-[#A8A29E] group-hover:text-[#D97706] transition-colors flex-shrink-0" />
-                        </div>
-                        <h4 className="font-display font-semibold text-sm text-[#1C1917] mb-1.5 leading-snug group-hover:text-[#B45309] transition-colors">{study.title}</h4>
-                        <p className="text-xs text-[#A8A29E] mb-3">{study.authors}</p>
-                        <p className="text-xs text-[#78716C] leading-relaxed"><span className="font-semibold text-[#44403C]">Finding:</span> {study.finding}</p>
-                      </a>
-                    ))}
-                  </div>
-                  <div className="mt-5 pt-4 border-t border-stone-100 flex items-center gap-2">
-                    <FlaskConical size={13} className="text-[#A8A29E]" />
-                    <p className="text-xs text-[#A8A29E]">All studies are published in peer-reviewed journals. Click any study to read the full paper.</p>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
       </section>
 
