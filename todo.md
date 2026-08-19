@@ -113,3 +113,4 @@
 - [x] Update "Eight Ingredients. One Purpose." copy to reflect four mechanisms (focus, calm energy, brain health, gut-brain)
 - [x] Limit "nootropic" usage on StickPack.tsx — replace with consumer-friendly language
 - [x] Redesign ingredient section: remove dropdown, 2-row staggered horizontal scroll
+- [x] Make ingredient rows auto-scroll and loop continuously (no user interaction)

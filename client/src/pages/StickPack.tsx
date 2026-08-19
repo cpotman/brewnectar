@@ -403,14 +403,14 @@ export default function StickPack() {
             <p className="text-center text-[#78716C] text-lg max-w-2xl mx-auto">Sharper focus.* Calmer energy.* Long-term brain support.* A healthier gut-brain connection.* Each ingredient targets a specific mechanism.</p>
           </FadeUp>
         </div>
-        {/* Row 1 — first 4 ingredients */}
-        <div className="overflow-x-auto scrollbar-hide pb-4">
-          <div className="flex gap-4 px-4 sm:px-6 lg:px-8 w-max">
-            {WHATS_INSIDE.slice(0, 4).map((item, i) => (
-              <FadeUp key={item.name} delay={i * 0.05} className="w-[260px] md:w-[280px] flex-shrink-0">
+        {/* Row 1 — auto-scrolls left, infinite loop */}
+        <div className="overflow-hidden pb-4 pointer-events-none select-none">
+          <div className="flex gap-4 animate-marquee-left w-max">
+            {[...WHATS_INSIDE.slice(0, 4), ...WHATS_INSIDE.slice(0, 4), ...WHATS_INSIDE.slice(0, 4)].map((item, i) => (
+              <div key={`r1-${i}`} className="w-[260px] md:w-[280px] flex-shrink-0">
                 <div className="rounded-xl overflow-hidden border border-stone-100 bg-white shadow-warm h-full">
                   <div className="relative h-32 overflow-hidden">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" draggable={false} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute bottom-3 left-3 flex items-center gap-2">
                       <div className={`w-7 h-7 rounded-lg ${item.color} flex items-center justify-center`}><item.icon size={14} /></div>
@@ -422,18 +422,18 @@ export default function StickPack() {
                     <span className="inline-block px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-200">{item.dosage}</span>
                   </div>
                 </div>
-              </FadeUp>
+              </div>
             ))}
           </div>
         </div>
-        {/* Row 2 — last 4 ingredients (offset for stagger) */}
-        <div className="overflow-x-auto scrollbar-hide pt-4">
-          <div className="flex gap-4 px-4 sm:px-6 lg:px-8 pl-12 sm:pl-16 lg:pl-20 w-max">
-            {WHATS_INSIDE.slice(4).map((item, i) => (
-              <FadeUp key={item.name} delay={(i + 4) * 0.05} className="w-[260px] md:w-[280px] flex-shrink-0">
+        {/* Row 2 — auto-scrolls right, infinite loop */}
+        <div className="overflow-hidden pt-4 pointer-events-none select-none">
+          <div className="flex gap-4 animate-marquee-right w-max">
+            {[...WHATS_INSIDE.slice(4), ...WHATS_INSIDE.slice(4), ...WHATS_INSIDE.slice(4)].map((item, i) => (
+              <div key={`r2-${i}`} className="w-[260px] md:w-[280px] flex-shrink-0">
                 <div className="rounded-xl overflow-hidden border border-stone-100 bg-white shadow-warm h-full">
                   <div className="relative h-32 overflow-hidden">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" draggable={false} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute bottom-3 left-3 flex items-center gap-2">
                       <div className={`w-7 h-7 rounded-lg ${item.color} flex items-center justify-center`}><item.icon size={14} /></div>
@@ -445,7 +445,7 @@ export default function StickPack() {
                     <span className="inline-block px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-200">{item.dosage}</span>
                   </div>
                 </div>
-              </FadeUp>
+              </div>
             ))}
           </div>
         </div>
