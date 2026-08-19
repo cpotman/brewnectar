@@ -132,3 +132,7 @@
 - [x] Verify 3-month supply is auto-selected by default on both offer blocks (already was "3mo")
 - [x] Change "START MY PLAN" to "START NOW" on both offer blocks and sticky CTA
 - [x] Add PDP info dropdowns (Ingredients, Shipping & Returns, Is It Safe?, 60-Day Guarantee) under both offer galleries
+- [x] Change 60-day guarantee to 30-day guarantee
+- [x] Add back arrow to PDP image gallery on desktop
+- [x] Increase ingredient scroll speed on mobile (30s) while keeping desktop at 50s
+- [x] Change all mentions of "box" to "bag"

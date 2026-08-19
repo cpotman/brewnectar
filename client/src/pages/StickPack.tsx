@@ -134,7 +134,7 @@ const INGREDIENTS = [
 
 /* --- Plans --- */
 const PLANS = [
-  { id: "3mo", name: "3-Month Supply", savings: "Save 45%", price: "$27", perDay: "$0.96/day", billed: "Billed $81 every 12 weeks", badge: "BEST VALUE", perks: ["Exclusive Focus & Clarity Masterclass ($25 value)", "Maximum savings — lowest price per serving", "Lock in savings — price guaranteed even if we raise it", "Try it 30 days — keep the box. Full refund, no questions.", "La Marzocco Espresso Machine ($4500) Giveaway entries", "Fast & FREE Shipping", "Cancel or pause anytime"] },
+  { id: "3mo", name: "3-Month Supply", savings: "Save 45%", price: "$27", perDay: "$0.96/day", billed: "Billed $81 every 12 weeks", badge: "BEST VALUE", perks: ["Exclusive Focus & Clarity Masterclass ($25 value)", "Maximum savings — lowest price per serving", "Lock in savings — price guaranteed even if we raise it", "Try it 30 days — keep the bag. Full refund, no questions.", "La Marzocco Espresso Machine ($4500) Giveaway entries", "Fast & FREE Shipping", "Cancel or pause anytime"] },
   { id: "2mo", name: "2-Month Supply", savings: "Save 35%", price: "$32", perDay: "$1.14/day", billed: "Billed $64 every 8 weeks", badge: "MOST POPULAR", perks: [] },
   { id: "1mo", name: "1-Month Supply", savings: "Save 27%", price: "$36", perDay: "$1.29/day", billed: "Billed $36 every 4 weeks", badge: "", perks: [] },
   { id: "one-time", name: "One-Time Purchase", savings: "", price: "$49", perDay: "$1.75/day", billed: "One-time payment of $49", badge: "", perks: [] },
@@ -277,7 +277,10 @@ export default function StickPack() {
                     <button key={i} onClick={() => setSelectedImage(i)} className={`rounded-full transition-all ${selectedImage === i ? "w-5 h-2 bg-[#B45309]" : "w-2 h-2 bg-white/70 hover:bg-white"}`} />
                   ))}
                 </div>
-                {/* Desktop-only next arrow */}
+                {/* Desktop-only arrows */}
+                <button onClick={() => setSelectedImage((selectedImage - 1 + 4) % 4)} className="hidden lg:flex absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-md items-center justify-center hover:bg-white hover:scale-105 transition-all">
+                  <ChevronLeft size={20} className="text-[#1C1917]" />
+                </button>
                 <button onClick={() => setSelectedImage((selectedImage + 1) % 4)} className="hidden lg:flex absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-md items-center justify-center hover:bg-white hover:scale-105 transition-all">
                   <ChevronRight size={20} className="text-[#1C1917]" />
                 </button>
@@ -298,9 +301,9 @@ export default function StickPack() {
               <div className="mt-4 space-y-0 border border-stone-200 rounded-xl overflow-hidden">
                 {[
                   { id: "ingredients", title: "Ingredients", content: "Cognizin® (Citicoline) 250mg, L-Theanine 200mg, Lion’s Mane (10:1 extract) 500mg, Rhodiola Rosea 150mg, Ashwagandha (KSM-66®) 300mg, Cordyceps Militaris 250mg, Prebiotic Fiber (Chicory Root Inulin) 2g, B-Vitamin Complex (B6, B9, B12). Other: Natural vanilla bean flavor, monk fruit extract. No caffeine, no sugar, no artificial colors." },
-                  { id: "shipping", title: "Shipping & Returns", content: "Free shipping on all subscription orders. Standard shipping (3–5 business days) on one-time purchases. All orders ship from our US warehouse. Returns accepted within 30 days — keep the box, get a full refund, no questions asked." },
+                  { id: "shipping", title: "Shipping & Returns", content: "Free shipping on all subscription orders. Standard shipping (3–5 business days) on one-time purchases. All orders ship from our US warehouse. Returns accepted within 30 days — keep the bag, get a full refund, no questions asked." },
                   { id: "safety", title: "Is It Safe?", content: "Yes. Every ingredient is Generally Recognized as Safe (GRAS) by the FDA. Manufactured in a cGMP-certified, FDA-registered facility in the USA. Third-party tested for purity and potency. Free from caffeine, gluten, soy, dairy, nuts, and artificial additives. Consult your doctor if you are pregnant, nursing, or on medication." },
-                  { id: "guarantee", title: "60-Day Guarantee", content: "Try BrewNectar risk-free for 60 days. If you don’t notice a difference in your focus, energy, or gut health, contact us for a full refund — no need to return the box. We believe in the product enough to take the risk for you." },
+                  { id: "guarantee", title: "30-Day Guarantee", content: "Try BrewNectar risk-free for 30 days. If you don’t notice a difference in your focus, energy, or gut health, contact us for a full refund — no need to return the bag. We believe in the product enough to take the risk for you." },
                 ].map((item) => (
                   <button key={item.id} onClick={() => setOpenPdpInfo(openPdpInfo === item.id ? null : item.id)} className="w-full text-left">
                     <div className={`flex items-center justify-between px-4 py-3 ${openPdpInfo === item.id ? "" : "border-b border-stone-200 last:border-b-0"} hover:bg-stone-50 transition-colors`}>
@@ -412,7 +415,7 @@ export default function StickPack() {
                 </button>
 
                 <div className="mt-4 space-y-3">
-                  <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">30-Day Keep-the-Box Guarantee</p><p className="text-[11px] text-[#78716C]">Don't love it? Keep the box. Full refund, no questions.</p></div></div>
+                  <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">30-Day Keep-the-Bag Guarantee</p><p className="text-[11px] text-[#78716C]">Don't love it? Keep the bag. Full refund, no questions.</p></div></div>
                   <div className="flex items-center justify-between px-1"><div className="flex items-center gap-2"><Truck size={14} className="text-[#78716C]" /><span className="text-xs text-[#57534E]">Free shipping</span></div><div className="flex items-center gap-2"><RotateCcw size={14} className="text-[#78716C]" /><span className="text-xs text-[#57534E]">Cancel anytime</span></div></div>
                 </div>
               </div>
@@ -660,11 +663,11 @@ export default function StickPack() {
                 <div className="w-20 h-20 rounded-full bg-white/15 border-2 border-white/30 flex items-center justify-center mx-auto mb-6">
                   <ShieldCheck size={40} className="text-white" />
                 </div>
-                <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3">30-Day Keep-the-Box Guarantee</h2>
-                <p className="text-emerald-100 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8">Don't love it? <strong className="text-white">Keep the box. Full refund within 48 hours.</strong> No return shipping, no restocking fees, no questions asked. We believe in BrewNectar so much, we'll take all the risk.</p>
+                <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3">30-Day Keep-the-Bag Guarantee</h2>
+                <p className="text-emerald-100 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8">Don't love it? <strong className="text-white">Keep the bag. Full refund within 48 hours.</strong> No return shipping, no restocking fees, no questions asked. We believe in BrewNectar so much, we'll take all the risk.</p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 max-w-md md:max-w-none mx-auto">
                   {[
-                    { icon: Heart, label: "Keep the Box" },
+                    { icon: Heart, label: "Keep the Bag" },
                     { icon: Clock, label: "48-Hour Refund" },
                     { icon: MessageCircle, label: "No Questions Asked" },
                     { icon: Truck, label: "No Return Shipping" },
@@ -714,7 +717,10 @@ export default function StickPack() {
                     <button key={i} onClick={() => setSelectedImage(i)} className={`rounded-full transition-all ${selectedImage === i ? "w-5 h-2 bg-[#B45309]" : "w-2 h-2 bg-white/70 hover:bg-white"}`} />
                   ))}
                 </div>
-                {/* Desktop-only next arrow */}
+                {/* Desktop-only arrows */}
+                <button onClick={() => setSelectedImage((selectedImage - 1 + 4) % 4)} className="hidden lg:flex absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-md items-center justify-center hover:bg-white hover:scale-105 transition-all">
+                  <ChevronLeft size={20} className="text-[#1C1917]" />
+                </button>
                 <button onClick={() => setSelectedImage((selectedImage + 1) % 4)} className="hidden lg:flex absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-md items-center justify-center hover:bg-white hover:scale-105 transition-all">
                   <ChevronRight size={20} className="text-[#1C1917]" />
                 </button>
@@ -730,9 +736,9 @@ export default function StickPack() {
               <div className="mt-4 space-y-0 border border-stone-200 rounded-xl overflow-hidden">
                 {[
                   { id: "ingredients", title: "Ingredients", content: "Cognizin® (Citicoline) 250mg, L-Theanine 200mg, Lion’s Mane (10:1 extract) 500mg, Rhodiola Rosea 150mg, Ashwagandha (KSM-66®) 300mg, Cordyceps Militaris 250mg, Prebiotic Fiber (Chicory Root Inulin) 2g, B-Vitamin Complex (B6, B9, B12). Other: Natural vanilla bean flavor, monk fruit extract. No caffeine, no sugar, no artificial colors." },
-                  { id: "shipping", title: "Shipping & Returns", content: "Free shipping on all subscription orders. Standard shipping (3–5 business days) on one-time purchases. All orders ship from our US warehouse. Returns accepted within 30 days — keep the box, get a full refund, no questions asked." },
+                  { id: "shipping", title: "Shipping & Returns", content: "Free shipping on all subscription orders. Standard shipping (3–5 business days) on one-time purchases. All orders ship from our US warehouse. Returns accepted within 30 days — keep the bag, get a full refund, no questions asked." },
                   { id: "safety", title: "Is It Safe?", content: "Yes. Every ingredient is Generally Recognized as Safe (GRAS) by the FDA. Manufactured in a cGMP-certified, FDA-registered facility in the USA. Third-party tested for purity and potency. Free from caffeine, gluten, soy, dairy, nuts, and artificial additives. Consult your doctor if you are pregnant, nursing, or on medication." },
-                  { id: "guarantee", title: "60-Day Guarantee", content: "Try BrewNectar risk-free for 60 days. If you don’t notice a difference in your focus, energy, or gut health, contact us for a full refund — no need to return the box. We believe in the product enough to take the risk for you." },
+                  { id: "guarantee", title: "30-Day Guarantee", content: "Try BrewNectar risk-free for 30 days. If you don’t notice a difference in your focus, energy, or gut health, contact us for a full refund — no need to return the bag. We believe in the product enough to take the risk for you." },
                 ].map((item) => (
                   <button key={item.id} onClick={() => setOpenPdpInfo(openPdpInfo === item.id ? null : item.id)} className="w-full text-left">
                     <div className={`flex items-center justify-between px-4 py-3 ${openPdpInfo === item.id ? "" : "border-b border-stone-200 last:border-b-0"} hover:bg-stone-50 transition-colors`}>
@@ -827,7 +833,7 @@ export default function StickPack() {
                 </button>
 
                 <div className="mt-4 space-y-3">
-                  <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">30-Day Keep-the-Box Guarantee</p><p className="text-[11px] text-[#78716C]">Don't love it? Keep the box. Full refund, no questions.</p></div></div>
+                  <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">30-Day Keep-the-Bag Guarantee</p><p className="text-[11px] text-[#78716C]">Don't love it? Keep the bag. Full refund, no questions.</p></div></div>
                   <div className="flex items-center justify-between px-1"><div className="flex items-center gap-2"><Truck size={14} className="text-[#78716C]" /><span className="text-xs text-[#57534E]">Free shipping</span></div><div className="flex items-center gap-2"><RotateCcw size={14} className="text-[#78716C]" /><span className="text-xs text-[#57534E]">Cancel anytime</span></div></div>
                 </div>
               </div>
