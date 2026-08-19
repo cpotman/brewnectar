@@ -119,3 +119,4 @@
 - [x] Compress ingredient section to fit within 1 desktop viewport
 - [x] Replace PDP gallery images with actual stick pack product images (4 images)
 - [x] Reduce PDP gallery image size so selected image + 4 thumbnails visible together
+- [x] Add orange gradient circle background image to "Sound Familiar?" section

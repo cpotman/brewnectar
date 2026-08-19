@@ -360,8 +360,9 @@ export default function StickPack() {
         </div>
       </section>
       {/* === SECTION 2: PROBLEM AGITATION (condensed) === */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+      <section className="py-20 md:py-28 relative overflow-hidden" style={{ backgroundColor: "#FDF3E7" }}>
+        <div className="absolute inset-0 pointer-events-none"><img src="/manus-storage/bgoption_7c0b470f.png" alt="" className="w-full h-full object-cover opacity-80" /></div>
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6">
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Sound familiar?</p>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-12">You're not losing your edge.<br />Your brain is running on empty.</h2>
