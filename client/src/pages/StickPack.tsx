@@ -31,7 +31,8 @@ const IMAGES = {
   hero: "/manus-storage/BrewNectarPDPImages-selection(2)_26ab449c.png",
   lifestyle: "/manus-storage/BrewNectarPDPImages-selection(1)_124174b7.webp",
   stir: "/manus-storage/BrewNectarPDPImages-selection(2)_c7bd3495.png",
-  lockin: "/manus-storage/BrewNectarPDPImages-selection(3)_e9f5cd58.webp",
+  gutbrain: "/manus-storage/image5_c9e175d7.png",
+  comparison: "/manus-storage/image6_c7d948d3.png",
 };
 
 /* --- What's Inside visual cards --- */
@@ -264,29 +265,29 @@ export default function StickPack() {
                   const sx = (e.currentTarget as any)._sx, sy = (e.currentTarget as any)._sy;
                   if (sx == null) return;
                   const t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
-                  const imgs = [IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin];
+                  const imgs = [IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.gutbrain, IMAGES.comparison];
                   if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) {
                     if (dx < 0 && selectedImage < imgs.length - 1) setSelectedImage(selectedImage + 1);
                     else if (dx > 0 && selectedImage > 0) setSelectedImage(selectedImage - 1);
                   }
                 }}
               >
-                <motion.img key={selectedImage} src={[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin][selectedImage]} alt="BrewNectar Stick Pack" className="w-full h-full object-cover" initial={{ opacity: 0.6, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.25, ease: "easeOut" }} />
+                <motion.img key={selectedImage} src={[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.gutbrain, IMAGES.comparison][selectedImage]} alt="BrewNectar Stick Pack" className="w-full h-full object-cover" initial={{ opacity: 0.6, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.25, ease: "easeOut" }} />
                 <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 lg:hidden">
-                  {[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin].map((_, i) => (
+                  {[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.gutbrain, IMAGES.comparison].map((_, i) => (
                     <button key={i} onClick={() => setSelectedImage(i)} className={`rounded-full transition-all ${selectedImage === i ? "w-5 h-2 bg-[#B45309]" : "w-2 h-2 bg-white/70 hover:bg-white"}`} />
                   ))}
                 </div>
                 {/* Desktop-only arrows */}
-                <button onClick={() => setSelectedImage((selectedImage - 1 + 4) % 4)} className="hidden lg:flex absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-md items-center justify-center hover:bg-white hover:scale-105 transition-all">
+                <button onClick={() => setSelectedImage((selectedImage - 1 + 5) % 5)} className="hidden lg:flex absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-md items-center justify-center hover:bg-white hover:scale-105 transition-all">
                   <ChevronLeft size={20} className="text-[#1C1917]" />
                 </button>
-                <button onClick={() => setSelectedImage((selectedImage + 1) % 4)} className="hidden lg:flex absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-md items-center justify-center hover:bg-white hover:scale-105 transition-all">
+                <button onClick={() => setSelectedImage((selectedImage + 1) % 5)} className="hidden lg:flex absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-md items-center justify-center hover:bg-white hover:scale-105 transition-all">
                   <ChevronRight size={20} className="text-[#1C1917]" />
                 </button>
               </div>
-              <div className="grid grid-cols-4 gap-2 mt-3">
-                {[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin].map((img, i) => (
+              <div className="grid grid-cols-5 gap-2 mt-3">
+                {[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.gutbrain, IMAGES.comparison].map((img, i) => (
                   <button key={i} onClick={() => setSelectedImage(i)} className={`rounded-xl overflow-hidden aspect-square border-2 transition-all ${selectedImage === i ? "border-[#B45309] ring-2 ring-amber-200" : "border-stone-200 hover:border-stone-300"}`}>
                     <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" />
                   </button>
@@ -704,29 +705,29 @@ export default function StickPack() {
                   const sx = (e.currentTarget as any)._sx, sy = (e.currentTarget as any)._sy;
                   if (sx == null) return;
                   const t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
-                  const imgs = [IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin];
+                  const imgs = [IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.gutbrain, IMAGES.comparison];
                   if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) {
                     if (dx < 0 && selectedImage < imgs.length - 1) setSelectedImage(selectedImage + 1);
                     else if (dx > 0 && selectedImage > 0) setSelectedImage(selectedImage - 1);
                   }
                 }}
               >
-                <motion.img key={`dup-${selectedImage}`} src={[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin][selectedImage]} alt="BrewNectar Stick Pack" className="w-full h-full object-cover" initial={{ opacity: 0.6, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.25, ease: "easeOut" }} />
+                <motion.img key={`dup-${selectedImage}`} src={[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.gutbrain, IMAGES.comparison][selectedImage]} alt="BrewNectar Stick Pack" className="w-full h-full object-cover" initial={{ opacity: 0.6, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.25, ease: "easeOut" }} />
                 <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 lg:hidden">
-                  {[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin].map((_, i) => (
+                  {[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.gutbrain, IMAGES.comparison].map((_, i) => (
                     <button key={i} onClick={() => setSelectedImage(i)} className={`rounded-full transition-all ${selectedImage === i ? "w-5 h-2 bg-[#B45309]" : "w-2 h-2 bg-white/70 hover:bg-white"}`} />
                   ))}
                 </div>
                 {/* Desktop-only arrows */}
-                <button onClick={() => setSelectedImage((selectedImage - 1 + 4) % 4)} className="hidden lg:flex absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-md items-center justify-center hover:bg-white hover:scale-105 transition-all">
+                <button onClick={() => setSelectedImage((selectedImage - 1 + 5) % 5)} className="hidden lg:flex absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-md items-center justify-center hover:bg-white hover:scale-105 transition-all">
                   <ChevronLeft size={20} className="text-[#1C1917]" />
                 </button>
-                <button onClick={() => setSelectedImage((selectedImage + 1) % 4)} className="hidden lg:flex absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-md items-center justify-center hover:bg-white hover:scale-105 transition-all">
+                <button onClick={() => setSelectedImage((selectedImage + 1) % 5)} className="hidden lg:flex absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-md items-center justify-center hover:bg-white hover:scale-105 transition-all">
                   <ChevronRight size={20} className="text-[#1C1917]" />
                 </button>
               </div>
-              <div className="grid grid-cols-4 gap-2 mt-3">
-                {[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin].map((img, i) => (
+              <div className="grid grid-cols-5 gap-2 mt-3">
+                {[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.gutbrain, IMAGES.comparison].map((img, i) => (
                   <button key={i} onClick={() => setSelectedImage(i)} className={`rounded-xl overflow-hidden aspect-square border-2 transition-all ${selectedImage === i ? "border-[#B45309] ring-2 ring-amber-200" : "border-stone-200 hover:border-stone-300"}`}>
                     <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" />
                   </button>

@@ -137,3 +137,4 @@
 - [x] Increase ingredient scroll speed on mobile (30s) while keeping desktop at 50s
 - [x] Change all mentions of "box" to "bag"
 - [x] Replace first PDP hero image with updated product shot
+- [x] Add gut-brain axis and vs mushroom coffee PDP images, remove "tear stir think" image, update gallery to 5 images
