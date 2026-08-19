@@ -136,3 +136,4 @@
 - [x] Add back arrow to PDP image gallery on desktop
 - [x] Increase ingredient scroll speed on mobile (30s) while keeping desktop at 50s
 - [x] Change all mentions of "box" to "bag"
+- [x] Replace first PDP hero image with updated product shot

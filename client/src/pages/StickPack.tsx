@@ -28,7 +28,7 @@ function FadeUp({ children, className = "", delay = 0 }: { children: React.React
 
 /* --- Product images --- */
 const IMAGES = {
-  hero: "/manus-storage/BrewNectarPDPImages-selection_c4f01cd7.png",
+  hero: "/manus-storage/BrewNectarPDPImages-selection(2)_26ab449c.png",
   lifestyle: "/manus-storage/BrewNectarPDPImages-selection(1)_124174b7.webp",
   stir: "/manus-storage/BrewNectarPDPImages-selection(2)_c7bd3495.png",
   lockin: "/manus-storage/BrewNectarPDPImages-selection(3)_e9f5cd58.webp",
