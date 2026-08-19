@@ -312,36 +312,37 @@ export default function StickPack() {
       </section>
 
       {/* === SECTION 3: WHAT'S INSIDE (visual ingredient cards) === */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-14 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">What's Inside</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">Eight Ingredients. One Purpose.</h2>
-            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">Every ingredient is research-backed, precisely dosed, and chosen because it does something your coffee can't. Tap any to learn more.</p>
+            <p className="text-center text-[#78716C] text-lg mb-10 max-w-2xl mx-auto">Every ingredient is research-backed, precisely dosed, and chosen because it does something your coffee can't. Tap any to learn more.</p>
           </FadeUp>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-4">
             {WHATS_INSIDE.map((item, i) => {
               const isOpen = expandedWhatsInside === i;
               return (
               <FadeUp key={item.name} delay={i * 0.05}>
-                <button onClick={() => setExpandedWhatsInside(isOpen ? null : i)} className="w-full text-left rounded-2xl overflow-hidden border border-stone-100 bg-white shadow-warm hover:shadow-warm-lg transition-all duration-300">
-                  <div className="relative h-40 md:h-48 overflow-hidden">
+                <button onClick={() => setExpandedWhatsInside(isOpen ? null : i)} className="w-full text-left rounded-xl overflow-hidden border border-stone-100 bg-white shadow-warm hover:shadow-warm-lg transition-all duration-300">
+                  <div className="relative h-28 md:h-32 overflow-hidden">
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                      <div className={`w-8 h-8 rounded-lg ${item.color} flex items-center justify-center`}><item.icon size={16} /></div>
-                      <h3 className="font-display font-bold text-lg text-white">{item.name}</h3>
+                    <div className="absolute bottom-3 left-3 flex items-center gap-2">
+                      <div className={`w-7 h-7 rounded-lg ${item.color} flex items-center justify-center`}><item.icon size={14} /></div>
+                      <h3 className="font-display font-bold text-base text-white">{item.name}</h3>
                     </div>
                   </div>
-                  <div className="px-5 py-4">
-                    <div className="flex items-center gap-3">
+                  <div className="px-4 py-3">
+                    <div className="flex items-center gap-2">
                       <p className="text-xs font-semibold uppercase tracking-widest text-[#D97706] flex-1">{item.tag}</p>
-                      <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">{item.dosage}</span>
+                      <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-200 whitespace-nowrap">{item.dosage}</span>
+                      <ChevronDown size={14} className={`text-[#A8A29E] transition-transform duration-200 flex-shrink-0 ${isOpen ? "rotate-180" : ""}`} />
                     </div>
                     <AnimatePresence>
                       {isOpen && (
                         <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }}>
-                          <p className="text-sm text-[#57534E] leading-relaxed mt-3 pt-3 border-t border-stone-100">{item.science}</p>
+                          <p className="text-xs text-[#57534E] leading-relaxed mt-2 pt-2 border-t border-stone-100">{item.science}</p>
                         </motion.div>
                       )}
                     </AnimatePresence>
