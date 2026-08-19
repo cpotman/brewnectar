@@ -224,7 +224,7 @@ export default function StickPack() {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Left: Product Images */}
             <FadeUp delay={0.05} className="lg:sticky lg:top-36 lg:self-start">
-              <div className="relative rounded-2xl overflow-hidden aspect-square bg-stone-50 touch-pan-y"
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] md:aspect-square md:max-h-[400px] bg-stone-50 touch-pan-y"
                 onTouchStart={(e) => { const t = e.touches[0]; (e.currentTarget as any)._sx = t.clientX; (e.currentTarget as any)._sy = t.clientY; }}
                 onTouchEnd={(e) => {
                   const sx = (e.currentTarget as any)._sx, sy = (e.currentTarget as any)._sy;
@@ -629,7 +629,7 @@ export default function StickPack() {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Left: Product Images */}
             <FadeUp delay={0.05}>
-              <div className="relative rounded-2xl overflow-hidden aspect-square bg-stone-50">
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] md:aspect-square md:max-h-[400px] bg-stone-50">
                 <img src={[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.lockin][selectedImage]} alt="BrewNectar Stick Pack" className="w-full h-full object-cover" />
               </div>
               <div className="grid grid-cols-4 gap-2 mt-3">
