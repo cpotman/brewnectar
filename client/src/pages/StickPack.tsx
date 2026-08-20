@@ -215,6 +215,7 @@ export default function StickPack() {
   const [openPdpInfo, setOpenPdpInfo] = useState<string | null>(null);
   const [expandedWhatsInside, setExpandedWhatsInside] = useState<number | null>(null);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [selectedImage2, setSelectedImage2] = useState(0);
   const [showSticky, setShowSticky] = useState(false);
   const currentPlan = PLANS.find(p => p.id === selectedPlan) || PLANS[0];
 
@@ -730,28 +731,28 @@ export default function StickPack() {
                   const t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
                   const imgs = [IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.gutbrain, IMAGES.comparison];
                   if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-                    if (dx < 0 && selectedImage < imgs.length - 1) setSelectedImage(selectedImage + 1);
-                    else if (dx > 0 && selectedImage > 0) setSelectedImage(selectedImage - 1);
+                    if (dx < 0 && selectedImage2 < imgs.length - 1) setSelectedImage(selectedImage2 + 1);
+                    else if (dx > 0 && selectedImage2 > 0) setSelectedImage(selectedImage2 - 1);
                   }
                 }}
               >
-                <motion.img key={`dup-${selectedImage}`} src={[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.gutbrain, IMAGES.comparison][selectedImage]} alt="BrewNectar Stick Pack" className="w-full h-full object-cover" initial={{ opacity: 0.6, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.25, ease: "easeOut" }} />
+                <motion.img key={`dup-${selectedImage2}`} src={[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.gutbrain, IMAGES.comparison][selectedImage2]} alt="BrewNectar Stick Pack" className="w-full h-full object-cover" initial={{ opacity: 0.6, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.25, ease: "easeOut" }} />
                 <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 lg:hidden">
                   {[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.gutbrain, IMAGES.comparison].map((_, i) => (
-                    <button key={i} onClick={() => setSelectedImage(i)} className={`rounded-full transition-all ${selectedImage === i ? "w-5 h-2 bg-[#B45309]" : "w-2 h-2 bg-white/70 hover:bg-white"}`} />
+                    <button key={i} onClick={() => setSelectedImage(i)} className={`rounded-full transition-all ${selectedImage2 === i ? "w-5 h-2 bg-[#B45309]" : "w-2 h-2 bg-white/70 hover:bg-white"}`} />
                   ))}
                 </div>
                 {/* Desktop-only arrows */}
-                <button onClick={() => setSelectedImage((selectedImage - 1 + 5) % 5)} className="hidden lg:flex absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-md items-center justify-center hover:bg-white hover:scale-105 transition-all">
+                <button onClick={() => setSelectedImage((selectedImage2 - 1 + 5) % 5)} className="hidden lg:flex absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-md items-center justify-center hover:bg-white hover:scale-105 transition-all">
                   <ChevronLeft size={20} className="text-[#1C1917]" />
                 </button>
-                <button onClick={() => setSelectedImage((selectedImage + 1) % 5)} className="hidden lg:flex absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-md items-center justify-center hover:bg-white hover:scale-105 transition-all">
+                <button onClick={() => setSelectedImage((selectedImage2 + 1) % 5)} className="hidden lg:flex absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-md items-center justify-center hover:bg-white hover:scale-105 transition-all">
                   <ChevronRight size={20} className="text-[#1C1917]" />
                 </button>
               </div>
               <div className="grid grid-cols-5 gap-2 mt-3">
                 {[IMAGES.hero, IMAGES.lifestyle, IMAGES.stir, IMAGES.gutbrain, IMAGES.comparison].map((img, i) => (
-                  <button key={i} onClick={() => setSelectedImage(i)} className={`rounded-xl overflow-hidden aspect-square border-2 transition-all ${selectedImage === i ? "border-[#B45309] ring-2 ring-amber-200" : "border-stone-200 hover:border-stone-300"}`}>
+                  <button key={i} onClick={() => setSelectedImage(i)} className={`rounded-xl overflow-hidden aspect-square border-2 transition-all ${selectedImage2 === i ? "border-[#B45309] ring-2 ring-amber-200" : "border-stone-200 hover:border-stone-300"}`}>
                     <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" />
                   </button>
                 ))}
