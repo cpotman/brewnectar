@@ -1058,7 +1058,7 @@ export default function StickPack() {
             <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] text-white font-bold text-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
               Start Now <ArrowRight size={18} />
             </button>
-            <p className="text-xs text-stone-500 mt-4">30-day keep-the-box guarantee &bull; Free shipping &bull; Cancel anytime</p>
+            <p className="text-xs text-stone-500 mt-4">30-day keep-the-bag guarantee &bull; Free shipping &bull; Cancel anytime</p>
           </FadeUp>
         </div>
       </section>
