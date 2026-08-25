@@ -144,3 +144,7 @@
 - [x] Re-upload and link the five supplied stick-pack PDP gallery images in their existing gallery order
 - [x] Re-upload and link the supplied orange-gradient background behind the existing “Sound familiar?” section
 - [x] Verify both stick-pack galleries, mobile swipe behavior, and Sound Familiar background on desktop and mobile
+- [x] Generate matching ingredient visuals for Cordyceps, Ashwagandha, Rhodiola Rosea, and Prebiotic Fiber + Probiotics
+- [x] Replace the four temporary ingredient image references with the regenerated visuals
+- [x] Redesign expanded Evidence studies into a wider desktop layout while preserving the current mobile stack
+- [x] Verify the ingredient carousel and Evidence expansions on desktop and mobile

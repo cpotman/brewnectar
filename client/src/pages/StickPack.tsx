@@ -41,10 +41,10 @@ const WHATS_INSIDE = [
   { name: "Citicoline", dosage: "500 mg", tag: "Retrieve Names, Numbers, and Ideas On Demand*", science: "The only patented form of citicoline with 20+ clinical trials on focus and working memory. Brain ATP increased by 14% after just 6 weeks at this exact dose.", icon: Zap, color: "bg-emerald-50 text-emerald-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-cognizin_3fb446ba.png" },
   { name: "L-Theanine", dosage: "200 mg", tag: "Calm Focus Without the Jitters*", science: "Promotes alpha brain wave activity \u2014 the neurological state behind calm, sustained attention. At 200 mg, paired with your own caffeine for clean, quiet focus.", icon: Sparkles, color: "bg-sky-50 text-sky-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-l-theanine_dc3b4af3.png" },
   { name: "Lion\u2019s Mane", dosage: "500 mg (10:1)", tag: "Your Brain Builds New Connections*", science: "30+ peer-reviewed studies on nerve growth factor (NGF) production. At 10:1 concentration, each stick delivers ~5 g raw equivalent \u2014 20x a typical mushroom coffee.", icon: Brain, color: "bg-amber-50 text-[#B45309]", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-lions-mane_c905f004.png" },
-  { name: "Rhodiola Rosea", dosage: "300 mg (10:1)", tag: "The Afternoon Wall Disappears*", science: "The fastest adaptogen in the stack. Anti-fatigue benefits emerge within roughly two weeks \u2014 carrying you through the window where most supplement customers churn.", icon: Heart, color: "bg-rose-50 text-rose-700", image: "/manus-storage/ingredient-rhodiola_4516c912.jpg" },
-  { name: "Ashwagandha", dosage: "300 mg (10:1)", tag: "Better Sleep. Better Everything.*", science: "Works on the upstream cause \u2014 sleep quality. Sleep efficiency improved from 75.6% to 83.5% over 10 weeks in a published RCT. Better sleep means a sharper morning.", icon: Shield, color: "bg-purple-50 text-purple-700", image: "/manus-storage/ingredient-ashwagandha_1f7c66c5.jpg" },
-  { name: "Cordyceps", dosage: "300 mg (10:1)", tag: "Sustained Physical + Mental Energy*", science: "28 healthy adults taking cordyceps for 3 weeks saw VO2max improve by 10.9% vs no change in placebo. More oxygen to the brain means more sustained output.", icon: Zap, color: "bg-orange-50 text-orange-700", image: "/manus-storage/ingredient-cordyceps_ed67f1f5.jpg" },
-  { name: "Prebiotic Fiber + Probiotic", dosage: "2 g inulin + B. coagulans", tag: "A Gut That Feeds Your Brain*", science: "Bacillus coagulans survives hot coffee (92% spore survival). Inulin feeds beneficial bacteria. Together they rebuild the gut-brain axis that most brain supplements ignore.", icon: Coffee, color: "bg-teal-50 text-teal-700", image: "/manus-storage/ingredient-prebiotic_a58bccad.jpg" },
+  { name: "Rhodiola Rosea", dosage: "300 mg (10:1)", tag: "The Afternoon Wall Disappears*", science: "The fastest adaptogen in the stack. Anti-fatigue benefits emerge within roughly two weeks \u2014 carrying you through the window where most supplement customers churn.", icon: Heart, color: "bg-rose-50 text-rose-700", image: "/manus-storage/ingredient-rhodiola-v2_5bb7e26c.png" },
+  { name: "Ashwagandha", dosage: "300 mg (10:1)", tag: "Better Sleep. Better Everything.*", science: "Works on the upstream cause \u2014 sleep quality. Sleep efficiency improved from 75.6% to 83.5% over 10 weeks in a published RCT. Better sleep means a sharper morning.", icon: Shield, color: "bg-purple-50 text-purple-700", image: "/manus-storage/ingredient-ashwagandha-v2_66934589.png" },
+  { name: "Cordyceps", dosage: "300 mg (10:1)", tag: "Sustained Physical + Mental Energy*", science: "28 healthy adults taking cordyceps for 3 weeks saw VO2max improve by 10.9% vs no change in placebo. More oxygen to the brain means more sustained output.", icon: Zap, color: "bg-orange-50 text-orange-700", image: "/manus-storage/ingredient-cordyceps-regenerated_777447ce.png" },
+  { name: "Prebiotic Fiber + Probiotic", dosage: "2 g inulin + B. coagulans", tag: "A Gut That Feeds Your Brain*", science: "Bacillus coagulans survives hot coffee (92% spore survival). Inulin feeds beneficial bacteria. Together they rebuild the gut-brain axis that most brain supplements ignore.", icon: Coffee, color: "bg-teal-50 text-teal-700", image: "/manus-storage/ingredient-prebiotic-probiotic-v4_9aef7528.png" },
   { name: "B Vitamins (B6 + B12)", dosage: "100% DV each", tag: "Steady Energy That Doesn\u2019t Crash", science: "Essential cofactors for dopamine, serotonin, and norepinephrine production. They support your brain\u2019s natural energy metabolism and neurotransmitter synthesis all day.", icon: Coffee, color: "bg-rose-50 text-rose-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-b-vitamins_1072f364.png" },
 ];
 
@@ -219,6 +219,7 @@ export default function StickPack() {
   const [selectedImage2, setSelectedImage2] = useState(0);
   const [showSticky, setShowSticky] = useState(false);
   const currentPlan = PLANS.find(p => p.id === selectedPlan) || PLANS[0];
+  const evidenceItem = expandedIngredient !== null ? INGREDIENTS[expandedIngredient] : null;
 
   useEffect(() => {
     const handleScroll = () => setShowSticky(window.scrollY > 800);
@@ -1016,7 +1017,7 @@ export default function StickPack() {
                   </button>
                   <AnimatePresence>
                     {isExpanded && (
-                      <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }} className="overflow-hidden mt-3">
+                      <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }} className="overflow-hidden mt-3 lg:hidden">
                         <div className="bg-white rounded-2xl border border-stone-100 shadow-warm p-4 md:p-5">
                           <div className="flex items-center gap-2 mb-2">
                             <div className={`w-2 h-2 rounded-full ${item.dotColor}`} />
@@ -1047,6 +1048,60 @@ export default function StickPack() {
               );
             })}
           </div>
+          <AnimatePresence mode="wait">
+            {evidenceItem && (
+              <motion.div
+                key={evidenceItem.name}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 8 }}
+                transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                className="hidden lg:block mt-6"
+              >
+                <div className="relative overflow-hidden bg-white rounded-[28px] border border-stone-100 shadow-warm p-7 xl:p-8">
+                  <div className={`absolute inset-x-0 top-0 h-1 ${evidenceItem.dotColor}`} />
+                  <div className="flex items-start justify-between gap-8 mb-6">
+                    <div className="flex items-start gap-4 min-w-0">
+                      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 ${evidenceItem.color}`}>
+                        <evidenceItem.icon size={22} />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#A8A29E] mb-1">Key Studies</p>
+                        <h4 className="font-display text-2xl font-bold text-[#1C1917] mb-1">{evidenceItem.name}</h4>
+                        <p className="text-sm text-[#78716C]">{evidenceItem.tagline}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 flex-shrink-0">
+                      <div className="rounded-2xl bg-stone-50 border border-stone-100 px-4 py-3 text-right">
+                        <p className="text-[10px] font-semibold uppercase tracking-wider text-[#A8A29E] mb-0.5">Time Horizon</p>
+                        <p className="text-sm font-semibold text-[#44403C]">{evidenceItem.clock}</p>
+                      </div>
+                      <div className={`rounded-2xl border px-4 py-3 ${evidenceItem.color}`}>
+                        <p className="font-display text-xl font-bold leading-none mb-1">{evidenceItem.pullStat}</p>
+                        <p className="text-[11px] leading-snug max-w-[180px] opacity-80">{evidenceItem.pullLabel}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={`grid gap-4 ${evidenceItem.studies.length === 1 ? "grid-cols-1 max-w-2xl mx-auto" : evidenceItem.studies.length === 2 ? "grid-cols-2 max-w-5xl mx-auto" : "grid-cols-3"}`}>
+                    {evidenceItem.studies.map((study, j) => (
+                      <a key={j} href={study.url} target="_blank" rel="noopener noreferrer" className="group flex h-full flex-col p-5 rounded-2xl border border-stone-100 bg-[#FDFBF7]/60 hover:border-amber-200 hover:bg-amber-50/40 hover:-translate-y-0.5 transition-all duration-300">
+                        <div className="flex items-start justify-between gap-3 mb-3">
+                          <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-[#A8A29E]">
+                            <span className={`w-1.5 h-1.5 rounded-full ${evidenceItem.dotColor}`} />
+                            {study.journal} &middot; {study.year}
+                          </span>
+                          <ExternalLink size={14} className="text-[#A8A29E] group-hover:text-[#D97706] transition-colors flex-shrink-0" />
+                        </div>
+                        <h5 className="font-display font-semibold text-base text-[#1C1917] mb-1.5 leading-snug group-hover:text-[#B45309] transition-colors">{study.title}</h5>
+                        <p className="text-xs text-[#A8A29E] mb-3">{study.authors}</p>
+                        <p className="text-xs text-[#78716C] leading-relaxed mt-auto"><span className="font-semibold text-[#44403C]">Finding:</span> {study.finding}</p>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 
