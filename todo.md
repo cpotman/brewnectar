@@ -141,3 +141,6 @@
 - [x] Move PDP info dropdowns below free shipping/cancel anytime on mobile, keep under gallery on desktop
 - [x] Make top and bottom PDP image galleries operate independently (separate state)
 - [x] Fix second gallery not scrolling — setSelectedImage was not updated to setSelectedImage2 in duplicate offer
+- [x] Re-upload and link the five supplied stick-pack PDP gallery images in their existing gallery order
+- [x] Re-upload and link the supplied orange-gradient background behind the existing “Sound familiar?” section
+- [x] Verify both stick-pack galleries, mobile swipe behavior, and Sound Familiar background on desktop and mobile

@@ -28,11 +28,12 @@ function FadeUp({ children, className = "", delay = 0 }: { children: React.React
 
 /* --- Product images --- */
 const IMAGES = {
-  hero: "/manus-storage/BrewNectarPDPImages-selection(2)_26ab449c.png",
-  lifestyle: "/manus-storage/BrewNectarPDPImages-selection(1)_124174b7.webp",
-  stir: "/manus-storage/BrewNectarPDPImages-selection(2)_c7bd3495.png",
-  gutbrain: "/manus-storage/image5_c9e175d7.png",
-  comparison: "/manus-storage/image6_c7d948d3.png",
+  hero: "/manus-storage/pdp-1_8ab85442.png",
+  lifestyle: "/manus-storage/pdp-2_ad59f8c8.png",
+  stir: "/manus-storage/pdp-3_e2aa3464.png",
+  gutbrain: "/manus-storage/pdp-4_c76fef49.png",
+  comparison: "/manus-storage/pdp-5_dc161adc.png",
+  soundFamiliarBackground: "/manus-storage/sound-familiar-background_73d0caf1.png",
 };
 
 /* --- What's Inside visual cards --- */
@@ -450,7 +451,7 @@ export default function StickPack() {
       </section>
       {/* === SECTION 2: PROBLEM AGITATION (condensed) === */}
       <section className="py-20 md:py-28 relative overflow-hidden" style={{ backgroundColor: "#FDF3E7" }}>
-        <div className="absolute inset-0 pointer-events-none"><img src="/manus-storage/bgoption_7c0b470f.png" alt="" className="w-full h-full object-cover opacity-80" /></div>
+        <div className="absolute inset-0 pointer-events-none"><img src={IMAGES.soundFamiliarBackground} alt="" className="w-full h-full object-cover opacity-80" /></div>
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6">
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Sound familiar?</p>
