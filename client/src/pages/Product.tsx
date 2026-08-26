@@ -225,7 +225,7 @@ export default function Product() {
         { text: "\ud83c\udf93 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
         { text: "\ud83d\udcb0 Maximum savings — lowest price per serving", positive: true },
         { text: "\ud83d\udd12 Lock in savings — price guaranteed even if we raise it", positive: true },
-        { text: "\ud83d\udee1\ufe0f Try it 30 days — if you don't feel sharper, keep the bottle. We'll refund every penny.", positive: true },
+        { text: "\ud83d\udee1\ufe0f Try it 60 days — if you don't feel sharper, keep the bottle. We'll refund every penny.", positive: true },
         { text: "\ud83c\udfc6 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
         { text: "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67 Share with family and friends", positive: true },
         { text: "\ud83d\ude9a Fast & FREE Shipping", positive: true },
@@ -248,7 +248,7 @@ export default function Product() {
         { text: "\ud83c\udf93 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
         { text: "\ud83d\udcb0 Great value — $32/mo, share with a partner", positive: true },
         { text: "\ud83d\udd12 Lock in savings — price guaranteed even if we raise it", positive: true },
-        { text: "\ud83d\udee1\ufe0f Try it 30 days — keep the bottle if you're not sharper. Full refund.", positive: true },
+        { text: "\ud83d\udee1\ufe0f Try it 60 days — keep the bottle if you're not sharper. Full refund.", positive: true },
         { text: "\ud83c\udfc6 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
         { text: "\ud83d\ude9a Fast & FREE Shipping", positive: true },
         { text: "\ud83d\udd04 Cancel or pause anytime", positive: true },
@@ -314,7 +314,7 @@ export default function Product() {
     { q: "Is it safe to take daily?", a: "Yes. All ingredients are GRAS-certified and backed by clinical research. BrewNectar is manufactured in a GMP-certified facility in the USA." },
     { q: "When will I feel the effects?", a: "Many users notice improved focus within 20-30 minutes of their first cup.* Cumulative benefits like better recall and reduced brain fog may appear after 2-3 weeks of daily use." },
     { q: "Does it contain caffeine?", a: "No. BrewNectar is caffeine-free — it's designed to enhance the coffee you already drink, not add more stimulants." },
-    { q: "What if it doesn't work for me?", a: "We have a 30-day keep-the-bottle guarantee. If you're not satisfied after 30 days, keep the bottle and we'll refund every penny. No questions asked." },
+    { q: "What if it doesn't work for me?", a: "We have a 60-day keep-the-bottle guarantee. If you're not satisfied after 60 days, keep the bottle and we'll refund every penny. No questions asked." },
   ];
 
   const planOrder: PlanType[] = ["subscribe-3", "subscribe-2", "subscribe-1"];
@@ -443,7 +443,7 @@ export default function Product() {
               {/* Trust badges below images (desktop only) */}
               <div className="hidden lg:flex items-center justify-center gap-6 mt-4">
                 {[
-                  { icon: ShieldCheck, label: "30-Day Guarantee" },
+                  { icon: ShieldCheck, label: "60-Day Guarantee" },
                   { icon: Truck, label: "Free Shipping" },
                   { icon: RotateCcw, label: "Cancel Anytime" },
                 ].map((badge) => (
@@ -704,7 +704,7 @@ export default function Product() {
                   <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200">
                     <ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" />
                     <div>
-                      <p className="text-xs font-bold text-[#1C1917]">30-Day Keep-the-Bottle Guarantee</p>
+                      <p className="text-xs font-bold text-[#1C1917]">60-Day Keep-the-Bottle Guarantee</p>
                       <p className="text-[11px] text-[#78716C]">Don't love it? Keep the bottle. Full refund, no questions.</p>
                     </div>
                   </div>
@@ -742,7 +742,7 @@ export default function Product() {
                       { title: "Description", content: "BrewNectar is a precision nootropic syrup designed to add to your existing coffee. One pump delivers four research-backed cognitive ingredients in a smooth vanilla bean base. No new coffee required — just add it to the cup you already love." },
                       { title: "Ingredients", content: "Lion's Mane Mushroom Extract (1,200mg), Cognizin® Citicoline (250mg), L-Theanine (75mg), Vitamin B Complex (B6, B9, B12). Other: Organic vanilla bean extract, purified water, vegetable glycerin. Zero sugar, zero calories." },
                       { title: "How to Use", content: "Add one pump (1 tbsp) to your morning coffee — hot or iced. Stir for 5 seconds. That's it. Works with any coffee, latte, or espresso drink. Best results with daily consistent use." },
-                      { title: "Shipping & Returns", content: "Free shipping on all orders. Ships within 24 hours via USPS Priority Mail (2-3 business days). 30-day keep-the-bottle guarantee — if you don't love it, email us for a full refund. No return shipping required." },
+                      { title: "Shipping & Returns", content: "Free shipping on all orders. Ships within 24 hours via USPS Priority Mail (2-3 business days). 60-day keep-the-bottle guarantee — if you don't love it, email us for a full refund. No return shipping required." },
                     ].map((item) => (
                       <details key={item.title} className="group border-b border-stone-100 last:border-b-0">
                         <summary className="flex items-center justify-between py-3 cursor-pointer text-sm font-semibold text-[#1C1917] hover:text-[#B45309] transition-colors">
@@ -1054,7 +1054,7 @@ export default function Product() {
         </div>
       </section>
 
-      {/* ═══════════ 30-DAY GUARANTEE (Enhanced Earthwise style) ═══════════ */}
+      {/* ═══════════ 60-DAY GUARANTEE (Enhanced Earthwise style) ═══════════ */}
       <section className="py-16 md:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
@@ -1068,7 +1068,7 @@ export default function Product() {
                   <ShieldCheck size={40} className="text-white" />
                 </div>
                 <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3">
-                  30-Day Keep-the-Bottle Guarantee
+                  60-Day Keep-the-Bottle Guarantee
                 </h2>
                 <p className="text-emerald-100 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
                   Don't love it? <strong className="text-white">Keep the bottle. Full refund within 48 hours.</strong> No return shipping, no restocking fees, no questions asked. We believe in BrewNectar so much, we'll take all the risk.
@@ -1215,7 +1215,7 @@ export default function Product() {
               Ready to Upgrade Your Coffee?
             </h2>
             <p className="text-[#78716C] text-lg mb-8 max-w-lg mx-auto">
-              Join thousands of high performers. Try it for 30 days — if you don't feel sharper, keep the bottle and we'll refund every penny.
+              Join thousands of high performers. Try it for 60 days — if you don't feel sharper, keep the bottle and we'll refund every penny.
             </p>
             <a
               href="#offers"
@@ -1226,7 +1226,7 @@ export default function Product() {
               Start Your Subscription
               <ArrowRight size={18} />
             </a>
-            <p className="text-xs text-[#A8A29E] mt-3">30-day keep-the-bottle guarantee · Free shipping on subscriptions</p>
+            <p className="text-xs text-[#A8A29E] mt-3">60-day keep-the-bottle guarantee · Free shipping on subscriptions</p>
           </FadeUp>
         </div>
       </section>

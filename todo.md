@@ -148,3 +148,9 @@
 - [x] Replace the four temporary ingredient image references with the regenerated visuals
 - [x] Redesign expanded Evidence studies into a wider desktop layout while preserving the current mobile stack
 - [x] Verify the ingredient carousel and Evidence expansions on desktop and mobile
+- [x] Replace every customer-facing 30-day guarantee reference with a 60-day guarantee across all website pages
+- [x] Add regression coverage that prevents old 30-day guarantee wording from returning
+- [x] Verify the updated guarantee messaging on affected desktop and mobile pages
+- [x] Replace both stick-pack “Available for Next-Day Dispatch” notices with a dynamic “Order now and ships by: [date]” message
+- [x] Make the ship-by date business-day aware and stable during a browsing session
+- [x] Add regression coverage and verify the ship-by notice on desktop and mobile

@@ -606,7 +606,7 @@ export default function Advertorial() {
             </FadeUp>
           </section>
 
-          <CTABanner text="Join thousands of members. 30-day money-back guarantee." />
+          <CTABanner text="Join thousands of members. 60-day money-back guarantee." />
 
           {/* ---------- 6. WHY US / DIFFERENCE ---------- */}
           <section id="difference" className="scroll-mt-24">
@@ -641,7 +641,7 @@ export default function Advertorial() {
                       ["Tastes great (vanilla bean)", true, "Varies", false],
                       ["No pills to swallow", true, true, false],
                       ["Stimulates Nerve Growth Factor", true, "Some", false],
-                      ["30-day money-back guarantee", true, "Some", "Some"],
+                      ["60-day money-back guarantee", true, "Some", "Some"],
                       ["Subscription savings up to 45%", true, false, false],
                     ].map(([feature, bn, nc, cn], i) => (
                       <tr key={i} className="border-b border-stone-100">
@@ -679,7 +679,7 @@ export default function Advertorial() {
             <FadeUp>
               <div className="flex items-center gap-3 mb-6">
                 <span className="flex items-center justify-center w-9 h-9 rounded-full bg-[#FEF3C7] text-[#B45309] font-bold text-sm">7</span>
-                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1C1917]">Our 30-Day "Feel the Difference" Guarantee</h2>
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1C1917]">Our 60-Day "Feel the Difference" Guarantee</h2>
               </div>
             </FadeUp>
 
@@ -690,7 +690,7 @@ export default function Advertorial() {
                     <Shield size={28} className="text-emerald-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-[#1C1917] text-lg mb-3">Try it for 30 days. If you don't feel sharper, we'll refund every penny.</h3>
+                    <h3 className="font-semibold text-[#1C1917] text-lg mb-3">Try it for 60 days. If you don't feel sharper, we'll refund every penny.</h3>
                     <p className="text-[#44403C] text-[15px] leading-relaxed mb-4">
                       We're confident enough in the science to put our money where our mouth is. Use BrewNectar for a full month. If you don't notice improved focus, better recall, or smoother energy — email us and we'll process a full refund. No hoops. No questions. No hassle.
                     </p>
@@ -739,7 +739,7 @@ export default function Advertorial() {
                   </Link>
                 </div>
                 <div className="flex items-center justify-center gap-4 mt-5 text-stone-400 text-xs">
-                  <span>✓ 30-day guarantee</span>
+                  <span>✓ 60-day guarantee</span>
                   <span>✓ Free shipping</span>
                   <span>✓ Cancel anytime</span>
                 </div>

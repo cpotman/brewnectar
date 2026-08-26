@@ -351,7 +351,7 @@ function ClinicalStudies() {
 /* ─── Ticker messages ─── */
 const TICKER_MESSAGES = [
   "Free shipping on every subscription",
-  "30 days. If you don't feel sharper, keep the bottle. Full refund.",
+  "60 days. If you don't feel sharper, keep the bottle. Full refund.",
   "Zero sugar · 30 servings · $0.90/day",
   "Smooth vanilla bean — not earthy, not bitter, not mushroom",
   "Every batch third-party tested for purity & potency",
@@ -440,7 +440,7 @@ const FAQ_DATA = [
   },
   {
     q: "What if it doesn’t work for me?",
-    a: "Then you keep the bottle and we refund every penny. No form. No return shipping. One email. We do this because the vast majority of subscribers stay past their first order. We're that confident. Try it for 30 days. If your coffee doesn’t feel different, you paid nothing.",
+    a: "Then you keep the bottle and we refund every penny. No form. No return shipping. One email. We do this because the vast majority of subscribers stay past their first order. We're that confident. Try it for 60 days. If your coffee doesn’t feel different, you paid nothing.",
   },
 ];
 
@@ -518,7 +518,7 @@ const PLANS: Record<PlanType, {
       { text: "\ud83c\udf93 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
       { text: "\ud83d\udcb0 Maximum savings — lowest price per serving", positive: true },
       { text: "\ud83d\udd12 Lock in savings — price guaranteed even if we raise it", positive: true },
-      { text: "🛡️ Try it 30 days — if you don't feel sharper, keep the bottle. We'll refund every penny.", positive: true },
+      { text: "🛡️ Try it 60 days — if you don't feel sharper, keep the bottle. We'll refund every penny.", positive: true },
       { text: "🏆 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
       { text: "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67 Share with family and friends", positive: true },
       { text: "\ud83d\ude9a Fast & FREE Shipping", positive: true },
@@ -541,7 +541,7 @@ const PLANS: Record<PlanType, {
       { text: "\ud83c\udf93 Exclusive Focus & Clarity Masterclass ($25 value)", positive: true },
       { text: "\ud83d\udcb0 Great value — $32/mo, share with a partner", positive: true },
       { text: "\ud83d\udd12 Lock in savings — price guaranteed even if we raise it", positive: true },
-      { text: "\ud83d\udee1\ufe0f Try it 30 days — keep the bottle if you're not sharper. Full refund.", positive: true },
+      { text: "\ud83d\udee1\ufe0f Try it 60 days — keep the bottle if you're not sharper. Full refund.", positive: true },
       { text: "\ud83c\udfc6 La Marzocco Espresso Machine ($4500) Giveaway entries", positive: true },
       { text: "\ud83d\ude9a Fast & FREE Shipping", positive: true },
       { text: "\ud83d\udd04 Cancel or pause anytime", positive: true },
@@ -1204,7 +1204,7 @@ export default function Home() {
               {/* Trust badges below images */}
               <div className="mt-4 flex items-center justify-center gap-6">
                 {[
-                  { icon: ShieldCheck, label: "30-Day Guarantee" },
+                  { icon: ShieldCheck, label: "60-Day Guarantee" },
                   { icon: Truck, label: "Free Shipping" },
                   { icon: RotateCcw, label: "Cancel Anytime" },
                 ].map((badge) => (
@@ -1423,7 +1423,7 @@ export default function Home() {
 
                 <div className="grid grid-cols-3 gap-3 mb-4">
                   {[
-                    { icon: ShieldCheck, label: "30-Day Keep-the-Bottle Guarantee" },
+                    { icon: ShieldCheck, label: "60-Day Keep-the-Bottle Guarantee" },
                     { icon: Truck, label: "Free Shipping" },
                     { icon: RotateCcw, label: "Cancel Anytime" },
                   ].map((badge) => (
@@ -1669,7 +1669,7 @@ export default function Home() {
               >
                 Start My Smarter Coffee Ritual
               </a>
-              <p className="text-xs text-[#A8A29E] mt-3">30-day keep-the-bottle guarantee · Free shipping · Cancel anytime</p>
+              <p className="text-xs text-[#A8A29E] mt-3">60-day keep-the-bottle guarantee · Free shipping · Cancel anytime</p>
             </div>
           </FadeUp>
         </div>

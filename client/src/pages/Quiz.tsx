@@ -663,7 +663,7 @@ export default function Quiz() {
 
                         <div className="flex items-center justify-center gap-2 mt-3">
                           <Check size={14} className="text-emerald-600" />
-                          <span className="text-xs text-[#78716C]">30-day money-back guarantee</span>
+                          <span className="text-xs text-[#78716C]">60-day money-back guarantee</span>
                         </div>
                       </div>
                     </div>
@@ -671,7 +671,7 @@ export default function Quiz() {
                     {/* Trust badges */}
                     <div className="grid grid-cols-3 gap-4 mt-5">
                       {[
-                        { icon: <ShieldCheck size={18} />, label: "30-Day Guarantee" },
+                        { icon: <ShieldCheck size={18} />, label: "60-Day Guarantee" },
                         { icon: <Truck size={18} />, label: "Free Shipping" },
                         { icon: <RotateCcw size={18} />, label: "Cancel Anytime" },
                       ].map((badge) => (
@@ -800,7 +800,7 @@ export default function Quiz() {
                     Ready to Upgrade Your Coffee?
                   </h3>
                   <p className="text-stone-400 text-sm mb-6 max-w-md mx-auto">
-                    Join thousands of high performers. 30-day money-back guarantee.
+                    Join thousands of high performers. 60-day money-back guarantee.
                   </p>
                   <Link
                     href="/product"

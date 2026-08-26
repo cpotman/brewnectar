@@ -870,7 +870,7 @@ export default function Compare() {
                   Keep your coffee. Upgrade your brain. Join thousands of high performers who made the switch.
                 </p>
                 <p className="text-stone-500 text-sm mb-8">
-                  30-day money-back guarantee · Cancel anytime · Free shipping on 2+ bottles
+                  60-day money-back guarantee · Cancel anytime · Free shipping on 2+ bottles
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Link

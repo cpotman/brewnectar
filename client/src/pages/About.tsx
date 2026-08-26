@@ -96,7 +96,7 @@ export default function About() {
             Ready to Upgrade Your Morning?
           </h2>
           <p className="text-[#57534E] mb-8">
-            Try BrewNectar risk-free with our 30-day keep-the-bottle guarantee.
+            Try BrewNectar risk-free with our 60-day keep-the-bottle guarantee.
           </p>
           <Link
             href="/product"
