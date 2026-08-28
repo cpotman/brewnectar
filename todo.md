@@ -154,3 +154,9 @@
 - [x] Replace both stick-pack “Available for Next-Day Dispatch” notices with a dynamic “Order now and ships by: [date]” message
 - [x] Make the ship-by date business-day aware and stable during a browsing session
 - [x] Add regression coverage and verify the ship-by notice on desktop and mobile
+- [x] Replace “Is It Safe?” in both stick-pack PDP info accordions with a nested Frequently Asked Questions panel containing the three specified questions
+- [x] Rename “The Complete Stack” to “Every Ingredient Carefully Chosen”
+- [x] Remove the “Choose BrewNectar” CTA below the stick-pack comparison table
+- [x] Reduce excessive vertical spacing between stick-pack page sections while preserving readable rhythm
+- [x] Remove “Why sticks instead of the syrup?” and “Can I cancel my subscription?” from the lower stick-pack FAQ
+- [x] Add regression coverage and verify all refinements on desktop and mobile

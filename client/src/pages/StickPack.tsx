@@ -203,16 +203,131 @@ const FAQ_ITEMS = [
   { q: "Doesn't hot coffee kill the probiotic?", a: "Bacillus coagulans forms a spore coat specifically evolved to survive heat. Published stability data in brewed coffee confirms 92% survival." },
   { q: "How fast will I feel it?", a: "L-Theanine and citicoline have acute effects within 40 minutes to 3 hours. Rhodiola lands at ~2 weeks. Full stack benefits compound over 8-12 weeks." },
   { q: "I've tried nootropics before and they didn't work.", a: "Most are underdosed, single-mechanism, and ignore sleep and gut. This formula addresses three upstream causes simultaneously at clinical doses." },
-  { q: "Why sticks instead of the syrup?", a: "Travel-ready, precision-dosed, caffeine-free, and includes gut support (probiotic + prebiotic) that the syrup doesn't. Different formula, same philosophy." },
-  { q: "Can I cancel my subscription?", a: "Yes. Cancel or pause anytime from your account dashboard. No contracts, no fees, no questions." },
   { q: "Is this safe?", a: "All ingredients are GRAS (Generally Recognized as Safe). Manufactured in a GMP-certified US facility. Consult your doctor if pregnant, nursing, or on medication." },
   { q: "Who shouldn't take this?", a: "Anyone pregnant or nursing, under 18, or taking MAOIs or blood thinners should consult their doctor first. Contains ashwagandha." },
 ];
+
+const PDP_FAQ_ITEMS = [
+  {
+    q: "Is it safe?",
+    a: "Every ingredient is Generally Recognized as Safe (GRAS) by the FDA. BrewNectar is made in a cGMP-certified, FDA-registered US facility and third-party tested for purity and potency. Consult your doctor if you are pregnant, nursing, or taking medication.",
+  },
+  {
+    q: "What does it taste like?",
+    a: "Subtly sweet with a smooth vanilla finish. There is no mushroom taste or earthiness, and it dissolves completely into hot or iced coffee.",
+  },
+  {
+    q: "How fast will I feel it?",
+    a: "L-Theanine and citicoline can support calm focus within the first few hours. Rhodiola and the rest of the stack build over the following weeks with consistent daily use.",
+  },
+];
+
+const PDP_INFO_ITEMS = [
+  {
+    id: "ingredients",
+    title: "Ingredients",
+    content: "Cognizin® (Citicoline) 250mg, L-Theanine 200mg, Lion’s Mane (10:1 extract) 500mg, Rhodiola Rosea 150mg, Ashwagandha (KSM-66®) 300mg, Cordyceps Militaris 250mg, Prebiotic Fiber (Chicory Root Inulin) 2g, B-Vitamin Complex (B6, B9, B12). Other: Natural vanilla bean flavor, monk fruit extract. No caffeine, no sugar, no artificial colors.",
+  },
+  {
+    id: "shipping",
+    title: "Shipping & Returns",
+    content: "Free shipping on all subscription orders. Standard shipping (3–5 business days) on one-time purchases. All orders ship from our US warehouse. Returns accepted within 60 days — keep the bag, get a full refund, no questions asked.",
+  },
+  { id: "faq", title: "Frequently Asked Questions", content: "" },
+  {
+    id: "guarantee",
+    title: "60-Day Guarantee",
+    content: "Try BrewNectar risk-free for 60 days. If you don’t notice a difference in your focus, energy, or gut health, contact us for a full refund — no need to return the bag. We believe in the product enough to take the risk for you.",
+  },
+];
+
+function PdpInfoAccordion({
+  className,
+  openId,
+  onToggle,
+  openFaq,
+  onFaqToggle,
+}: {
+  className: string;
+  openId: string | null;
+  onToggle: (id: string) => void;
+  openFaq: number | null;
+  onFaqToggle: (index: number) => void;
+}) {
+  return (
+    <div className={`${className} space-y-0 border border-stone-200 rounded-xl overflow-hidden`}>
+      {PDP_INFO_ITEMS.map((item) => {
+        const isOpen = openId === item.id;
+        return (
+          <div key={item.id}>
+            <button
+              type="button"
+              onClick={() => onToggle(item.id)}
+              className={`w-full flex items-center justify-between px-4 py-3 text-left ${isOpen ? "" : "border-b border-stone-200 last:border-b-0"} hover:bg-stone-50 transition-colors`}
+              aria-expanded={isOpen}
+            >
+              <span className="text-sm font-medium text-[#1C1917]">{item.title}</span>
+              <ChevronDown size={16} className={`text-[#78716C] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+            </button>
+            <AnimatePresence initial={false}>
+              {isOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="overflow-hidden border-b border-stone-200 last:border-b-0"
+                >
+                  {item.id === "faq" ? (
+                    <div className="px-4 pb-3">
+                      {PDP_FAQ_ITEMS.map((faq, index) => {
+                        const isFaqOpen = openFaq === index;
+                        return (
+                          <div key={faq.q} className="border-t border-stone-100 first:border-t-0">
+                            <button
+                              type="button"
+                              onClick={() => onFaqToggle(index)}
+                              className="w-full flex items-center justify-between gap-4 py-3 text-left"
+                              aria-expanded={isFaqOpen}
+                            >
+                              <span className="text-xs font-semibold text-[#44403C]">{faq.q}</span>
+                              <ChevronDown size={14} className={`flex-shrink-0 text-[#A8A29E] transition-transform duration-200 ${isFaqOpen ? "rotate-180" : ""}`} />
+                            </button>
+                            <AnimatePresence initial={false}>
+                              {isFaqOpen && (
+                                <motion.p
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: "auto", opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.18 }}
+                                  className="overflow-hidden pb-3 text-xs text-[#57534E] leading-relaxed"
+                                >
+                                  {faq.a}
+                                </motion.p>
+                              )}
+                            </AnimatePresence>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <p className="px-4 pb-3 text-xs text-[#57534E] leading-relaxed">{item.content}</p>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 /* ======= MAIN COMPONENT ======= */
 export default function StickPack() {
   const [selectedPlan, setSelectedPlan] = useState("3mo");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [openPdpFaq, setOpenPdpFaq] = useState<number | null>(null);
   const [expandedIngredient, setExpandedIngredient] = useState<number | null>(null);
   const [openPdpInfo, setOpenPdpInfo] = useState<string | null>(null);
   const [expandedWhatsInside, setExpandedWhatsInside] = useState<number | null>(null);
@@ -304,28 +419,13 @@ export default function StickPack() {
                 ))}
               </div>
               {/* PDP Info Dropdowns */}
-              <div className="hidden lg:block mt-4 space-y-0 border border-stone-200 rounded-xl overflow-hidden">
-                {[
-                  { id: "ingredients", title: "Ingredients", content: "Cognizin® (Citicoline) 250mg, L-Theanine 200mg, Lion’s Mane (10:1 extract) 500mg, Rhodiola Rosea 150mg, Ashwagandha (KSM-66®) 300mg, Cordyceps Militaris 250mg, Prebiotic Fiber (Chicory Root Inulin) 2g, B-Vitamin Complex (B6, B9, B12). Other: Natural vanilla bean flavor, monk fruit extract. No caffeine, no sugar, no artificial colors." },
-                  { id: "shipping", title: "Shipping & Returns", content: "Free shipping on all subscription orders. Standard shipping (3–5 business days) on one-time purchases. All orders ship from our US warehouse. Returns accepted within 60 days — keep the bag, get a full refund, no questions asked." },
-                  { id: "safety", title: "Is It Safe?", content: "Yes. Every ingredient is Generally Recognized as Safe (GRAS) by the FDA. Manufactured in a cGMP-certified, FDA-registered facility in the USA. Third-party tested for purity and potency. Free from caffeine, gluten, soy, dairy, nuts, and artificial additives. Consult your doctor if you are pregnant, nursing, or on medication." },
-                  { id: "guarantee", title: "60-Day Guarantee", content: "Try BrewNectar risk-free for 60 days. If you don’t notice a difference in your focus, energy, or gut health, contact us for a full refund — no need to return the bag. We believe in the product enough to take the risk for you." },
-                ].map((item) => (
-                  <button key={item.id} onClick={() => setOpenPdpInfo(openPdpInfo === item.id ? null : item.id)} className="w-full text-left">
-                    <div className={`flex items-center justify-between px-4 py-3 ${openPdpInfo === item.id ? "" : "border-b border-stone-200 last:border-b-0"} hover:bg-stone-50 transition-colors`}>
-                      <span className="text-sm font-medium text-[#1C1917]">{item.title}</span>
-                      <ChevronDown size={16} className={`text-[#78716C] transition-transform duration-200 ${openPdpInfo === item.id ? "rotate-180" : ""}`} />
-                    </div>
-                    <AnimatePresence>
-                      {openPdpInfo === item.id && (
-                        <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
-                          <p className="px-4 pb-3 text-xs text-[#57534E] leading-relaxed border-b border-stone-200">{item.content}</p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </button>
-                ))}
-              </div>
+              <PdpInfoAccordion
+                className="hidden lg:block mt-4"
+                openId={openPdpInfo}
+                onToggle={(id) => setOpenPdpInfo(openPdpInfo === id ? null : id)}
+                openFaq={openPdpFaq}
+                onFaqToggle={(index) => setOpenPdpFaq(openPdpFaq === index ? null : index)}
+              />
             </FadeUp>
 
             {/* Right: Plan Selector */}
@@ -424,28 +524,13 @@ export default function StickPack() {
                   <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">60-Day Keep-the-Bag Guarantee</p><p className="text-[11px] text-[#78716C]">Don't love it? Keep the bag. Full refund, no questions.</p></div></div>
                   <div className="flex items-center justify-between px-1"><div className="flex items-center gap-2"><Truck size={14} className="text-[#78716C]" /><span className="text-xs text-[#57534E]">Free shipping</span></div><div className="flex items-center gap-2"><RotateCcw size={14} className="text-[#78716C]" /><span className="text-xs text-[#57534E]">Cancel anytime</span></div></div>
                   {/* PDP Info Dropdowns - mobile only */}
-                  <div className="lg:hidden mt-2 space-y-0 border border-stone-200 rounded-xl overflow-hidden">
-                    {[
-                      { id: "ingredients", title: "Ingredients", content: "Cognizin® (Citicoline) 250mg, L-Theanine 200mg, Lion’s Mane (10:1 extract) 500mg, Rhodiola Rosea 150mg, Ashwagandha (KSM-66®) 300mg, Cordyceps Militaris 250mg, Prebiotic Fiber (Chicory Root Inulin) 2g, B-Vitamin Complex (B6, B9, B12). Other: Natural vanilla bean flavor, monk fruit extract. No caffeine, no sugar, no artificial colors." },
-                      { id: "shipping", title: "Shipping & Returns", content: "Free shipping on all subscription orders. Standard shipping (3–5 business days) on one-time purchases. All orders ship from our US warehouse. Returns accepted within 60 days — keep the bag, get a full refund, no questions asked." },
-                      { id: "safety", title: "Is It Safe?", content: "Yes. Every ingredient is Generally Recognized as Safe (GRAS) by the FDA. Manufactured in a cGMP-certified, FDA-registered facility in the USA. Third-party tested for purity and potency. Free from caffeine, gluten, soy, dairy, nuts, and artificial additives. Consult your doctor if you are pregnant, nursing, or on medication." },
-                      { id: "guarantee", title: "60-Day Guarantee", content: "Try BrewNectar risk-free for 60 days. If you don’t notice a difference in your focus, energy, or gut health, contact us for a full refund — no need to return the bag. We believe in the product enough to take the risk for you." },
-                    ].map((item) => (
-                      <button key={item.id} onClick={() => setOpenPdpInfo(openPdpInfo === item.id ? null : item.id)} className="w-full text-left">
-                        <div className={`flex items-center justify-between px-4 py-3 ${openPdpInfo === item.id ? "" : "border-b border-stone-200 last:border-b-0"} hover:bg-stone-50 transition-colors`}>
-                          <span className="text-sm font-medium text-[#1C1917]">{item.title}</span>
-                          <ChevronDown size={16} className={`text-[#78716C] transition-transform duration-200 ${openPdpInfo === item.id ? "rotate-180" : ""}`} />
-                        </div>
-                        <AnimatePresence>
-                          {openPdpInfo === item.id && (
-                            <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
-                              <p className="px-4 pb-3 text-xs text-[#57534E] leading-relaxed border-b border-stone-200">{item.content}</p>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </button>
-                    ))}
-                  </div>
+                  <PdpInfoAccordion
+                    className="lg:hidden mt-2"
+                    openId={openPdpInfo}
+                    onToggle={(id) => setOpenPdpInfo(openPdpInfo === id ? null : id)}
+                    openFaq={openPdpFaq}
+                    onFaqToggle={(index) => setOpenPdpFaq(openPdpFaq === index ? null : index)}
+                  />
                 </div>
               </div>
             </FadeUp>
@@ -453,14 +538,14 @@ export default function StickPack() {
         </div>
       </section>
       {/* === SECTION 2: PROBLEM AGITATION (condensed) === */}
-      <section className="py-20 md:py-28 relative overflow-hidden" style={{ backgroundColor: "#FDF3E7" }}>
+      <section className="py-14 md:py-20 relative overflow-hidden" style={{ backgroundColor: "#FDF3E7" }}>
         <div className="absolute inset-0 pointer-events-none"><img src={IMAGES.soundFamiliarBackground} alt="" className="w-full h-full object-cover opacity-80" /></div>
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6">
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">Sound familiar?</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-12">You're not losing your edge.<br />Your brain is running on empty.</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-8">You're not losing your edge.<br />Your brain is running on empty.</h2>
           </FadeUp>
-          <div className="space-y-4 mb-12">
+          <div className="space-y-4 mb-8">
             {[
               { emoji: "\ud83d\udcda", text: "Reading the same paragraph three times and still not knowing what it said." },
               { emoji: "\u23f0", text: "The 2 PM wall, where the work is still there and you aren't." },
@@ -489,11 +574,11 @@ export default function StickPack() {
       </section>
 
       {/* === SECTION 3: WHAT'S INSIDE (visual ingredient cards) === */}
-      <section className="py-8 md:py-12 lg:py-14 bg-white overflow-hidden">
+      <section className="py-8 md:py-10 lg:py-12 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-2 text-center">What's Inside</p>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">The Complete Stack.</h2>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">Every Ingredient Carefully Chosen.</h2>
             <p className="text-center text-[#78716C] text-sm md:text-base max-w-2xl mx-auto">Sharper focus.* Calmer energy.* Long-term brain support.* A healthier gut-brain connection.* Each ingredient targets a specific mechanism.</p>
           </FadeUp>
         </div>
@@ -546,14 +631,14 @@ export default function StickPack() {
       </section>
 
       {/* === SECTION 4: THE COMPOUNDING EFFECT === */}
-      <section className="py-20 md:py-28 bg-[#FDFBF7]">
+      <section className="py-14 md:py-20 bg-[#FDFBF7]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706] mb-3 text-center">The Compounding Effect</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-center text-[#1C1917] mb-3">Day 1 Feels Good. Month 3 Changes Everything.</h2>
-            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">Most supplements give you a spike and a crash. BrewNectar compounds. Each week builds on the last.</p>
+            <p className="text-center text-[#78716C] text-lg mb-10 max-w-2xl mx-auto">Most supplements give you a spike and a crash. BrewNectar compounds. Each week builds on the last.</p>
           </FadeUp>
-          <div className="relative mb-16">
+          <div className="relative mb-4">
             <div className="hidden md:block absolute top-8 left-[12.5%] right-[12.5%] h-0.5 border-t-2 border-dashed border-[#D97706]/30" />
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4">
               {COMPOUNDING_STAGES.map((milestone, i) => (
@@ -582,7 +667,7 @@ export default function StickPack() {
 
       {/* === SECTION 5: COMPARISON TABLE === */}
       {/* === USER-REPORTED OUTCOMES — Red/orange gradient background with clean box === */}
-      <section className="py-16 md:py-20 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #7C2D12 0%, #9A3412 25%, #C2410C 50%, #D97706 80%, #F59E0B 100%)" }}>
+      <section className="py-12 md:py-16 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #7C2D12 0%, #9A3412 25%, #C2410C 50%, #D97706 80%, #F59E0B 100%)" }}>
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(0,0,0,0.2) 0%, transparent 40%)" }} />
         <div className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
@@ -613,13 +698,13 @@ export default function StickPack() {
       </section>
 
       {/* === SECTION 5: COMPARISON TABLE === */}
-      <section className="py-20 md:py-28 bg-[#FDFBF7]">
+      <section className="py-14 md:py-20 bg-[#FDFBF7]">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1C1917] mb-2 text-center">
               BrewNectar vs. Mushroom Coffee
             </h2>
-            <p className="text-sm md:text-base text-[#57534E] mb-10 text-center">
+            <p className="text-sm md:text-base text-[#57534E] mb-7 text-center">
               See how a research-backed stick pack compares to typical mushroom coffee.
             </p>
           </FadeUp>
@@ -664,25 +749,13 @@ export default function StickPack() {
             </div>
           </FadeUp>
 
-          <FadeUp delay={0.2}>
-            <div className="mt-10 text-center">
-              <a
-                href="#offers"
-                className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold text-white rounded-full bg-[#1C1917] hover:bg-[#292524] transition-colors"
-                onClick={(e) => { e.preventDefault(); document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth' }); }}
-              >
-                Choose BrewNectar
-                <ArrowRight size={16} />
-              </a>
-            </div>
-          </FadeUp>
         </div>
       </section>
 
 
 
       {/* === SECTION 7: GUARANTEE === */}
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <div className="relative rounded-3xl overflow-hidden">
@@ -716,10 +789,10 @@ export default function StickPack() {
         </div>
       </section>
       {/* === DUPLICATE OFFER BLOCK (full PDP copy above FAQ) === */}
-      <section className="pt-16 md:pt-20 pb-10 md:pb-14 bg-[#FDFBF7]">
+      <section className="pt-10 md:pt-14 pb-8 md:pb-10 bg-[#FDFBF7]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
-            <div className="text-center mb-10">
+            <div className="text-center mb-8">
               <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1C1917] mb-2">Ready to Upgrade Your Coffee?</h2>
               <p className="text-[#57534E] text-sm md:text-base">Choose your plan and start your smarter morning.</p>
             </div>
@@ -762,28 +835,13 @@ export default function StickPack() {
                 ))}
               </div>
               {/* PDP Info Dropdowns */}
-              <div className="hidden lg:block mt-4 space-y-0 border border-stone-200 rounded-xl overflow-hidden">
-                {[
-                  { id: "ingredients", title: "Ingredients", content: "Cognizin® (Citicoline) 250mg, L-Theanine 200mg, Lion’s Mane (10:1 extract) 500mg, Rhodiola Rosea 150mg, Ashwagandha (KSM-66®) 300mg, Cordyceps Militaris 250mg, Prebiotic Fiber (Chicory Root Inulin) 2g, B-Vitamin Complex (B6, B9, B12). Other: Natural vanilla bean flavor, monk fruit extract. No caffeine, no sugar, no artificial colors." },
-                  { id: "shipping", title: "Shipping & Returns", content: "Free shipping on all subscription orders. Standard shipping (3–5 business days) on one-time purchases. All orders ship from our US warehouse. Returns accepted within 60 days — keep the bag, get a full refund, no questions asked." },
-                  { id: "safety", title: "Is It Safe?", content: "Yes. Every ingredient is Generally Recognized as Safe (GRAS) by the FDA. Manufactured in a cGMP-certified, FDA-registered facility in the USA. Third-party tested for purity and potency. Free from caffeine, gluten, soy, dairy, nuts, and artificial additives. Consult your doctor if you are pregnant, nursing, or on medication." },
-                  { id: "guarantee", title: "60-Day Guarantee", content: "Try BrewNectar risk-free for 60 days. If you don’t notice a difference in your focus, energy, or gut health, contact us for a full refund — no need to return the bag. We believe in the product enough to take the risk for you." },
-                ].map((item) => (
-                  <button key={item.id} onClick={() => setOpenPdpInfo(openPdpInfo === item.id ? null : item.id)} className="w-full text-left">
-                    <div className={`flex items-center justify-between px-4 py-3 ${openPdpInfo === item.id ? "" : "border-b border-stone-200 last:border-b-0"} hover:bg-stone-50 transition-colors`}>
-                      <span className="text-sm font-medium text-[#1C1917]">{item.title}</span>
-                      <ChevronDown size={16} className={`text-[#78716C] transition-transform duration-200 ${openPdpInfo === item.id ? "rotate-180" : ""}`} />
-                    </div>
-                    <AnimatePresence>
-                      {openPdpInfo === item.id && (
-                        <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
-                          <p className="px-4 pb-3 text-xs text-[#57534E] leading-relaxed border-b border-stone-200">{item.content}</p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </button>
-                ))}
-              </div>
+              <PdpInfoAccordion
+                className="hidden lg:block mt-4"
+                openId={openPdpInfo}
+                onToggle={(id) => setOpenPdpInfo(openPdpInfo === id ? null : id)}
+                openFaq={openPdpFaq}
+                onFaqToggle={(index) => setOpenPdpFaq(openPdpFaq === index ? null : index)}
+              />
             </FadeUp>
 
             {/* Right: Plan Selector */}
@@ -865,28 +923,13 @@ export default function StickPack() {
                   <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">60-Day Keep-the-Bag Guarantee</p><p className="text-[11px] text-[#78716C]">Don't love it? Keep the bag. Full refund, no questions.</p></div></div>
                   <div className="flex items-center justify-between px-1"><div className="flex items-center gap-2"><Truck size={14} className="text-[#78716C]" /><span className="text-xs text-[#57534E]">Free shipping</span></div><div className="flex items-center gap-2"><RotateCcw size={14} className="text-[#78716C]" /><span className="text-xs text-[#57534E]">Cancel anytime</span></div></div>
                   {/* PDP Info Dropdowns - mobile only */}
-                  <div className="lg:hidden mt-2 space-y-0 border border-stone-200 rounded-xl overflow-hidden">
-                    {[
-                      { id: "ingredients", title: "Ingredients", content: "Cognizin® (Citicoline) 250mg, L-Theanine 200mg, Lion’s Mane (10:1 extract) 500mg, Rhodiola Rosea 150mg, Ashwagandha (KSM-66®) 300mg, Cordyceps Militaris 250mg, Prebiotic Fiber (Chicory Root Inulin) 2g, B-Vitamin Complex (B6, B9, B12). Other: Natural vanilla bean flavor, monk fruit extract. No caffeine, no sugar, no artificial colors." },
-                      { id: "shipping", title: "Shipping & Returns", content: "Free shipping on all subscription orders. Standard shipping (3–5 business days) on one-time purchases. All orders ship from our US warehouse. Returns accepted within 60 days — keep the bag, get a full refund, no questions asked." },
-                      { id: "safety", title: "Is It Safe?", content: "Yes. Every ingredient is Generally Recognized as Safe (GRAS) by the FDA. Manufactured in a cGMP-certified, FDA-registered facility in the USA. Third-party tested for purity and potency. Free from caffeine, gluten, soy, dairy, nuts, and artificial additives. Consult your doctor if you are pregnant, nursing, or on medication." },
-                      { id: "guarantee", title: "60-Day Guarantee", content: "Try BrewNectar risk-free for 60 days. If you don’t notice a difference in your focus, energy, or gut health, contact us for a full refund — no need to return the bag. We believe in the product enough to take the risk for you." },
-                    ].map((item) => (
-                      <button key={item.id} onClick={() => setOpenPdpInfo(openPdpInfo === item.id ? null : item.id)} className="w-full text-left">
-                        <div className={`flex items-center justify-between px-4 py-3 ${openPdpInfo === item.id ? "" : "border-b border-stone-200 last:border-b-0"} hover:bg-stone-50 transition-colors`}>
-                          <span className="text-sm font-medium text-[#1C1917]">{item.title}</span>
-                          <ChevronDown size={16} className={`text-[#78716C] transition-transform duration-200 ${openPdpInfo === item.id ? "rotate-180" : ""}`} />
-                        </div>
-                        <AnimatePresence>
-                          {openPdpInfo === item.id && (
-                            <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
-                              <p className="px-4 pb-3 text-xs text-[#57534E] leading-relaxed border-b border-stone-200">{item.content}</p>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </button>
-                    ))}
-                  </div>
+                  <PdpInfoAccordion
+                    className="lg:hidden mt-2"
+                    openId={openPdpInfo}
+                    onToggle={(id) => setOpenPdpInfo(openPdpInfo === id ? null : id)}
+                    openFaq={openPdpFaq}
+                    onFaqToggle={(index) => setOpenPdpFaq(openPdpFaq === index ? null : index)}
+                  />
                 </div>
               </div>
             </FadeUp>
@@ -896,7 +939,7 @@ export default function StickPack() {
 
 
       {/* === REVIEWS SECTION === */}
-      <section className="py-16 md:py-20 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #7C2D12 0%, #9A3412 25%, #C2410C 50%, #D97706 80%, #F59E0B 100%)" }}>
+      <section className="py-12 md:py-16 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #7C2D12 0%, #9A3412 25%, #C2410C 50%, #D97706 80%, #F59E0B 100%)" }}>
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(0,0,0,0.2) 0%, transparent 40%)" }} />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
@@ -909,7 +952,7 @@ export default function StickPack() {
               <span className="text-sm font-semibold text-white">4.9/5 from 2,400+ reviews</span>
             </div>
             <h2 className="font-display text-2xl md:text-3xl font-bold text-center text-white mb-3">Real Stories From Real Customers</h2>
-            <p className="text-center text-white/70 text-base mb-10 max-w-xl mx-auto">Here’s what people are saying after making BrewNectar part of their daily ritual.</p>
+            <p className="text-center text-white/70 text-base mb-8 max-w-xl mx-auto">Here’s what people are saying after making BrewNectar part of their daily ritual.</p>
           </FadeUp>
           {/* Scrolling review cards */}
           <div className="relative">
@@ -954,10 +997,10 @@ export default function StickPack() {
       </section>
 
       {/* === SECTION 7: FAQ === */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-14 md:py-20 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <FadeUp>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-12">Frequently Asked Questions</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-8">Frequently Asked Questions</h2>
           </FadeUp>
           <div className="space-y-3">
             {FAQ_ITEMS.map((item, i) => (
@@ -982,7 +1025,7 @@ export default function StickPack() {
       </section>
 
       {/* === SECTION 6: THE EVIDENCE (studies, moved below comparison) === */}
-      <section className="py-20 md:py-28 bg-[#FDFBF7]">
+      <section className="py-14 md:py-20 bg-[#FDFBF7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <div className="flex items-center justify-center gap-2 mb-3">
@@ -990,7 +1033,7 @@ export default function StickPack() {
               <p className="text-sm font-semibold uppercase tracking-widest text-[#D97706]">The Evidence</p>
             </div>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-3">We Show You the Papers.</h2>
-            <p className="text-center text-[#78716C] text-lg mb-14 max-w-2xl mx-auto">Every ingredient earns its place. Tap any to read the research yourself.</p>
+            <p className="text-center text-[#78716C] text-lg mb-10 max-w-2xl mx-auto">Every ingredient earns its place. Tap any to read the research yourself.</p>
           </FadeUp>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
             {INGREDIENTS.map((item, i) => {
@@ -1108,7 +1151,7 @@ export default function StickPack() {
       </section>
 
       {/* === SECTION 8: FINAL CTA === */}
-      <section className="py-20 md:py-28 bg-gradient-to-br from-[#1C1917] to-[#292524]">
+      <section className="py-14 md:py-20 bg-gradient-to-br from-[#1C1917] to-[#292524]">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
           <FadeUp>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">Keep your coffee. Lose the fog.</h2>
