@@ -160,3 +160,6 @@
 - [x] Reduce excessive vertical spacing between stick-pack page sections while preserving readable rhythm
 - [x] Remove “Why sticks instead of the syrup?” and “Can I cancel my subscription?” from the lower stick-pack FAQ
 - [x] Add regression coverage and verify all refinements on desktop and mobile
+- [x] Change the stick-pack PDP FAQ popout to show all three question-and-answer pairs pre-expanded without nested toggles
+- [x] Increase question, answer, and body-copy font sizes across all stick-pack PDP information popouts
+- [x] Verify the revised FAQ and larger popout typography on desktop and mobile

@@ -245,14 +245,10 @@ function PdpInfoAccordion({
   className,
   openId,
   onToggle,
-  openFaq,
-  onFaqToggle,
 }: {
   className: string;
   openId: string | null;
   onToggle: (id: string) => void;
-  openFaq: number | null;
-  onFaqToggle: (index: number) => void;
 }) {
   return (
     <div className={`${className} space-y-0 border border-stone-200 rounded-xl overflow-hidden`}>
@@ -266,7 +262,7 @@ function PdpInfoAccordion({
               className={`w-full flex items-center justify-between px-4 py-3 text-left ${isOpen ? "" : "border-b border-stone-200 last:border-b-0"} hover:bg-stone-50 transition-colors`}
               aria-expanded={isOpen}
             >
-              <span className="text-sm font-medium text-[#1C1917]">{item.title}</span>
+              <span className="text-[15px] md:text-base font-medium text-[#1C1917]">{item.title}</span>
               <ChevronDown size={16} className={`text-[#78716C] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
             </button>
             <AnimatePresence initial={false}>
@@ -279,39 +275,16 @@ function PdpInfoAccordion({
                   className="overflow-hidden border-b border-stone-200 last:border-b-0"
                 >
                   {item.id === "faq" ? (
-                    <div className="px-4 pb-3">
-                      {PDP_FAQ_ITEMS.map((faq, index) => {
-                        const isFaqOpen = openFaq === index;
-                        return (
-                          <div key={faq.q} className="border-t border-stone-100 first:border-t-0">
-                            <button
-                              type="button"
-                              onClick={() => onFaqToggle(index)}
-                              className="w-full flex items-center justify-between gap-4 py-3 text-left"
-                              aria-expanded={isFaqOpen}
-                            >
-                              <span className="text-xs font-semibold text-[#44403C]">{faq.q}</span>
-                              <ChevronDown size={14} className={`flex-shrink-0 text-[#A8A29E] transition-transform duration-200 ${isFaqOpen ? "rotate-180" : ""}`} />
-                            </button>
-                            <AnimatePresence initial={false}>
-                              {isFaqOpen && (
-                                <motion.p
-                                  initial={{ height: 0, opacity: 0 }}
-                                  animate={{ height: "auto", opacity: 1 }}
-                                  exit={{ height: 0, opacity: 0 }}
-                                  transition={{ duration: 0.18 }}
-                                  className="overflow-hidden pb-3 text-xs text-[#57534E] leading-relaxed"
-                                >
-                                  {faq.a}
-                                </motion.p>
-                              )}
-                            </AnimatePresence>
-                          </div>
-                        );
-                      })}
+                    <div className="px-4 pb-4">
+                      {PDP_FAQ_ITEMS.map((faq) => (
+                        <div key={faq.q} className="border-t border-stone-100 first:border-t-0 py-4 first:pt-3 last:pb-0">
+                          <h4 className="text-sm md:text-[15px] font-bold text-[#1C1917] leading-snug">{faq.q}</h4>
+                          <p className="mt-1.5 text-sm md:text-[15px] text-[#57534E] leading-relaxed">{faq.a}</p>
+                        </div>
+                      ))}
                     </div>
                   ) : (
-                    <p className="px-4 pb-3 text-xs text-[#57534E] leading-relaxed">{item.content}</p>
+                    <p className="px-4 pb-4 text-sm md:text-[15px] text-[#57534E] leading-relaxed">{item.content}</p>
                   )}
                 </motion.div>
               )}
@@ -327,7 +300,6 @@ function PdpInfoAccordion({
 export default function StickPack() {
   const [selectedPlan, setSelectedPlan] = useState("3mo");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [openPdpFaq, setOpenPdpFaq] = useState<number | null>(null);
   const [expandedIngredient, setExpandedIngredient] = useState<number | null>(null);
   const [openPdpInfo, setOpenPdpInfo] = useState<string | null>(null);
   const [expandedWhatsInside, setExpandedWhatsInside] = useState<number | null>(null);
@@ -423,8 +395,6 @@ export default function StickPack() {
                 className="hidden lg:block mt-4"
                 openId={openPdpInfo}
                 onToggle={(id) => setOpenPdpInfo(openPdpInfo === id ? null : id)}
-                openFaq={openPdpFaq}
-                onFaqToggle={(index) => setOpenPdpFaq(openPdpFaq === index ? null : index)}
               />
             </FadeUp>
 
@@ -528,8 +498,6 @@ export default function StickPack() {
                     className="lg:hidden mt-2"
                     openId={openPdpInfo}
                     onToggle={(id) => setOpenPdpInfo(openPdpInfo === id ? null : id)}
-                    openFaq={openPdpFaq}
-                    onFaqToggle={(index) => setOpenPdpFaq(openPdpFaq === index ? null : index)}
                   />
                 </div>
               </div>
@@ -839,8 +807,6 @@ export default function StickPack() {
                 className="hidden lg:block mt-4"
                 openId={openPdpInfo}
                 onToggle={(id) => setOpenPdpInfo(openPdpInfo === id ? null : id)}
-                openFaq={openPdpFaq}
-                onFaqToggle={(index) => setOpenPdpFaq(openPdpFaq === index ? null : index)}
               />
             </FadeUp>
 
@@ -927,8 +893,6 @@ export default function StickPack() {
                     className="lg:hidden mt-2"
                     openId={openPdpInfo}
                     onToggle={(id) => setOpenPdpInfo(openPdpInfo === id ? null : id)}
-                    openFaq={openPdpFaq}
-                    onFaqToggle={(index) => setOpenPdpFaq(openPdpFaq === index ? null : index)}
                   />
                 </div>
               </div>

@@ -8,12 +8,20 @@ const source = readFileSync(
 );
 
 describe("stick-pack content and pacing refinements", () => {
-  it("uses the shared nested PDP FAQ in all four product-information placements", () => {
+  it("uses the shared pre-expanded PDP FAQ in all four product-information placements", () => {
     expect(source.match(/<PdpInfoAccordion/g)).toHaveLength(4);
     expect(source).toContain('q: "Is it safe?"');
     expect(source).toContain('q: "What does it taste like?"');
     expect(source).toContain('q: "How fast will I feel it?"');
     expect(source).not.toContain('title: "Is It Safe?"');
+    expect(source).not.toContain("openPdpFaq");
+    expect(source).not.toContain("onFaqToggle");
+  });
+
+  it("uses larger readable typography throughout the PDP popouts", () => {
+    expect(source).toContain('text-[15px] md:text-base font-medium');
+    expect(source).toContain('text-sm md:text-[15px] font-bold');
+    expect(source).toContain('text-sm md:text-[15px] text-[#57534E]');
   });
 
   it("uses the revised ingredient heading and removes the comparison CTA", () => {
