@@ -424,10 +424,10 @@ export default function StickPack() {
                   ))}
                 </div>
 
-                <div className="flex items-center gap-3 mb-5 p-3 rounded-xl bg-emerald-50/80 border border-emerald-200/60">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-5 p-3 rounded-xl bg-emerald-50/80 border border-emerald-200/60">
                   <div className="flex items-center gap-2"><span className="relative flex h-2.5 w-2.5"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" /></span><span className="text-sm font-semibold text-emerald-800">In Stock</span></div>
-                  <span className="text-emerald-600">|</span>
-                  <span className="text-sm text-emerald-700">Order now and ships by: <strong>{shipByDate}</strong></span>
+                  <span className="hidden sm:inline text-emerald-600">|</span>
+                  <span className="w-full sm:w-auto border-t border-emerald-200/70 pt-2 sm:border-t-0 sm:pt-0 text-sm text-emerald-700">Order now and ships by: <strong className="whitespace-nowrap text-emerald-900">{shipByDate}</strong></span>
                 </div>
 
                 <div className="flex items-center justify-between mb-4">
@@ -819,10 +819,10 @@ export default function StickPack() {
                   <span className="text-sm text-[#57534E]"><strong className="text-[#1C1917]">4.9</strong> from <strong className="text-[#1C1917]">2,400+</strong> reviews</span>
                 </div>
 
-                <div className="flex items-center gap-3 mb-5 p-3 rounded-xl bg-emerald-50/80 border border-emerald-200/60">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-5 p-3 rounded-xl bg-emerald-50/80 border border-emerald-200/60">
                   <div className="flex items-center gap-2"><span className="relative flex h-2.5 w-2.5"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" /></span><span className="text-sm font-semibold text-emerald-800">In Stock</span></div>
-                  <span className="text-emerald-600">|</span>
-                  <span className="text-sm text-emerald-700">Order now and ships by: <strong>{shipByDate}</strong></span>
+                  <span className="hidden sm:inline text-emerald-600">|</span>
+                  <span className="w-full sm:w-auto border-t border-emerald-200/70 pt-2 sm:border-t-0 sm:pt-0 text-sm text-emerald-700">Order now and ships by: <strong className="whitespace-nowrap text-emerald-900">{shipByDate}</strong></span>
                 </div>
 
                 <div className="flex items-center justify-between mb-4">

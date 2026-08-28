@@ -163,3 +163,6 @@
 - [x] Change the stick-pack PDP FAQ popout to show all three question-and-answer pairs pre-expanded without nested toggles
 - [x] Increase question, answer, and body-copy font sizes across all stick-pack PDP information popouts
 - [x] Verify the revised FAQ and larger popout typography on desktop and mobile
+- [x] Change the stick-pack ship-by calculation to the next calendar day, including Saturdays and Sundays
+- [x] Restyle both stick-pack stock notices so mobile shows a natural status-and-date stack while desktop remains compact
+- [x] Update regression coverage and verify the date logic and responsive notice layout
