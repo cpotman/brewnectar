@@ -38,4 +38,32 @@ describe("stick-pack content and pacing refinements", () => {
   it("removes the previous extra-large repeated section padding", () => {
     expect(source).not.toContain('className="py-20 md:py-28');
   });
+
+  it("uses Alpha-GPC consistently and removes every Citicoline and Cognizin reference", () => {
+    expect(source).toContain('name: "Alpha-GPC", dosage: "500 mg (50%)"');
+    expect(source).toContain('name: "Alpha-GPC", dose: "500 mg (50%)"');
+    expect(source).toContain('Alpha-GPC (50%) 500mg');
+    expect(source).toContain("https://pubmed.ncbi.nlm.nih.gov/39683633/");
+    expect(source).toContain("https://pmc.ncbi.nlm.nih.gov/articles/PMC8235064/");
+    expect(source).toContain("https://pmc.ncbi.nlm.nih.gov/articles/PMC5629791/");
+    expect(source).not.toMatch(/citicoline|cognizin/i);
+  });
+
+  it("uses clear Compounding Effect milestones without the rejected timing claims", () => {
+    expect(source).toContain('title: "Your Coffee Feels More Dialed In"');
+    expect(source).toContain('title: "The Routine Gets Easier to Trust"');
+    expect(source).toContain('title: "Your Baseline Feels Steadier"');
+    expect(source).toContain('title: "The Full Routine Has Had Time to Work"');
+    expect(source).not.toContain("Rhodiola is the fastest adaptogen");
+    expect(source).not.toContain("Cordyceps lands at three weeks");
+  });
+
+  it("uses the smaller requested comparison set and warm gradient emphasis", () => {
+    expect(source).toContain('{ feature: "Only contains mushrooms", brew: false, other: true }');
+    expect(source).toContain('{ feature: "Keep your own coffee", brew: true, other: false, highlight: true }');
+    expect(source).toContain('row.highlight ? "font-bold text-gradient-warm"');
+    expect(source).toContain("row.brew ? (");
+    expect(source).not.toContain('{ feature: "Contains adaptogens"');
+    expect(source).not.toContain('{ feature: "Contains Lion\'s Mane"');
+  });
 });

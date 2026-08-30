@@ -39,7 +39,7 @@ const IMAGES = {
 
 /* --- What's Inside visual cards --- */
 const WHATS_INSIDE = [
-  { name: "Citicoline", dosage: "500 mg", tag: "Retrieve Names, Numbers, and Ideas On Demand*", science: "The only patented form of citicoline with 20+ clinical trials on focus and working memory. Brain ATP increased by 14% after just 6 weeks at this exact dose.", icon: Zap, color: "bg-emerald-50 text-emerald-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-cognizin_3fb446ba.png" },
+  { name: "Alpha-GPC", dosage: "500 mg (50%)", tag: "Choline Support for Attention + Memory*", science: "Alpha-GPC supplies choline, a building block for acetylcholine — a neurotransmitter involved in attention and memory. Each stick includes 500 mg of a 50% Alpha-GPC material.", icon: Zap, color: "bg-emerald-50 text-emerald-700", image: "/manus-storage/ingredient-alpha-gpc_3347cb6d.png" },
   { name: "L-Theanine", dosage: "200 mg", tag: "Calm Focus Without the Jitters*", science: "Promotes alpha brain wave activity \u2014 the neurological state behind calm, sustained attention. At 200 mg, paired with your own caffeine for clean, quiet focus.", icon: Sparkles, color: "bg-sky-50 text-sky-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-l-theanine_dc3b4af3.png" },
   { name: "Lion\u2019s Mane", dosage: "500 mg (10:1)", tag: "Your Brain Builds New Connections*", science: "30+ peer-reviewed studies on nerve growth factor (NGF) production. At 10:1 concentration, each stick delivers ~5 g raw equivalent \u2014 20x a typical mushroom coffee.", icon: Brain, color: "bg-amber-50 text-[#B45309]", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-lions-mane_c905f004.png" },
   { name: "Rhodiola Rosea", dosage: "300 mg (10:1)", tag: "The Afternoon Wall Disappears*", science: "The fastest adaptogen in the stack. Anti-fatigue benefits emerge within roughly two weeks \u2014 carrying you through the window where most supplement customers churn.", icon: Heart, color: "bg-rose-50 text-rose-700", image: "/manus-storage/ingredient-rhodiola-v2_5bb7e26c.png" },
@@ -52,14 +52,14 @@ const WHATS_INSIDE = [
 /* --- Ingredient data with studies --- */
 const INGREDIENTS = [
   {
-    name: "Citicoline", dose: "500 mg", clock: "Clock 1 — First Morning",
-    pullStat: "14%", pullLabel: "brain ATP increase after 6 weeks",
+    name: "Alpha-GPC", dose: "500 mg (50%)", clock: "Clock 1 — First Morning",
+    pullStat: "60min", pullLabel: "when cognition was assessed in a healthy-adult trial",
     icon: Brain, color: "bg-amber-50 border-amber-200/60 text-[#B45309]", dotColor: "bg-[#D97706]",
-    studyCount: "20+", tagline: "Clinical trials on memory, focus & attentional performance",
+    studyCount: "3", tagline: "Human studies on attention, cognition & choline availability",
     studies: [
-      { title: "Citicoline Increases Brain ATP by 14%", authors: "Silveri et al.", journal: "NMR in Biomedicine", year: 2008, finding: "6 weeks of 500 mg/day citicoline increased phosphocreatine by 7% and ATP markers by 14% in the frontal lobes of healthy adults.", url: "https://pubmed.ncbi.nlm.nih.gov/18991199/" },
-      { title: "Citicoline and Memory Function in Healthy Older Adults", authors: "Nakazaki et al.", journal: "The Journal of Nutrition", year: 2021, finding: "12 weeks of Cognizin supplementation improved overall memory performance, especially episodic memory.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8349115/" },
-      { title: "Improved Attentional Performance Following Citicoline", authors: "McGlade et al.", journal: "Food and Nutrition Sciences", year: 2012, finding: "Citicoline supplementation was associated with improved attentional focus and reduced errors of commission.", url: "https://www.scirp.org/journal/paperinformation?paperid=19921" },
+      { title: "Acute Alpha-GPC and Cognitive Performance", authors: "Kerksick", journal: "Nutrients", year: 2024, finding: "In 20 healthy men, 315 mg and 630 mg Alpha-GPC improved Stroop performance 60 minutes after ingestion; not every cognitive measure improved.", url: "https://pubmed.ncbi.nlm.nih.gov/39683633/" },
+      { title: "Alpha-GPC and Motivation in Healthy Volunteers", authors: "Tamura et al.", journal: "Nutrients", year: 2021, finding: "In a small randomized study, 400 mg daily for two weeks was associated with higher nighttime motivation; anxiety was unchanged.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8235064/" },
+      { title: "Alpha-GPC Dose and Choline Availability", authors: "Marcus et al.", journal: "J Int Soc Sports Nutr", year: 2017, finding: "250 mg and 500 mg daily increased serum free choline after one week, while psychomotor vigilance did not improve.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5629791/" },
     ],
   },
   {
@@ -145,36 +145,25 @@ const PLANS = [
 
 /* --- Compounding Effect stages --- */
 const COMPOUNDING_STAGES = [
-  { period: "Week 1", title: "The Quiet Settles In", level: "40%", desc: "L-Theanine smooths out caffeine's rough edges within 20 minutes.* Citicoline sharpens working memory.* Your first cup feels different. Calmer. Clearer. No jitters.", ingredients: ["L-Theanine", "Citicoline"], color: "bg-amber-50 border-amber-200", iconColor: "text-[#D97706]", dotColor: "bg-[#D97706]" },
-  { period: "2 Weeks", title: "The Afternoon Wall Disappears", level: "60%", desc: "Rhodiola is the fastest adaptogen in the stack. Anti-fatigue benefits emerge within roughly two weeks. This is the window where mushroom coffee customers churn \u2014 you won't.", ingredients: ["Rhodiola", "Cordyceps"], color: "bg-emerald-50 border-emerald-200", iconColor: "text-emerald-600", dotColor: "bg-emerald-600" },
-  { period: "2 Months", title: "Sleep Improves. Energy Compounds.", level: "80%", desc: "Ashwagandha works on the upstream cause \u2014 sleep quality. Cordyceps lands at three weeks. The probiotic and prebiotic rebuild the gut environment that feeds your brain.", ingredients: ["Ashwagandha", "Gut Stack"], color: "bg-sky-50 border-sky-200", iconColor: "text-sky-600", dotColor: "bg-sky-600" },
-  { period: "3 Months", title: "Your Brain Feels Different", level: "95%", desc: "Lion's Mane hericenones promote nerve growth factor synthesis. Human trials run 12-16 weeks. This is when the full stack is compounding \u2014 and why the 3-month supply exists.", ingredients: ["Lion's Mane", "Full Stack"], color: "bg-violet-50 border-violet-200", iconColor: "text-violet-600", dotColor: "bg-violet-600" },
+  { period: "Week 1", title: "Your Coffee Feels More Dialed In", level: "40%", desc: "L-Theanine supports a calmer response to the caffeine already in your cup, while Alpha-GPC supplies choline used to make acetylcholine.* No replacement drink. No extra routine. Just the first sign your coffee can do more.", ingredients: ["L-Theanine", "Alpha-GPC"], color: "bg-amber-50 border-amber-200", iconColor: "text-[#D97706]", dotColor: "bg-[#D97706]" },
+  { period: "2 Weeks", title: "The Routine Gets Easier to Trust", level: "60%", desc: "What felt new starts feeling normal: cleaner mornings, steadier afternoons, and less temptation to chase another cup.* The adaptogens and gut-support blend are designed for consistent daily use — not a one-day spike.", ingredients: ["Adaptogens", "Gut Support"], color: "bg-emerald-50 border-emerald-200", iconColor: "text-emerald-600", dotColor: "bg-emerald-600" },
+  { period: "2 Months", title: "Your Baseline Feels Steadier", level: "80%", desc: "Sleep, stress response, gut support, and daily energy are being supported together.* Instead of looking for a jolt, you start noticing how often the old crash or fog fails to show up.", ingredients: ["Ashwagandha", "Full Stack"], color: "bg-sky-50 border-sky-200", iconColor: "text-sky-600", dotColor: "bg-sky-600" },
+  { period: "3 Months", title: "The Full Routine Has Had Time to Work", level: "95%", desc: "Lion's Mane and the longer-horizon ingredients have now had weeks of consistent use.* This is the point to judge the whole system: calmer focus, steadier energy, better recovery, and support that fits the coffee habit you kept.", ingredients: ["Lion's Mane", "Full Routine"], color: "bg-violet-50 border-violet-200", iconColor: "text-violet-600", dotColor: "bg-violet-600" },
 ];
 
 /* --- Comparison rows --- */
-const COMPARISON_ROWS: { feature: string; brew: boolean; other: boolean }[] = [
-  { feature: "Keep your own coffee", brew: true, other: false },
+const COMPARISON_ROWS: { feature: string; brew: boolean; other: boolean; highlight?: boolean }[] = [
+  { feature: "Keep your own coffee", brew: true, other: false, highlight: true },
   { feature: "No earthy taste or grit", brew: true, other: false },
   { feature: "Clinical-dose ingredients", brew: true, other: false },
   { feature: "Built-in gut support", brew: true, other: false },
-  { feature: "Contains adaptogens", brew: true, other: true },
-  { feature: "Contains Lion's Mane", brew: true, other: true },
+  { feature: "Only contains mushrooms", brew: false, other: true },
   { feature: "Caffeine-free option", brew: true, other: false },
   { feature: "Travel-ready format", brew: true, other: true },
 ];
 
 /* --- FAQ --- */
 const STICK_REVIEWS = [
-  {
-    name: "Dr. Rachel W.",
-    title: "Neurologist",
-    rating: 5,
-    date: "March 2026",
-    heading: "Finally, a nootropic I can recommend to patients",
-    text: "As a neurologist, I'm extremely cautious about supplements. BrewNectar is different — every ingredient is clinically dosed and transparently labeled. The Cognizin® at the dosage they use has solid evidence for memory and attention.",
-    photo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/review-customer-1-DjvmGLQff8vcW4cvUiMv9f.webp",
-    purchased: "90-Day Supply",
-  },
   {
     name: "James P.",
     title: "Day Trader",
@@ -201,7 +190,7 @@ const FAQ_ITEMS = [
   { q: "Do I have to give up my coffee?", a: "No. You add one stick pack to the coffee you already drink. Keep your mug, your beans, your full caffeine." },
   { q: "What does it taste like?", a: "Subtly sweet almond flavor. No mushroom taste, no earthiness. Dissolves completely in 5 seconds." },
   { q: "Doesn't hot coffee kill the probiotic?", a: "Bacillus coagulans forms a spore coat specifically evolved to survive heat. Published stability data in brewed coffee confirms 92% survival." },
-  { q: "How fast will I feel it?", a: "L-Theanine and citicoline have acute effects within 40 minutes to 3 hours. Rhodiola lands at ~2 weeks. Full stack benefits compound over 8-12 weeks." },
+  { q: "How fast will I feel it?", a: "L-Theanine is included for calmer focus alongside your coffee, while Alpha-GPC supplies choline used to make acetylcholine.* The broader formula is designed to support your routine with consistent daily use." },
   { q: "I've tried nootropics before and they didn't work.", a: "Most are underdosed, single-mechanism, and ignore sleep and gut. This formula addresses three upstream causes simultaneously at clinical doses." },
   { q: "Is this safe?", a: "All ingredients are GRAS (Generally Recognized as Safe). Manufactured in a GMP-certified US facility. Consult your doctor if pregnant, nursing, or on medication." },
   { q: "Who shouldn't take this?", a: "Anyone pregnant or nursing, under 18, or taking MAOIs or blood thinners should consult their doctor first. Contains ashwagandha." },
@@ -218,7 +207,7 @@ const PDP_FAQ_ITEMS = [
   },
   {
     q: "How fast will I feel it?",
-    a: "L-Theanine and citicoline can support calm focus within the first few hours. Rhodiola and the rest of the stack build over the following weeks with consistent daily use.",
+    a: "L-Theanine is included for calmer focus alongside your coffee, while Alpha-GPC supplies choline used to make acetylcholine.* The broader formula is designed to support your routine with consistent daily use.",
   },
 ];
 
@@ -226,7 +215,7 @@ const PDP_INFO_ITEMS = [
   {
     id: "ingredients",
     title: "Ingredients",
-    content: "Cognizin® (Citicoline) 250mg, L-Theanine 200mg, Lion’s Mane (10:1 extract) 500mg, Rhodiola Rosea 150mg, Ashwagandha (KSM-66®) 300mg, Cordyceps Militaris 250mg, Prebiotic Fiber (Chicory Root Inulin) 2g, B-Vitamin Complex (B6, B9, B12). Other: Natural vanilla bean flavor, monk fruit extract. No caffeine, no sugar, no artificial colors.",
+    content: "Alpha-GPC (50%) 500mg, L-Theanine 200mg, Lion’s Mane (10:1 extract) 500mg, Rhodiola Rosea 150mg, Ashwagandha (KSM-66®) 300mg, Cordyceps Militaris 250mg, Prebiotic Fiber (Chicory Root Inulin) 2g, B-Vitamin Complex (B6, B9, B12). Other: Natural vanilla bean flavor, monk fruit extract. No caffeine, no sugar, no artificial colors.",
   },
   {
     id: "shipping",
@@ -683,11 +672,11 @@ export default function StickPack() {
 
               {/* Header */}
               <div className="relative grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_100px_100px]">
-                <div className="px-5 py-5" />
-                <div className="flex items-center justify-center py-4 px-1 bg-gradient-to-b from-amber-500 to-[#D97706] rounded-t-2xl text-center">
+                <div className="px-5 py-4" />
+                <div className="flex items-center justify-center py-3.5 px-1 bg-gradient-to-b from-amber-500 to-[#D97706] rounded-t-2xl text-center">
                   <span className="text-[11px] md:text-xs font-bold text-white tracking-wide leading-tight">BrewNectar</span>
                 </div>
-                <div className="flex items-center justify-center py-4 px-1 text-center">
+                <div className="flex items-center justify-center py-3.5 px-1 text-center">
                   <span className="text-[11px] md:text-xs font-medium text-stone-400 leading-tight">Mushroom<br/>Coffee</span>
                 </div>
               </div>
@@ -695,13 +684,19 @@ export default function StickPack() {
               {/* Rows */}
               {COMPARISON_ROWS.map((row, i, arr) => (
                 <div key={row.feature} className={`relative grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_100px_100px] items-center ${i < arr.length - 1 ? "border-b border-stone-100" : ""}`}>
-                  <span className="text-[13px] md:text-sm text-[#1C1917] font-medium px-5 py-4">{row.feature}</span>
-                  <div className="flex justify-center py-4">
-                    <div className="w-7 h-7 rounded-full bg-[#D97706] flex items-center justify-center shadow-sm">
-                      <Check size={14} strokeWidth={3} className="text-white" />
-                    </div>
+                  <span className={`text-[13px] md:text-sm px-5 py-3.5 ${row.highlight ? "font-bold text-gradient-warm" : "font-medium text-[#1C1917]"}`}>{row.feature}</span>
+                  <div className="flex justify-center py-3.5">
+                    {row.brew ? (
+                      <div className="w-7 h-7 rounded-full bg-[#D97706] flex items-center justify-center shadow-sm">
+                        <Check size={14} strokeWidth={3} className="text-white" />
+                      </div>
+                    ) : (
+                      <div className="w-7 h-7 rounded-full bg-stone-100 flex items-center justify-center">
+                        <XIcon size={12} strokeWidth={2.5} className="text-stone-400" />
+                      </div>
+                    )}
                   </div>
-                  <div className="flex justify-center py-4">
+                  <div className="flex justify-center py-3.5">
                     {row.other ? (
                       <div className="w-7 h-7 rounded-full bg-[#D97706] flex items-center justify-center shadow-sm">
                         <Check size={14} strokeWidth={3} className="text-white" />

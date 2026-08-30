@@ -166,3 +166,10 @@
 - [x] Change the stick-pack ship-by calculation to the next calendar day, including Saturdays and Sundays
 - [x] Restyle both stick-pack stock notices so mobile shows a natural status-and-date stack while desktop remains compact
 - [x] Update regression coverage and verify the date logic and responsive notice layout
+- [x] Audit every Citicoline and Cognizin reference on the stick-pack page and identify the correct Alpha-GPC dose and evidence metadata
+- [x] Rewrite all four Compounding Effect milestones with clear, credible time-horizon copy
+- [x] Remove “Contains adaptogens” and “Contains Lion’s Mane” from the stick-pack comparison table
+- [x] Add “Only contains mushrooms” with a positive check on the mushroom-coffee side
+- [x] Apply the syrup-page orange gradient emphasis style to “Keep your own coffee”
+- [x] Replace stick-pack Citicoline and Cognizin copy, ingredient details, studies, and timeline labels with Alpha-GPC equivalents
+- [x] Add regression coverage and verify the stick-pack-only changes on desktop and mobile
