@@ -729,13 +729,12 @@ export default function StickPack() {
                   <ShieldCheck size={40} className="text-white" />
                 </div>
                 <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3">60-Day Keep-the-Bag Guarantee</h2>
-                <p className="text-emerald-100 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8">Don't love it? <strong className="text-white">Keep the bag. Full refund within 48 hours.</strong> No return shipping, no restocking fees, no questions asked. We believe in BrewNectar so much, we'll take all the risk.</p>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 max-w-md md:max-w-none mx-auto">
+                <p className="text-emerald-100 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8">Don't love it? <strong className="text-white">Keep the bag. Full refund within 48 hours.</strong> No restocking fees, no questions asked. We believe in BrewNectar so much, we'll take all the risk.</p>
+                <div className="grid grid-cols-3 gap-3 md:gap-10 max-w-xl mx-auto">
                   {[
                     { icon: Heart, label: "Keep the Bag" },
                     { icon: Clock, label: "48-Hour Refund" },
                     { icon: MessageCircle, label: "No Questions Asked" },
-                    { icon: Truck, label: "No Return Shipping" },
                   ].map((item) => (
                     <div key={item.label} className="flex flex-col items-center gap-2">
                       <div className="w-12 h-12 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center"><item.icon size={22} className="text-white" /></div>

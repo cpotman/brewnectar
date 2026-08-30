@@ -17,6 +17,16 @@ const clientSource = collectSourceFiles(resolve(process.cwd(), "client/src"))
   .map(path => readFileSync(path, "utf8"))
   .join("\n");
 
+const marketingSource = collectSourceFiles(resolve(process.cwd(), "client/src"))
+  .filter(path => !path.endsWith("RefundPolicy.tsx"))
+  .map(path => readFileSync(path, "utf8"))
+  .join("\n");
+
+const refundPolicySource = readFileSync(
+  resolve(process.cwd(), "client/src/pages/RefundPolicy.tsx"),
+  "utf8",
+);
+
 describe("sitewide guarantee language", () => {
   it("does not contain stale 30-day guarantee or refund-window claims", () => {
     const staleGuaranteePatterns = [
@@ -38,5 +48,10 @@ describe("sitewide guarantee language", () => {
     expect(clientSource).toContain("60-Day Keep-the-Bag Guarantee");
     expect(clientSource).toContain("60-day money-back guarantee");
     expect(clientSource).toContain("60-day guarantee window");
+  });
+
+  it("removes no-return-shipping promises from marketing pages but leaves the policy page unchanged", () => {
+    expect(marketingSource).not.toMatch(/no return shipping|return shipping required/i);
+    expect(refundPolicySource).toContain("No return shipping required.");
   });
 });

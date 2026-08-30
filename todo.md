@@ -173,3 +173,10 @@
 - [x] Apply the syrup-page orange gradient emphasis style to “Keep your own coffee”
 - [x] Replace stick-pack Citicoline and Cognizin copy, ingredient details, studies, and timeline labels with Alpha-GPC equivalents
 - [x] Add regression coverage and verify the stick-pack-only changes on desktop and mobile
+- [x] Audit every website guarantee, refund, return-shipping, unopened-product, and subscription-eligibility statement
+- [x] Superseded by revised scope: do not rewrite detailed eligibility terms sitewide; the user will update the Refund Policy page later
+- [x] Superseded by narrowed scope: do not simplify the rest of the non-policy guarantee language
+- [x] Superseded by narrowed scope: preserve all guarantee promises except “No Return Shipping”
+- [x] Preserve the final policy interpretation for later policy work: first-time one-time purchases only; opened bags may qualify; unopened bags must be returned at customer expense; subscriptions excluded
+- [x] Remove only the “No Return Shipping” promise from customer-facing guarantee sections while leaving the Refund Policy page unchanged
+- [x] Add focused regression coverage and verify the affected guarantee sections on desktop and mobile

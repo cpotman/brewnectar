@@ -440,7 +440,7 @@ const FAQ_DATA = [
   },
   {
     q: "What if it doesn’t work for me?",
-    a: "Then you keep the bottle and we refund every penny. No form. No return shipping. One email. We do this because the vast majority of subscribers stay past their first order. We're that confident. Try it for 60 days. If your coffee doesn’t feel different, you paid nothing.",
+    a: "Then you keep the bottle and we refund every penny. No form. One email. We do this because the vast majority of subscribers stay past their first order. We're that confident. Try it for 60 days. If your coffee doesn’t feel different, you paid nothing.",
   },
 ];
 

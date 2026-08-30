@@ -742,7 +742,7 @@ export default function Product() {
                       { title: "Description", content: "BrewNectar is a precision nootropic syrup designed to add to your existing coffee. One pump delivers four research-backed cognitive ingredients in a smooth vanilla bean base. No new coffee required — just add it to the cup you already love." },
                       { title: "Ingredients", content: "Lion's Mane Mushroom Extract (1,200mg), Cognizin® Citicoline (250mg), L-Theanine (75mg), Vitamin B Complex (B6, B9, B12). Other: Organic vanilla bean extract, purified water, vegetable glycerin. Zero sugar, zero calories." },
                       { title: "How to Use", content: "Add one pump (1 tbsp) to your morning coffee — hot or iced. Stir for 5 seconds. That's it. Works with any coffee, latte, or espresso drink. Best results with daily consistent use." },
-                      { title: "Shipping & Returns", content: "Free shipping on all orders. Ships within 24 hours via USPS Priority Mail (2-3 business days). 60-day keep-the-bottle guarantee — if you don't love it, email us for a full refund. No return shipping required." },
+                      { title: "Shipping & Returns", content: "Free shipping on all orders. Ships within 24 hours via USPS Priority Mail (2-3 business days). 60-day keep-the-bottle guarantee — if you don't love it, email us for a full refund." },
                     ].map((item) => (
                       <details key={item.title} className="group border-b border-stone-100 last:border-b-0">
                         <summary className="flex items-center justify-between py-3 cursor-pointer text-sm font-semibold text-[#1C1917] hover:text-[#B45309] transition-colors">
@@ -1071,14 +1071,13 @@ export default function Product() {
                   60-Day Keep-the-Bottle Guarantee
                 </h2>
                 <p className="text-emerald-100 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
-                  Don't love it? <strong className="text-white">Keep the bottle. Full refund within 48 hours.</strong> No return shipping, no restocking fees, no questions asked. We believe in BrewNectar so much, we'll take all the risk.
+                  Don't love it? <strong className="text-white">Keep the bottle. Full refund within 48 hours.</strong> No restocking fees, no questions asked. We believe in BrewNectar so much, we'll take all the risk.
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
                   {[
                     { icon: Heart, label: "Keep the Bottle" },
                     { icon: Clock, label: "48-Hour Refund" },
                     { icon: MessageCircle, label: "No Questions Asked" },
-                    { icon: Truck, label: "No Return Shipping" },
                   ].map((item) => (
                     <div key={item.label} className="flex flex-col items-center gap-2">
                       <div className="w-12 h-12 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center">
