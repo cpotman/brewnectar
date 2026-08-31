@@ -76,10 +76,12 @@ describe("stick-pack content and pacing refinements", () => {
   });
 
   it("shows full stick-pack order totals with per-bag subtitles instead of monthly prices", () => {
-    expect(source).toContain('id: "3mo", name: "3-Month Supply", savings: "Save 45%", price: "$81", perDay: "$0.96/day", billed: "$27 per bag"');
-    expect(source).toContain('id: "2mo", name: "2-Month Supply", savings: "Save 35%", price: "$64", perDay: "$1.14/day", billed: "$32 per bag"');
-    expect(source).toContain('id: "1mo", name: "1-Month Supply", savings: "Save 27%", price: "$36", perDay: "$1.29/day", billed: "$36 per bag"');
+    expect(source).toContain('id: "3mo", name: "3-Month Supply", savings: "Save 49%", price: "$74.95", perDay: "$0.89/day", billed: "$24.98 per bag"');
+    expect(source).toContain('id: "2mo", name: "2-Month Supply", savings: "Save 39%", price: "$59.95", perDay: "$1.07/day", billed: "$29.98 per bag"');
+    expect(source).toContain('id: "1mo", name: "1-Month Supply", savings: "Save 18%", price: "$39.95", perDay: "$1.43/day", billed: "$39.95 per bag"');
     expect(source).toContain('id: "one-time", name: "One-Time Purchase", savings: "", price: "$49", perDay: "$1.75/day", billed: "$49 per bag"');
+    expect(source.match(/Subscribe & Save up to 49%/g)).toHaveLength(2);
+    expect(source).not.toContain("Subscribe & Save up to 45%");
     expect(source.match(/\{plan\.billed\}/g)).toHaveLength(2);
     expect(source.match(/\{plan\.price\}/g)).toHaveLength(2);
     expect(source.match(/\{currentPlan\.price\}/g)).toHaveLength(3);

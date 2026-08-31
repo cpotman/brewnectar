@@ -188,3 +188,8 @@
 - [x] Replace each stick-pack billing-cycle subtitle with the corresponding “$x per bag” amount
 - [x] Apply the pricing-display change consistently across both stick-pack offer blocks
 - [x] Add focused regression coverage and verify every plan at desktop and mobile widths
+- [x] Change the stick-pack subscription totals to $39.95 for one month, $59.95 for two months, and $74.95 for three months
+- [x] Recalculate savings percentages against the $49 one-time bag price
+- [x] Recalculate and display each subscription’s per-bag and per-day price using 28 servings per bag
+- [x] Apply the revised pricing consistently across both offer blocks, CTA totals, and the mobile sticky bar
+- [x] Add focused regression coverage and verify every revised plan at desktop and mobile widths

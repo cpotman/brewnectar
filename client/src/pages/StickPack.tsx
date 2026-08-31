@@ -137,9 +137,9 @@ const INGREDIENTS = [
 
 /* --- Plans --- */
 const PLANS = [
-  { id: "3mo", name: "3-Month Supply", savings: "Save 45%", price: "$81", perDay: "$0.96/day", billed: "$27 per bag", badge: "BEST VALUE", perks: ["Exclusive Focus & Clarity Masterclass ($25 value)", "Maximum savings — lowest price per serving", "Lock in savings — price guaranteed even if we raise it", "Try it 60 days — keep the bag. Full refund, no questions.", "La Marzocco Espresso Machine ($4500) Giveaway entries", "Fast & FREE Shipping", "Cancel or pause anytime"] },
-  { id: "2mo", name: "2-Month Supply", savings: "Save 35%", price: "$64", perDay: "$1.14/day", billed: "$32 per bag", badge: "MOST POPULAR", perks: [] },
-  { id: "1mo", name: "1-Month Supply", savings: "Save 27%", price: "$36", perDay: "$1.29/day", billed: "$36 per bag", badge: "", perks: [] },
+  { id: "3mo", name: "3-Month Supply", savings: "Save 49%", price: "$74.95", perDay: "$0.89/day", billed: "$24.98 per bag", badge: "BEST VALUE", perks: ["Exclusive Focus & Clarity Masterclass ($25 value)", "Maximum savings — lowest price per serving", "Lock in savings — price guaranteed even if we raise it", "Try it 60 days — keep the bag. Full refund, no questions.", "La Marzocco Espresso Machine ($4500) Giveaway entries", "Fast & FREE Shipping", "Cancel or pause anytime"] },
+  { id: "2mo", name: "2-Month Supply", savings: "Save 39%", price: "$59.95", perDay: "$1.07/day", billed: "$29.98 per bag", badge: "MOST POPULAR", perks: [] },
+  { id: "1mo", name: "1-Month Supply", savings: "Save 18%", price: "$39.95", perDay: "$1.43/day", billed: "$39.95 per bag", badge: "", perks: [] },
   { id: "one-time", name: "One-Time Purchase", savings: "", price: "$49", perDay: "$1.75/day", billed: "$49 per bag", badge: "", perks: [] },
 ];
 
@@ -419,7 +419,7 @@ export default function StickPack() {
 
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-display font-bold text-lg text-[#1C1917]">Select Your Plan:</h3>
-                  <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/60">Subscribe & Save up to 45%</span>
+                  <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/60">Subscribe & Save up to 49%</span>
                 </div>
 
                 <div className="space-y-3 mb-4" id="offers">
@@ -819,7 +819,7 @@ export default function StickPack() {
 
                 <div className="flex items-center justify-between mb-4">
                   <h4 className="font-display font-bold text-lg text-[#1C1917]">Select Your Plan:</h4>
-                  <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/60">Subscribe & Save up to 45%</span>
+                  <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/60">Subscribe & Save up to 49%</span>
                 </div>
 
                 <div className="space-y-3 mb-4">
