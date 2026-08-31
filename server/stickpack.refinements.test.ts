@@ -85,6 +85,9 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source.match(/\{plan\.billed\}/g)).toHaveLength(2);
     expect(source.match(/\{plan\.price\}/g)).toHaveLength(2);
     expect(source.match(/\{currentPlan\.price\}/g)).toHaveLength(3);
+    expect(source.match(/font-display text-lg sm:text-xl font-bold text-\[#1C1917\]/g)).toHaveLength(2);
+    expect(source).toContain('font-display font-bold text-[#1C1917] text-base">{currentPlan.price}');
+    expect(source).not.toContain('font-display text-xl sm:text-2xl font-bold text-[#1C1917]">{plan.price}');
     expect(source).not.toContain('>/mo</span>');
     expect(source).not.toContain('&& "/MO"');
     expect(source).not.toContain('&& "/mo"');

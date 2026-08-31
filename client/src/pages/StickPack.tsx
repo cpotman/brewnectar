@@ -437,7 +437,7 @@ export default function StickPack() {
                             </div>
                           </div>
                           <div className="text-right flex-shrink-0">
-                            <div className="flex items-baseline gap-1 justify-end"><span className="font-display text-xl sm:text-2xl font-bold text-[#1C1917]">{plan.price}</span></div>
+                            <div className="flex items-baseline gap-1 justify-end"><span className="font-display text-lg sm:text-xl font-bold text-[#1C1917]">{plan.price}</span></div>
                             <p className="text-[11px] text-[#78716C]">{plan.perDay}</p>
                           </div>
                         </div>
@@ -837,7 +837,7 @@ export default function StickPack() {
                             </div>
                           </div>
                           <div className="text-right flex-shrink-0">
-                            <div className="flex items-baseline gap-1 justify-end"><span className="font-display text-xl sm:text-2xl font-bold text-[#1C1917]">{plan.price}</span></div>
+                            <div className="flex items-baseline gap-1 justify-end"><span className="font-display text-lg sm:text-xl font-bold text-[#1C1917]">{plan.price}</span></div>
                             <p className="text-[11px] text-[#78716C]">{plan.perDay}</p>
                           </div>
                         </div>
@@ -1131,7 +1131,7 @@ export default function StickPack() {
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="min-w-0">
             <div className="flex items-baseline gap-2">
-              <p className="font-display font-bold text-[#1C1917] text-lg">{currentPlan.price}</p>
+              <p className="font-display font-bold text-[#1C1917] text-base">{currentPlan.price}</p>
               {selectedPlan !== "one-time" && currentPlan.savings && (
                 <span className="text-xs font-bold text-emerald-600">{currentPlan.savings}</span>
               )}

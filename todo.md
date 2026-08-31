@@ -193,3 +193,6 @@
 - [x] Recalculate and display each subscription’s per-bag and per-day price using 28 servings per bag
 - [x] Apply the revised pricing consistently across both offer blocks, CTA totals, and the mobile sticky bar
 - [x] Add focused regression coverage and verify every revised plan at desktop and mobile widths
+- [x] Slightly reduce the prominent price text size in both stick-pack offer blocks
+- [x] Reduce the mobile sticky-bar price proportionally while preserving price hierarchy
+- [x] Add focused regression coverage and verify the revised typography on desktop and mobile
