@@ -316,7 +316,7 @@ export default function StickPack() {
           {/* Mobile-only: Title, pills, stars above images */}
           <div className="lg:hidden mb-6">
             <FadeUp>
-              <h1 className="font-display text-2xl sm:text-3xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">BrewNectar Brain + Gut Stick Packs</h1>
+              <h1 className="font-display text-2xl sm:text-3xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">Stay Focused &amp; Clear with BrewNectar Stick Packs</h1>
               <div className="flex flex-wrap gap-1.5 mb-3">
                 {[
                   { label: "Caffeine-Free", emoji: "\u2615", bg: "bg-amber-100 text-amber-800" },
@@ -330,7 +330,7 @@ export default function StickPack() {
                 ))}
               </div>
               <div className="flex flex-wrap items-center gap-3 mb-3">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-[11px] font-semibold text-emerald-700"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />Now Shipping</span>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-[11px] font-semibold text-emerald-700"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />Best Seller</span>
                 <div className="flex -space-x-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />)}</div>
                 <span className="text-sm text-[#57534E]"><strong className="text-[#1C1917]">4.9</strong> from <strong className="text-[#1C1917]">2,400+</strong> reviews</span>
               </div>
@@ -390,13 +390,11 @@ export default function StickPack() {
             {/* Right: Plan Selector */}
             <FadeUp delay={0.1}>
               <div>
-                <h1 className="hidden lg:block font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">BrewNectar Brain + Gut Stick Packs</h1>
+                <h1 className="hidden lg:block font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">Stay Focused &amp; Clear with BrewNectar Stick Packs</h1>
                 <div className="hidden lg:flex flex-wrap items-center gap-3 mb-3">
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-[11px] font-semibold text-emerald-700"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />Now Shipping</span>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-[11px] font-semibold text-emerald-700"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />Best Seller</span>
                   <div className="flex -space-x-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />)}</div>
                   <span className="text-sm text-[#57534E]"><strong className="text-[#1C1917]">4.9</strong> from <strong className="text-[#1C1917]">2,400+</strong> reviews</span>
-                  <span className="text-[#D4D0CA]">|</span>
-                  <span className="text-sm text-[#57534E]"><strong className="text-[#1C1917]">Thousands of</strong> members</span>
                 </div>
                 <p className="text-[#57534E] text-base mb-5 leading-relaxed hidden lg:block">Eight research-backed ingredients + prebiotics in one caffeine-free stick pack. Add it to the coffee you already drink. <strong className="text-[#1C1917]">Brain + gut support that compounds over time.</strong></p>
 
@@ -807,7 +805,7 @@ export default function StickPack() {
             {/* Right: Plan Selector */}
             <FadeUp delay={0.1}>
               <div>
-                <h3 className="font-display text-xl md:text-2xl font-bold text-[#1C1917] mb-2">BrewNectar Brain + Gut Stick Packs</h3>
+                <h3 className="font-display text-xl md:text-2xl font-bold text-[#1C1917] mb-2">Stay Focused &amp; Clear with BrewNectar Stick Packs</h3>
                 <div className="flex flex-wrap items-center gap-3 mb-4">
                   <div className="flex -space-x-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />)}</div>
                   <span className="text-sm text-[#57534E]"><strong className="text-[#1C1917]">4.9</strong> from <strong className="text-[#1C1917]">2,400+</strong> reviews</span>

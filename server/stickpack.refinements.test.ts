@@ -66,4 +66,12 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).not.toContain('{ feature: "Contains adaptogens"');
     expect(source).not.toContain('{ feature: "Contains Lion\'s Mane"');
   });
+
+  it("uses the revised benefit-led hero copy without the removed members claim", () => {
+    expect(source.match(/Stay Focused &amp; Clear with BrewNectar Stick Packs/g)).toHaveLength(3);
+    expect(source.match(/Best Seller/g)).toHaveLength(2);
+    expect(source).not.toContain("Now Shipping");
+    expect(source).not.toContain("Thousands of</strong> members");
+    expect(source).not.toContain("BrewNectar Brain + Gut Stick Packs");
+  });
 });

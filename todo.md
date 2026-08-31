@@ -180,3 +180,7 @@
 - [x] Preserve the final policy interpretation for later policy work: first-time one-time purchases only; opened bags may qualify; unopened bags must be returned at customer expense; subscriptions excluded
 - [x] Remove only the “No Return Shipping” promise from customer-facing guarantee sections while leaving the Refund Policy page unchanged
 - [x] Add focused regression coverage and verify the affected guarantee sections on desktop and mobile
+- [x] Change the stick-pack hero badge from “Now Shipping” to “Best Seller”
+- [x] Remove “Thousands of members” from the stick-pack hero social-proof row
+- [x] Replace the stick-pack product title with “Stay Focused & Clear with BrewNectar Stick Packs”
+- [x] Add focused regression coverage and verify the revised hero on desktop and mobile
