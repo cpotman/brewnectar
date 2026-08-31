@@ -184,3 +184,7 @@
 - [x] Remove “Thousands of members” from the stick-pack hero social-proof row
 - [x] Replace the stick-pack product title with “Stay Focused & Clear with BrewNectar Stick Packs”
 - [x] Add focused regression coverage and verify the revised hero on desktop and mobile
+- [x] Show each stick-pack plan’s full order total as the prominent offer price instead of the monthly price
+- [x] Replace each stick-pack billing-cycle subtitle with the corresponding “$x per bag” amount
+- [x] Apply the pricing-display change consistently across both stick-pack offer blocks
+- [x] Add focused regression coverage and verify every plan at desktop and mobile widths

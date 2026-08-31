@@ -74,4 +74,18 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).not.toContain("Thousands of</strong> members");
     expect(source).not.toContain("BrewNectar Brain + Gut Stick Packs");
   });
+
+  it("shows full stick-pack order totals with per-bag subtitles instead of monthly prices", () => {
+    expect(source).toContain('id: "3mo", name: "3-Month Supply", savings: "Save 45%", price: "$81", perDay: "$0.96/day", billed: "$27 per bag"');
+    expect(source).toContain('id: "2mo", name: "2-Month Supply", savings: "Save 35%", price: "$64", perDay: "$1.14/day", billed: "$32 per bag"');
+    expect(source).toContain('id: "1mo", name: "1-Month Supply", savings: "Save 27%", price: "$36", perDay: "$1.29/day", billed: "$36 per bag"');
+    expect(source).toContain('id: "one-time", name: "One-Time Purchase", savings: "", price: "$49", perDay: "$1.75/day", billed: "$49 per bag"');
+    expect(source.match(/\{plan\.billed\}/g)).toHaveLength(2);
+    expect(source.match(/\{plan\.price\}/g)).toHaveLength(2);
+    expect(source.match(/\{currentPlan\.price\}/g)).toHaveLength(3);
+    expect(source).not.toContain('>/mo</span>');
+    expect(source).not.toContain('&& "/MO"');
+    expect(source).not.toContain('&& "/mo"');
+    expect(source).not.toMatch(/Billed \$|every (?:12|8|4) weeks|One-time payment/);
+  });
 });

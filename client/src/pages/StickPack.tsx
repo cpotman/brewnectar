@@ -137,10 +137,10 @@ const INGREDIENTS = [
 
 /* --- Plans --- */
 const PLANS = [
-  { id: "3mo", name: "3-Month Supply", savings: "Save 45%", price: "$27", perDay: "$0.96/day", billed: "Billed $81 every 12 weeks", badge: "BEST VALUE", perks: ["Exclusive Focus & Clarity Masterclass ($25 value)", "Maximum savings — lowest price per serving", "Lock in savings — price guaranteed even if we raise it", "Try it 60 days — keep the bag. Full refund, no questions.", "La Marzocco Espresso Machine ($4500) Giveaway entries", "Fast & FREE Shipping", "Cancel or pause anytime"] },
-  { id: "2mo", name: "2-Month Supply", savings: "Save 35%", price: "$32", perDay: "$1.14/day", billed: "Billed $64 every 8 weeks", badge: "MOST POPULAR", perks: [] },
-  { id: "1mo", name: "1-Month Supply", savings: "Save 27%", price: "$36", perDay: "$1.29/day", billed: "Billed $36 every 4 weeks", badge: "", perks: [] },
-  { id: "one-time", name: "One-Time Purchase", savings: "", price: "$49", perDay: "$1.75/day", billed: "One-time payment of $49", badge: "", perks: [] },
+  { id: "3mo", name: "3-Month Supply", savings: "Save 45%", price: "$81", perDay: "$0.96/day", billed: "$27 per bag", badge: "BEST VALUE", perks: ["Exclusive Focus & Clarity Masterclass ($25 value)", "Maximum savings — lowest price per serving", "Lock in savings — price guaranteed even if we raise it", "Try it 60 days — keep the bag. Full refund, no questions.", "La Marzocco Espresso Machine ($4500) Giveaway entries", "Fast & FREE Shipping", "Cancel or pause anytime"] },
+  { id: "2mo", name: "2-Month Supply", savings: "Save 35%", price: "$64", perDay: "$1.14/day", billed: "$32 per bag", badge: "MOST POPULAR", perks: [] },
+  { id: "1mo", name: "1-Month Supply", savings: "Save 27%", price: "$36", perDay: "$1.29/day", billed: "$36 per bag", badge: "", perks: [] },
+  { id: "one-time", name: "One-Time Purchase", savings: "", price: "$49", perDay: "$1.75/day", billed: "$49 per bag", badge: "", perks: [] },
 ];
 
 /* --- Compounding Effect stages --- */
@@ -437,7 +437,7 @@ export default function StickPack() {
                             </div>
                           </div>
                           <div className="text-right flex-shrink-0">
-                            <div className="flex items-baseline gap-1 justify-end"><span className="font-display text-xl sm:text-2xl font-bold text-[#1C1917]">{plan.price}</span><span className="text-sm text-[#57534E] font-medium">/mo</span></div>
+                            <div className="flex items-baseline gap-1 justify-end"><span className="font-display text-xl sm:text-2xl font-bold text-[#1C1917]">{plan.price}</span></div>
                             <p className="text-[11px] text-[#78716C]">{plan.perDay}</p>
                           </div>
                         </div>
@@ -474,7 +474,7 @@ export default function StickPack() {
                 <div className="text-center mb-5"><button onClick={() => setSelectedPlan("one-time")} className={`text-sm font-medium underline decoration-dotted underline-offset-4 transition-colors ${selectedPlan === "one-time" ? "text-[#B45309] font-semibold" : "text-[#78716C] hover:text-[#B45309]"}`}>One Time Purchase $49</button></div>
 
                 <button className="group relative w-full py-4 rounded-full text-base font-bold text-white overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(180,83,9,0.4)] hover:scale-[1.02] active:scale-[0.98] bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] animate-shimmer">
-                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">{selectedPlan === "one-time" ? "BUY NOW" : "START NOW"} {"\u2022"} {currentPlan.price}{selectedPlan !== "one-time" && "/MO"}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
+                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">{selectedPlan === "one-time" ? "BUY NOW" : "START NOW"} {"\u2022"} {currentPlan.price}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
                 </button>
 
                 <div className="mt-4 space-y-3">
@@ -837,7 +837,7 @@ export default function StickPack() {
                             </div>
                           </div>
                           <div className="text-right flex-shrink-0">
-                            <div className="flex items-baseline gap-1 justify-end"><span className="font-display text-xl sm:text-2xl font-bold text-[#1C1917]">{plan.price}</span><span className="text-sm text-[#57534E] font-medium">/mo</span></div>
+                            <div className="flex items-baseline gap-1 justify-end"><span className="font-display text-xl sm:text-2xl font-bold text-[#1C1917]">{plan.price}</span></div>
                             <p className="text-[11px] text-[#78716C]">{plan.perDay}</p>
                           </div>
                         </div>
@@ -874,7 +874,7 @@ export default function StickPack() {
                 <div className="text-center mb-5"><button onClick={() => setSelectedPlan("one-time")} className={`text-sm font-medium underline decoration-dotted underline-offset-4 transition-colors ${selectedPlan === "one-time" ? "text-[#B45309] font-semibold" : "text-[#78716C] hover:text-[#B45309]"}`}>One Time Purchase $49</button></div>
 
                 <button className="group relative w-full py-4 rounded-full text-base font-bold text-white overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(180,83,9,0.4)] hover:scale-[1.02] active:scale-[0.98] bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] animate-shimmer">
-                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">{selectedPlan === "one-time" ? "BUY NOW" : "START NOW"} {"•"} {currentPlan.price}{selectedPlan !== "one-time" && "/MO"}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
+                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">{selectedPlan === "one-time" ? "BUY NOW" : "START NOW"} {"•"} {currentPlan.price}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
                 </button>
 
                 <div className="mt-4 space-y-3">
@@ -1131,7 +1131,7 @@ export default function StickPack() {
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="min-w-0">
             <div className="flex items-baseline gap-2">
-              <p className="font-display font-bold text-[#1C1917] text-lg">{currentPlan.price}{selectedPlan !== "one-time" && "/mo"}</p>
+              <p className="font-display font-bold text-[#1C1917] text-lg">{currentPlan.price}</p>
               {selectedPlan !== "one-time" && currentPlan.savings && (
                 <span className="text-xs font-bold text-emerald-600">{currentPlan.savings}</span>
               )}
