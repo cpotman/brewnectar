@@ -196,3 +196,7 @@
 - [x] Slightly reduce the prominent price text size in both stick-pack offer blocks
 - [x] Reduce the mobile sticky-bar price proportionally while preserving price hierarchy
 - [x] Add focused regression coverage and verify the revised typography on desktop and mobile
+- [x] Replace clock-oriented Evidence timing language with study-based timing wording
+- [x] Replace the L-Theanine, Rhodiola, Prebiotic + Probiotic, B Vitamins, and Alpha-GPC Evidence stats with study-supported benefit findings
+- [x] Correct every stick-pack “How fast will I feel it?” answer to describe initial effects in 10–15 minutes and broader support across the day and consistent use
+- [x] Add focused regression coverage and verify the revised Evidence and FAQ copy on desktop and mobile

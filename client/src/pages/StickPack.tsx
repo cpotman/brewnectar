@@ -52,8 +52,8 @@ const WHATS_INSIDE = [
 /* --- Ingredient data with studies --- */
 const INGREDIENTS = [
   {
-    name: "Alpha-GPC", dose: "500 mg (50%)", clock: "Clock 1 — First Morning",
-    pullStat: "60min", pullLabel: "when cognition was assessed in a healthy-adult trial",
+    name: "Alpha-GPC", dose: "500 mg (50%)", timing: "Assessed after 60 minutes",
+    pullStat: "2 doses", pullLabel: "improved Stroop scores vs placebo in healthy men",
     icon: Brain, color: "bg-amber-50 border-amber-200/60 text-[#B45309]", dotColor: "bg-[#D97706]",
     studyCount: "3", tagline: "Human studies on attention, cognition & choline availability",
     studies: [
@@ -63,8 +63,8 @@ const INGREDIENTS = [
     ],
   },
   {
-    name: "L-Theanine", dose: "200 mg", clock: "Clock 1 — First Morning",
-    pullStat: "200mg", pullLabel: "nearly 3x the L-Theanine in our syrup",
+    name: "L-Theanine", dose: "200 mg", timing: "4-week trial",
+    pullStat: "2 domains", pullLabel: "verbal fluency + executive function scores improved",
     icon: Zap, color: "bg-sky-50 border-sky-200/60 text-sky-700", dotColor: "bg-sky-500",
     studyCount: "25+", tagline: "Clinical studies on calm focus, alpha waves & stress reduction",
     studies: [
@@ -74,8 +74,8 @@ const INGREDIENTS = [
     ],
   },
   {
-    name: "Lion's Mane", dose: "500 mg (10:1, ~5 g raw)", clock: "Clock 4 — Month 2+",
-    pullStat: "~5g", pullLabel: "raw equivalent vs ~250 mg in typical mushroom coffee",
+    name: "Lion's Mane", dose: "500 mg (10:1, ~5 g raw)", timing: "Studied for 28 days–16 weeks",
+    pullStat: "2 outcomes", pullLabel: "cognition + subjective stress improved in healthy adults",
     icon: Leaf, color: "bg-emerald-50 border-emerald-200/60 text-emerald-700", dotColor: "bg-emerald-500",
     studyCount: "30+", tagline: "Peer-reviewed studies on neurogenesis & cognitive function",
     studies: [
@@ -85,17 +85,17 @@ const INGREDIENTS = [
     ],
   },
   {
-    name: "Rhodiola Rosea", dose: "300 mg (10:1)", clock: "Clock 2 — First Two Weeks",
-    pullStat: "2wk", pullLabel: "when the afternoon wall stops showing up",
+    name: "Rhodiola Rosea", dose: "300 mg (10:1)", timing: "28-day trial",
+    pullStat: "3 measures", pullLabel: "of attention improved vs placebo alongside fatigue",
     icon: Heart, color: "bg-rose-50 border-rose-200/60 text-rose-700", dotColor: "bg-rose-500",
     studyCount: "15+", tagline: "RCTs on fatigue, stress resilience & cognitive performance",
     studies: [
-      { title: "Rhodiola in Stress-Related Burnout", authors: "Olsson et al.", journal: "Planta Medica", year: 2009, finding: "132 patients with burnout showed significant improvements in fatigue and attention over 12 weeks of Rhodiola supplementation.", url: "https://pubmed.ncbi.nlm.nih.gov/19016404/" },
+      { title: "Rhodiola in Stress-Related Fatigue", authors: "Olsson et al.", journal: "Planta Medica", year: 2009, finding: "In a 60-person randomized trial, 28 days of Rhodiola improved fatigue and three computerized attention measures versus placebo.", url: "https://pubmed.ncbi.nlm.nih.gov/19016404/" },
       { title: "Anti-Fatigue Effects in Night-Shift Physicians", authors: "Darbinyan et al.", journal: "Phytomedicine", year: 2000, finding: "Rhodiola significantly reduced mental fatigue and improved cognitive function in physicians during night duty.", url: "https://pubmed.ncbi.nlm.nih.gov/11081987/" },
     ],
   },
   {
-    name: "Ashwagandha", dose: "300 mg (10:1)", clock: "Clock 3 — Weeks 3-8",
+    name: "Ashwagandha", dose: "300 mg (10:1)", timing: "10-week trial",
     pullStat: "83.5%", pullLabel: "sleep efficiency after 10 weeks",
     icon: Shield, color: "bg-purple-50 border-purple-200/60 text-purple-700", dotColor: "bg-purple-500",
     studyCount: "50+", tagline: "Meta-analyses on sleep quality, cortisol & stress reduction",
@@ -105,7 +105,7 @@ const INGREDIENTS = [
     ],
   },
   {
-    name: "Cordyceps", dose: "300 mg (10:1)", clock: "Clock 3 — Weeks 3-8",
+    name: "Cordyceps", dose: "300 mg (10:1)", timing: "3-week trial",
     pullStat: "10.9%", pullLabel: "VO2max improvement after 3 weeks",
     icon: Zap, color: "bg-orange-50 border-orange-200/60 text-orange-700", dotColor: "bg-orange-500",
     studyCount: "10+", tagline: "RCTs on aerobic capacity, oxygen utilization & energy",
@@ -114,18 +114,18 @@ const INGREDIENTS = [
     ],
   },
   {
-    name: "Prebiotic Fiber + Probiotic", dose: "2,000 mg inulin + B. coagulans", clock: "Clock 3 — Weeks 3-8",
-    pullStat: "92%", pullLabel: "probiotic survival through simulated digestion",
+    name: "Prebiotic Fiber + Probiotic", dose: "2,000 mg inulin + B. coagulans", timing: "2-week human trial",
+    pullStat: "Higher", pullLabel: "Bifidobacteria vs placebo after 2 weeks (5–8 g/day studied)",
     icon: Coffee, color: "bg-teal-50 border-teal-200/60 text-teal-700", dotColor: "bg-teal-500",
     studyCount: "15+", tagline: "Studies on gut-brain axis, spore survival & prebiotic feeding",
     studies: [
-      { title: "Bacillus coagulans Spore Survival in Hot Beverages", authors: "Keller et al.", journal: "Food Science & Technology", year: 2019, finding: "92% survival through simulated digestion. Adhered to human colonic cells at 5x the rate of L. acidophilus.", url: "https://pubmed.ncbi.nlm.nih.gov/30540517/" },
-      { title: "Inulin Increases Bifidobacteria in Humans", authors: "Kolida et al.", journal: "British Journal of Nutrition", year: 2007, finding: "6-week trial at 10 g/day significantly increased Bifidobacteria populations in the human gut.", url: "https://pubmed.ncbi.nlm.nih.gov/17445349/" },
+      { title: "Bacillus coagulans Survival and Adhesion", authors: "Shinde et al.", journal: "Journal of Functional Foods", year: 2019, finding: "In laboratory testing, B. coagulans spores showed 92% survival through simulated digestion and strong adhesion to human colonic cell models.", url: "https://www.sciencedirect.com/science/article/pii/S175646461830553X" },
+      { title: "Inulin Increases Bifidobacteria in Humans", authors: "Kolida et al.", journal: "European Journal of Clinical Nutrition", year: 2007, finding: "In 30 healthy adults, both 5 g/day and 8 g/day inulin significantly increased Bifidobacteria versus placebo after two weeks.", url: "https://europepmc.org/article/MED/17268410" },
     ],
   },
   {
-    name: "B Vitamins (B6 + B12)", dose: "100% DV each", clock: "Daily cofactors",
-    pullStat: "100%", pullLabel: "Daily Value of B6 and B12 per stick",
+    name: "B Vitamins (B6 + B12)", dose: "100% DV each", timing: "Mechanism review",
+    pullStat: "Foundation", pullLabel: "for cellular energy + neurochemical synthesis",
     icon: Coffee, color: "bg-rose-50 border-rose-200/60 text-rose-700", dotColor: "bg-rose-500",
     studyCount: "100+", tagline: "Research on neural energy, neurotransmitter synthesis & brain health",
     studies: [
@@ -190,7 +190,7 @@ const FAQ_ITEMS = [
   { q: "Do I have to give up my coffee?", a: "No. You add one stick pack to the coffee you already drink. Keep your mug, your beans, your full caffeine." },
   { q: "What does it taste like?", a: "Subtly sweet almond flavor. No mushroom taste, no earthiness. Dissolves completely in 5 seconds." },
   { q: "Doesn't hot coffee kill the probiotic?", a: "Bacillus coagulans forms a spore coat specifically evolved to survive heat. Published stability data in brewed coffee confirms 92% survival." },
-  { q: "How fast will I feel it?", a: "L-Theanine is included for calmer focus alongside your coffee, while Alpha-GPC supplies choline used to make acetylcholine.* The broader formula is designed to support your routine with consistent daily use." },
+  { q: "How fast will I feel it?", a: "Many people notice an initial shift in 10–15 minutes, especially alongside their usual coffee.* Broader support may carry through the day, while the ingredients tied to stress resilience, sleep, gut health, and long-term cognition are designed to build with consistent use across days, weeks, and months.* Individual timing varies." },
   { q: "I've tried nootropics before and they didn't work.", a: "Most are underdosed, single-mechanism, and ignore sleep and gut. This formula addresses three upstream causes simultaneously at clinical doses." },
   { q: "Is this safe?", a: "All ingredients are GRAS (Generally Recognized as Safe). Manufactured in a GMP-certified US facility. Consult your doctor if pregnant, nursing, or on medication." },
   { q: "Who shouldn't take this?", a: "Anyone pregnant or nursing, under 18, or taking MAOIs or blood thinners should consult their doctor first. Contains ashwagandha." },
@@ -207,7 +207,7 @@ const PDP_FAQ_ITEMS = [
   },
   {
     q: "How fast will I feel it?",
-    a: "L-Theanine is included for calmer focus alongside your coffee, while Alpha-GPC supplies choline used to make acetylcholine.* The broader formula is designed to support your routine with consistent daily use.",
+    a: "Many people notice an initial shift in 10–15 minutes, especially alongside their usual coffee.* Broader support may carry through the day, while the ingredients tied to stress resilience, sleep, gut health, and long-term cognition are designed to build with consistent use across days, weeks, and months.* Individual timing varies.",
   },
 ];
 
@@ -1024,7 +1024,7 @@ export default function StickPack() {
                             <div className={`w-2 h-2 rounded-full ${item.dotColor}`} />
                             <h4 className="font-display font-bold text-sm text-[#1C1917]">Key Studies — {item.name}</h4>
                           </div>
-                          <p className="text-xs text-[#78716C] mb-4">{item.clock} &bull; <strong className="text-[#1C1917]">{item.pullStat}</strong> {item.pullLabel}</p>
+                          <p className="text-xs text-[#78716C] mb-4">{item.timing} &bull; <strong className="text-[#1C1917]">{item.pullStat}</strong> {item.pullLabel}</p>
                           <div className="space-y-3">
                             {item.studies.map((study, j) => (
                               <a key={j} href={study.url} target="_blank" rel="noopener noreferrer" className="group block p-4 rounded-xl border border-stone-100 hover:border-amber-200 hover:bg-amber-50/30 transition-all duration-300">
@@ -1074,8 +1074,8 @@ export default function StickPack() {
                     </div>
                     <div className="flex items-center gap-3 flex-shrink-0">
                       <div className="rounded-2xl bg-stone-50 border border-stone-100 px-4 py-3 text-right">
-                        <p className="text-[10px] font-semibold uppercase tracking-wider text-[#A8A29E] mb-0.5">Time Horizon</p>
-                        <p className="text-sm font-semibold text-[#44403C]">{evidenceItem.clock}</p>
+                        <p className="text-[10px] font-semibold uppercase tracking-wider text-[#A8A29E] mb-0.5">Study Timing</p>
+                        <p className="text-sm font-semibold text-[#44403C]">{evidenceItem.timing}</p>
                       </div>
                       <div className={`rounded-2xl border px-4 py-3 ${evidenceItem.color}`}>
                         <p className="font-display text-xl font-bold leading-none mb-1">{evidenceItem.pullStat}</p>

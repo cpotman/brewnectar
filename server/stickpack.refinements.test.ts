@@ -93,4 +93,28 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).not.toContain('&& "/mo"');
     expect(source).not.toMatch(/Billed \$|every (?:12|8|4) weeks|One-time payment/);
   });
+
+  it("uses study timing and measured benefits throughout the Evidence section", () => {
+    expect(source).toContain("Study Timing");
+    expect(source).toContain('timing: "Assessed after 60 minutes"');
+    expect(source).toContain('pullStat: "2 doses", pullLabel: "improved Stroop scores vs placebo in healthy men"');
+    expect(source).toContain('timing: "4-week trial"');
+    expect(source).toContain('pullStat: "2 domains", pullLabel: "verbal fluency + executive function scores improved"');
+    expect(source).toContain('pullStat: "3 measures", pullLabel: "of attention improved vs placebo alongside fatigue"');
+    expect(source).toContain('pullStat: "Higher", pullLabel: "Bifidobacteria vs placebo after 2 weeks (5–8 g/day studied)"');
+    expect(source).toContain('timing: "Mechanism review"');
+    expect(source).toContain('pullStat: "Foundation", pullLabel: "for cellular energy + neurochemical synthesis"');
+    expect(source).toContain("https://europepmc.org/article/MED/17268410");
+    expect(source).toContain("https://www.sciencedirect.com/science/article/pii/S175646461830553X");
+    expect(source).not.toMatch(/Clock [1-4]|Time Horizon|item\.clock|evidenceItem\.clock/);
+    expect(source).not.toMatch(/nearly 3x|afternoon wall stops|Daily Value of B6 and B12 per stick|when cognition was assessed|probiotic survival through simulated digestion/);
+    expect(source).not.toMatch(/30540517|17445349/);
+  });
+
+  it("uses the corrected onset answer in both stick-pack FAQ surfaces", () => {
+    expect(source.match(/Many people notice an initial shift in 10–15 minutes/g)).toHaveLength(2);
+    expect(source.match(/Broader support may carry through the day/g)).toHaveLength(2);
+    expect(source.match(/across days, weeks, and months/g)).toHaveLength(2);
+    expect(source).not.toContain("L-Theanine is included for calmer focus alongside your coffee");
+  });
 });
