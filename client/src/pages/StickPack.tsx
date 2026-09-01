@@ -52,8 +52,7 @@ const WHATS_INSIDE = [
 /* --- Ingredient data with studies --- */
 const INGREDIENTS = [
   {
-    name: "Alpha-GPC", dose: "500 mg (50%)", timing: "Assessed after 60 minutes",
-    pullStat: "2 doses", pullLabel: "improved Stroop scores vs placebo in healthy men",
+    name: "Alpha-GPC", dose: "500 mg (50%)",
     icon: Brain, color: "bg-amber-50 border-amber-200/60 text-[#B45309]", dotColor: "bg-[#D97706]",
     studyCount: "3", tagline: "Human studies on attention, cognition & choline availability",
     studies: [
@@ -63,8 +62,7 @@ const INGREDIENTS = [
     ],
   },
   {
-    name: "L-Theanine", dose: "200 mg", timing: "4-week trial",
-    pullStat: "2 domains", pullLabel: "verbal fluency + executive function scores improved",
+    name: "L-Theanine", dose: "200 mg",
     icon: Zap, color: "bg-sky-50 border-sky-200/60 text-sky-700", dotColor: "bg-sky-500",
     studyCount: "25+", tagline: "Clinical studies on calm focus, alpha waves & stress reduction",
     studies: [
@@ -74,8 +72,7 @@ const INGREDIENTS = [
     ],
   },
   {
-    name: "Lion's Mane", dose: "500 mg (10:1, ~5 g raw)", timing: "Studied for 28 days–16 weeks",
-    pullStat: "2 outcomes", pullLabel: "cognition + subjective stress improved in healthy adults",
+    name: "Lion's Mane", dose: "500 mg (10:1, ~5 g raw)",
     icon: Leaf, color: "bg-emerald-50 border-emerald-200/60 text-emerald-700", dotColor: "bg-emerald-500",
     studyCount: "30+", tagline: "Peer-reviewed studies on neurogenesis & cognitive function",
     studies: [
@@ -85,8 +82,7 @@ const INGREDIENTS = [
     ],
   },
   {
-    name: "Rhodiola Rosea", dose: "300 mg (10:1)", timing: "28-day trial",
-    pullStat: "3 measures", pullLabel: "of attention improved vs placebo alongside fatigue",
+    name: "Rhodiola Rosea", dose: "300 mg (10:1)",
     icon: Heart, color: "bg-rose-50 border-rose-200/60 text-rose-700", dotColor: "bg-rose-500",
     studyCount: "15+", tagline: "RCTs on fatigue, stress resilience & cognitive performance",
     studies: [
@@ -95,8 +91,7 @@ const INGREDIENTS = [
     ],
   },
   {
-    name: "Ashwagandha", dose: "300 mg (10:1)", timing: "10-week trial",
-    pullStat: "83.5%", pullLabel: "sleep efficiency after 10 weeks",
+    name: "Ashwagandha", dose: "300 mg (10:1)",
     icon: Shield, color: "bg-purple-50 border-purple-200/60 text-purple-700", dotColor: "bg-purple-500",
     studyCount: "50+", tagline: "Meta-analyses on sleep quality, cortisol & stress reduction",
     studies: [
@@ -105,8 +100,7 @@ const INGREDIENTS = [
     ],
   },
   {
-    name: "Cordyceps", dose: "300 mg (10:1)", timing: "3-week trial",
-    pullStat: "10.9%", pullLabel: "VO2max improvement after 3 weeks",
+    name: "Cordyceps", dose: "300 mg (10:1)",
     icon: Zap, color: "bg-orange-50 border-orange-200/60 text-orange-700", dotColor: "bg-orange-500",
     studyCount: "10+", tagline: "RCTs on aerobic capacity, oxygen utilization & energy",
     studies: [
@@ -114,8 +108,7 @@ const INGREDIENTS = [
     ],
   },
   {
-    name: "Prebiotic Fiber + Probiotic", dose: "2,000 mg inulin + B. coagulans", timing: "2-week human trial",
-    pullStat: "Higher", pullLabel: "Bifidobacteria vs placebo after 2 weeks (5–8 g/day studied)",
+    name: "Prebiotic Fiber + Probiotic", dose: "2,000 mg inulin + B. coagulans",
     icon: Coffee, color: "bg-teal-50 border-teal-200/60 text-teal-700", dotColor: "bg-teal-500",
     studyCount: "15+", tagline: "Studies on gut-brain axis, spore survival & prebiotic feeding",
     studies: [
@@ -124,8 +117,7 @@ const INGREDIENTS = [
     ],
   },
   {
-    name: "B Vitamins (B6 + B12)", dose: "100% DV each", timing: "Mechanism review",
-    pullStat: "Foundation", pullLabel: "for cellular energy + neurochemical synthesis",
+    name: "B Vitamins (B6 + B12)", dose: "100% DV each",
     icon: Coffee, color: "bg-rose-50 border-rose-200/60 text-rose-700", dotColor: "bg-rose-500",
     studyCount: "100+", tagline: "Research on neural energy, neurotransmitter synthesis & brain health",
     studies: [
@@ -748,8 +740,10 @@ export default function StickPack() {
           </FadeUp>
         </div>
       </section>
+      {/* Lower-page conversion flow: Evidence → Stories → Offer → FAQ */}
+      <div className="flex flex-col">
       {/* === DUPLICATE OFFER BLOCK (full PDP copy above FAQ) === */}
-      <section className="pt-10 md:pt-14 pb-8 md:pb-10 bg-[#FDFBF7]">
+      <section className="order-3 pt-10 md:pt-14 pb-8 md:pb-10 bg-[#FDFBF7]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <div className="text-center mb-8">
@@ -895,7 +889,7 @@ export default function StickPack() {
 
 
       {/* === REVIEWS SECTION === */}
-      <section className="py-12 md:py-16 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #7C2D12 0%, #9A3412 25%, #C2410C 50%, #D97706 80%, #F59E0B 100%)" }}>
+      <section className="order-2 py-12 md:py-16 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #7C2D12 0%, #9A3412 25%, #C2410C 50%, #D97706 80%, #F59E0B 100%)" }}>
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(0,0,0,0.2) 0%, transparent 40%)" }} />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
@@ -953,7 +947,7 @@ export default function StickPack() {
       </section>
 
       {/* === SECTION 7: FAQ === */}
-      <section className="py-14 md:py-20 bg-white">
+      <section className="order-4 py-14 md:py-20 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <FadeUp>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-center text-[#1C1917] mb-8">Frequently Asked Questions</h2>
@@ -981,7 +975,7 @@ export default function StickPack() {
       </section>
 
       {/* === SECTION 6: THE EVIDENCE (studies, moved below comparison) === */}
-      <section className="py-14 md:py-20 bg-[#FDFBF7]">
+      <section className="order-1 py-14 md:py-20 bg-[#FDFBF7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <div className="flex items-center justify-center gap-2 mb-3">
@@ -1024,7 +1018,6 @@ export default function StickPack() {
                             <div className={`w-2 h-2 rounded-full ${item.dotColor}`} />
                             <h4 className="font-display font-bold text-sm text-[#1C1917]">Key Studies — {item.name}</h4>
                           </div>
-                          <p className="text-xs text-[#78716C] mb-4">{item.timing} &bull; <strong className="text-[#1C1917]">{item.pullStat}</strong> {item.pullLabel}</p>
                           <div className="space-y-3">
                             {item.studies.map((study, j) => (
                               <a key={j} href={study.url} target="_blank" rel="noopener noreferrer" className="group block p-4 rounded-xl border border-stone-100 hover:border-amber-200 hover:bg-amber-50/30 transition-all duration-300">
@@ -1061,7 +1054,7 @@ export default function StickPack() {
               >
                 <div className="relative overflow-hidden bg-white rounded-[28px] border border-stone-100 shadow-warm p-7 xl:p-8">
                   <div className={`absolute inset-x-0 top-0 h-1 ${evidenceItem.dotColor}`} />
-                  <div className="flex items-start justify-between gap-8 mb-6">
+                  <div className="flex items-start gap-4 mb-6">
                     <div className="flex items-start gap-4 min-w-0">
                       <div className={`w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 ${evidenceItem.color}`}>
                         <evidenceItem.icon size={22} />
@@ -1070,16 +1063,6 @@ export default function StickPack() {
                         <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#A8A29E] mb-1">Key Studies</p>
                         <h4 className="font-display text-2xl font-bold text-[#1C1917] mb-1">{evidenceItem.name}</h4>
                         <p className="text-sm text-[#78716C]">{evidenceItem.tagline}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-3 flex-shrink-0">
-                      <div className="rounded-2xl bg-stone-50 border border-stone-100 px-4 py-3 text-right">
-                        <p className="text-[10px] font-semibold uppercase tracking-wider text-[#A8A29E] mb-0.5">Study Timing</p>
-                        <p className="text-sm font-semibold text-[#44403C]">{evidenceItem.timing}</p>
-                      </div>
-                      <div className={`rounded-2xl border px-4 py-3 ${evidenceItem.color}`}>
-                        <p className="font-display text-xl font-bold leading-none mb-1">{evidenceItem.pullStat}</p>
-                        <p className="text-[11px] leading-snug max-w-[180px] opacity-80">{evidenceItem.pullLabel}</p>
                       </div>
                     </div>
                   </div>
@@ -1105,6 +1088,7 @@ export default function StickPack() {
           </AnimatePresence>
         </div>
       </section>
+      </div>
 
       {/* === SECTION 8: FINAL CTA === */}
       <section className="py-14 md:py-20 bg-gradient-to-br from-[#1C1917] to-[#292524]">

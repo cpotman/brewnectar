@@ -200,3 +200,7 @@
 - [x] Replace the L-Theanine, Rhodiola, Prebiotic + Probiotic, B Vitamins, and Alpha-GPC Evidence stats with study-supported benefit findings
 - [x] Correct every stick-pack “How fast will I feel it?” answer to describe initial effects in 10–15 minutes and broader support across the day and consistent use
 - [x] Add focused regression coverage and verify the revised Evidence and FAQ copy on desktop and mobile
+- [x] Remove the study-timing and benefit-summary callout boxes from expanded stick-pack Evidence details on mobile and desktop
+- [x] Move the stick-pack Evidence section above “Real Stories From Real Customers”
+- [x] Move the complete second stick-pack offer block below “Real Stories From Real Customers”
+- [x] Add focused regression coverage and verify the reordered responsive flow and study expansions

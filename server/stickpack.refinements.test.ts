@@ -94,21 +94,20 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).not.toMatch(/Billed \$|every (?:12|8|4) weeks|One-time payment/);
   });
 
-  it("uses study timing and measured benefits throughout the Evidence section", () => {
-    expect(source).toContain("Study Timing");
-    expect(source).toContain('timing: "Assessed after 60 minutes"');
-    expect(source).toContain('pullStat: "2 doses", pullLabel: "improved Stroop scores vs placebo in healthy men"');
-    expect(source).toContain('timing: "4-week trial"');
-    expect(source).toContain('pullStat: "2 domains", pullLabel: "verbal fluency + executive function scores improved"');
-    expect(source).toContain('pullStat: "3 measures", pullLabel: "of attention improved vs placebo alongside fatigue"');
-    expect(source).toContain('pullStat: "Higher", pullLabel: "Bifidobacteria vs placebo after 2 weeks (5–8 g/day studied)"');
-    expect(source).toContain('timing: "Mechanism review"');
-    expect(source).toContain('pullStat: "Foundation", pullLabel: "for cellular energy + neurochemical synthesis"');
+  it("keeps expanded Evidence focused on the linked study cards", () => {
     expect(source).toContain("https://europepmc.org/article/MED/17268410");
     expect(source).toContain("https://www.sciencedirect.com/science/article/pii/S175646461830553X");
-    expect(source).not.toMatch(/Clock [1-4]|Time Horizon|item\.clock|evidenceItem\.clock/);
-    expect(source).not.toMatch(/nearly 3x|afternoon wall stops|Daily Value of B6 and B12 per stick|when cognition was assessed|probiotic survival through simulated digestion/);
+    expect(source).not.toMatch(/Study Timing|Time Horizon|timing:|pullStat:|pullLabel:/);
+    expect(source).not.toMatch(/item\.timing|item\.pullStat|item\.pullLabel|evidenceItem\.timing|evidenceItem\.pullStat|evidenceItem\.pullLabel/);
     expect(source).not.toMatch(/30540517|17445349/);
+  });
+
+  it("orders the lower page as Evidence, testimonials, repeated offer, then FAQ", () => {
+    expect(source).toContain("Lower-page conversion flow: Evidence → Stories → Offer → FAQ");
+    expect(source).toContain('className="order-1 py-14 md:py-20 bg-[#FDFBF7]"');
+    expect(source).toContain('className="order-2 py-12 md:py-16 relative overflow-hidden"');
+    expect(source).toContain('className="order-3 pt-10 md:pt-14 pb-8 md:pb-10 bg-[#FDFBF7]"');
+    expect(source).toContain('className="order-4 py-14 md:py-20 bg-white"');
   });
 
   it("uses the corrected onset answer in both stick-pack FAQ surfaces", () => {
