@@ -49,6 +49,25 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).not.toMatch(/citicoline|cognizin/i);
   });
 
+  it("uses stronger human gut-brain evidence and moves the three-study Alpha-GPC card below higher-evidence ingredients", () => {
+    expect(source).toContain("https://www.nature.com/articles/s41467-024-46116-y");
+    expect(source).toContain("https://pmc.ncbi.nlm.nih.gov/articles/PMC10636234/");
+    expect(source).toContain("https://pmc.ncbi.nlm.nih.gov/articles/PMC11663957/");
+    expect(source).toContain("BrewNectar contains a lower 2 g inulin dose");
+    expect(source).toContain("BrewNectar's prebiotic and dose differ");
+    expect(source).not.toContain("Bacillus coagulans Survival and Adhesion");
+    expect(source).not.toContain("Inulin Increases Bifidobacteria in Humans");
+
+    const lTheanineIndex = source.indexOf('name: "L-Theanine", dose: "200 mg"');
+    const lionsManeIndex = source.indexOf('name: "Lion\'s Mane", dose: "500 mg');
+    const ashwagandhaIndex = source.indexOf('name: "Ashwagandha", dose: "300 mg');
+    const alphaGpcIndex = source.indexOf('name: "Alpha-GPC", dose: "500 mg (50%)"');
+    expect(lTheanineIndex).toBeGreaterThan(-1);
+    expect(lionsManeIndex).toBeGreaterThan(lTheanineIndex);
+    expect(ashwagandhaIndex).toBeGreaterThan(lionsManeIndex);
+    expect(alphaGpcIndex).toBeGreaterThan(ashwagandhaIndex);
+  });
+
   it("uses clear Compounding Effect milestones without the rejected timing claims", () => {
     expect(source).toContain('period: "Day 1"');
     expect(source).toContain('period: "Week 2"');
@@ -103,8 +122,9 @@ describe("stick-pack content and pacing refinements", () => {
   });
 
   it("keeps expanded Evidence focused on the linked study cards", () => {
-    expect(source).toContain("https://europepmc.org/article/MED/17268410");
-    expect(source).toContain("https://www.sciencedirect.com/science/article/pii/S175646461830553X");
+    expect(source).toContain("https://www.nature.com/articles/s41467-024-46116-y");
+    expect(source).toContain("https://pmc.ncbi.nlm.nih.gov/articles/PMC10636234/");
+    expect(source).toContain("https://pmc.ncbi.nlm.nih.gov/articles/PMC11663957/");
     expect(source).not.toMatch(/Study Timing|Time Horizon|timing:|pullStat:|pullLabel:/);
     expect(source).not.toMatch(/item\.timing|item\.pullStat|item\.pullLabel|evidenceItem\.timing|evidenceItem\.pullStat|evidenceItem\.pullLabel/);
     expect(source).not.toMatch(/30540517|17445349/);

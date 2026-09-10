@@ -238,3 +238,9 @@
 - [x] Update any Compounding Effect copy that directly references the previous milestone timing
 - [x] Eliminate the duplicate BrewNectar comparison image at intermediate responsive widths by aligning visibility breakpoints
 - [x] Add focused regression coverage and verify the timeline plus comparison at mobile, tablet, and desktop widths
+- [x] Audit the current Prebiotic + Probiotic and Alpha-GPC Evidence studies, summaries, counts, and card order
+- [x] Research stronger human gut–brain-axis studies tied to cognition, mental fatigue, stress, or mood
+- [x] Research additional credible human Alpha-GPC trials without padding the Evidence card with weak or irrelevant sources
+- [x] Replace weaker Prebiotic + Probiotic Evidence links and summaries with accurate, dose-transparent human findings
+- [x] Add credible Alpha-GPC studies if supportable; otherwise move Alpha-GPC lower in the mobile Evidence order
+- [x] Add focused regression coverage and verify every updated source link, mobile order, responsive layout, and production build

@@ -45,22 +45,12 @@ const WHATS_INSIDE = [
   { name: "Rhodiola Rosea", dosage: "300 mg (10:1)", tag: "The Afternoon Wall Disappears*", science: "The fastest adaptogen in the stack. Anti-fatigue benefits emerge within roughly two weeks \u2014 carrying you through the window where most supplement customers churn.", icon: Heart, color: "bg-rose-50 text-rose-700", image: "/manus-storage/ingredient-rhodiola-v2_5bb7e26c.png" },
   { name: "Ashwagandha", dosage: "300 mg (10:1)", tag: "Better Sleep. Better Everything.*", science: "Works on the upstream cause \u2014 sleep quality. Sleep efficiency improved from 75.6% to 83.5% over 10 weeks in a published RCT. Better sleep means a sharper morning.", icon: Shield, color: "bg-purple-50 text-purple-700", image: "/manus-storage/ingredient-ashwagandha-v2_66934589.png" },
   { name: "Cordyceps", dosage: "300 mg (10:1)", tag: "Sustained Physical + Mental Energy*", science: "28 healthy adults taking cordyceps for 3 weeks saw VO2max improve by 10.9% vs no change in placebo. More oxygen to the brain means more sustained output.", icon: Zap, color: "bg-orange-50 text-orange-700", image: "/manus-storage/ingredient-cordyceps-regenerated_777447ce.png" },
-  { name: "Prebiotic Fiber + Probiotic", dosage: "2 g inulin + B. coagulans", tag: "A Gut That Feeds Your Brain*", science: "Bacillus coagulans survives hot coffee (92% spore survival). Inulin feeds beneficial bacteria. Together they rebuild the gut-brain axis that most brain supplements ignore.", icon: Coffee, color: "bg-teal-50 text-teal-700", image: "/manus-storage/ingredient-prebiotic-probiotic-v4_9aef7528.png" },
+  { name: "Prebiotic Fiber + Probiotic", dosage: "2 g inulin + B. coagulans", tag: "A Gut That Feeds Your Brain*", science: "Inulin feeds beneficial bacteria, while spore-forming B. coagulans is selected for resilience. Together they support the gut–brain connection most brain supplements ignore.*", icon: Coffee, color: "bg-teal-50 text-teal-700", image: "/manus-storage/ingredient-prebiotic-probiotic-v4_9aef7528.png" },
   { name: "B Vitamins (B6 + B12)", dosage: "100% DV each", tag: "Steady Energy That Doesn\u2019t Crash", science: "Essential cofactors for dopamine, serotonin, and norepinephrine production. They support your brain\u2019s natural energy metabolism and neurotransmitter synthesis all day.", icon: Coffee, color: "bg-rose-50 text-rose-700", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663030542116/gR7c7MRQNrXJ4W4LDnTdRi/ingredient-b-vitamins_1072f364.png" },
 ];
 
 /* --- Ingredient data with studies --- */
 const INGREDIENTS = [
-  {
-    name: "Alpha-GPC", dose: "500 mg (50%)",
-    icon: Brain, color: "bg-amber-50 border-amber-200/60 text-[#B45309]", dotColor: "bg-[#D97706]",
-    studyCount: "3", tagline: "Human studies on attention, cognition & choline availability",
-    studies: [
-      { title: "Acute Alpha-GPC and Cognitive Performance", authors: "Kerksick", journal: "Nutrients", year: 2024, finding: "In 20 healthy men, 315 mg and 630 mg Alpha-GPC improved Stroop performance 60 minutes after ingestion; not every cognitive measure improved.", url: "https://pubmed.ncbi.nlm.nih.gov/39683633/" },
-      { title: "Alpha-GPC and Motivation in Healthy Volunteers", authors: "Tamura et al.", journal: "Nutrients", year: 2021, finding: "In a small randomized study, 400 mg daily for two weeks was associated with higher nighttime motivation; anxiety was unchanged.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8235064/" },
-      { title: "Alpha-GPC Dose and Choline Availability", authors: "Marcus et al.", journal: "J Int Soc Sports Nutr", year: 2017, finding: "250 mg and 500 mg daily increased serum free choline after one week, while psychomotor vigilance did not improve.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5629791/" },
-    ],
-  },
   {
     name: "L-Theanine", dose: "200 mg",
     icon: Zap, color: "bg-sky-50 border-sky-200/60 text-sky-700", dotColor: "bg-sky-500",
@@ -100,6 +90,16 @@ const INGREDIENTS = [
     ],
   },
   {
+    name: "Alpha-GPC", dose: "500 mg (50%)",
+    icon: Brain, color: "bg-amber-50 border-amber-200/60 text-[#B45309]", dotColor: "bg-[#D97706]",
+    studyCount: "3", tagline: "Human studies on attention, cognition & choline availability",
+    studies: [
+      { title: "Acute Alpha-GPC and Cognitive Performance", authors: "Kerksick", journal: "Nutrients", year: 2024, finding: "In 20 healthy men, 315 mg and 630 mg Alpha-GPC improved Stroop performance 60 minutes after ingestion; not every cognitive measure improved.", url: "https://pubmed.ncbi.nlm.nih.gov/39683633/" },
+      { title: "Alpha-GPC and Motivation in Healthy Volunteers", authors: "Tamura et al.", journal: "Nutrients", year: 2021, finding: "In a small randomized study, 400 mg daily for two weeks was associated with higher nighttime motivation; anxiety was unchanged.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8235064/" },
+      { title: "Alpha-GPC Dose and Choline Availability", authors: "Marcus et al.", journal: "J Int Soc Sports Nutr", year: 2017, finding: "250 mg and 500 mg daily increased serum free choline after one week, while psychomotor vigilance did not improve.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5629791/" },
+    ],
+  },
+  {
     name: "Cordyceps", dose: "300 mg (10:1)",
     icon: Zap, color: "bg-orange-50 border-orange-200/60 text-orange-700", dotColor: "bg-orange-500",
     studyCount: "10+", tagline: "RCTs on aerobic capacity, oxygen utilization & energy",
@@ -110,10 +110,11 @@ const INGREDIENTS = [
   {
     name: "Prebiotic Fiber + Probiotic", dose: "2,000 mg inulin + B. coagulans",
     icon: Coffee, color: "bg-teal-50 border-teal-200/60 text-teal-700", dotColor: "bg-teal-500",
-    studyCount: "15+", tagline: "Studies on gut-brain axis, spore survival & prebiotic feeding",
+    studyCount: "15+", tagline: "Human research on cognition, mood & the gut–brain axis",
     studies: [
-      { title: "Bacillus coagulans Survival and Adhesion", authors: "Shinde et al.", journal: "Journal of Functional Foods", year: 2019, finding: "In laboratory testing, B. coagulans spores showed 92% survival through simulated digestion and strong adhesion to human colonic cell models.", url: "https://www.sciencedirect.com/science/article/pii/S175646461830553X" },
-      { title: "Inulin Increases Bifidobacteria in Humans", authors: "Kolida et al.", journal: "European Journal of Clinical Nutrition", year: 2007, finding: "In 30 healthy adults, both 5 g/day and 8 g/day inulin significantly increased Bifidobacteria versus placebo after two weeks.", url: "https://europepmc.org/article/MED/17268410" },
+      { title: "Inulin + FOS and Cognition in Older Adults", authors: "Ni Lochlainn et al.", journal: "Nature Communications", year: 2024, finding: "In 72 adults age 60+, 7.5 g/day inulin + FOS for 12 weeks improved a composite cognition score and reduced errors on a memory test versus placebo. BrewNectar contains a lower 2 g inulin dose.", url: "https://www.nature.com/articles/s41467-024-46116-y" },
+      { title: "Oligofructose, Gut Microbes, and Mood", authors: "Jackson et al.", journal: "American Journal of Clinical Nutrition", year: 2023, finding: "In 92 working-age adults, 8 g/day oligofructose for four weeks increased several beneficial bacterial taxa and outperformed placebo on several mood measures. BrewNectar's prebiotic and dose differ.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10636234/" },
+      { title: "Prebiotics and Cognitive Resilience", authors: "Dalile et al.", journal: "Advances in Nutrition", year: 2025, finding: "An expert review describes plausible gut–brain pathways while concluding that human prebiotic-cognition findings remain limited and heterogeneous.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11663957/" },
     ],
   },
   {
