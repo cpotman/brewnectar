@@ -188,6 +188,12 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).not.toContain(">Feature</");
   });
 
+  it("keeps the desktop comparison product labels centered, matched, and unwrapped", () => {
+    expect(source.match(/inline-flex min-w-\[136px\].*whitespace-nowrap/g)).toHaveLength(2);
+    expect(source).toContain(">Mushroom Coffee</span>");
+    expect(source).toContain(">BrewNectar</span>");
+  });
+
   it("uses the corrected onset answer in both stick-pack FAQ surfaces", () => {
     expect(source.match(/Many people notice an initial shift in 10–15 minutes/g)).toHaveLength(2);
     expect(source.match(/Broader support may carry through the day/g)).toHaveLength(2);

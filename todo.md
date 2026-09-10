@@ -244,3 +244,6 @@
 - [x] Replace weaker Prebiotic + Probiotic Evidence links and summaries with accurate, dose-transparent human findings
 - [x] Add credible Alpha-GPC studies if supportable; otherwise move Alpha-GPC lower in the mobile Evidence order
 - [x] Add focused regression coverage and verify every updated source link, mobile order, responsive layout, and production build
+- [x] Center the desktop Mushroom Coffee pill directly beneath its comparison image
+- [x] Keep “Mushroom Coffee” on one line and match the BrewNectar pill’s width, height, and spacing
+- [x] Add focused regression coverage and verify desktop alignment while leaving mobile unchanged

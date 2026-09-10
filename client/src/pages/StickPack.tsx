@@ -682,7 +682,7 @@ export default function StickPack() {
                   alt="BrewNectar stick pack pouch, single-serve stick, and latte"
                   className="absolute inset-x-0 bottom-3 h-[205px] w-full object-contain drop-shadow-[0_14px_12px_rgba(120,53,15,0.14)]"
                 />
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full bg-[#FFF0DF] px-7 py-1.5 text-xs font-bold text-[#C2410C]">BrewNectar</span>
+                <span className="absolute bottom-0 left-1/2 inline-flex min-w-[136px] -translate-x-1/2 items-center justify-center whitespace-nowrap rounded-full bg-[#FFF0DF] px-5 py-1.5 text-xs font-bold text-[#C2410C]">BrewNectar</span>
               </div>
 
               <div className="relative h-[220px]">
@@ -692,7 +692,7 @@ export default function StickPack() {
                   alt="Generic mushroom coffee with functional mushrooms"
                   className="absolute inset-x-0 bottom-4 h-[195px] w-full object-contain drop-shadow-[0_14px_12px_rgba(68,64,60,0.15)]"
                 />
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full bg-stone-200/80 px-7 py-1.5 text-xs font-bold text-[#57534E]">Mushroom Coffee</span>
+                <span className="absolute bottom-0 left-1/2 inline-flex min-w-[136px] -translate-x-1/2 items-center justify-center whitespace-nowrap rounded-full bg-stone-200/80 px-5 py-1.5 text-xs font-bold text-[#57534E]">Mushroom Coffee</span>
               </div>
 
               <div className="relative self-center pl-1 text-center font-[cursive] text-sm italic leading-snug text-[#57534E] md:text-base">
