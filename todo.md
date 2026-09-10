@@ -231,3 +231,6 @@
 - [x] Hide the mushroom-coffee product image on mobile
 - [x] Move the BrewNectar product image above the leftmost mobile feature column while preserving the two product-label columns
 - [x] Update focused regression coverage and verify desktop/mobile alignment, asset loading, and no horizontal overflow
+- [x] Enlarge the mobile BrewNectar comparison image while preserving its current top reach
+- [x] Extend the image downward so its bottom aligns with or slightly overlaps the BrewNectar header row
+- [x] Update focused regression coverage and verify mobile alignment without changing desktop presentation

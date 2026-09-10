@@ -154,6 +154,7 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).toContain("md:right-[140px] md:w-[120px]");
     expect(source).toContain("mt-20 max-w-3xl");
     expect(source).toContain("-top-[72px]");
+    expect(source).toContain("h-[132px] w-[198px]");
     expect(source).toContain("md:hidden");
     expect(source).not.toContain(">Feature</");
   });

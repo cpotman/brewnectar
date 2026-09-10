@@ -711,7 +711,7 @@ export default function StickPack() {
               {/* Header */}
               <div className="relative grid min-h-[58px] grid-cols-[minmax(0,1fr)_80px_94px] md:min-h-0 md:grid-cols-[minmax(0,1fr)_120px_140px]">
                 <div className="relative flex items-end justify-center px-3 pb-2 md:block md:px-5 md:py-4">
-                  <img src="/manus-storage/comparison-brewnectar-user_16c697c8.png" alt="" aria-hidden="true" className="absolute -top-[72px] left-1/2 h-[100px] w-[160px] max-w-none -translate-x-1/2 object-contain drop-shadow-md md:hidden" />
+                  <img src="/manus-storage/comparison-brewnectar-user_16c697c8.png" alt="" aria-hidden="true" className="absolute -top-[72px] left-1/2 h-[132px] w-[198px] max-w-none -translate-x-1/2 object-contain drop-shadow-md md:hidden" />
                 </div>
                 <div className="relative flex items-center justify-center rounded-t-xl bg-gradient-to-b from-amber-500 to-[#D97706] px-1 py-3.5 text-center md:rounded-t-2xl">
                   <span className="text-[10px] font-bold leading-tight tracking-wide text-white md:text-xs">BrewNectar</span>
