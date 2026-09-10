@@ -136,10 +136,9 @@ describe("stick-pack content and pacing refinements", () => {
   });
 
   it("presents the comparison with product visuals, row icons, and compact mobile column markers", () => {
-    expect(source).toContain("/manus-storage/stickpack-comparison-front-pouch_fdad9901.png");
-    expect(source).toContain("/manus-storage/stickpack-comparison-single-stick_5c5b35c8.png");
-    expect(source).toContain("/manus-storage/comparison-latte-cutout_8e444dd1.png");
-    expect(source).toContain("/manus-storage/comparison-mushroom-scene-v2_e357fcac.png");
+    expect(source.match(/comparison-brewnectar-user_16c697c8\.png/g)).toHaveLength(2);
+    expect(source.match(/comparison-mushroom-user_7ea4d14f\.png/g)).toHaveLength(1);
+    expect(source).not.toContain("comparison-mushroom-scene-v2_e357fcac.png");
     expect(source).toContain("aria-label=\"BrewNectar and mushroom coffee product comparison\"");
     expect(source).toContain("All the benefits.");
     expect(source).toContain("None of the compromise.");
@@ -153,8 +152,9 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source.match(/md:grid-cols-\[minmax\(0,1fr\)_120px_140px\]/g)).toHaveLength(2);
     expect(source).toContain("right-[94px] w-[80px]");
     expect(source).toContain("md:right-[140px] md:w-[120px]");
-    expect(source).toContain("-top-14");
-    expect(source).toContain("-top-12");
+    expect(source).toContain("mt-20 max-w-3xl");
+    expect(source).toContain("-top-[72px]");
+    expect(source).toContain("md:hidden");
     expect(source).not.toContain(">Feature</");
   });
 

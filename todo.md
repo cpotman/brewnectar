@@ -226,3 +226,8 @@
 - [x] Keep the Feature heading removed and preserve all current feature fonts, sizes, and copy
 - [x] Build a compact mobile product-header treatment that rises above aligned BrewNectar and Mushroom Coffee columns without horizontal scrolling
 - [x] Update focused regression coverage and verify visual fidelity, table alignment, and responsive behavior
+- [x] Replace the generated comparison scenes with the two user-supplied transparent BrewNectar and mushroom-coffee assets
+- [x] Keep both supplied comparison images in the desktop editorial composition
+- [x] Hide the mushroom-coffee product image on mobile
+- [x] Move the BrewNectar product image above the leftmost mobile feature column while preserving the two product-label columns
+- [x] Update focused regression coverage and verify desktop/mobile alignment, asset loading, and no horizontal overflow

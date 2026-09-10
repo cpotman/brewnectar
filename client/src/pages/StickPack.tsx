@@ -677,19 +677,17 @@ export default function StickPack() {
               <div className="relative h-[220px]">
                 <div className="absolute inset-x-3 bottom-3 h-7 rounded-[50%] bg-[#E7C89E]/35 blur-xl" />
                 <img
-                  src="/manus-storage/stickpack-comparison-front-pouch_fdad9901.png"
-                  alt="BrewNectar Brain and Gut stick pack pouch"
-                  className="absolute bottom-7 left-[4%] h-[185px] w-[46%] object-contain mix-blend-multiply drop-shadow-[0_14px_12px_rgba(120,53,15,0.14)]"
+                  src="/manus-storage/comparison-brewnectar-user_16c697c8.png"
+                  alt="BrewNectar stick pack pouch, single-serve stick, and latte"
+                  className="absolute inset-x-0 bottom-3 h-[205px] w-full object-contain drop-shadow-[0_14px_12px_rgba(120,53,15,0.14)]"
                 />
-                <img src="/manus-storage/stickpack-comparison-single-stick_5c5b35c8.png" alt="" aria-hidden="true" className="absolute bottom-4 left-[24%] h-20 w-[38%] rotate-[-76deg] object-contain mix-blend-multiply drop-shadow-md" />
-                <img src="/manus-storage/comparison-latte-cutout_8e444dd1.png" alt="A latte in a clear glass cup" className="absolute bottom-5 right-[1%] h-[138px] w-[48%] object-contain drop-shadow-[0_14px_12px_rgba(120,53,15,0.16)]" />
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full bg-[#FFF0DF] px-7 py-1.5 text-xs font-bold text-[#C2410C]">BrewNectar</span>
               </div>
 
               <div className="relative h-[220px]">
                 <div className="absolute inset-x-3 bottom-3 h-7 rounded-[50%] bg-stone-400/25 blur-xl" />
                 <img
-                  src="/manus-storage/comparison-mushroom-scene-v2_e357fcac.png"
+                  src="/manus-storage/comparison-mushroom-user_7ea4d14f.png"
                   alt="Generic mushroom coffee with functional mushrooms"
                   className="absolute inset-x-0 bottom-4 h-[195px] w-full object-contain drop-shadow-[0_14px_12px_rgba(68,64,60,0.15)]"
                 />
@@ -705,20 +703,20 @@ export default function StickPack() {
               </div>
             </div>
 
-            <div className="relative mx-auto mt-16 max-w-3xl overflow-visible rounded-2xl border border-stone-200 bg-white shadow-[0_12px_35px_rgba(68,64,60,0.08)] sm:mt-0">
+            <div className="relative mx-auto mt-20 max-w-3xl overflow-visible rounded-2xl border border-stone-200 bg-white shadow-[0_12px_35px_rgba(68,64,60,0.08)] sm:mt-0">
               <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl">
                 <div className="absolute bottom-0 top-0 right-[94px] w-[80px] bg-[#D97706]/10 md:right-[140px] md:w-[120px]" />
               </div>
 
               {/* Header */}
-              <div className="relative grid min-h-[72px] grid-cols-[minmax(0,1fr)_80px_94px] md:min-h-0 md:grid-cols-[minmax(0,1fr)_120px_140px]">
-                <div className="px-3 py-4 md:px-5" />
-                <div className="relative flex items-end justify-center rounded-t-xl bg-gradient-to-b from-amber-500 to-[#D97706] px-1 pb-3 pt-8 text-center md:items-center md:rounded-t-2xl md:py-3.5">
-                  <img src="/manus-storage/stickpack-comparison-front-pouch_fdad9901.png" alt="" aria-hidden="true" className="absolute -top-14 left-1/2 h-[74px] w-[62px] max-w-none -translate-x-1/2 object-cover object-left mix-blend-multiply drop-shadow-md md:hidden" />
+              <div className="relative grid min-h-[58px] grid-cols-[minmax(0,1fr)_80px_94px] md:min-h-0 md:grid-cols-[minmax(0,1fr)_120px_140px]">
+                <div className="relative flex items-end justify-center px-3 pb-2 md:block md:px-5 md:py-4">
+                  <img src="/manus-storage/comparison-brewnectar-user_16c697c8.png" alt="" aria-hidden="true" className="absolute -top-[72px] left-1/2 h-[100px] w-[160px] max-w-none -translate-x-1/2 object-contain drop-shadow-md md:hidden" />
+                </div>
+                <div className="relative flex items-center justify-center rounded-t-xl bg-gradient-to-b from-amber-500 to-[#D97706] px-1 py-3.5 text-center md:rounded-t-2xl">
                   <span className="text-[10px] font-bold leading-tight tracking-wide text-white md:text-xs">BrewNectar</span>
                 </div>
-                <div className="relative flex items-end justify-center px-1 pb-3 pt-8 text-center md:items-center md:py-3.5">
-                  <img src="/manus-storage/comparison-mushroom-scene-v2_e357fcac.png" alt="" aria-hidden="true" className="absolute -top-12 left-1/2 h-[68px] w-[90px] max-w-none -translate-x-1/2 object-contain drop-shadow-md md:hidden" />
+                <div className="relative flex items-center justify-center px-1 py-3.5 text-center">
                   <span className="text-[10px] font-medium leading-tight text-stone-400 md:text-xs">Mushroom<br/>Coffee</span>
                 </div>
               </div>
