@@ -110,6 +110,16 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).toContain('className="order-4 py-14 md:py-20 bg-white"');
   });
 
+  it("integrates the final CTA with a warm responsive coffee lifestyle background", () => {
+    expect(source).toContain("/manus-storage/stickpack-final-cta-coffee-v2_7ce522e5.jpg");
+    expect(source).toContain("bg-[position:68%_center]");
+    expect(source).toContain("md:bg-center");
+    expect(source).toContain("from-[#FDF7EC]/95");
+    expect(source).toContain("Keep your coffee. Lose the fog.");
+    expect(source).toContain("Your coffee, upgraded");
+    expect(source).not.toContain('bg-gradient-to-br from-[#1C1917] to-[#292524]');
+  });
+
   it("uses the corrected onset answer in both stick-pack FAQ surfaces", () => {
     expect(source.match(/Many people notice an initial shift in 10–15 minutes/g)).toHaveLength(2);
     expect(source.match(/Broader support may carry through the day/g)).toHaveLength(2);

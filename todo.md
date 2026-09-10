@@ -204,3 +204,7 @@
 - [x] Move the stick-pack Evidence section above “Real Stories From Real Customers”
 - [x] Move the complete second stick-pack offer block below “Real Stories From Real Customers”
 - [x] Add focused regression coverage and verify the reordered responsive flow and study expansions
+- [x] Create a warm coffee-on-counter lifestyle background with negative space for the stick-pack final CTA
+- [x] Replace the dark “Keep your coffee. Lose the fog.” background while preserving the existing copy and button
+- [x] Add a subtle responsive overlay and crop treatment that keeps the CTA readable on desktop and mobile
+- [x] Add focused regression coverage and verify the revised final CTA on desktop and mobile

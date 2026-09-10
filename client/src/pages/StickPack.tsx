@@ -1091,15 +1091,21 @@ export default function StickPack() {
       </div>
 
       {/* === SECTION 8: FINAL CTA === */}
-      <section className="py-14 md:py-20 bg-gradient-to-br from-[#1C1917] to-[#292524]">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <FadeUp>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">Keep your coffee. Lose the fog.</h2>
-            <p className="text-stone-400 mb-8">One stick pack. Seven ingredients. Works on the first morning.</p>
-            <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] text-white font-bold text-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
+      <section
+        className="relative isolate overflow-hidden bg-[#F4E5D0] bg-cover bg-[position:68%_center] py-16 sm:bg-[position:64%_center] md:min-h-[360px] md:bg-center md:py-20"
+        style={{ backgroundImage: "url('/manus-storage/stickpack-final-cta-coffee-v2_7ce522e5.jpg')" }}
+      >
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#FDF7EC]/95 via-[#FDF7EC]/88 to-[#FDF7EC]/45 sm:to-[#FDF7EC]/25 md:from-[#FDF7EC]/98 md:via-[#FDF7EC]/82 md:to-transparent" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#7C2D12]/10 via-transparent to-white/15" />
+        <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+          <FadeUp className="max-w-xl text-center sm:text-left">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#B45309]">Your coffee, upgraded</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1C1917] mb-4">Keep your coffee. Lose the fog.</h2>
+            <p className="text-[#57534E] mb-8 text-base md:text-lg">One stick pack. Seven ingredients. Works on the first morning.</p>
+            <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] text-white font-bold text-lg shadow-[0_12px_30px_rgba(180,83,9,0.25)] hover:shadow-[0_16px_36px_rgba(180,83,9,0.35)] hover:scale-[1.02] transition-all duration-300">
               Start Now <ArrowRight size={18} />
             </button>
-            <p className="text-xs text-stone-500 mt-4">60-day keep-the-bag guarantee &bull; Free shipping &bull; Cancel anytime</p>
+            <p className="text-xs text-[#78716C] mt-4">60-day keep-the-bag guarantee &bull; Free shipping &bull; Cancel anytime</p>
           </FadeUp>
         </div>
       </section>
