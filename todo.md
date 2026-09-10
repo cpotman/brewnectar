@@ -220,3 +220,9 @@
 - [x] Add a distinct icon to every comparison feature row
 - [x] Build compact raised visual column markers that keep the comparison readable without horizontal scrolling on mobile
 - [x] Add focused regression coverage and verify the redesigned comparison on desktop and mobile
+- [x] Replace the disconnected comparison cards with integrated BrewNectar-and-latte and mushroom-coffee editorial scenes matching the reference composition
+- [x] Add handwritten-style benefit and compromise notes with curved arrows plus pill labels under each product scene
+- [x] Rebuild the comparison table on one shared three-column grid so headers, feature rows, icons, and checks align precisely
+- [x] Keep the Feature heading removed and preserve all current feature fonts, sizes, and copy
+- [x] Build a compact mobile product-header treatment that rises above aligned BrewNectar and Mushroom Coffee columns without horizontal scrolling
+- [x] Update focused regression coverage and verify visual fidelity, table alignment, and responsive behavior

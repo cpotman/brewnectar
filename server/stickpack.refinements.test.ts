@@ -136,15 +136,25 @@ describe("stick-pack content and pacing refinements", () => {
   });
 
   it("presents the comparison with product visuals, row icons, and compact mobile column markers", () => {
-    expect(source).toContain("/manus-storage/stickpack-comparison-product_2dfb8b98.png");
-    expect(source).toContain("/manus-storage/comparison-mushroom-coffee_131edcb7.png");
+    expect(source).toContain("/manus-storage/stickpack-comparison-front-pouch_fdad9901.png");
+    expect(source).toContain("/manus-storage/stickpack-comparison-single-stick_5c5b35c8.png");
+    expect(source).toContain("/manus-storage/comparison-latte-cutout_8e444dd1.png");
+    expect(source).toContain("/manus-storage/comparison-mushroom-scene-v2_e357fcac.png");
     expect(source).toContain("aria-label=\"BrewNectar and mushroom coffee product comparison\"");
+    expect(source).toContain("All the benefits.");
+    expect(source).toContain("None of the compromise.");
+    expect(source).toContain("Often earthy.");
+    expect(source).toContain("Limited benefits.");
+    expect(source).toContain("More than mushrooms. Your coffee, upgraded.");
     expect(source).toContain("<row.icon size={16}");
     expect(source).toContain("icon: Luggage");
     expect(source).toContain("icon: CircleOff");
+    expect(source.match(/grid-cols-\[minmax\(0,1fr\)_80px_94px\]/g)).toHaveLength(2);
+    expect(source.match(/md:grid-cols-\[minmax\(0,1fr\)_120px_140px\]/g)).toHaveLength(2);
+    expect(source).toContain("right-[94px] w-[80px]");
+    expect(source).toContain("md:right-[140px] md:w-[120px]");
+    expect(source).toContain("-top-14");
     expect(source).toContain("-top-12");
-    expect(source).toContain("-top-11");
-    expect(source).toContain("grid-cols-[1fr_70px_70px]");
     expect(source).not.toContain(">Feature</");
   });
 

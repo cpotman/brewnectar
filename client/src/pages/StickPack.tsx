@@ -655,7 +655,7 @@ export default function StickPack() {
 
       {/* === SECTION 5: COMPARISON TABLE === */}
       <section className="py-14 md:py-20 bg-[#FDFBF7]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1C1917] mb-2 text-center">
               BrewNectar vs. Mushroom Coffee
@@ -665,47 +665,67 @@ export default function StickPack() {
             </p>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <div className="hidden sm:grid grid-cols-2 gap-4 mb-5" aria-label="BrewNectar and mushroom coffee product comparison">
-              <div className="relative min-h-[210px] overflow-hidden rounded-3xl border border-orange-100 bg-gradient-to-br from-[#FFF7ED] via-[#FFF4E5] to-[#FDE3C0]">
-                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F6C98D]/60 to-transparent" />
-                <img
-                  src="/manus-storage/stickpack-comparison-product_2dfb8b98.png"
-                  alt="BrewNectar Brain and Gut stick pack pouch and single-serve stick"
-                  className="absolute inset-0 h-full w-full object-cover object-[40%_center] mix-blend-multiply"
-                />
-                <span className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-white/90 px-5 py-1.5 text-xs font-bold text-[#C2410C] shadow-sm backdrop-blur-sm">BrewNectar</span>
+            <div className="mb-7 hidden grid-cols-[0.7fr_1.35fr_1.35fr_0.7fr] items-center gap-2 sm:grid" aria-label="BrewNectar and mushroom coffee product comparison">
+              <div className="relative self-center pr-1 text-center font-[cursive] text-sm italic leading-snug text-[#57534E] md:text-base">
+                <p>All the benefits.<br />None of the compromise.</p>
+                <svg viewBox="0 0 100 42" aria-hidden="true" className="ml-auto mt-1 h-9 w-24 text-[#292524]">
+                  <path d="M5 8 C34 4 58 10 85 30" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M75 29 L86 30 L82 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </div>
-              <div className="relative min-h-[210px] overflow-hidden rounded-3xl border border-stone-200 bg-gradient-to-br from-[#FAF8F3] via-[#F4F0E8] to-[#E9E1D4]">
-                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-stone-300/50 to-transparent" />
+
+              <div className="relative h-[220px]">
+                <div className="absolute inset-x-3 bottom-3 h-7 rounded-[50%] bg-[#E7C89E]/35 blur-xl" />
                 <img
-                  src="/manus-storage/comparison-mushroom-coffee_131edcb7.png"
-                  alt="Generic mushroom coffee with functional mushrooms"
-                  className="absolute inset-0 h-full w-full object-contain p-3"
+                  src="/manus-storage/stickpack-comparison-front-pouch_fdad9901.png"
+                  alt="BrewNectar Brain and Gut stick pack pouch"
+                  className="absolute bottom-7 left-[4%] h-[185px] w-[46%] object-contain mix-blend-multiply drop-shadow-[0_14px_12px_rgba(120,53,15,0.14)]"
                 />
-                <span className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-white/90 px-5 py-1.5 text-xs font-bold text-[#57534E] shadow-sm backdrop-blur-sm">Mushroom Coffee</span>
+                <img src="/manus-storage/stickpack-comparison-single-stick_5c5b35c8.png" alt="" aria-hidden="true" className="absolute bottom-4 left-[24%] h-20 w-[38%] rotate-[-76deg] object-contain mix-blend-multiply drop-shadow-md" />
+                <img src="/manus-storage/comparison-latte-cutout_8e444dd1.png" alt="A latte in a clear glass cup" className="absolute bottom-5 right-[1%] h-[138px] w-[48%] object-contain drop-shadow-[0_14px_12px_rgba(120,53,15,0.16)]" />
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full bg-[#FFF0DF] px-7 py-1.5 text-xs font-bold text-[#C2410C]">BrewNectar</span>
+              </div>
+
+              <div className="relative h-[220px]">
+                <div className="absolute inset-x-3 bottom-3 h-7 rounded-[50%] bg-stone-400/25 blur-xl" />
+                <img
+                  src="/manus-storage/comparison-mushroom-scene-v2_e357fcac.png"
+                  alt="Generic mushroom coffee with functional mushrooms"
+                  className="absolute inset-x-0 bottom-4 h-[195px] w-full object-contain drop-shadow-[0_14px_12px_rgba(68,64,60,0.15)]"
+                />
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full bg-stone-200/80 px-7 py-1.5 text-xs font-bold text-[#57534E]">Mushroom Coffee</span>
+              </div>
+
+              <div className="relative self-center pl-1 text-center font-[cursive] text-sm italic leading-snug text-[#57534E] md:text-base">
+                <p>Often earthy.<br />Limited benefits.<br />A compromise.</p>
+                <svg viewBox="0 0 100 42" aria-hidden="true" className="mr-auto mt-1 h-9 w-24 -scale-x-100 text-[#292524]">
+                  <path d="M5 8 C34 4 58 10 85 30" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M75 29 L86 30 L82 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </div>
             </div>
 
-            <div className="relative mt-14 overflow-visible rounded-2xl border border-stone-200 bg-white shadow-sm sm:mt-0 sm:overflow-hidden">
-              {/* Orange column background — continuous, no gaps */}
-              <div className="absolute top-0 bottom-0 right-[70px] w-[70px] bg-[#D97706]/10 md:right-[110px] md:w-[110px]" />
+            <div className="relative mx-auto mt-16 max-w-3xl overflow-visible rounded-2xl border border-stone-200 bg-white shadow-[0_12px_35px_rgba(68,64,60,0.08)] sm:mt-0">
+              <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl">
+                <div className="absolute bottom-0 top-0 right-[94px] w-[80px] bg-[#D97706]/10 md:right-[140px] md:w-[120px]" />
+              </div>
 
               {/* Header */}
-              <div className="relative grid min-h-[68px] grid-cols-[1fr_70px_70px] md:min-h-0 md:grid-cols-[1fr_110px_110px]">
+              <div className="relative grid min-h-[72px] grid-cols-[minmax(0,1fr)_80px_94px] md:min-h-0 md:grid-cols-[minmax(0,1fr)_120px_140px]">
                 <div className="px-3 py-4 md:px-5" />
-                <div className="relative flex items-end justify-center rounded-t-2xl bg-gradient-to-b from-amber-500 to-[#D97706] px-1 pb-3 pt-8 text-center md:items-center md:py-3.5">
-                  <img src="/manus-storage/stickpack-comparison-product_2dfb8b98.png" alt="" aria-hidden="true" className="absolute -top-12 left-1/2 h-16 w-24 max-w-none -translate-x-1/2 object-cover object-[22%_center] drop-shadow-md md:hidden" />
+                <div className="relative flex items-end justify-center rounded-t-xl bg-gradient-to-b from-amber-500 to-[#D97706] px-1 pb-3 pt-8 text-center md:items-center md:rounded-t-2xl md:py-3.5">
+                  <img src="/manus-storage/stickpack-comparison-front-pouch_fdad9901.png" alt="" aria-hidden="true" className="absolute -top-14 left-1/2 h-[74px] w-[62px] max-w-none -translate-x-1/2 object-cover object-left mix-blend-multiply drop-shadow-md md:hidden" />
                   <span className="text-[10px] font-bold leading-tight tracking-wide text-white md:text-xs">BrewNectar</span>
                 </div>
                 <div className="relative flex items-end justify-center px-1 pb-3 pt-8 text-center md:items-center md:py-3.5">
-                  <img src="/manus-storage/comparison-mushroom-coffee_131edcb7.png" alt="" aria-hidden="true" className="absolute -top-11 left-1/2 h-14 w-20 max-w-none -translate-x-1/2 object-contain drop-shadow-md md:hidden" />
+                  <img src="/manus-storage/comparison-mushroom-scene-v2_e357fcac.png" alt="" aria-hidden="true" className="absolute -top-12 left-1/2 h-[68px] w-[90px] max-w-none -translate-x-1/2 object-contain drop-shadow-md md:hidden" />
                   <span className="text-[10px] font-medium leading-tight text-stone-400 md:text-xs">Mushroom<br/>Coffee</span>
                 </div>
               </div>
 
               {/* Rows */}
               {COMPARISON_ROWS.map((row, i, arr) => (
-                <div key={row.feature} className={`relative grid grid-cols-[1fr_70px_70px] items-center md:grid-cols-[1fr_110px_110px] ${i < arr.length - 1 ? "border-b border-stone-100" : ""}`}>
+                <div key={row.feature} className={`relative grid grid-cols-[minmax(0,1fr)_80px_94px] items-center md:grid-cols-[minmax(0,1fr)_120px_140px] ${i < arr.length - 1 ? "border-b border-stone-100" : ""} ${row.highlight ? "bg-orange-50/80" : ""}`}>
                   <div className="flex items-center gap-2.5 px-3 py-3.5 md:px-5">
                     <row.icon size={16} strokeWidth={1.9} className={row.highlight ? "shrink-0 text-[#EA580C]" : "shrink-0 text-[#57534E]"} />
                     <span className={`text-[13px] md:text-sm ${row.highlight ? "font-bold text-gradient-warm" : "font-medium text-[#1C1917]"}`}>{row.feature}</span>
@@ -734,6 +754,10 @@ export default function StickPack() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            <div className="mx-auto mt-5 hidden max-w-3xl items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#FFF7ED] via-[#FFF0DF] to-[#FFF7ED] px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#B45309] sm:flex">
+              <Leaf size={14} /> More than mushrooms. Your coffee, upgraded.
             </div>
           </FadeUp>
 
