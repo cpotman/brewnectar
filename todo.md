@@ -234,3 +234,7 @@
 - [x] Enlarge the mobile BrewNectar comparison image while preserving its current top reach
 - [x] Extend the image downward so its bottom aligns with or slightly overlaps the BrewNectar header row
 - [x] Update focused regression coverage and verify mobile alignment without changing desktop presentation
+- [x] Change the stick-pack Compounding Effect milestones to Day 1, Week 2, Week 6, and Week 12
+- [x] Update any Compounding Effect copy that directly references the previous milestone timing
+- [x] Eliminate the duplicate BrewNectar comparison image at intermediate responsive widths by aligning visibility breakpoints
+- [x] Add focused regression coverage and verify the timeline plus comparison at mobile, tablet, and desktop widths

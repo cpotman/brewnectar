@@ -50,6 +50,14 @@ describe("stick-pack content and pacing refinements", () => {
   });
 
   it("uses clear Compounding Effect milestones without the rejected timing claims", () => {
+    expect(source).toContain('period: "Day 1"');
+    expect(source).toContain('period: "Week 2"');
+    expect(source).toContain('period: "Week 6"');
+    expect(source).toContain('period: "Week 12"');
+    expect(source).not.toContain('period: "Week 1"');
+    expect(source).not.toContain('period: "2 Weeks"');
+    expect(source).not.toContain('period: "2 Months"');
+    expect(source).not.toContain('period: "3 Months"');
     expect(source).toContain('title: "Your Coffee Feels More Dialed In"');
     expect(source).toContain('title: "The Routine Gets Easier to Trust"');
     expect(source).toContain('title: "Your Baseline Feels Steadier"');
@@ -155,7 +163,8 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).toContain("mt-20 max-w-3xl");
     expect(source).toContain("-top-[72px]");
     expect(source).toContain("h-[132px] w-[198px]");
-    expect(source).toContain("md:hidden");
+    expect(source).toContain("drop-shadow-md sm:hidden");
+    expect(source).not.toContain("drop-shadow-md md:hidden");
     expect(source).not.toContain(">Feature</");
   });
 
