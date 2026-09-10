@@ -212,3 +212,6 @@
 - [x] Add three warm icon medallions, larger percentage figures, subtle dividers, and cleaner outcome copy alignment
 - [x] Center and visually separate the survey disclaimer while preserving the current fonts and statistics
 - [x] Add focused regression coverage and verify the redesigned outcomes block on desktop and mobile
+- [x] Reduce the stick-pack User-Reported Outcomes card maximum width and internal spacing
+- [x] Preserve the icon-led three-column hierarchy and readable mobile proportions
+- [x] Update focused regression coverage and verify the smaller card on desktop and mobile

@@ -122,12 +122,16 @@ describe("stick-pack content and pacing refinements", () => {
 
   it("presents User-Reported Outcomes as an icon-led three-column summary", () => {
     expect(source).toContain("User-Reported Outcomes");
+    expect(source).toContain("relative max-w-3xl mx-auto px-4 sm:px-6");
+    expect(source).toContain("rounded-[24px]");
+    expect(source).toContain("px-3 py-5");
+    expect(source).toContain("py-10 md:py-12 relative overflow-hidden");
     expect(source).toContain("grid grid-cols-3 divide-x divide-orange-100");
     expect(source).toContain("<Brain size={21}");
     expect(source).toContain("<Zap size={21}");
     expect(source).toContain("<Coffee size={21}");
     expect(source.match(/text-gradient-warm/g)?.length).toBeGreaterThanOrEqual(4);
-    expect(source).toContain("border-t border-orange-100 pt-4 text-center");
+    expect(source).toContain("border-t border-orange-100 pt-3 text-center");
     expect(source).toContain("*Based on internal customer surveys; individual results may vary.");
   });
 

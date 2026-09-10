@@ -614,40 +614,40 @@ export default function StickPack() {
 
       {/* === SECTION 5: COMPARISON TABLE === */}
       {/* === USER-REPORTED OUTCOMES — Red/orange gradient background with clean box === */}
-      <section className="py-12 md:py-16 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #7C2D12 0%, #9A3412 25%, #C2410C 50%, #D97706 80%, #F59E0B 100%)" }}>
+      <section className="py-10 md:py-12 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #7C2D12 0%, #9A3412 25%, #C2410C 50%, #D97706 80%, #F59E0B 100%)" }}>
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(0,0,0,0.2) 0%, transparent 40%)" }} />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6">
           <FadeUp>
-            <div className="rounded-[28px] border border-orange-100/80 bg-[#FFFCF8] px-3 py-7 shadow-[0_18px_50px_rgba(67,20,7,0.16)] sm:px-7 md:px-10 md:py-10">
-              <div className="mb-3 flex items-center justify-center gap-2 sm:gap-3">
+            <div className="rounded-[24px] border border-orange-100/80 bg-[#FFFCF8] px-3 py-5 shadow-[0_18px_50px_rgba(67,20,7,0.16)] sm:px-6 md:px-7 md:py-7">
+              <div className="mb-2.5 flex items-center justify-center gap-2 sm:gap-3">
                 <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={18} className="fill-[#F59E0B] text-[#F59E0B] sm:h-5 sm:w-5" />)}</div>
                 <span className="text-xs text-[#57534E] sm:text-sm"><strong className="text-[#1C1917]">4.9</strong> from <strong className="text-[#1C1917]">2,400+</strong> reviews</span>
               </div>
-              <h3 className="mb-6 text-center font-display text-2xl font-bold text-[#1C1917] sm:text-3xl md:mb-8 md:text-4xl">User-Reported Outcomes</h3>
+              <h3 className="mb-5 text-center font-display text-2xl font-bold text-[#1C1917] sm:text-3xl md:mb-6">User-Reported Outcomes</h3>
               <div className="grid grid-cols-3 divide-x divide-orange-100">
                 <div className="flex flex-col items-center px-2 text-center sm:px-5 md:px-8">
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFF0DF] text-[#EA580C] sm:h-12 sm:w-12">
+                  <div className="mb-2.5 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFF0DF] text-[#EA580C] sm:h-11 sm:w-11">
                     <Brain size={21} strokeWidth={1.8} className="sm:h-6 sm:w-6" />
                   </div>
-                  <p className="font-display text-3xl font-bold leading-none text-gradient-warm sm:text-4xl md:text-5xl">87%<span className="align-super text-xs text-[#D97706] sm:text-sm">*</span></p>
+                  <p className="font-display text-3xl font-bold leading-none text-gradient-warm sm:text-4xl">87%<span className="align-super text-xs text-[#D97706] sm:text-sm">*</span></p>
                   <p className="mt-2 text-[10px] leading-snug text-[#57534E] sm:text-xs md:text-sm">reported improved focus within the first week</p>
                 </div>
                 <div className="flex flex-col items-center px-2 text-center sm:px-5 md:px-8">
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFF0DF] text-[#EA580C] sm:h-12 sm:w-12">
+                  <div className="mb-2.5 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFF0DF] text-[#EA580C] sm:h-11 sm:w-11">
                     <Zap size={21} strokeWidth={1.8} className="sm:h-6 sm:w-6" />
                   </div>
-                  <p className="font-display text-3xl font-bold leading-none text-gradient-warm sm:text-4xl md:text-5xl">92%<span className="align-super text-xs text-[#D97706] sm:text-sm">*</span></p>
+                  <p className="font-display text-3xl font-bold leading-none text-gradient-warm sm:text-4xl">92%<span className="align-super text-xs text-[#D97706] sm:text-sm">*</span></p>
                   <p className="mt-2 text-[10px] leading-snug text-[#57534E] sm:text-xs md:text-sm">noticed reduced afternoon fatigue by week 2</p>
                 </div>
                 <div className="flex flex-col items-center px-2 text-center sm:px-5 md:px-8">
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFF0DF] text-[#EA580C] sm:h-12 sm:w-12">
+                  <div className="mb-2.5 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFF0DF] text-[#EA580C] sm:h-11 sm:w-11">
                     <Coffee size={21} strokeWidth={1.8} className="sm:h-6 sm:w-6" />
                   </div>
-                  <p className="font-display text-3xl font-bold leading-none text-gradient-warm sm:text-4xl md:text-5xl">94%<span className="align-super text-xs text-[#D97706] sm:text-sm">*</span></p>
+                  <p className="font-display text-3xl font-bold leading-none text-gradient-warm sm:text-4xl">94%<span className="align-super text-xs text-[#D97706] sm:text-sm">*</span></p>
                   <p className="mt-2 text-[10px] leading-snug text-[#57534E] sm:text-xs md:text-sm">said it dissolved completely without changing their coffee's taste</p>
                 </div>
               </div>
-              <p className="mx-auto mt-7 max-w-xl border-t border-orange-100 pt-4 text-center text-[10px] leading-relaxed text-[#A8A29E] sm:text-xs">*Based on internal customer surveys; individual results may vary.</p>
+              <p className="mx-auto mt-5 max-w-xl border-t border-orange-100 pt-3 text-center text-[10px] leading-relaxed text-[#A8A29E] sm:text-xs">*Based on internal customer surveys; individual results may vary.</p>
             </div>
           </FadeUp>
         </div>
