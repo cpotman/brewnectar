@@ -120,6 +120,17 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).not.toContain('bg-gradient-to-br from-[#1C1917] to-[#292524]');
   });
 
+  it("presents User-Reported Outcomes as an icon-led three-column summary", () => {
+    expect(source).toContain("User-Reported Outcomes");
+    expect(source).toContain("grid grid-cols-3 divide-x divide-orange-100");
+    expect(source).toContain("<Brain size={21}");
+    expect(source).toContain("<Zap size={21}");
+    expect(source).toContain("<Coffee size={21}");
+    expect(source.match(/text-gradient-warm/g)?.length).toBeGreaterThanOrEqual(4);
+    expect(source).toContain("border-t border-orange-100 pt-4 text-center");
+    expect(source).toContain("*Based on internal customer surveys; individual results may vary.");
+  });
+
   it("uses the corrected onset answer in both stick-pack FAQ surfaces", () => {
     expect(source.match(/Many people notice an initial shift in 10–15 minutes/g)).toHaveLength(2);
     expect(source.match(/Broader support may carry through the day/g)).toHaveLength(2);

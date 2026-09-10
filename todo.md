@@ -208,3 +208,7 @@
 - [x] Replace the dark “Keep your coffee. Lose the fog.” background while preserving the existing copy and button
 - [x] Add a subtle responsive overlay and crop treatment that keeps the CTA readable on desktop and mobile
 - [x] Add focused regression coverage and verify the revised final CTA on desktop and mobile
+- [x] Restyle the stick-pack User-Reported Outcomes block with the rating row above the headline
+- [x] Add three warm icon medallions, larger percentage figures, subtle dividers, and cleaner outcome copy alignment
+- [x] Center and visually separate the survey disclaimer while preserving the current fonts and statistics
+- [x] Add focused regression coverage and verify the redesigned outcomes block on desktop and mobile
