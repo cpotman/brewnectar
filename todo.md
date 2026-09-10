@@ -215,3 +215,8 @@
 - [x] Reduce the stick-pack User-Reported Outcomes card maximum width and internal spacing
 - [x] Preserve the icon-led three-column hierarchy and readable mobile proportions
 - [x] Update focused regression coverage and verify the smaller card on desktop and mobile
+- [x] Add BrewNectar and mushroom-coffee product visuals above the stick-pack comparison table
+- [x] Remove the “Feature” header text while preserving the existing comparison typography and feature copy
+- [x] Add a distinct icon to every comparison feature row
+- [x] Build compact raised visual column markers that keep the comparison readable without horizontal scrolling on mobile
+- [x] Add focused regression coverage and verify the redesigned comparison on desktop and mobile

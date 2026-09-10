@@ -59,8 +59,8 @@ describe("stick-pack content and pacing refinements", () => {
   });
 
   it("uses the smaller requested comparison set and warm gradient emphasis", () => {
-    expect(source).toContain('{ feature: "Only contains mushrooms", brew: false, other: true }');
-    expect(source).toContain('{ feature: "Keep your own coffee", brew: true, other: false, highlight: true }');
+    expect(source).toContain('{ feature: "Only contains mushrooms", icon: CircleOff, brew: false, other: true }');
+    expect(source).toContain('{ feature: "Keep your own coffee", icon: Coffee, brew: true, other: false, highlight: true }');
     expect(source).toContain('row.highlight ? "font-bold text-gradient-warm"');
     expect(source).toContain("row.brew ? (");
     expect(source).not.toContain('{ feature: "Contains adaptogens"');
@@ -133,6 +133,19 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source.match(/text-gradient-warm/g)?.length).toBeGreaterThanOrEqual(4);
     expect(source).toContain("border-t border-orange-100 pt-3 text-center");
     expect(source).toContain("*Based on internal customer surveys; individual results may vary.");
+  });
+
+  it("presents the comparison with product visuals, row icons, and compact mobile column markers", () => {
+    expect(source).toContain("/manus-storage/stickpack-comparison-product_2dfb8b98.png");
+    expect(source).toContain("/manus-storage/comparison-mushroom-coffee_131edcb7.png");
+    expect(source).toContain("aria-label=\"BrewNectar and mushroom coffee product comparison\"");
+    expect(source).toContain("<row.icon size={16}");
+    expect(source).toContain("icon: Luggage");
+    expect(source).toContain("icon: CircleOff");
+    expect(source).toContain("-top-12");
+    expect(source).toContain("-top-11");
+    expect(source).toContain("grid-cols-[1fr_70px_70px]");
+    expect(source).not.toContain(">Feature</");
   });
 
   it("uses the corrected onset answer in both stick-pack FAQ surfaces", () => {

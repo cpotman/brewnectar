@@ -13,7 +13,7 @@ import {
   Star, Check, X as XIcon, ChevronDown, ChevronLeft, ChevronRight, ArrowRight, Clock, Sparkles,
   Brain, Zap, Shield, Leaf, Coffee, Heart, ShieldCheck, Truck,
   RotateCcw, FlaskConical, ExternalLink, BookOpen, Gift, Lock,
-  GraduationCap, Trophy, MessageCircle,
+  GraduationCap, Trophy, MessageCircle, Luggage, CircleOff,
 } from "lucide-react";
 
 /* --- Fade-up wrapper --- */
@@ -144,14 +144,14 @@ const COMPOUNDING_STAGES = [
 ];
 
 /* --- Comparison rows --- */
-const COMPARISON_ROWS: { feature: string; brew: boolean; other: boolean; highlight?: boolean }[] = [
-  { feature: "Keep your own coffee", brew: true, other: false, highlight: true },
-  { feature: "No earthy taste or grit", brew: true, other: false },
-  { feature: "Clinical-dose ingredients", brew: true, other: false },
-  { feature: "Built-in gut support", brew: true, other: false },
-  { feature: "Only contains mushrooms", brew: false, other: true },
-  { feature: "Caffeine-free option", brew: true, other: false },
-  { feature: "Travel-ready format", brew: true, other: true },
+const COMPARISON_ROWS = [
+  { feature: "Keep your own coffee", icon: Coffee, brew: true, other: false, highlight: true },
+  { feature: "No earthy taste or grit", icon: Leaf, brew: true, other: false },
+  { feature: "Clinical-dose ingredients", icon: FlaskConical, brew: true, other: false },
+  { feature: "Built-in gut support", icon: Heart, brew: true, other: false },
+  { feature: "Only contains mushrooms", icon: CircleOff, brew: false, other: true },
+  { feature: "Caffeine-free option", icon: Zap, brew: true, other: false },
+  { feature: "Travel-ready format", icon: Luggage, brew: true, other: true },
 ];
 
 /* --- FAQ --- */
@@ -655,7 +655,7 @@ export default function StickPack() {
 
       {/* === SECTION 5: COMPARISON TABLE === */}
       <section className="py-14 md:py-20 bg-[#FDFBF7]">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1C1917] mb-2 text-center">
               BrewNectar vs. Mushroom Coffee
@@ -665,25 +665,51 @@ export default function StickPack() {
             </p>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <div className="rounded-2xl border border-stone-200 bg-white overflow-hidden shadow-sm relative">
+            <div className="hidden sm:grid grid-cols-2 gap-4 mb-5" aria-label="BrewNectar and mushroom coffee product comparison">
+              <div className="relative min-h-[210px] overflow-hidden rounded-3xl border border-orange-100 bg-gradient-to-br from-[#FFF7ED] via-[#FFF4E5] to-[#FDE3C0]">
+                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F6C98D]/60 to-transparent" />
+                <img
+                  src="/manus-storage/stickpack-comparison-product_2dfb8b98.png"
+                  alt="BrewNectar Brain and Gut stick pack pouch and single-serve stick"
+                  className="absolute inset-0 h-full w-full object-cover object-[40%_center] mix-blend-multiply"
+                />
+                <span className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-white/90 px-5 py-1.5 text-xs font-bold text-[#C2410C] shadow-sm backdrop-blur-sm">BrewNectar</span>
+              </div>
+              <div className="relative min-h-[210px] overflow-hidden rounded-3xl border border-stone-200 bg-gradient-to-br from-[#FAF8F3] via-[#F4F0E8] to-[#E9E1D4]">
+                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-stone-300/50 to-transparent" />
+                <img
+                  src="/manus-storage/comparison-mushroom-coffee_131edcb7.png"
+                  alt="Generic mushroom coffee with functional mushrooms"
+                  className="absolute inset-0 h-full w-full object-contain p-3"
+                />
+                <span className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-white/90 px-5 py-1.5 text-xs font-bold text-[#57534E] shadow-sm backdrop-blur-sm">Mushroom Coffee</span>
+              </div>
+            </div>
+
+            <div className="relative mt-14 overflow-visible rounded-2xl border border-stone-200 bg-white shadow-sm sm:mt-0 sm:overflow-hidden">
               {/* Orange column background — continuous, no gaps */}
-              <div className="absolute top-0 bottom-0 right-[80px] md:right-[100px] w-[80px] md:w-[100px] bg-[#D97706]/10" />
+              <div className="absolute top-0 bottom-0 right-[70px] w-[70px] bg-[#D97706]/10 md:right-[110px] md:w-[110px]" />
 
               {/* Header */}
-              <div className="relative grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_100px_100px]">
-                <div className="px-5 py-4" />
-                <div className="flex items-center justify-center py-3.5 px-1 bg-gradient-to-b from-amber-500 to-[#D97706] rounded-t-2xl text-center">
-                  <span className="text-[11px] md:text-xs font-bold text-white tracking-wide leading-tight">BrewNectar</span>
+              <div className="relative grid min-h-[68px] grid-cols-[1fr_70px_70px] md:min-h-0 md:grid-cols-[1fr_110px_110px]">
+                <div className="px-3 py-4 md:px-5" />
+                <div className="relative flex items-end justify-center rounded-t-2xl bg-gradient-to-b from-amber-500 to-[#D97706] px-1 pb-3 pt-8 text-center md:items-center md:py-3.5">
+                  <img src="/manus-storage/stickpack-comparison-product_2dfb8b98.png" alt="" aria-hidden="true" className="absolute -top-12 left-1/2 h-16 w-24 max-w-none -translate-x-1/2 object-cover object-[22%_center] drop-shadow-md md:hidden" />
+                  <span className="text-[10px] font-bold leading-tight tracking-wide text-white md:text-xs">BrewNectar</span>
                 </div>
-                <div className="flex items-center justify-center py-3.5 px-1 text-center">
-                  <span className="text-[11px] md:text-xs font-medium text-stone-400 leading-tight">Mushroom<br/>Coffee</span>
+                <div className="relative flex items-end justify-center px-1 pb-3 pt-8 text-center md:items-center md:py-3.5">
+                  <img src="/manus-storage/comparison-mushroom-coffee_131edcb7.png" alt="" aria-hidden="true" className="absolute -top-11 left-1/2 h-14 w-20 max-w-none -translate-x-1/2 object-contain drop-shadow-md md:hidden" />
+                  <span className="text-[10px] font-medium leading-tight text-stone-400 md:text-xs">Mushroom<br/>Coffee</span>
                 </div>
               </div>
 
               {/* Rows */}
               {COMPARISON_ROWS.map((row, i, arr) => (
-                <div key={row.feature} className={`relative grid grid-cols-[1fr_80px_80px] md:grid-cols-[1fr_100px_100px] items-center ${i < arr.length - 1 ? "border-b border-stone-100" : ""}`}>
-                  <span className={`text-[13px] md:text-sm px-5 py-3.5 ${row.highlight ? "font-bold text-gradient-warm" : "font-medium text-[#1C1917]"}`}>{row.feature}</span>
+                <div key={row.feature} className={`relative grid grid-cols-[1fr_70px_70px] items-center md:grid-cols-[1fr_110px_110px] ${i < arr.length - 1 ? "border-b border-stone-100" : ""}`}>
+                  <div className="flex items-center gap-2.5 px-3 py-3.5 md:px-5">
+                    <row.icon size={16} strokeWidth={1.9} className={row.highlight ? "shrink-0 text-[#EA580C]" : "shrink-0 text-[#57534E]"} />
+                    <span className={`text-[13px] md:text-sm ${row.highlight ? "font-bold text-gradient-warm" : "font-medium text-[#1C1917]"}`}>{row.feature}</span>
+                  </div>
                   <div className="flex justify-center py-3.5">
                     {row.brew ? (
                       <div className="w-7 h-7 rounded-full bg-[#D97706] flex items-center justify-center shadow-sm">
