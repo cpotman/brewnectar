@@ -247,3 +247,9 @@
 - [x] Center the desktop Mushroom Coffee pill directly beneath its comparison image
 - [x] Keep “Mushroom Coffee” on one line and match the BrewNectar pill’s width, height, and spacing
 - [x] Add focused regression coverage and verify desktop alignment while leaving mobile unchanged
+- [x] Replace every stick-pack offer headline with “Take Back Your Mental Clarity with BrewNectar Stick Packs”
+- [x] Upload and connect the supplied La Marzocco and Focus & Clarity Masterclass gift images
+- [x] Redesign both offer blocks’ free gifts as image-backed cards with readable bubble labels
+- [x] Keep eligible selected-plan gifts in full color and render unavailable gifts in grayscale
+- [x] Underline “broken sleep,” “inflamed gut,” and “no raw material” in the “It Isn’t Discipline” section
+- [x] Add focused regression coverage and verify all plan/gift states across both offer blocks on desktop and mobile

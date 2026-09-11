@@ -95,11 +95,30 @@ describe("stick-pack content and pacing refinements", () => {
   });
 
   it("uses the revised benefit-led hero copy without the removed members claim", () => {
-    expect(source.match(/Stay Focused &amp; Clear with BrewNectar Stick Packs/g)).toHaveLength(3);
+    expect(source.match(/Take Back Your Mental Clarity with BrewNectar Stick Packs/g)).toHaveLength(3);
+    expect(source).not.toContain("Stay Focused &amp; Clear with BrewNectar Stick Packs");
     expect(source.match(/Best Seller/g)).toHaveLength(2);
     expect(source).not.toContain("Now Shipping");
     expect(source).not.toContain("Thousands of</strong> members");
     expect(source).not.toContain("BrewNectar Brain + Gut Stick Packs");
+  });
+
+  it("uses plan-dependent image gift cards with grayscale locked states in both offers", () => {
+    expect(source).toContain("stickpack-gift-masterclass_283e8b36.png");
+    expect(source).toContain("stickpack-gift-la-marzocco_113c18e8.webp");
+    expect(source.match(/<PlanGiftCards selectedPlan=\{selectedPlan\} onSelectPlan=\{setSelectedPlan\} \/>/g)).toHaveLength(2);
+    expect(source).toContain('const masterclassSelected = selectedPlan !== "one-time"');
+    expect(source).toContain('const machineSelected = selectedPlan === "3mo" || selectedPlan === "2mo"');
+    expect(source).toContain("grayscale contrast-75 opacity-70");
+    expect(source).toContain("SUBSCRIBE TO UNLOCK");
+    expect(source).toContain("2+ MONTHS TO UNLOCK");
+  });
+
+  it("underlines the three specified causes in the discipline callout", () => {
+    expect(source.match(/font-medium underline decoration-\[#D97706\] decoration-2 underline-offset-4/g)).toHaveLength(3);
+    expect(source).toContain(">broken sleep</span>");
+    expect(source).toContain(">inflamed gut</span>");
+    expect(source).toContain(">no raw material</span>");
   });
 
   it("shows full stick-pack order totals with per-bag subtitles instead of monthly prices", () => {

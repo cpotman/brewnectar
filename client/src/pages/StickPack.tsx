@@ -13,7 +13,7 @@ import {
   Star, Check, X as XIcon, ChevronDown, ChevronLeft, ChevronRight, ArrowRight, Clock, Sparkles,
   Brain, Zap, Shield, Leaf, Coffee, Heart, ShieldCheck, Truck,
   RotateCcw, FlaskConical, ExternalLink, BookOpen, Gift, Lock,
-  GraduationCap, Trophy, MessageCircle, Luggage, CircleOff,
+  MessageCircle, Luggage, CircleOff,
 } from "lucide-react";
 
 /* --- Fade-up wrapper --- */
@@ -35,6 +35,8 @@ const IMAGES = {
   gutbrain: "/manus-storage/pdp-4_c76fef49.png",
   comparison: "/manus-storage/pdp-5_dc161adc.png",
   soundFamiliarBackground: "/manus-storage/sound-familiar-background_73d0caf1.png",
+  masterclassGift: "/manus-storage/stickpack-gift-masterclass_283e8b36.png",
+  laMarzoccoGift: "/manus-storage/stickpack-gift-la-marzocco_113c18e8.webp",
 };
 
 /* --- What's Inside visual cards --- */
@@ -278,6 +280,96 @@ function PdpInfoAccordion({
   );
 }
 
+function PlanGiftCards({
+  selectedPlan,
+  onSelectPlan,
+}: {
+  selectedPlan: string;
+  onSelectPlan: (planId: string) => void;
+}) {
+  const masterclassSelected = selectedPlan !== "one-time";
+  const machineSelected = selectedPlan === "3mo" || selectedPlan === "2mo";
+  const gifts = [
+    {
+      id: "masterclass",
+      title: "Focus & Clarity Masterclass",
+      detail: "$25 value",
+      activeLabel: "FREE",
+      inactiveLabel: "SUBSCRIBE TO UNLOCK",
+      image: IMAGES.masterclassGift,
+      alt: "Focus and Clarity Masterclass by BrewNectar",
+      selected: masterclassSelected,
+      unlockPlan: "1mo",
+    },
+    {
+      id: "la-marzocco",
+      title: "La Marzocco Espresso Machine",
+      detail: "$4,500 giveaway",
+      activeLabel: "ENTERED",
+      inactiveLabel: "2+ MONTHS TO UNLOCK",
+      image: IMAGES.laMarzoccoGift,
+      alt: "La Marzocco espresso machine and grinder",
+      selected: machineSelected,
+      unlockPlan: "2mo",
+    },
+  ];
+
+  return (
+    <div className="mb-5">
+      <div className="mb-3 flex items-center gap-2">
+        <Gift size={16} className="text-[#B45309]" />
+        <span className="text-sm font-bold text-[#1C1917]">Free gifts with your order</span>
+      </div>
+      <div className="grid grid-cols-2 gap-3">
+        {gifts.map((gift) => (
+          <button
+            key={gift.id}
+            type="button"
+            onClick={() => { if (!gift.selected) onSelectPlan(gift.unlockPlan); }}
+            aria-pressed={gift.selected}
+            aria-label={`${gift.title}: ${gift.selected ? gift.activeLabel : gift.inactiveLabel}`}
+            className={`group relative h-32 overflow-hidden rounded-2xl border-2 text-left shadow-sm transition-all duration-300 sm:h-36 ${
+              gift.selected
+                ? "border-[#D97706]/60 shadow-[0_10px_25px_rgba(180,83,9,0.14)]"
+                : "border-stone-200 hover:border-stone-300"
+            }`}
+          >
+            <img
+              src={gift.image}
+              alt={gift.alt}
+              loading="lazy"
+              className={`absolute inset-0 h-full w-full object-cover transition-all duration-300 ${
+                gift.selected ? "scale-[1.02]" : "grayscale contrast-75 opacity-70 group-hover:opacity-85"
+              }`}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/30 via-transparent to-white/5" />
+            {gift.selected ? (
+              <div className="absolute left-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 shadow-sm">
+                <Check size={12} strokeWidth={3} className="text-white" />
+              </div>
+            ) : (
+              <div className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-stone-900/70 backdrop-blur-sm">
+                <Lock size={12} className="text-white" />
+              </div>
+            )}
+            <div className={`absolute inset-x-2 bottom-2 rounded-xl border px-2.5 py-2 shadow-sm backdrop-blur-md ${
+              gift.selected ? "border-white/70 bg-white/92" : "border-white/60 bg-white/88"
+            }`}>
+              <p className="text-[11px] font-bold leading-tight text-[#1C1917] sm:text-xs">{gift.title}</p>
+              <div className="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-0.5">
+                <span className="text-[9px] text-stone-500 sm:text-[10px]">{gift.detail}</span>
+                <span className={`text-[9px] font-bold sm:text-[10px] ${gift.selected ? "text-emerald-700" : "text-stone-500"}`}>
+                  {gift.selected ? gift.activeLabel : gift.inactiveLabel}
+                </span>
+              </div>
+            </div>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ======= MAIN COMPONENT ======= */
 export default function StickPack() {
   const [selectedPlan, setSelectedPlan] = useState("3mo");
@@ -309,7 +401,7 @@ export default function StickPack() {
           {/* Mobile-only: Title, pills, stars above images */}
           <div className="lg:hidden mb-6">
             <FadeUp>
-              <h1 className="font-display text-2xl sm:text-3xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">Stay Focused &amp; Clear with BrewNectar Stick Packs</h1>
+              <h1 className="font-display text-2xl sm:text-3xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">Take Back Your Mental Clarity with BrewNectar Stick Packs</h1>
               <div className="flex flex-wrap gap-1.5 mb-3">
                 {[
                   { label: "Caffeine-Free", emoji: "\u2615", bg: "bg-amber-100 text-amber-800" },
@@ -383,7 +475,7 @@ export default function StickPack() {
             {/* Right: Plan Selector */}
             <FadeUp delay={0.1}>
               <div>
-                <h1 className="hidden lg:block font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">Stay Focused &amp; Clear with BrewNectar Stick Packs</h1>
+                <h1 className="hidden lg:block font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">Take Back Your Mental Clarity with BrewNectar Stick Packs</h1>
                 <div className="hidden lg:flex flex-wrap items-center gap-3 mb-3">
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-[11px] font-semibold text-emerald-700"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />Best Seller</span>
                   <div className="flex -space-x-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />)}</div>
@@ -446,23 +538,7 @@ export default function StickPack() {
                   })}
                 </div>
 
-                <div className="mb-5">
-                  <div className="flex items-center gap-2 mb-3"><Gift size={16} className="text-[#B45309]" /><span className="text-sm font-bold text-[#1C1917]">Free gifts with your order</span></div>
-                  <div className="flex gap-3">
-                    <div className={`flex-1 relative rounded-xl border-2 p-3 text-left ${selectedPlan !== "one-time" ? "border-[#B45309]/30 bg-amber-50/60" : "border-stone-200 bg-stone-50 opacity-60"}`}>
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 ${selectedPlan !== "one-time" ? "bg-[#B45309]/10" : "bg-stone-200"}`}><GraduationCap size={16} className={selectedPlan !== "one-time" ? "text-[#B45309]" : "text-stone-400"} /></div>
-                      <p className="text-xs font-bold text-[#1C1917] leading-tight">Focus & Clarity Masterclass</p>
-                      <div className="flex items-center gap-1 mt-1"><span className="text-[10px] text-stone-400 line-through">$25</span><span className={`text-[10px] font-bold ${selectedPlan !== "one-time" ? "text-emerald-600" : "text-stone-400"}`}>FREE</span></div>
-                      {selectedPlan !== "one-time" && <div className="absolute -top-1.5 -left-1.5"><div className="w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center"><Check size={10} strokeWidth={3} className="text-white" /></div></div>}
-                    </div>
-                    <div onClick={() => { if (selectedPlan !== "3mo" && selectedPlan !== "2mo") setSelectedPlan("2mo"); }} className={`flex-1 relative rounded-xl border-2 p-3 text-left cursor-pointer ${selectedPlan === "3mo" || selectedPlan === "2mo" ? "border-[#B45309]/30 bg-amber-50/60" : "border-stone-200 bg-stone-50 opacity-60 hover:opacity-80 hover:border-stone-300"}`}>
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 ${selectedPlan === "3mo" || selectedPlan === "2mo" ? "bg-[#B45309]/10" : "bg-stone-200"}`}><Trophy size={16} className={selectedPlan === "3mo" || selectedPlan === "2mo" ? "text-[#B45309]" : "text-stone-400"} /></div>
-                      <p className="text-xs font-bold text-[#1C1917] leading-tight">La Marzocco Espresso Machine ($4500) Giveaway</p>
-                      <div className="flex items-center gap-1 mt-1"><span className="text-[10px] text-stone-400">2+ supplies</span><span className={`text-[10px] font-bold ${selectedPlan === "3mo" || selectedPlan === "2mo" ? "text-emerald-600" : "text-stone-400"}`}>{selectedPlan === "3mo" || selectedPlan === "2mo" ? "ENTERED" : "LOCKED"}</span></div>
-                      {(selectedPlan === "3mo" || selectedPlan === "2mo") && <div className="absolute -top-1.5 -left-1.5"><div className="w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center"><Check size={10} strokeWidth={3} className="text-white" /></div></div>}
-                    </div>
-                  </div>
-                </div>
+                <PlanGiftCards selectedPlan={selectedPlan} onSelectPlan={setSelectedPlan} />
 
                 <div className="text-center mb-5"><button onClick={() => setSelectedPlan("one-time")} className={`text-sm font-medium underline decoration-dotted underline-offset-4 transition-colors ${selectedPlan === "one-time" ? "text-[#B45309] font-semibold" : "text-[#78716C] hover:text-[#B45309]"}`}>One Time Purchase $49</button></div>
 
@@ -510,7 +586,7 @@ export default function StickPack() {
           <FadeUp delay={0.3}>
             <div className="p-6 rounded-2xl bg-white/60 backdrop-blur-sm border border-white/80 shadow-warm">
               <h3 className="font-display font-bold text-xl text-[#1C1917] mb-3">It isn't discipline.</h3>
-              <p className="text-[#44403C] leading-relaxed mb-4">A brain running on broken sleep, an inflamed gut, and no raw material for its own neurotransmitters is doing exactly what it should. You can't willpower your way out of a supply problem.</p>
+              <p className="text-[#44403C] leading-relaxed mb-4">A brain running on <span className="font-medium underline decoration-[#D97706] decoration-2 underline-offset-4">broken sleep</span>, an <span className="font-medium underline decoration-[#D97706] decoration-2 underline-offset-4">inflamed gut</span>, and <span className="font-medium underline decoration-[#D97706] decoration-2 underline-offset-4">no raw material</span> for its own neurotransmitters is doing exactly what it should. You can't willpower your way out of a supply problem.</p>
               <div className="space-y-2 text-sm text-[#57534E]">
                 <p><strong className="text-[#1C1917]">More coffee</strong> only blocks the signal that you're tired. It never addressed why.</p>
                 <p><strong className="text-[#1C1917]">Mushroom coffee</strong> asked you to give up a drink you liked and deliver nothing for eight weeks.</p>
@@ -857,7 +933,7 @@ export default function StickPack() {
             {/* Right: Plan Selector */}
             <FadeUp delay={0.1}>
               <div>
-                <h3 className="font-display text-xl md:text-2xl font-bold text-[#1C1917] mb-2">Stay Focused &amp; Clear with BrewNectar Stick Packs</h3>
+                <h3 className="font-display text-xl md:text-2xl font-bold text-[#1C1917] mb-2">Take Back Your Mental Clarity with BrewNectar Stick Packs</h3>
                 <div className="flex flex-wrap items-center gap-3 mb-4">
                   <div className="flex -space-x-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />)}</div>
                   <span className="text-sm text-[#57534E]"><strong className="text-[#1C1917]">4.9</strong> from <strong className="text-[#1C1917]">2,400+</strong> reviews</span>
@@ -905,23 +981,7 @@ export default function StickPack() {
                   })}
                 </div>
 
-                <div className="mb-5">
-                  <div className="flex items-center gap-2 mb-3"><Gift size={16} className="text-[#B45309]" /><span className="text-sm font-bold text-[#1C1917]">Free gifts with your order</span></div>
-                  <div className="flex gap-3">
-                    <div className={`flex-1 relative rounded-xl border-2 p-3 text-left ${selectedPlan !== "one-time" ? "border-[#B45309]/30 bg-amber-50/60" : "border-stone-200 bg-stone-50 opacity-60"}`}>
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 ${selectedPlan !== "one-time" ? "bg-[#B45309]/10" : "bg-stone-200"}`}><GraduationCap size={16} className={selectedPlan !== "one-time" ? "text-[#B45309]" : "text-stone-400"} /></div>
-                      <p className="text-xs font-bold text-[#1C1917] leading-tight">Focus & Clarity Masterclass</p>
-                      <div className="flex items-center gap-1 mt-1"><span className="text-[10px] text-stone-400 line-through">$25</span><span className={`text-[10px] font-bold ${selectedPlan !== "one-time" ? "text-emerald-600" : "text-stone-400"}`}>FREE</span></div>
-                      {selectedPlan !== "one-time" && <div className="absolute -top-1.5 -left-1.5"><div className="w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center"><Check size={10} strokeWidth={3} className="text-white" /></div></div>}
-                    </div>
-                    <div onClick={() => { if (selectedPlan !== "3mo" && selectedPlan !== "2mo") setSelectedPlan("2mo"); }} className={`flex-1 relative rounded-xl border-2 p-3 text-left cursor-pointer ${selectedPlan === "3mo" || selectedPlan === "2mo" ? "border-[#B45309]/30 bg-amber-50/60" : "border-stone-200 bg-stone-50 opacity-60 hover:opacity-80 hover:border-stone-300"}`}>
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-2 ${selectedPlan === "3mo" || selectedPlan === "2mo" ? "bg-[#B45309]/10" : "bg-stone-200"}`}><Trophy size={16} className={selectedPlan === "3mo" || selectedPlan === "2mo" ? "text-[#B45309]" : "text-stone-400"} /></div>
-                      <p className="text-xs font-bold text-[#1C1917] leading-tight">La Marzocco Espresso Machine ($4500) Giveaway</p>
-                      <div className="flex items-center gap-1 mt-1"><span className="text-[10px] text-stone-400">2+ supplies</span><span className={`text-[10px] font-bold ${selectedPlan === "3mo" || selectedPlan === "2mo" ? "text-emerald-600" : "text-stone-400"}`}>{selectedPlan === "3mo" || selectedPlan === "2mo" ? "ENTERED" : "LOCKED"}</span></div>
-                      {(selectedPlan === "3mo" || selectedPlan === "2mo") && <div className="absolute -top-1.5 -left-1.5"><div className="w-4 h-4 rounded-full bg-emerald-500 flex items-center justify-center"><Check size={10} strokeWidth={3} className="text-white" /></div></div>}
-                    </div>
-                  </div>
-                </div>
+                <PlanGiftCards selectedPlan={selectedPlan} onSelectPlan={setSelectedPlan} />
 
                 <div className="text-center mb-5"><button onClick={() => setSelectedPlan("one-time")} className={`text-sm font-medium underline decoration-dotted underline-offset-4 transition-colors ${selectedPlan === "one-time" ? "text-[#B45309] font-semibold" : "text-[#78716C] hover:text-[#B45309]"}`}>One Time Purchase $49</button></div>
 
