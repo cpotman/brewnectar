@@ -257,3 +257,7 @@
 - [x] Place B6 + B12, Prebiotic + Probiotic, Rhodiola, and Cordyceps at research-aligned milestones without promising guaranteed onset
 - [x] Rewrite all four Compounding Effect descriptions to explain the ingredient timing clearly and accurately
 - [x] Add focused regression coverage and verify the revised milestone cards on desktop and mobile
+- [x] Rewrite all four Compounding Effect titles and descriptions around how the customer may feel and function in daily life
+- [x] Remove study-focused language and all em dashes from the Compounding Effect card copy
+- [x] Preserve Day 1, Week 2, Week 6, Week 12, the named ingredient badges, and compliant asterisked wording
+- [x] Add focused regression coverage and verify the revised benefit-led cards on desktop and mobile

@@ -77,10 +77,10 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).not.toContain('period: "2 Weeks"');
     expect(source).not.toContain('period: "2 Months"');
     expect(source).not.toContain('period: "3 Months"');
-    expect(source).toContain('title: "Your Coffee Feels More Dialed In"');
-    expect(source).toContain('title: "Your Gut-Brain Routine Is Underway"');
-    expect(source).toContain('title: "Steadier Energy Has Had Time to Build"');
-    expect(source).toContain('title: "Long-Horizon Support Is In View"');
+    expect(source).toContain('title: "Your First Cup Feels More Focused"');
+    expect(source).toContain('title: "Your Routine Starts Feeling Reliable"');
+    expect(source).toContain('title: "Your Afternoons Feel More Capable"');
+    expect(source).toContain('title: "Your Best Days Feel More Repeatable"');
     expect(source).toContain('ingredients: ["L-Theanine", "Alpha-GPC", "B6 + B12"]');
     expect(source).toContain('ingredients: ["Prebiotic Inulin", "B. coagulans"]');
     expect(source).toContain('ingredients: ["Rhodiola", "Cordyceps"]');
@@ -92,6 +92,14 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).not.toContain("Cordyceps lands at three weeks");
     expect(source).toContain("https://pmc.ncbi.nlm.nih.gov/articles/PMC5236007/");
     expect(source).not.toContain("https://pubmed.ncbi.nlm.nih.gov/27736246/");
+
+    const stages = source.slice(
+      source.indexOf("const COMPOUNDING_STAGES"),
+      source.indexOf("/* --- Comparison rows --- */"),
+    );
+    expect(stages).not.toMatch(/study|studies|trial|research|window/i);
+    expect(stages).not.toContain("—");
+    expect(stages.match(/\*"/g)).toHaveLength(4);
   });
 
   it("uses the smaller requested comparison set and warm gradient emphasis", () => {
