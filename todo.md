@@ -253,3 +253,7 @@
 - [x] Keep eligible selected-plan gifts in full color and render unavailable gifts in grayscale
 - [x] Underline “broken sleep,” “inflamed gut,” and “no raw material” in the “It Isn’t Discipline” section
 - [x] Add focused regression coverage and verify all plan/gift states across both offer blocks on desktop and mobile
+- [x] Replace generic Compounding Effect labels such as “Adaptogens” and “Full Stack” with specific ingredient names
+- [x] Place B6 + B12, Prebiotic + Probiotic, Rhodiola, and Cordyceps at research-aligned milestones without promising guaranteed onset
+- [x] Rewrite all four Compounding Effect descriptions to explain the ingredient timing clearly and accurately
+- [x] Add focused regression coverage and verify the revised milestone cards on desktop and mobile
