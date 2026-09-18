@@ -261,3 +261,8 @@
 - [x] Remove study-focused language and all em dashes from the Compounding Effect card copy
 - [x] Preserve Day 1, Week 2, Week 6, Week 12, the named ingredient badges, and compliant asterisked wording
 - [x] Add focused regression coverage and verify the revised benefit-led cards on desktop and mobile
+- [x] Synchronize the local BrewNectar working copy and preview with the latest shared-project code
+- [x] Confirm the restarted preview is running and report the synchronized project version
+- [x] Change the primary stick-pack hero headline to “Are You Ready To Take Back Your Mental Clarity?”
+- [x] Keep the revised hero headline consistent across its desktop and mobile renderings while preserving the lower offer headline
+- [x] Update focused regression coverage and verify the production build before checkpointing

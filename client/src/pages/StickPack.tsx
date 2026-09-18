@@ -401,7 +401,7 @@ export default function StickPack() {
           {/* Mobile-only: Title, pills, stars above images */}
           <div className="lg:hidden mb-6">
             <FadeUp>
-              <h1 className="font-display text-2xl sm:text-3xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">Take Back Your Mental Clarity with BrewNectar Stick Packs</h1>
+              <h1 className="font-display text-2xl sm:text-3xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">Are You Ready To Take Back Your Mental Clarity?</h1>
               <div className="flex flex-wrap gap-1.5 mb-3">
                 {[
                   { label: "Caffeine-Free", emoji: "\u2615", bg: "bg-amber-100 text-amber-800" },
@@ -475,7 +475,7 @@ export default function StickPack() {
             {/* Right: Plan Selector */}
             <FadeUp delay={0.1}>
               <div>
-                <h1 className="hidden lg:block font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">Take Back Your Mental Clarity with BrewNectar Stick Packs</h1>
+                <h1 className="hidden lg:block font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">Are You Ready To Take Back Your Mental Clarity?</h1>
                 <div className="hidden lg:flex flex-wrap items-center gap-3 mb-3">
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-[11px] font-semibold text-emerald-700"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />Best Seller</span>
                   <div className="flex -space-x-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />)}</div>

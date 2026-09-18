@@ -112,7 +112,8 @@ describe("stick-pack content and pacing refinements", () => {
   });
 
   it("uses the revised benefit-led hero copy without the removed members claim", () => {
-    expect(source.match(/Take Back Your Mental Clarity with BrewNectar Stick Packs/g)).toHaveLength(3);
+    expect(source.match(/Are You Ready To Take Back Your Mental Clarity\?/g)).toHaveLength(2);
+    expect(source.match(/Take Back Your Mental Clarity with BrewNectar Stick Packs/g)).toHaveLength(1);
     expect(source).not.toContain("Stay Focused &amp; Clear with BrewNectar Stick Packs");
     expect(source.match(/Best Seller/g)).toHaveLength(2);
     expect(source).not.toContain("Now Shipping");
