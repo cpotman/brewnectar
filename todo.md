@@ -278,3 +278,7 @@
 - [x] Replace the stick-pack PDP badges with Caffeine-Free, Sugar Free, Clinically Dosed, and No Earthy Taste
 - [x] Preserve the requested badge order across both mobile and desktop renderings
 - [x] Remove Nut-Free, Vegan, and Made in USA from the PDP badge area and verify responsive wrapping
+- [x] Increase the free-gift title and value typography while preserving readable image overlays
+- [x] Change the Focus & Clarity Masterclass value from $25 to $99 everywhere on the stick-pack page
+- [x] Remove all customer-facing Made in USA and plan wording from the stick-pack page
+- [x] Verify the updated gift hierarchy in both offer blocks on desktop and mobile

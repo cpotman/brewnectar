@@ -139,7 +139,7 @@ const INGREDIENTS = [
 
 /* --- Plans --- */
 const PLANS = [
-  { id: "3mo", name: "3-Month Supply", savings: "Save 49%", price: "$74.95", perDay: "$0.89/day", billed: "$24.98 per bag", badge: "BEST VALUE", perks: ["Exclusive Focus & Clarity Masterclass ($25 value)", "Maximum savings — lowest price per serving", "Lock in savings — price guaranteed even if we raise it", "Try it for 60 days. If it isn't right for you, contact us for a full refund.", "La Marzocco Espresso Machine ($4500) Giveaway entries"] },
+  { id: "3mo", name: "3-Month Supply", savings: "Save 49%", price: "$74.95", perDay: "$0.89/day", billed: "$24.98 per bag", badge: "BEST VALUE", perks: ["Exclusive Focus & Clarity Masterclass ($99 value)", "Maximum savings — lowest price per serving", "Lock in savings — price guaranteed even if we raise it", "Try it for 60 days. If it isn't right for you, contact us for a full refund.", "La Marzocco Espresso Machine ($4500) Giveaway entries"] },
   { id: "2mo", name: "2-Month Supply", savings: "Save 39%", price: "$59.95", perDay: "$1.07/day", billed: "$29.98 per bag", badge: "MOST POPULAR", perks: [] },
   { id: "1mo", name: "1-Month Supply", savings: "Save 18%", price: "$39.95", perDay: "$1.43/day", billed: "$39.95 per bag", badge: "", perks: [] },
   { id: "one-time", name: "One-Time Purchase", savings: "", price: "$49", perDay: "$1.75/day", billed: "$49 per bag", badge: "", perks: [] },
@@ -300,7 +300,7 @@ function PlanGiftCards({
     {
       id: "masterclass",
       title: "Focus & Clarity Masterclass",
-      detail: "$25 value",
+      detail: "$99 value",
       activeLabel: "FREE",
       inactiveLabel: "SUBSCRIBE TO UNLOCK",
       image: IMAGES.masterclassGift,
@@ -325,7 +325,7 @@ function PlanGiftCards({
     <div className="mb-5">
       <div className="mb-3 flex items-center gap-2">
         <Gift size={16} className="text-[#B45309]" />
-        <span className="text-sm font-bold text-[#1C1917]">Free gifts with your order</span>
+        <span className="text-base font-bold text-[#1C1917]">Free gifts with your order</span>
       </div>
       <div className="grid grid-cols-2 gap-3">
         {gifts.map((gift) => (
@@ -334,7 +334,7 @@ function PlanGiftCards({
             type="button"
             onClick={() => { if (!gift.selected) onSelectPlan(gift.unlockPlan); }}
             aria-pressed={gift.selected}
-            aria-label={`${gift.title}: ${gift.selected ? gift.activeLabel : gift.inactiveLabel}`}
+            aria-label={`${gift.title}, ${gift.detail}: ${gift.selected ? gift.activeLabel : gift.inactiveLabel}`}
             className={`group relative h-32 overflow-hidden rounded-2xl border-2 text-left shadow-sm transition-all duration-300 sm:h-36 ${
               gift.selected
                 ? "border-[#D97706]/60 shadow-[0_10px_25px_rgba(180,83,9,0.14)]"
@@ -359,13 +359,13 @@ function PlanGiftCards({
                 <Lock size={12} className="text-white" />
               </div>
             )}
-            <div className={`absolute inset-x-2 bottom-2 rounded-xl border px-2.5 py-2 shadow-sm backdrop-blur-md ${
+            <div className={`absolute inset-x-2 bottom-2 rounded-xl border px-3 py-2.5 shadow-sm backdrop-blur-md ${
               gift.selected ? "border-white/70 bg-white/92" : "border-white/60 bg-white/88"
             }`}>
-              <p className="text-[11px] font-bold leading-tight text-[#1C1917] sm:text-xs">{gift.title}</p>
-              <div className="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-0.5">
-                <span className="text-[9px] text-stone-500 sm:text-[10px]">{gift.detail}</span>
-                <span className={`text-[9px] font-bold sm:text-[10px] ${gift.selected ? "text-emerald-700" : "text-stone-500"}`}>
+              <p className="text-xs font-bold leading-tight text-[#1C1917] sm:text-sm">{gift.title}</p>
+              <div className="mt-1.5">
+                <span className="block font-display text-sm font-extrabold leading-none text-[#B45309] sm:text-base">{gift.detail}</span>
+                <span className={`mt-1 block text-[9px] font-bold leading-tight sm:text-[10px] ${gift.selected ? "text-emerald-700" : "text-stone-500"}`}>
                   {gift.selected ? gift.activeLabel : gift.inactiveLabel}
                 </span>
               </div>
@@ -898,7 +898,7 @@ export default function StickPack() {
           <FadeUp>
             <div className="text-center mb-8">
               <h2 className="font-display text-2xl md:text-3xl font-bold text-[#1C1917] mb-2">Ready to Upgrade Your Coffee?</h2>
-              <p className="text-[#57534E] text-sm md:text-base">Choose your plan and start your smarter morning.</p>
+              <p className="text-[#57534E] text-sm md:text-base">Choose your supply and start your smarter morning.</p>
             </div>
           </FadeUp>
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
@@ -1234,7 +1234,7 @@ export default function StickPack() {
             <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] text-white font-bold text-lg shadow-[0_12px_30px_rgba(180,83,9,0.25)] hover:shadow-[0_16px_36px_rgba(180,83,9,0.35)] hover:scale-[1.02] transition-all duration-300">
               View Offers <ArrowRight size={18} />
             </button>
-            <p className="text-xs text-[#78716C] mt-4">60-day satisfaction guarantee &bull; Third-party tested &bull; Made in USA</p>
+            <p className="text-xs text-[#78716C] mt-4">60-day satisfaction guarantee &bull; Third-party tested &bull; Caffeine-free</p>
           </FadeUp>
         </div>
       </section>

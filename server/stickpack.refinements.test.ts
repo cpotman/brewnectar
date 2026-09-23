@@ -140,6 +140,7 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).toContain("inline-flex items-center justify-center gap-1");
     expect(source).toContain('className="grid grid-cols-2 gap-1.5 mb-5 xl:flex xl:flex-nowrap"');
     expect(source).not.toContain('label: "Made in USA"');
+    expect(source).not.toMatch(/Made in USA/i);
   });
 
   it("uses plan-dependent image gift cards with grayscale locked states in both offers", () => {
@@ -151,6 +152,16 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).toContain("grayscale contrast-75 opacity-70");
     expect(source).toContain("SUBSCRIBE TO UNLOCK");
     expect(source).toContain("2+ MONTHS TO UNLOCK");
+    expect(source.match(/\$99 value/g)).toHaveLength(2);
+    expect(source).not.toContain("$25 value");
+    expect(source).toContain("text-xs font-bold leading-tight text-[#1C1917] sm:text-sm");
+    expect(source).toContain("block font-display text-sm font-extrabold leading-none text-[#B45309] sm:text-base");
+    expect(source).toContain("Free gifts with your order</span>");
+  });
+
+  it("removes customer-facing plan wording from the lower offer prompt", () => {
+    expect(source).toContain("Choose your supply and start your smarter morning.");
+    expect(source).not.toContain("Choose your plan and start your smarter morning.");
   });
 
   it("underlines the three specified causes in the discipline callout", () => {
