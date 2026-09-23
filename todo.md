@@ -301,3 +301,5 @@
 - [x] Replace the black hero checklist icons with BrewNectar amber-orange check circles
 - [x] Reduce the mobile grid gap and remove extra badge margin above the In Stock notice in both offer blocks
 - [x] Verify the tighter mobile transition while preserving desktop spacing
+- [x] Reduce the remaining mobile gap above both In Stock notices from 16px to 8px
+- [x] Re-check the compact transition at phone width without changing desktop spacing

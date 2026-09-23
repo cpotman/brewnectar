@@ -146,7 +146,7 @@ describe("stick-pack content and pacing refinements", () => {
     expect(hero).not.toContain("Title, pills, stars above images");
     expect(source).toContain("rounded-full bg-[#D97706] text-white");
     expect(source).not.toContain("rounded-full bg-[#1C1917] text-white");
-    expect(source.match(/grid lg:grid-cols-2 gap-4 lg:gap-12 items-start/g)).toHaveLength(2);
+    expect(source.match(/grid lg:grid-cols-2 gap-2 lg:gap-12 items-start/g)).toHaveLength(2);
   });
 
   it("uses the requested four PDP badges in the same order on mobile and desktop", () => {
