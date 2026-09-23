@@ -249,8 +249,10 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).toContain('"1mo": { quantity: 1, total: "$49" }');
     expect(source).toContain('"2mo": { quantity: 2, total: "$98" }');
     expect(source).toContain('"3mo": { quantity: 3, total: "$147" }');
-    expect(source).toContain('`One Time Purchase ${option.total}`');
-    expect(source).toContain('`Add ${option.quantity} to the Cart · ${option.total}`');
+    expect(source).toContain('`One Time Purchase (${option.quantity}) · ${option.total}`');
+    expect(source).toContain('data-purchase-type="one-time"');
+    expect(source).toContain('data-quantity={option.quantity}');
+    expect(source).not.toContain('`Add ${option.quantity} to the Cart · ${option.total}`');
     expect(source).not.toContain('isSelected={selectedPlan === "one-time"}');
     expect(source).toContain('className="mt-3 text-center"');
     expect(source.match(/60-Day Satisfaction Guarantee/g)).toHaveLength(3);

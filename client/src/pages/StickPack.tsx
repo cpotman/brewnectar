@@ -440,15 +440,15 @@ const ONE_TIME_OPTIONS: Record<string, { quantity: number; total: string }> = {
 
 function OneTimePurchaseLink({ selectedPlan }: { selectedPlan: string }) {
   const option = ONE_TIME_OPTIONS[selectedPlan] || ONE_TIME_OPTIONS["1mo"];
-  const label = option.quantity === 1
-    ? `One Time Purchase ${option.total}`
-    : `Add ${option.quantity} to the Cart · ${option.total}`;
+  const label = `One Time Purchase (${option.quantity}) · ${option.total}`;
 
   return (
     <div className="mt-3 text-center">
       <button
         type="button"
-        aria-label={`${label} as a one-time purchase`}
+        data-purchase-type="one-time"
+        data-quantity={option.quantity}
+        aria-label={`One Time Purchase, quantity ${option.quantity}, total ${option.total}`}
         className="text-sm font-medium text-[#78716C] underline decoration-dotted underline-offset-4 transition-colors hover:text-[#B45309]"
       >
         {label}

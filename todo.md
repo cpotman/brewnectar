@@ -306,3 +306,5 @@
 - [x] Change the default selected subscription option from 2 Bags to 1 Bag
 - [x] Make the one-time link show $49 for one bag, Add 2 to the Cart · $98 for two bags, and Add 3 to the Cart · $147 for three bags
 - [x] Apply the dynamic one-time quantity link to both offer blocks and verify all selection states
+- [x] Keep the dynamic link wording consistent as One Time Purchase (1), (2), or (3) with the matching total
+- [x] Expose the selected one-time quantity on the control for future cart integration
