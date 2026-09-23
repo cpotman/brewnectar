@@ -39,6 +39,13 @@ const IMAGES = {
   laMarzoccoGift: "/manus-storage/stickpack-gift-la-marzocco_113c18e8.webp",
 };
 
+const PDP_BADGES = [
+  { label: "Caffeine-Free", emoji: "☕", bg: "bg-amber-100 text-amber-800" },
+  { label: "Sugar Free", emoji: "✨", bg: "bg-emerald-100 text-emerald-800" },
+  { label: "Clinically Dosed", emoji: "🧪", bg: "bg-sky-100 text-sky-800" },
+  { label: "No Earthy Taste", emoji: "🙌", bg: "bg-rose-100 text-rose-800" },
+];
+
 /* --- What's Inside visual cards --- */
 const WHATS_INSIDE = [
   { name: "Alpha-GPC", dosage: "500 mg (50%)", tag: "Choline Support for Attention + Memory*", science: "Alpha-GPC supplies choline, a building block for acetylcholine — a neurotransmitter involved in attention and memory. Each stick includes 500 mg of a 50% Alpha-GPC material.", icon: Zap, color: "bg-emerald-50 text-emerald-700", image: "/manus-storage/ingredient-alpha-gpc_3347cb6d.png" },
@@ -430,16 +437,9 @@ export default function StickPack() {
           <div className="lg:hidden mb-6">
             <FadeUp>
               <h1 className="font-display text-2xl sm:text-3xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">Are You Ready To Take Back Your Mental Clarity?</h1>
-              <div className="flex flex-wrap gap-1.5 mb-3">
-                {[
-                  { label: "Caffeine-Free", emoji: "\u2615", bg: "bg-amber-100 text-amber-800" },
-                  { label: "No Earthy Taste", emoji: "\ud83d\ude4c", bg: "bg-rose-100 text-rose-800" },
-                  { label: "Sugar Free", emoji: "\u2728", bg: "bg-emerald-100 text-emerald-800" },
-                  { label: "Nut-Free", emoji: "\ud83c\udf31", bg: "bg-lime-100 text-lime-800" },
-                  { label: "Vegan", emoji: "\ud83e\udd66", bg: "bg-teal-100 text-teal-800" },
-                  { label: "Made in USA", emoji: "\ud83c\uddfa\ud83c\uddf8", bg: "bg-sky-100 text-sky-800" },
-                ].map((pill) => (
-                  <span key={pill.label} className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold ${pill.bg}`}><span className="text-xs">{pill.emoji}</span>{pill.label}</span>
+              <div className="grid grid-cols-2 gap-1.5 mb-3">
+                {PDP_BADGES.map((pill) => (
+                  <span key={pill.label} className={`inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold ${pill.bg}`}><span className="text-xs">{pill.emoji}</span>{pill.label}</span>
                 ))}
               </div>
               <div className="flex flex-wrap items-center gap-3 mb-3">
@@ -488,7 +488,7 @@ export default function StickPack() {
                 ))}
               </div>
               <div className="hidden lg:flex items-center justify-center gap-6 mt-4">
-                {[{ icon: ShieldCheck, label: "60-Day Guarantee" }, { icon: FlaskConical, label: "Third-Party Tested" }, { icon: Leaf, label: "Made in USA" }].map((badge) => (
+                {[{ icon: ShieldCheck, label: "60-Day Guarantee" }, { icon: FlaskConical, label: "Third-Party Tested" }].map((badge) => (
                   <div key={badge.label} className="flex items-center gap-1.5 text-[#78716C]"><badge.icon size={14} className="text-[#D97706]" /><span className="text-xs">{badge.label}</span></div>
                 ))}
               </div>
@@ -511,16 +511,9 @@ export default function StickPack() {
                 </div>
                 <p className="text-[#57534E] text-base mb-5 leading-relaxed hidden lg:block">Eight research-backed ingredients + prebiotics in one caffeine-free stick pack. Add it to the coffee you already drink. <strong className="text-[#1C1917]">Brain + gut support that compounds over time.</strong></p>
 
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {[
-                    { label: "Caffeine-Free", emoji: "\u2615", bg: "bg-amber-100 text-amber-800" },
-                    { label: "No Earthy Taste", emoji: "\ud83d\ude4c", bg: "bg-rose-100 text-rose-800" },
-                    { label: "Sugar Free", emoji: "\u2728", bg: "bg-emerald-100 text-emerald-800" },
-                    { label: "Nut-Free", emoji: "\ud83c\udf31", bg: "bg-lime-100 text-lime-800" },
-                    { label: "Vegan", emoji: "\ud83e\udd66", bg: "bg-teal-100 text-teal-800" },
-                    { label: "Made in USA", emoji: "\ud83c\uddfa\ud83c\uddf8", bg: "bg-sky-100 text-sky-800" },
-                  ].map((pill) => (
-                    <span key={pill.label} className={`hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold ${pill.bg}`}><span className="text-sm">{pill.emoji}</span>{pill.label}</span>
+                <div className="grid grid-cols-2 gap-1.5 mb-5 xl:flex xl:flex-nowrap">
+                  {PDP_BADGES.map((pill) => (
+                    <span key={pill.label} className={`hidden lg:inline-flex items-center justify-center gap-1 px-2.5 py-1.5 rounded-full text-[11px] font-semibold whitespace-nowrap ${pill.bg}`}><span className="text-xs">{pill.emoji}</span>{pill.label}</span>
                   ))}
                 </div>
 

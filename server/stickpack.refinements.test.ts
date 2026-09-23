@@ -121,6 +121,27 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).not.toContain("BrewNectar Brain + Gut Stick Packs");
   });
 
+  it("uses the requested four PDP badges in the same order on mobile and desktop", () => {
+    const badges = source.slice(
+      source.indexOf("const PDP_BADGES"),
+      source.indexOf("/* --- What's Inside visual cards --- */"),
+    );
+    const caffeineIndex = badges.indexOf('label: "Caffeine-Free"');
+    const sugarIndex = badges.indexOf('label: "Sugar Free"');
+    const clinicallyDosedIndex = badges.indexOf('label: "Clinically Dosed"');
+    const tasteIndex = badges.indexOf('label: "No Earthy Taste"');
+    expect(caffeineIndex).toBeGreaterThan(-1);
+    expect(sugarIndex).toBeGreaterThan(caffeineIndex);
+    expect(clinicallyDosedIndex).toBeGreaterThan(sugarIndex);
+    expect(tasteIndex).toBeGreaterThan(clinicallyDosedIndex);
+    expect(badges).not.toMatch(/Nut-Free|Vegan|Made in USA/);
+    expect(source.match(/PDP_BADGES\.map/g)).toHaveLength(2);
+    expect(source).toContain('className="grid grid-cols-2 gap-1.5 mb-3"');
+    expect(source).toContain("inline-flex items-center justify-center gap-1");
+    expect(source).toContain('className="grid grid-cols-2 gap-1.5 mb-5 xl:flex xl:flex-nowrap"');
+    expect(source).not.toContain('label: "Made in USA"');
+  });
+
   it("uses plan-dependent image gift cards with grayscale locked states in both offers", () => {
     expect(source).toContain("stickpack-gift-masterclass_283e8b36.png");
     expect(source).toContain("stickpack-gift-la-marzocco_113c18e8.webp");

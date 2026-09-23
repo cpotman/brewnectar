@@ -275,3 +275,6 @@
 - [x] Remove the selected price from both main Add to Cart buttons
 - [x] Add “60 Day Money-Back Guarantee” as a compact second line inside both Add to Cart buttons
 - [x] Verify the refined divider and two-line buttons on desktop and mobile
+- [x] Replace the stick-pack PDP badges with Caffeine-Free, Sugar Free, Clinically Dosed, and No Earthy Taste
+- [x] Preserve the requested badge order across both mobile and desktop renderings
+- [x] Remove Nut-Free, Vegan, and Made in USA from the PDP badge area and verify responsive wrapping
