@@ -372,12 +372,29 @@ function PlanGiftCards({
 
 function LowStockNotice() {
   return (
-    <div className="mb-4 flex items-center gap-3" role="status">
+    <div className="mb-4 grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3 sm:gap-4" role="status">
       <span className="h-px flex-1 bg-stone-300" />
-      <p className="whitespace-nowrap font-display text-xs font-extrabold uppercase tracking-[0.08em] text-[#1C1917] sm:text-sm">
+      <p className="whitespace-nowrap text-center font-display text-[11px] font-extrabold uppercase tracking-[0.08em] text-[#1C1917] sm:text-xs">
         Low Stock - Selling Fast
       </p>
+      <span className="h-px flex-1 bg-stone-300" />
     </div>
+  );
+}
+
+function OfferAddToCartButton() {
+  return (
+    <button
+      type="button"
+      aria-label="Add to cart with a 60-day money-back guarantee"
+      className="group relative flex min-h-[58px] w-full flex-col items-center justify-center rounded-xl bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] px-5 py-2.5 text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_8px_30px_rgba(180,83,9,0.4)] active:scale-[0.98] animate-shimmer"
+    >
+      <span className="relative z-10 font-display text-base font-extrabold uppercase tracking-[0.08em]">Add to Cart</span>
+      <span className="relative z-10 mt-0.5 flex items-center justify-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-white/85 sm:text-[11px]">
+        <ShieldCheck size={12} strokeWidth={2.25} />
+        60 Day Money-Back Guarantee
+      </span>
+    </button>
   );
 }
 
@@ -550,9 +567,7 @@ export default function StickPack() {
 
                 <div className="text-center mb-5"><button onClick={() => setSelectedPlan("one-time")} className={`text-sm font-medium underline decoration-dotted underline-offset-4 transition-colors ${selectedPlan === "one-time" ? "text-[#B45309] font-semibold" : "text-[#78716C] hover:text-[#B45309]"}`}>One Time Purchase $49</button></div>
 
-                <button className="group relative w-full py-4 rounded-full text-base font-bold text-white overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(180,83,9,0.4)] hover:scale-[1.02] active:scale-[0.98] bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] animate-shimmer">
-                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">ADD TO CART {"\u2022"} {currentPlan.price}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
-                </button>
+                <OfferAddToCartButton />
 
                 <div className="mt-4 space-y-3">
                   <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">60-Day Satisfaction Guarantee</p><p className="text-[11px] text-[#78716C]">Try it for 60 days. If it isn't right for you, contact us for a full refund.</p></div></div>
@@ -990,9 +1005,7 @@ export default function StickPack() {
 
                 <div className="text-center mb-5"><button onClick={() => setSelectedPlan("one-time")} className={`text-sm font-medium underline decoration-dotted underline-offset-4 transition-colors ${selectedPlan === "one-time" ? "text-[#B45309] font-semibold" : "text-[#78716C] hover:text-[#B45309]"}`}>One Time Purchase $49</button></div>
 
-                <button className="group relative w-full py-4 rounded-full text-base font-bold text-white overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(180,83,9,0.4)] hover:scale-[1.02] active:scale-[0.98] bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] animate-shimmer">
-                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">ADD TO CART {"•"} {currentPlan.price}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
-                </button>
+                <OfferAddToCartButton />
 
                 <div className="mt-4 space-y-3">
                   <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">60-Day Satisfaction Guarantee</p><p className="text-[11px] text-[#78716C]">Try it for 60 days. If it isn't right for you, contact us for a full refund.</p></div></div>

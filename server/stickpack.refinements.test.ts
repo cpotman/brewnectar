@@ -148,7 +148,7 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).not.toContain("Subscribe & Save up to 45%");
     expect(source.match(/\{plan\.billed\}/g)).toHaveLength(2);
     expect(source.match(/\{plan\.price\}/g)).toHaveLength(2);
-    expect(source.match(/\{currentPlan\.price\}/g)).toHaveLength(3);
+    expect(source.match(/\{currentPlan\.price\}/g)).toHaveLength(1);
     expect(source.match(/font-display text-lg sm:text-xl font-bold text-\[#1C1917\]/g)).toHaveLength(2);
     expect(source).toContain('font-display font-bold text-[#1C1917] text-base">{currentPlan.price}');
     expect(source).not.toContain('font-display text-xl sm:text-2xl font-bold text-[#1C1917]">{plan.price}');
@@ -161,8 +161,16 @@ describe("stick-pack content and pacing refinements", () => {
   it("uses matching low-stock and add-to-cart controls across both offer blocks", () => {
     expect(source.match(/<LowStockNotice \/>/g)).toHaveLength(2);
     expect(source).toContain("Low Stock - Selling Fast");
-    expect(source.match(/ADD TO CART/g)).toHaveLength(2);
-    expect(source).toContain("Add to Cart");
+    expect(source).toContain("grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]");
+    expect(source.match(/h-px flex-1 bg-stone-300/g)).toHaveLength(2);
+    expect(source.match(/<OfferAddToCartButton \/>/g)).toHaveLength(2);
+    expect(source).toContain("60 Day Money-Back Guarantee");
+    const offerButton = source.slice(
+      source.indexOf("function OfferAddToCartButton"),
+      source.indexOf("/* ======= MAIN COMPONENT ======= */"),
+    );
+    expect(offerButton).toContain("Add to Cart");
+    expect(offerButton).not.toContain("currentPlan.price");
     expect(source.match(/60-Day Satisfaction Guarantee/g)).toHaveLength(3);
     expect(source.match(/Secure checkout/g)).toHaveLength(2);
     expect(source).not.toMatch(/Start Now|Select Your Plan|Subscribe & Save up to 49%/i);

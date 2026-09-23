@@ -271,3 +271,7 @@
 - [x] Remove free-shipping and cancel/pause language throughout the stick-pack page
 - [x] Replace keep-the-bag and no-return wording with a customer-friendly 60-day satisfaction guarantee
 - [x] Update focused regression coverage and verify both offer blocks responsively
+- [x] Balance the “Low Stock - Selling Fast” treatment with horizontal rules on both sides
+- [x] Remove the selected price from both main Add to Cart buttons
+- [x] Add “60 Day Money-Back Guarantee” as a compact second line inside both Add to Cart buttons
+- [x] Verify the refined divider and two-line buttons on desktop and mobile
