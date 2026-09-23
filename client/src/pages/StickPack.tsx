@@ -139,9 +139,9 @@ const INGREDIENTS = [
 
 /* --- Plans --- */
 const PLANS = [
-  { id: "3mo", name: "3-Month Supply", savings: "Save 49%", price: "$74.95", perDay: "$0.89/day", billed: "$24.98 per bag", badge: "BEST VALUE", perks: ["Exclusive Focus & Clarity Masterclass ($99 value)", "Maximum savings — lowest price per serving", "Lock in savings — price guaranteed even if we raise it", "Try it for 60 days. If it isn't right for you, contact us for a full refund.", "La Marzocco Espresso Machine ($4500) Giveaway entries"] },
-  { id: "2mo", name: "2-Month Supply", savings: "Save 39%", price: "$59.95", perDay: "$1.07/day", billed: "$29.98 per bag", badge: "MOST POPULAR", perks: [] },
-  { id: "1mo", name: "1-Month Supply", savings: "Save 18%", price: "$39.95", perDay: "$1.43/day", billed: "$39.95 per bag", badge: "", perks: [] },
+  { id: "1mo", name: "1 Bag", savings: "Save $9.05", price: "$39.95", perDay: "$1.43/day", billed: "$39.95 per bag", badge: "", perks: [] },
+  { id: "2mo", name: "2 Bags", savings: "Save $38.05", price: "$59.95", perDay: "$1.07/day", billed: "$29.98 per bag", badge: "MOST POPULAR", perks: [] },
+  { id: "3mo", name: "3 Bags", savings: "Save $72.01", price: "$74.95", perDay: "$0.89/day", billed: "$24.98 per bag", badge: "BEST VALUE", perks: ["Exclusive Focus & Clarity Masterclass ($99 value)", "Maximum savings — lowest price per serving", "Lock in savings — price guaranteed even if we raise it", "Try it for 60 days. If it isn't right for you, contact us for a full refund.", "La Marzocco Espresso Machine ($4500) Giveaway entries"] },
   { id: "one-time", name: "One-Time Purchase", savings: "", price: "$49", perDay: "$1.75/day", billed: "$49 per bag", badge: "", perks: [] },
 ];
 
@@ -313,7 +313,7 @@ function PlanGiftCards({
       title: "La Marzocco Espresso Machine",
       detail: "$4,500 giveaway",
       activeLabel: "ENTERED",
-      inactiveLabel: "2+ MONTHS TO UNLOCK",
+      inactiveLabel: "2+ BAGS TO UNLOCK",
       image: IMAGES.laMarzoccoGift,
       alt: "La Marzocco espresso machine and grinder",
       selected: machineSelected,
@@ -421,7 +421,7 @@ function OneTimePurchaseLink({ isSelected, onSelect }: { isSelected: boolean; on
 
 /* ======= MAIN COMPONENT ======= */
 export default function StickPack() {
-  const [selectedPlan, setSelectedPlan] = useState("3mo");
+  const [selectedPlan, setSelectedPlan] = useState("2mo");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [expandedIngredient, setExpandedIngredient] = useState<number | null>(null);
   const [openPdpInfo, setOpenPdpInfo] = useState<string | null>(null);

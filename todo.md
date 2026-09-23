@@ -290,3 +290,7 @@
 - [x] Match the gift-value text size to each gift title, strike through the Masterclass’s $99 value, and enlarge FREE
 - [x] Move the One Time Purchase $49 link beneath Add to Cart in both offer blocks
 - [x] Verify the compact cards and reordered purchase controls on desktop and mobile
+- [x] Reorder both subscription selectors to 1 Bag, 2 Bags, then 3 Bags
+- [x] Replace percentage savings with Save $9.05, Save $38.05, and Save $72.01
+- [x] Make 2 Bags the default selected option and update the gift unlock label to bag-based wording
+- [x] Verify the reordered options, expanded default state, pricing, and gift states on desktop and mobile

@@ -158,7 +158,8 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).toContain('const machineSelected = selectedPlan === "3mo" || selectedPlan === "2mo"');
     expect(source).toContain("grayscale contrast-75 opacity-70");
     expect(source).toContain("SUBSCRIBE TO UNLOCK");
-    expect(source).toContain("2+ MONTHS TO UNLOCK");
+    expect(source).toContain("2+ BAGS TO UNLOCK");
+    expect(source).not.toContain("2+ MONTHS TO UNLOCK");
     expect(source.match(/\$99 value/g)).toHaveLength(2);
     expect(source).not.toContain("$25 value");
     expect(source).toContain("relative aspect-[2/1] overflow-hidden bg-stone-100");
@@ -183,11 +184,17 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).toContain(">no raw material</span>");
   });
 
-  it("shows full stick-pack order totals with per-bag subtitles instead of monthly prices", () => {
-    expect(source).toContain('id: "3mo", name: "3-Month Supply", savings: "Save 49%", price: "$74.95", perDay: "$0.89/day", billed: "$24.98 per bag"');
-    expect(source).toContain('id: "2mo", name: "2-Month Supply", savings: "Save 39%", price: "$59.95", perDay: "$1.07/day", billed: "$29.98 per bag"');
-    expect(source).toContain('id: "1mo", name: "1-Month Supply", savings: "Save 18%", price: "$39.95", perDay: "$1.43/day", billed: "$39.95 per bag"');
+  it("shows bag-based offers in ascending order with dollar savings and two bags preselected", () => {
+    expect(source).toContain('id: "1mo", name: "1 Bag", savings: "Save $9.05", price: "$39.95", perDay: "$1.43/day", billed: "$39.95 per bag"');
+    expect(source).toContain('id: "2mo", name: "2 Bags", savings: "Save $38.05", price: "$59.95", perDay: "$1.07/day", billed: "$29.98 per bag"');
+    expect(source).toContain('id: "3mo", name: "3 Bags", savings: "Save $72.01", price: "$74.95", perDay: "$0.89/day", billed: "$24.98 per bag"');
     expect(source).toContain('id: "one-time", name: "One-Time Purchase", savings: "", price: "$49", perDay: "$1.75/day", billed: "$49 per bag"');
+    const offers = source.slice(source.indexOf("const PLANS = ["), source.indexOf("/* --- Compounding Effect stages --- */"));
+    expect(offers.indexOf('id: "1mo"')).toBeLessThan(offers.indexOf('id: "2mo"'));
+    expect(offers.indexOf('id: "2mo"')).toBeLessThan(offers.indexOf('id: "3mo"'));
+    expect(source).toContain('useState("2mo")');
+    expect(source).not.toContain('useState("3mo")');
+    expect(source).not.toMatch(/name: "[123]-Month Supply"|Save (?:49|39|18)%/);
     expect(source).not.toContain("Subscribe & Save up to 49%");
     expect(source).not.toContain("Subscribe & Save up to 45%");
     expect(source.match(/\{plan\.billed\}/g)).toHaveLength(2);
