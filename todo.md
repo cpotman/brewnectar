@@ -298,3 +298,6 @@
 - [x] Replace the old hero paragraph with the supplied habit-led headline and six-item check list
 - [x] Reuse the same benefit checklist in the desktop offer column without changing the two-column composition
 - [x] Verify mobile content order, desktop hierarchy, and responsive wrapping
+- [x] Replace the black hero checklist icons with BrewNectar amber-orange check circles
+- [x] Reduce the mobile grid gap and remove extra badge margin above the In Stock notice in both offer blocks
+- [x] Verify the tighter mobile transition while preserving desktop spacing

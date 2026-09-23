@@ -144,6 +144,9 @@ describe("stick-pack content and pacing refinements", () => {
     expect(mobileCopyIndex).toBeGreaterThan(carouselIndex);
     expect(offerControlsIndex).toBeGreaterThan(mobileCopyIndex);
     expect(hero).not.toContain("Title, pills, stars above images");
+    expect(source).toContain("rounded-full bg-[#D97706] text-white");
+    expect(source).not.toContain("rounded-full bg-[#1C1917] text-white");
+    expect(source.match(/grid lg:grid-cols-2 gap-4 lg:gap-12 items-start/g)).toHaveLength(2);
   });
 
   it("uses the requested four PDP badges in the same order on mobile and desktop", () => {
@@ -161,7 +164,7 @@ describe("stick-pack content and pacing refinements", () => {
     expect(tasteIndex).toBeGreaterThan(clinicallyDosedIndex);
     expect(badges).not.toMatch(/Nut-Free|Vegan|Made in USA/);
     expect(source.match(/PDP_BADGES\.map/g)).toHaveLength(2);
-    expect(source).toContain('className="grid grid-cols-2 gap-1.5 mb-3"');
+    expect(source).toContain('className="grid grid-cols-2 gap-1.5 mb-0"');
     expect(source).toContain("inline-flex items-center justify-center gap-1");
     expect(source).toContain('className="grid grid-cols-2 gap-1.5 mb-5 xl:flex xl:flex-nowrap"');
     expect(source).not.toContain('label: "Made in USA"');

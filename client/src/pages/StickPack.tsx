@@ -62,7 +62,7 @@ function HeroBenefitList({ className = "" }: { className?: string }) {
       <ul className="mt-3 space-y-2" aria-label="BrewNectar stick pack benefits">
         {HERO_BENEFITS.map((benefit) => (
           <li key={benefit} className="flex items-start gap-2.5 text-sm leading-snug text-[#44403C] sm:text-[15px]">
-            <span className="mt-0.5 flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-[#1C1917] text-white">
+            <span className="mt-0.5 flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-[#D97706] text-white shadow-[0_1px_3px_rgba(180,83,9,0.22)]">
               <Check size={11} strokeWidth={3} />
             </span>
             <span>{benefit}</span>
@@ -474,7 +474,7 @@ export default function StickPack() {
       <section className="pt-20 md:pt-24 pb-10 md:pb-14 relative">
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 120% 80% at 60% 30%, rgba(251,191,114,0.15) 0%, rgba(245,158,66,0.08) 30%, rgba(253,251,247,0.6) 70%, #FDFBF7 100%), #FDFBF7" }} />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-4 lg:gap-12 items-start">
             {/* Left: Product Images */}
             <FadeUp delay={0.05} className="lg:sticky lg:top-20 lg:self-start lg:-mt-6">
               <div className="relative rounded-2xl overflow-hidden aspect-square bg-stone-50 touch-pan-y"
@@ -520,7 +520,7 @@ export default function StickPack() {
                   <span className="text-sm text-[#57534E]"><strong className="text-[#1C1917]">4.9</strong> from <strong className="text-[#1C1917]">2,400+</strong> reviews</span>
                 </div>
                 <HeroBenefitList className="mb-4" />
-                <div className="grid grid-cols-2 gap-1.5 mb-3">
+                <div className="grid grid-cols-2 gap-1.5 mb-0">
                   {PDP_BADGES.map((pill) => (
                     <span key={pill.label} className={`inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold ${pill.bg}`}><span className="text-xs">{pill.emoji}</span>{pill.label}</span>
                   ))}
@@ -939,7 +939,7 @@ export default function StickPack() {
               <p className="text-[#57534E] text-sm md:text-base">Choose your supply and start your smarter morning.</p>
             </div>
           </FadeUp>
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-4 lg:gap-12 items-start">
             {/* Left: Product Images (sticky on desktop) */}
             <FadeUp delay={0.05} className="lg:sticky lg:top-20 lg:self-start lg:-mt-6">
               <div className="relative rounded-2xl overflow-hidden aspect-square bg-stone-50 touch-pan-y"
