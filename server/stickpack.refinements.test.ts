@@ -144,7 +144,7 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).toContain('id: "2mo", name: "2-Month Supply", savings: "Save 39%", price: "$59.95", perDay: "$1.07/day", billed: "$29.98 per bag"');
     expect(source).toContain('id: "1mo", name: "1-Month Supply", savings: "Save 18%", price: "$39.95", perDay: "$1.43/day", billed: "$39.95 per bag"');
     expect(source).toContain('id: "one-time", name: "One-Time Purchase", savings: "", price: "$49", perDay: "$1.75/day", billed: "$49 per bag"');
-    expect(source.match(/Subscribe & Save up to 49%/g)).toHaveLength(2);
+    expect(source).not.toContain("Subscribe & Save up to 49%");
     expect(source).not.toContain("Subscribe & Save up to 45%");
     expect(source.match(/\{plan\.billed\}/g)).toHaveLength(2);
     expect(source.match(/\{plan\.price\}/g)).toHaveLength(2);
@@ -156,6 +156,18 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).not.toContain('&& "/MO"');
     expect(source).not.toContain('&& "/mo"');
     expect(source).not.toMatch(/Billed \$|every (?:12|8|4) weeks|One-time payment/);
+  });
+
+  it("uses matching low-stock and add-to-cart controls across both offer blocks", () => {
+    expect(source.match(/<LowStockNotice \/>/g)).toHaveLength(2);
+    expect(source).toContain("Low Stock - Selling Fast");
+    expect(source.match(/ADD TO CART/g)).toHaveLength(2);
+    expect(source).toContain("Add to Cart");
+    expect(source.match(/60-Day Satisfaction Guarantee/g)).toHaveLength(3);
+    expect(source.match(/Secure checkout/g)).toHaveLength(2);
+    expect(source).not.toMatch(/Start Now|Select Your Plan|Subscribe & Save up to 49%/i);
+    expect(source).not.toMatch(/free shipping|fast\s*&\s*free shipping|cancel anytime|cancel or pause anytime/i);
+    expect(source).not.toMatch(/keep-the-bag|keep the bag|no need to return/i);
   });
 
   it("keeps expanded Evidence focused on the linked study cards", () => {

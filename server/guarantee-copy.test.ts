@@ -45,7 +45,7 @@ describe("sitewide guarantee language", () => {
 
   it("uses the 60-day guarantee throughout the primary purchase paths", () => {
     expect(clientSource).toContain("60-Day Keep-the-Bottle Guarantee");
-    expect(clientSource).toContain("60-Day Keep-the-Bag Guarantee");
+    expect(clientSource).toContain("60-Day Satisfaction Guarantee");
     expect(clientSource).toContain("60-day money-back guarantee");
     expect(clientSource).toContain("60-day guarantee window");
   });

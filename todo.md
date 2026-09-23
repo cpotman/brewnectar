@@ -266,3 +266,8 @@
 - [x] Change the primary stick-pack hero headline to “Are You Ready To Take Back Your Mental Clarity?”
 - [x] Keep the revised hero headline consistent across its desktop and mobile renderings while preserving the lower offer headline
 - [x] Update focused regression coverage and verify the production build before checkpointing
+- [x] Change both stick-pack offer buttons and the mobile sticky purchase button to “Add to Cart”
+- [x] Replace both plan-selector headings and savings badges with the reference-inspired “Low Stock - Selling Fast” divider
+- [x] Remove free-shipping and cancel/pause language throughout the stick-pack page
+- [x] Replace keep-the-bag and no-return wording with a customer-friendly 60-day satisfaction guarantee
+- [x] Update focused regression coverage and verify both offer blocks responsively

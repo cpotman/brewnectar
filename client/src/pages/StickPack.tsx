@@ -11,8 +11,8 @@ import { useState, useRef, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Star, Check, X as XIcon, ChevronDown, ChevronLeft, ChevronRight, ArrowRight, Clock, Sparkles,
-  Brain, Zap, Shield, Leaf, Coffee, Heart, ShieldCheck, Truck,
-  RotateCcw, FlaskConical, ExternalLink, BookOpen, Gift, Lock,
+  Brain, Zap, Shield, Leaf, Coffee, Heart, ShieldCheck,
+  FlaskConical, ExternalLink, BookOpen, Gift, Lock,
   MessageCircle, Luggage, CircleOff,
 } from "lucide-react";
 
@@ -132,7 +132,7 @@ const INGREDIENTS = [
 
 /* --- Plans --- */
 const PLANS = [
-  { id: "3mo", name: "3-Month Supply", savings: "Save 49%", price: "$74.95", perDay: "$0.89/day", billed: "$24.98 per bag", badge: "BEST VALUE", perks: ["Exclusive Focus & Clarity Masterclass ($25 value)", "Maximum savings — lowest price per serving", "Lock in savings — price guaranteed even if we raise it", "Try it 60 days — keep the bag. Full refund, no questions.", "La Marzocco Espresso Machine ($4500) Giveaway entries", "Fast & FREE Shipping", "Cancel or pause anytime"] },
+  { id: "3mo", name: "3-Month Supply", savings: "Save 49%", price: "$74.95", perDay: "$0.89/day", billed: "$24.98 per bag", badge: "BEST VALUE", perks: ["Exclusive Focus & Clarity Masterclass ($25 value)", "Maximum savings — lowest price per serving", "Lock in savings — price guaranteed even if we raise it", "Try it for 60 days. If it isn't right for you, contact us for a full refund.", "La Marzocco Espresso Machine ($4500) Giveaway entries"] },
   { id: "2mo", name: "2-Month Supply", savings: "Save 39%", price: "$59.95", perDay: "$1.07/day", billed: "$29.98 per bag", badge: "MOST POPULAR", perks: [] },
   { id: "1mo", name: "1-Month Supply", savings: "Save 18%", price: "$39.95", perDay: "$1.43/day", billed: "$39.95 per bag", badge: "", perks: [] },
   { id: "one-time", name: "One-Time Purchase", savings: "", price: "$49", perDay: "$1.75/day", billed: "$49 per bag", badge: "", perks: [] },
@@ -215,13 +215,13 @@ const PDP_INFO_ITEMS = [
   {
     id: "shipping",
     title: "Shipping & Returns",
-    content: "Free shipping on all subscription orders. Standard shipping (3–5 business days) on one-time purchases. All orders ship from our US warehouse. Returns accepted within 60 days — keep the bag, get a full refund, no questions asked.",
+    content: "Shipping options and delivery estimates are shown at checkout. All orders ship from our US warehouse. Eligible first purchases are covered by our 60-day satisfaction guarantee.",
   },
   { id: "faq", title: "Frequently Asked Questions", content: "" },
   {
     id: "guarantee",
     title: "60-Day Guarantee",
-    content: "Try BrewNectar risk-free for 60 days. If you don’t notice a difference in your focus, energy, or gut health, contact us for a full refund — no need to return the bag. We believe in the product enough to take the risk for you.",
+    content: "Try BrewNectar for 60 days. If it isn’t the right fit, contact us and we’ll help make it right with a full refund. Simple, straightforward support from a real team.",
   },
 ];
 
@@ -370,6 +370,17 @@ function PlanGiftCards({
   );
 }
 
+function LowStockNotice() {
+  return (
+    <div className="mb-4 flex items-center gap-3" role="status">
+      <span className="h-px flex-1 bg-stone-300" />
+      <p className="whitespace-nowrap font-display text-xs font-extrabold uppercase tracking-[0.08em] text-[#1C1917] sm:text-sm">
+        Low Stock - Selling Fast
+      </p>
+    </div>
+  );
+}
+
 /* ======= MAIN COMPONENT ======= */
 export default function StickPack() {
   const [selectedPlan, setSelectedPlan] = useState("3mo");
@@ -460,7 +471,7 @@ export default function StickPack() {
                 ))}
               </div>
               <div className="hidden lg:flex items-center justify-center gap-6 mt-4">
-                {[{ icon: ShieldCheck, label: "60-Day Guarantee" }, { icon: Truck, label: "Free Shipping" }, { icon: RotateCcw, label: "Cancel Anytime" }].map((badge) => (
+                {[{ icon: ShieldCheck, label: "60-Day Guarantee" }, { icon: FlaskConical, label: "Third-Party Tested" }, { icon: Leaf, label: "Made in USA" }].map((badge) => (
                   <div key={badge.label} className="flex items-center gap-1.5 text-[#78716C]"><badge.icon size={14} className="text-[#D97706]" /><span className="text-xs">{badge.label}</span></div>
                 ))}
               </div>
@@ -502,10 +513,7 @@ export default function StickPack() {
                   <span className="w-full sm:w-auto border-t border-emerald-200/70 pt-2 sm:border-t-0 sm:pt-0 text-sm text-emerald-700">Order now and ships by: <strong className="whitespace-nowrap text-emerald-900">{shipByDate}</strong></span>
                 </div>
 
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-display font-bold text-lg text-[#1C1917]">Select Your Plan:</h3>
-                  <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/60">Subscribe & Save up to 49%</span>
-                </div>
+                <LowStockNotice />
 
                 <div className="space-y-3 mb-4" id="offers">
                   {PLANS.filter(p => p.id !== "one-time").map((plan) => {
@@ -543,12 +551,12 @@ export default function StickPack() {
                 <div className="text-center mb-5"><button onClick={() => setSelectedPlan("one-time")} className={`text-sm font-medium underline decoration-dotted underline-offset-4 transition-colors ${selectedPlan === "one-time" ? "text-[#B45309] font-semibold" : "text-[#78716C] hover:text-[#B45309]"}`}>One Time Purchase $49</button></div>
 
                 <button className="group relative w-full py-4 rounded-full text-base font-bold text-white overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(180,83,9,0.4)] hover:scale-[1.02] active:scale-[0.98] bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] animate-shimmer">
-                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">{selectedPlan === "one-time" ? "BUY NOW" : "START NOW"} {"\u2022"} {currentPlan.price}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
+                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">ADD TO CART {"\u2022"} {currentPlan.price}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
                 </button>
 
                 <div className="mt-4 space-y-3">
-                  <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">60-Day Keep-the-Bag Guarantee</p><p className="text-[11px] text-[#78716C]">Don't love it? Keep the bag. Full refund, no questions.</p></div></div>
-                  <div className="flex items-center justify-between px-1"><div className="flex items-center gap-2"><Truck size={14} className="text-[#78716C]" /><span className="text-xs text-[#57534E]">Free shipping</span></div><div className="flex items-center gap-2"><RotateCcw size={14} className="text-[#78716C]" /><span className="text-xs text-[#57534E]">Cancel anytime</span></div></div>
+                  <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">60-Day Satisfaction Guarantee</p><p className="text-[11px] text-[#78716C]">Try it for 60 days. If it isn't right for you, contact us for a full refund.</p></div></div>
+                  <div className="flex items-center justify-center gap-2 px-1 text-[#57534E]"><Lock size={14} className="text-[#78716C]" /><span className="text-xs">Secure checkout</span></div>
                   {/* PDP Info Dropdowns - mobile only */}
                   <PdpInfoAccordion
                     className="lg:hidden mt-2"
@@ -852,13 +860,13 @@ export default function StickPack() {
                 <div className="w-20 h-20 rounded-full bg-white/15 border-2 border-white/30 flex items-center justify-center mx-auto mb-6">
                   <ShieldCheck size={40} className="text-white" />
                 </div>
-                <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3">60-Day Keep-the-Bag Guarantee</h2>
-                <p className="text-emerald-100 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8">Don't love it? <strong className="text-white">Keep the bag. Full refund within 48 hours.</strong> No restocking fees, no questions asked. We believe in BrewNectar so much, we'll take all the risk.</p>
+                <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3">60-Day Satisfaction Guarantee</h2>
+                <p className="text-emerald-100 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8">Try BrewNectar for 60 days. If it isn't the right fit, <strong className="text-white">contact us and we'll help make it right with a full refund.</strong> Simple, straightforward support from a real team.</p>
                 <div className="grid grid-cols-3 gap-3 md:gap-10 max-w-xl mx-auto">
                   {[
-                    { icon: Heart, label: "Keep the Bag" },
-                    { icon: Clock, label: "48-Hour Refund" },
-                    { icon: MessageCircle, label: "No Questions Asked" },
+                    { icon: Clock, label: "60 Days to Decide" },
+                    { icon: ShieldCheck, label: "Full Refund" },
+                    { icon: MessageCircle, label: "Real Support" },
                   ].map((item) => (
                     <div key={item.label} className="flex flex-col items-center gap-2">
                       <div className="w-12 h-12 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center"><item.icon size={22} className="text-white" /></div>
@@ -945,10 +953,7 @@ export default function StickPack() {
                   <span className="w-full sm:w-auto border-t border-emerald-200/70 pt-2 sm:border-t-0 sm:pt-0 text-sm text-emerald-700">Order now and ships by: <strong className="whitespace-nowrap text-emerald-900">{shipByDate}</strong></span>
                 </div>
 
-                <div className="flex items-center justify-between mb-4">
-                  <h4 className="font-display font-bold text-lg text-[#1C1917]">Select Your Plan:</h4>
-                  <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/60">Subscribe & Save up to 49%</span>
-                </div>
+                <LowStockNotice />
 
                 <div className="space-y-3 mb-4">
                   {PLANS.filter(p => p.id !== "one-time").map((plan) => {
@@ -986,12 +991,12 @@ export default function StickPack() {
                 <div className="text-center mb-5"><button onClick={() => setSelectedPlan("one-time")} className={`text-sm font-medium underline decoration-dotted underline-offset-4 transition-colors ${selectedPlan === "one-time" ? "text-[#B45309] font-semibold" : "text-[#78716C] hover:text-[#B45309]"}`}>One Time Purchase $49</button></div>
 
                 <button className="group relative w-full py-4 rounded-full text-base font-bold text-white overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(180,83,9,0.4)] hover:scale-[1.02] active:scale-[0.98] bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] animate-shimmer">
-                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">{selectedPlan === "one-time" ? "BUY NOW" : "START NOW"} {"•"} {currentPlan.price}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
+                  <span className="relative z-10 flex items-center justify-center gap-2 uppercase tracking-wide">ADD TO CART {"•"} {currentPlan.price}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
                 </button>
 
                 <div className="mt-4 space-y-3">
-                  <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">60-Day Keep-the-Bag Guarantee</p><p className="text-[11px] text-[#78716C]">Don't love it? Keep the bag. Full refund, no questions.</p></div></div>
-                  <div className="flex items-center justify-between px-1"><div className="flex items-center gap-2"><Truck size={14} className="text-[#78716C]" /><span className="text-xs text-[#57534E]">Free shipping</span></div><div className="flex items-center gap-2"><RotateCcw size={14} className="text-[#78716C]" /><span className="text-xs text-[#57534E]">Cancel anytime</span></div></div>
+                  <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">60-Day Satisfaction Guarantee</p><p className="text-[11px] text-[#78716C]">Try it for 60 days. If it isn't right for you, contact us for a full refund.</p></div></div>
+                  <div className="flex items-center justify-center gap-2 px-1 text-[#57534E]"><Lock size={14} className="text-[#78716C]" /><span className="text-xs">Secure checkout</span></div>
                   {/* PDP Info Dropdowns - mobile only */}
                   <PdpInfoAccordion
                     className="lg:hidden mt-2"
@@ -1221,9 +1226,9 @@ export default function StickPack() {
             <h2 className="font-display text-3xl md:text-4xl font-bold text-[#1C1917] mb-4">Keep your coffee. Lose the fog.</h2>
             <p className="text-[#57534E] mb-8 text-base md:text-lg">One stick pack. Seven ingredients. Works on the first morning.</p>
             <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#B45309] via-[#D97706] to-[#B45309] bg-[length:200%_100%] text-white font-bold text-lg shadow-[0_12px_30px_rgba(180,83,9,0.25)] hover:shadow-[0_16px_36px_rgba(180,83,9,0.35)] hover:scale-[1.02] transition-all duration-300">
-              Start Now <ArrowRight size={18} />
+              View Offers <ArrowRight size={18} />
             </button>
-            <p className="text-xs text-[#78716C] mt-4">60-day keep-the-bag guarantee &bull; Free shipping &bull; Cancel anytime</p>
+            <p className="text-xs text-[#78716C] mt-4">60-day satisfaction guarantee &bull; Third-party tested &bull; Made in USA</p>
           </FadeUp>
         </div>
       </section>
@@ -1253,7 +1258,7 @@ export default function StickPack() {
             className="px-6 sm:px-8 py-3 rounded-full font-display font-bold text-sm text-white hover:shadow-[0_8px_30px_rgba(180,83,9,0.4)] transition-all flex-shrink-0"
             style={{ background: "linear-gradient(135deg, #B45309 0%, #D97706 50%, #B45309 100%)" }}
           >
-            {selectedPlan === "one-time" ? "Buy Now" : "Start Now"}
+            Add to Cart
           </button>
         </div>
       </div>
