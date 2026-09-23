@@ -322,12 +322,12 @@ function PlanGiftCards({
   ];
 
   return (
-    <div className="mb-5">
-      <div className="mb-3 flex items-center gap-2">
+    <div className="mb-4">
+      <div className="mb-2.5 flex items-center gap-2">
         <Gift size={16} className="text-[#B45309]" />
         <span className="text-base font-bold text-[#1C1917]">Free gifts with your order</span>
       </div>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-2.5">
         {gifts.map((gift) => (
           <button
             key={gift.id}
@@ -335,13 +335,13 @@ function PlanGiftCards({
             onClick={() => { if (!gift.selected) onSelectPlan(gift.unlockPlan); }}
             aria-pressed={gift.selected}
             aria-label={`${gift.title}, ${gift.detail}: ${gift.selected ? gift.activeLabel : gift.inactiveLabel}`}
-            className={`group overflow-hidden rounded-2xl border-2 text-left shadow-sm transition-all duration-300 ${
+            className={`group overflow-hidden rounded-xl border-2 text-left shadow-sm transition-all duration-300 ${
               gift.selected
                 ? "border-[#D97706]/60 bg-white shadow-[0_10px_25px_rgba(180,83,9,0.14)]"
                 : "border-stone-200 bg-stone-50 hover:border-stone-300"
             }`}
           >
-            <div className="relative aspect-[16/9] overflow-hidden bg-stone-100">
+            <div className="relative aspect-[2/1] overflow-hidden bg-stone-100">
               <img
                 src={gift.image}
                 alt={gift.alt}
@@ -361,11 +361,11 @@ function PlanGiftCards({
                 </div>
               )}
             </div>
-            <div className={`border-t px-3 py-3 ${gift.selected ? "border-orange-100 bg-white" : "border-stone-200 bg-stone-50"}`}>
-              <p className="text-xs font-bold leading-tight text-[#1C1917] sm:text-sm">{gift.title}</p>
-              <div className="mt-1.5">
-                <span className="block font-display text-base font-extrabold leading-none text-[#B45309] sm:text-lg">{gift.detail}</span>
-                <span className={`mt-1.5 block text-[9px] font-bold leading-tight sm:text-[10px] ${gift.selected ? "text-emerald-700" : "text-stone-500"}`}>
+            <div className={`border-t px-2.5 py-2.5 ${gift.selected ? "border-orange-100 bg-white" : "border-stone-200 bg-stone-50"}`}>
+              <p className="text-[11px] font-bold leading-tight text-[#1C1917] sm:text-xs">{gift.title}</p>
+              <div className="mt-1">
+                <span className={`block text-[11px] font-bold leading-tight text-[#57534E] sm:text-xs ${gift.id === "masterclass" ? "line-through decoration-[#B45309]/60 decoration-1" : ""}`}>{gift.detail}</span>
+                <span className={`mt-1 block font-bold leading-none ${gift.selected ? (gift.id === "masterclass" ? "text-base text-emerald-700 sm:text-lg" : "text-[10px] text-emerald-700 sm:text-xs") : "text-[9px] leading-tight text-stone-500 sm:text-[10px]"}`}>
                   {gift.selected ? gift.activeLabel : gift.inactiveLabel}
                 </span>
               </div>
@@ -402,6 +402,20 @@ function OfferAddToCartButton() {
         60 Day Money-Back Guarantee
       </span>
     </button>
+  );
+}
+
+function OneTimePurchaseLink({ isSelected, onSelect }: { isSelected: boolean; onSelect: () => void }) {
+  return (
+    <div className="mt-3 text-center">
+      <button
+        type="button"
+        onClick={onSelect}
+        className={`text-sm font-medium underline decoration-dotted underline-offset-4 transition-colors ${isSelected ? "text-[#B45309] font-semibold" : "text-[#78716C] hover:text-[#B45309]"}`}
+      >
+        One Time Purchase $49
+      </button>
+    </div>
   );
 }
 
@@ -558,9 +572,8 @@ export default function StickPack() {
 
                 <PlanGiftCards selectedPlan={selectedPlan} onSelectPlan={setSelectedPlan} />
 
-                <div className="text-center mb-5"><button onClick={() => setSelectedPlan("one-time")} className={`text-sm font-medium underline decoration-dotted underline-offset-4 transition-colors ${selectedPlan === "one-time" ? "text-[#B45309] font-semibold" : "text-[#78716C] hover:text-[#B45309]"}`}>One Time Purchase $49</button></div>
-
                 <OfferAddToCartButton />
+                <OneTimePurchaseLink isSelected={selectedPlan === "one-time"} onSelect={() => setSelectedPlan("one-time")} />
 
                 <div className="mt-4 space-y-3">
                   <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">60-Day Satisfaction Guarantee</p><p className="text-[11px] text-[#78716C]">Try it for 60 days. If it isn't right for you, contact us for a full refund.</p></div></div>
@@ -996,9 +1009,8 @@ export default function StickPack() {
 
                 <PlanGiftCards selectedPlan={selectedPlan} onSelectPlan={setSelectedPlan} />
 
-                <div className="text-center mb-5"><button onClick={() => setSelectedPlan("one-time")} className={`text-sm font-medium underline decoration-dotted underline-offset-4 transition-colors ${selectedPlan === "one-time" ? "text-[#B45309] font-semibold" : "text-[#78716C] hover:text-[#B45309]"}`}>One Time Purchase $49</button></div>
-
                 <OfferAddToCartButton />
+                <OneTimePurchaseLink isSelected={selectedPlan === "one-time"} onSelect={() => setSelectedPlan("one-time")} />
 
                 <div className="mt-4 space-y-3">
                   <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">60-Day Satisfaction Guarantee</p><p className="text-[11px] text-[#78716C]">Try it for 60 days. If it isn't right for you, contact us for a full refund.</p></div></div>

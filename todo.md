@@ -286,3 +286,7 @@
 - [x] Replace all four Compounding Effect titles and descriptions with the supplied progression-focused copy
 - [x] Keep the Compounding Effect period labels and named ingredient badges while balancing longer cards
 - [x] Verify the revised gift cards and timeline at desktop and mobile widths
+- [x] Reduce the overall height, padding, gap, and corner radius of both free-gift cards
+- [x] Match the gift-value text size to each gift title, strike through the Masterclass’s $99 value, and enlarge FREE
+- [x] Move the One Time Purchase $49 link beneath Add to Cart in both offer blocks
+- [x] Verify the compact cards and reordered purchase controls on desktop and mobile

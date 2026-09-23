@@ -161,10 +161,12 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).toContain("2+ MONTHS TO UNLOCK");
     expect(source.match(/\$99 value/g)).toHaveLength(2);
     expect(source).not.toContain("$25 value");
-    expect(source).toContain("text-xs font-bold leading-tight text-[#1C1917] sm:text-sm");
-    expect(source).toContain("relative aspect-[16/9] overflow-hidden bg-stone-100");
-    expect(source).toContain("border-t px-3 py-3");
-    expect(source).toContain("block font-display text-base font-extrabold leading-none text-[#B45309] sm:text-lg");
+    expect(source).toContain("relative aspect-[2/1] overflow-hidden bg-stone-100");
+    expect(source).toContain("border-t px-2.5 py-2.5");
+    expect(source).toContain('gift.id === "masterclass" ? "line-through decoration-[#B45309]/60 decoration-1"');
+    expect(source).toContain('gift.id === "masterclass" ? "text-base text-emerald-700 sm:text-lg"');
+    expect(source).toContain("text-[11px] font-bold leading-tight text-[#1C1917] sm:text-xs");
+    expect(source).toContain("block text-[11px] font-bold leading-tight text-[#57534E] sm:text-xs");
     expect(source).not.toContain("absolute inset-x-2 bottom-2 rounded-xl");
     expect(source).toContain("Free gifts with your order</span>");
   });
@@ -213,6 +215,9 @@ describe("stick-pack content and pacing refinements", () => {
     );
     expect(offerButton).toContain("Add to Cart");
     expect(offerButton).not.toContain("currentPlan.price");
+    expect(source.match(/<OfferAddToCartButton \/>\s*<OneTimePurchaseLink/g)).toHaveLength(2);
+    expect(source.match(/<OneTimePurchaseLink isSelected=/g)).toHaveLength(2);
+    expect(source).toContain('className="mt-3 text-center"');
     expect(source.match(/60-Day Satisfaction Guarantee/g)).toHaveLength(3);
     expect(source.match(/Secure checkout/g)).toHaveLength(2);
     expect(source).not.toMatch(/Start Now|Select Your Plan|Subscribe & Save up to 49%/i);
