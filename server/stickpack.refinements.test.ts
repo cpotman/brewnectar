@@ -205,7 +205,7 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).toContain(">no raw material</span>");
   });
 
-  it("shows bag-based offers in ascending order with dollar savings and two bags preselected", () => {
+  it("shows bag-based offers in ascending order with dollar savings and one bag preselected", () => {
     expect(source).toContain('id: "1mo", name: "1 Bag", savings: "Save $9.05", price: "$39.95", perDay: "$1.43/day", billed: "$39.95 per bag"');
     expect(source).toContain('id: "2mo", name: "2 Bags", savings: "Save $38.05", price: "$59.95", perDay: "$1.07/day", billed: "$29.98 per bag"');
     expect(source).toContain('id: "3mo", name: "3 Bags", savings: "Save $72.01", price: "$74.95", perDay: "$0.89/day", billed: "$24.98 per bag"');
@@ -213,7 +213,8 @@ describe("stick-pack content and pacing refinements", () => {
     const offers = source.slice(source.indexOf("const PLANS = ["), source.indexOf("/* --- Compounding Effect stages --- */"));
     expect(offers.indexOf('id: "1mo"')).toBeLessThan(offers.indexOf('id: "2mo"'));
     expect(offers.indexOf('id: "2mo"')).toBeLessThan(offers.indexOf('id: "3mo"'));
-    expect(source).toContain('useState("2mo")');
+    expect(source).toContain('useState("1mo")');
+    expect(source).not.toContain('useState("2mo")');
     expect(source).not.toContain('useState("3mo")');
     expect(source).not.toMatch(/name: "[123]-Month Supply"|Save (?:49|39|18)%/);
     expect(source).not.toContain("Subscribe & Save up to 49%");
@@ -244,7 +245,13 @@ describe("stick-pack content and pacing refinements", () => {
     expect(offerButton).toContain("Add to Cart");
     expect(offerButton).not.toContain("currentPlan.price");
     expect(source.match(/<OfferAddToCartButton \/>\s*<OneTimePurchaseLink/g)).toHaveLength(2);
-    expect(source.match(/<OneTimePurchaseLink isSelected=/g)).toHaveLength(2);
+    expect(source.match(/<OneTimePurchaseLink selectedPlan=\{selectedPlan\} \/>/g)).toHaveLength(2);
+    expect(source).toContain('"1mo": { quantity: 1, total: "$49" }');
+    expect(source).toContain('"2mo": { quantity: 2, total: "$98" }');
+    expect(source).toContain('"3mo": { quantity: 3, total: "$147" }');
+    expect(source).toContain('`One Time Purchase ${option.total}`');
+    expect(source).toContain('`Add ${option.quantity} to the Cart · ${option.total}`');
+    expect(source).not.toContain('isSelected={selectedPlan === "one-time"}');
     expect(source).toContain('className="mt-3 text-center"');
     expect(source.match(/60-Day Satisfaction Guarantee/g)).toHaveLength(3);
     expect(source.match(/Secure checkout/g)).toHaveLength(2);

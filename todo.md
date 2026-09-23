@@ -303,3 +303,6 @@
 - [x] Verify the tighter mobile transition while preserving desktop spacing
 - [x] Reduce the remaining mobile gap above both In Stock notices from 16px to 8px
 - [x] Re-check the compact transition at phone width without changing desktop spacing
+- [x] Change the default selected subscription option from 2 Bags to 1 Bag
+- [x] Make the one-time link show $49 for one bag, Add 2 to the Cart · $98 for two bags, and Add 3 to the Cart · $147 for three bags
+- [x] Apply the dynamic one-time quantity link to both offer blocks and verify all selection states

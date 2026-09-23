@@ -432,15 +432,26 @@ function OfferAddToCartButton() {
   );
 }
 
-function OneTimePurchaseLink({ isSelected, onSelect }: { isSelected: boolean; onSelect: () => void }) {
+const ONE_TIME_OPTIONS: Record<string, { quantity: number; total: string }> = {
+  "1mo": { quantity: 1, total: "$49" },
+  "2mo": { quantity: 2, total: "$98" },
+  "3mo": { quantity: 3, total: "$147" },
+};
+
+function OneTimePurchaseLink({ selectedPlan }: { selectedPlan: string }) {
+  const option = ONE_TIME_OPTIONS[selectedPlan] || ONE_TIME_OPTIONS["1mo"];
+  const label = option.quantity === 1
+    ? `One Time Purchase ${option.total}`
+    : `Add ${option.quantity} to the Cart · ${option.total}`;
+
   return (
     <div className="mt-3 text-center">
       <button
         type="button"
-        onClick={onSelect}
-        className={`text-sm font-medium underline decoration-dotted underline-offset-4 transition-colors ${isSelected ? "text-[#B45309] font-semibold" : "text-[#78716C] hover:text-[#B45309]"}`}
+        aria-label={`${label} as a one-time purchase`}
+        className="text-sm font-medium text-[#78716C] underline decoration-dotted underline-offset-4 transition-colors hover:text-[#B45309]"
       >
-        One Time Purchase $49
+        {label}
       </button>
     </div>
   );
@@ -448,7 +459,7 @@ function OneTimePurchaseLink({ isSelected, onSelect }: { isSelected: boolean; on
 
 /* ======= MAIN COMPONENT ======= */
 export default function StickPack() {
-  const [selectedPlan, setSelectedPlan] = useState("2mo");
+  const [selectedPlan, setSelectedPlan] = useState("1mo");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [expandedIngredient, setExpandedIngredient] = useState<number | null>(null);
   const [openPdpInfo, setOpenPdpInfo] = useState<string | null>(null);
@@ -598,7 +609,7 @@ export default function StickPack() {
                 <PlanGiftCards selectedPlan={selectedPlan} onSelectPlan={setSelectedPlan} />
 
                 <OfferAddToCartButton />
-                <OneTimePurchaseLink isSelected={selectedPlan === "one-time"} onSelect={() => setSelectedPlan("one-time")} />
+                <OneTimePurchaseLink selectedPlan={selectedPlan} />
 
                 <div className="mt-4 space-y-3">
                   <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">60-Day Satisfaction Guarantee</p><p className="text-[11px] text-[#78716C]">Try it for 60 days. If it isn't right for you, contact us for a full refund.</p></div></div>
@@ -1035,7 +1046,7 @@ export default function StickPack() {
                 <PlanGiftCards selectedPlan={selectedPlan} onSelectPlan={setSelectedPlan} />
 
                 <OfferAddToCartButton />
-                <OneTimePurchaseLink isSelected={selectedPlan === "one-time"} onSelect={() => setSelectedPlan("one-time")} />
+                <OneTimePurchaseLink selectedPlan={selectedPlan} />
 
                 <div className="mt-4 space-y-3">
                   <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">60-Day Satisfaction Guarantee</p><p className="text-[11px] text-[#78716C]">Try it for 60 days. If it isn't right for you, contact us for a full refund.</p></div></div>
