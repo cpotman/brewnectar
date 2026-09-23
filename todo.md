@@ -294,3 +294,7 @@
 - [x] Replace percentage savings with Save $9.05, Save $38.05, and Save $72.01
 - [x] Make 2 Bags the default selected option and update the gift unlock label to bag-based wording
 - [x] Verify the reordered options, expanded default state, pricing, and gift states on desktop and mobile
+- [x] Move the mobile stick-pack hero headline, reviews, benefits, and badges below the PDP image carousel
+- [x] Replace the old hero paragraph with the supplied habit-led headline and six-item check list
+- [x] Reuse the same benefit checklist in the desktop offer column without changing the two-column composition
+- [x] Verify mobile content order, desktop hierarchy, and responsive wrapping

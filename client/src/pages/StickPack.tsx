@@ -46,6 +46,33 @@ const PDP_BADGES = [
   { label: "No Earthy Taste", emoji: "🙌", bg: "bg-rose-100 text-rose-800" },
 ];
 
+const HERO_BENEFITS = [
+  "Calm, locked-in focus without adding more caffeine*",
+  "Targets brain fog at the source*",
+  "Clinically studied doses of key ingredients",
+  "Third-party tested for quality and purity",
+  "Just pour it into your coffee, stir, and drink",
+  "No extra pills. No second cup required.",
+];
+
+function HeroBenefitList({ className = "" }: { className?: string }) {
+  return (
+    <div className={className}>
+      <h2 className="font-display text-lg font-bold leading-tight text-[#1C1917] sm:text-xl">Your coffee is already a habit. Make it work harder.</h2>
+      <ul className="mt-3 space-y-2" aria-label="BrewNectar stick pack benefits">
+        {HERO_BENEFITS.map((benefit) => (
+          <li key={benefit} className="flex items-start gap-2.5 text-sm leading-snug text-[#44403C] sm:text-[15px]">
+            <span className="mt-0.5 flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-[#1C1917] text-white">
+              <Check size={11} strokeWidth={3} />
+            </span>
+            <span>{benefit}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 /* --- What's Inside visual cards --- */
 const WHATS_INSIDE = [
   { name: "Alpha-GPC", dosage: "500 mg (50%)", tag: "Choline Support for Attention + Memory*", science: "Alpha-GPC supplies choline, a building block for acetylcholine — a neurotransmitter involved in attention and memory. Each stick includes 500 mg of a 50% Alpha-GPC material.", icon: Zap, color: "bg-emerald-50 text-emerald-700", image: "/manus-storage/ingredient-alpha-gpc_3347cb6d.png" },
@@ -447,23 +474,6 @@ export default function StickPack() {
       <section className="pt-20 md:pt-24 pb-10 md:pb-14 relative">
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 120% 80% at 60% 30%, rgba(251,191,114,0.15) 0%, rgba(245,158,66,0.08) 30%, rgba(253,251,247,0.6) 70%, #FDFBF7 100%), #FDFBF7" }} />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Mobile-only: Title, pills, stars above images */}
-          <div className="lg:hidden mb-6">
-            <FadeUp>
-              <h1 className="font-display text-2xl sm:text-3xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-2">Are You Ready To Take Back Your Mental Clarity?</h1>
-              <div className="grid grid-cols-2 gap-1.5 mb-3">
-                {PDP_BADGES.map((pill) => (
-                  <span key={pill.label} className={`inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold ${pill.bg}`}><span className="text-xs">{pill.emoji}</span>{pill.label}</span>
-                ))}
-              </div>
-              <div className="flex flex-wrap items-center gap-3 mb-3">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-[11px] font-semibold text-emerald-700"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />Best Seller</span>
-                <div className="flex -space-x-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />)}</div>
-                <span className="text-sm text-[#57534E]"><strong className="text-[#1C1917]">4.9</strong> from <strong className="text-[#1C1917]">2,400+</strong> reviews</span>
-              </div>
-            </FadeUp>
-          </div>
-
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Left: Product Images */}
             <FadeUp delay={0.05} className="lg:sticky lg:top-20 lg:self-start lg:-mt-6">
@@ -501,6 +511,21 @@ export default function StickPack() {
                   </button>
                 ))}
               </div>
+              {/* Mobile-only: Offer copy below the image carousel */}
+              <div className="mt-5 lg:hidden">
+                <h1 className="font-display text-2xl sm:text-3xl font-bold leading-[1.15] tracking-tight text-[#1C1917] mb-3">Are You Ready To Take Back Your Mental Clarity?</h1>
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-[11px] font-semibold text-emerald-700"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />Best Seller</span>
+                  <div className="flex -space-x-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />)}</div>
+                  <span className="text-sm text-[#57534E]"><strong className="text-[#1C1917]">4.9</strong> from <strong className="text-[#1C1917]">2,400+</strong> reviews</span>
+                </div>
+                <HeroBenefitList className="mb-4" />
+                <div className="grid grid-cols-2 gap-1.5 mb-3">
+                  {PDP_BADGES.map((pill) => (
+                    <span key={pill.label} className={`inline-flex items-center justify-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold ${pill.bg}`}><span className="text-xs">{pill.emoji}</span>{pill.label}</span>
+                  ))}
+                </div>
+              </div>
               <div className="hidden lg:flex items-center justify-center gap-6 mt-4">
                 {[{ icon: ShieldCheck, label: "60-Day Guarantee" }, { icon: FlaskConical, label: "Third-Party Tested" }].map((badge) => (
                   <div key={badge.label} className="flex items-center gap-1.5 text-[#78716C]"><badge.icon size={14} className="text-[#D97706]" /><span className="text-xs">{badge.label}</span></div>
@@ -523,7 +548,7 @@ export default function StickPack() {
                   <div className="flex -space-x-0.5">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />)}</div>
                   <span className="text-sm text-[#57534E]"><strong className="text-[#1C1917]">4.9</strong> from <strong className="text-[#1C1917]">2,400+</strong> reviews</span>
                 </div>
-                <p className="text-[#57534E] text-base mb-5 leading-relaxed hidden lg:block">Eight research-backed ingredients + prebiotics in one caffeine-free stick pack. Add it to the coffee you already drink. <strong className="text-[#1C1917]">Brain + gut support that compounds over time.</strong></p>
+                <HeroBenefitList className="hidden lg:block mb-5" />
 
                 <div className="grid grid-cols-2 gap-1.5 mb-5 xl:flex xl:flex-nowrap">
                   {PDP_BADGES.map((pill) => (

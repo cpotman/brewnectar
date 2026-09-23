@@ -121,11 +121,29 @@ describe("stick-pack content and pacing refinements", () => {
   it("uses the revised benefit-led hero copy without the removed members claim", () => {
     expect(source.match(/Are You Ready To Take Back Your Mental Clarity\?/g)).toHaveLength(2);
     expect(source.match(/Take Back Your Mental Clarity with BrewNectar Stick Packs/g)).toHaveLength(1);
+    expect(source).toContain("Your coffee is already a habit. Make it work harder.");
+    expect(source).toContain("Calm, locked-in focus without adding more caffeine*");
+    expect(source).toContain("Targets brain fog at the source*");
+    expect(source).toContain("Clinically studied doses of key ingredients");
+    expect(source).toContain("Third-party tested for quality and purity");
+    expect(source).toContain("Just pour it into your coffee, stir, and drink");
+    expect(source).toContain("No extra pills. No second cup required.");
+    expect(source.match(/<HeroBenefitList/g)).toHaveLength(2);
+    expect(source).not.toContain("Eight research-backed ingredients + prebiotics in one caffeine-free stick pack.");
     expect(source).not.toContain("Stay Focused &amp; Clear with BrewNectar Stick Packs");
     expect(source.match(/Best Seller/g)).toHaveLength(2);
     expect(source).not.toContain("Now Shipping");
     expect(source).not.toContain("Thousands of</strong> members");
     expect(source).not.toContain("BrewNectar Brain + Gut Stick Packs");
+
+    const hero = source.slice(source.indexOf("{/* === SECTION 1: HERO / OFFER === */}"), source.indexOf("{/* === SECTION 2: PROBLEM AGITATION"));
+    const carouselIndex = hero.indexOf('className="grid grid-cols-5 gap-2 mt-3"');
+    const mobileCopyIndex = hero.indexOf("Mobile-only: Offer copy below the image carousel");
+    const offerControlsIndex = hero.indexOf("{/* Right: Plan Selector */}");
+    expect(carouselIndex).toBeGreaterThan(-1);
+    expect(mobileCopyIndex).toBeGreaterThan(carouselIndex);
+    expect(offerControlsIndex).toBeGreaterThan(mobileCopyIndex);
+    expect(hero).not.toContain("Title, pills, stars above images");
   });
 
   it("uses the requested four PDP badges in the same order on mobile and desktop", () => {
