@@ -77,10 +77,14 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).not.toContain('period: "2 Weeks"');
     expect(source).not.toContain('period: "2 Months"');
     expect(source).not.toContain('period: "3 Months"');
-    expect(source).toContain('title: "Your First Cup Feels More Focused"');
-    expect(source).toContain('title: "Your Routine Starts Feeling Reliable"');
-    expect(source).toContain('title: "Your Afternoons Feel More Capable"');
-    expect(source).toContain('title: "Your Best Days Feel More Repeatable"');
+    expect(source).toContain('title: "First, We Help You Lock In"');
+    expect(source).toContain('title: "Then, Your Gut-Brain Support Builds"');
+    expect(source).toContain('title: "Next, Stress Stops Taking So Much Out of You"');
+    expect(source).toContain('title: "Eventually, Great Days Become Your Baseline"');
+    expect(source).toContain("Your first cup starts with calm, usable focus.");
+    expect(source).toContain("Prebiotic fiber and probiotics give your gut consistent daily support");
+    expect(source).toContain("Rhodiola and Cordyceps support energy and your response to everyday stress");
+    expect(source).toContain("Ashwagandha and Lion’s Mane round out the formula");
     expect(source).toContain('ingredients: ["L-Theanine", "Alpha-GPC", "B6 + B12"]');
     expect(source).toContain('ingredients: ["Prebiotic Inulin", "B. coagulans"]');
     expect(source).toContain('ingredients: ["Rhodiola", "Cordyceps"]');
@@ -100,6 +104,9 @@ describe("stick-pack content and pacing refinements", () => {
     expect(stages).not.toMatch(/study|studies|trial|research|window/i);
     expect(stages).not.toContain("—");
     expect(stages.match(/\*"/g)).toHaveLength(4);
+    expect(source).toContain('className="h-full"');
+    expect(source).toContain("w-full flex flex-1 flex-col");
+    expect(source).toContain("mt-auto flex flex-wrap justify-center gap-1.5");
   });
 
   it("uses the smaller requested comparison set and warm gradient emphasis", () => {
@@ -155,7 +162,10 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source.match(/\$99 value/g)).toHaveLength(2);
     expect(source).not.toContain("$25 value");
     expect(source).toContain("text-xs font-bold leading-tight text-[#1C1917] sm:text-sm");
-    expect(source).toContain("block font-display text-sm font-extrabold leading-none text-[#B45309] sm:text-base");
+    expect(source).toContain("relative aspect-[16/9] overflow-hidden bg-stone-100");
+    expect(source).toContain("border-t px-3 py-3");
+    expect(source).toContain("block font-display text-base font-extrabold leading-none text-[#B45309] sm:text-lg");
+    expect(source).not.toContain("absolute inset-x-2 bottom-2 rounded-xl");
     expect(source).toContain("Free gifts with your order</span>");
   });
 

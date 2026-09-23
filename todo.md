@@ -282,3 +282,7 @@
 - [x] Change the Focus & Clarity Masterclass value from $25 to $99 everywhere on the stick-pack page
 - [x] Remove all customer-facing Made in USA and plan wording from the stick-pack page
 - [x] Verify the updated gift hierarchy in both offer blocks on desktop and mobile
+- [x] Move both free-gift text blocks beneath their images while preserving selected and locked visual states
+- [x] Replace all four Compounding Effect titles and descriptions with the supplied progression-focused copy
+- [x] Keep the Compounding Effect period labels and named ingredient badges while balancing longer cards
+- [x] Verify the revised gift cards and timeline at desktop and mobile widths

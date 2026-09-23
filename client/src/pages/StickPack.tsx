@@ -147,10 +147,10 @@ const PLANS = [
 
 /* --- Compounding Effect stages --- */
 const COMPOUNDING_STAGES = [
-  { period: "Day 1", title: "Your First Cup Feels More Focused", level: "40%", desc: "The morning starts with calm, usable focus instead of feeling pulled in five directions. You may find it easier to settle in, choose what matters, and get moving without adding another stimulant.*", ingredients: ["L-Theanine", "Alpha-GPC", "B6 + B12"], color: "bg-amber-50 border-amber-200", iconColor: "text-[#D97706]", dotColor: "bg-[#D97706]" },
-  { period: "Week 2", title: "Your Routine Starts Feeling Reliable", level: "60%", desc: "What felt new begins to feel dependable. Your mornings have more direction, your gut gets daily support, and reaching for another coffee every time focus slips may feel less necessary.*", ingredients: ["Prebiotic Inulin", "B. coagulans"], color: "bg-emerald-50 border-emerald-200", iconColor: "text-emerald-600", dotColor: "bg-emerald-600" },
-  { period: "Week 6", title: "Your Afternoons Feel More Capable", level: "80%", desc: "The afternoon feels less like something to push through. Steadier energy and stress support can help you stay useful later in the day without chasing a bigger caffeine hit.*", ingredients: ["Rhodiola", "Cordyceps"], color: "bg-sky-50 border-sky-200", iconColor: "text-sky-600", dotColor: "bg-sky-600" },
-  { period: "Week 12", title: "Your Best Days Feel More Repeatable", level: "95%", desc: "Clear, productive days feel less accidental. Focus is easier to return to, stress feels more manageable, and better-supported sleep and recovery can help tomorrow start stronger.*", ingredients: ["Ashwagandha", "Lion's Mane"], color: "bg-violet-50 border-violet-200", iconColor: "text-violet-600", dotColor: "bg-violet-600" },
+  { period: "Day 1", title: "First, We Help You Lock In", level: "40%", desc: "Your first cup starts with calm, usable focus. L-Theanine and Alpha-GPC support the kind of mental clarity that makes it easier to tune out distractions, choose what matters, and get into your work without adding another stimulant.*", ingredients: ["L-Theanine", "Alpha-GPC", "B6 + B12"], color: "bg-amber-50 border-amber-200", iconColor: "text-[#D97706]", dotColor: "bg-[#D97706]" },
+  { period: "Week 2", title: "Then, Your Gut-Brain Support Builds", level: "60%", desc: "Now the routine starts working from another angle. Prebiotic fiber and probiotics give your gut consistent daily support, helping build the foundation behind the gut-brain connection while your morning focus becomes something you can come back to every day.*", ingredients: ["Prebiotic Inulin", "B. coagulans"], color: "bg-emerald-50 border-emerald-200", iconColor: "text-emerald-600", dotColor: "bg-emerald-600" },
+  { period: "Week 6", title: "Next, Stress Stops Taking So Much Out of You", level: "80%", desc: "This is where the formula starts supporting more than your morning. Rhodiola and Cordyceps support energy and your response to everyday stress, so staying sharp later in the day can feel easier without reaching for a bigger caffeine hit.*", ingredients: ["Rhodiola", "Cordyceps"], color: "bg-sky-50 border-sky-200", iconColor: "text-sky-600", dotColor: "bg-sky-600" },
+  { period: "Week 12", title: "Eventually, Great Days Become Your Baseline", level: "95%", desc: "With consistent use, the full routine is working together. Ashwagandha and Lion’s Mane round out the formula with support for stress, cognitive performance, and recovery, helping make clear, productive days feel less like the exception and more like your normal.*", ingredients: ["Ashwagandha", "Lion's Mane"], color: "bg-violet-50 border-violet-200", iconColor: "text-violet-600", dotColor: "bg-violet-600" },
 ];
 
 /* --- Comparison rows --- */
@@ -335,37 +335,37 @@ function PlanGiftCards({
             onClick={() => { if (!gift.selected) onSelectPlan(gift.unlockPlan); }}
             aria-pressed={gift.selected}
             aria-label={`${gift.title}, ${gift.detail}: ${gift.selected ? gift.activeLabel : gift.inactiveLabel}`}
-            className={`group relative h-32 overflow-hidden rounded-2xl border-2 text-left shadow-sm transition-all duration-300 sm:h-36 ${
+            className={`group overflow-hidden rounded-2xl border-2 text-left shadow-sm transition-all duration-300 ${
               gift.selected
-                ? "border-[#D97706]/60 shadow-[0_10px_25px_rgba(180,83,9,0.14)]"
-                : "border-stone-200 hover:border-stone-300"
+                ? "border-[#D97706]/60 bg-white shadow-[0_10px_25px_rgba(180,83,9,0.14)]"
+                : "border-stone-200 bg-stone-50 hover:border-stone-300"
             }`}
           >
-            <img
-              src={gift.image}
-              alt={gift.alt}
-              loading="lazy"
-              className={`absolute inset-0 h-full w-full object-cover transition-all duration-300 ${
-                gift.selected ? "scale-[1.02]" : "grayscale contrast-75 opacity-70 group-hover:opacity-85"
-              }`}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/30 via-transparent to-white/5" />
-            {gift.selected ? (
-              <div className="absolute left-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 shadow-sm">
-                <Check size={12} strokeWidth={3} className="text-white" />
-              </div>
-            ) : (
-              <div className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-stone-900/70 backdrop-blur-sm">
-                <Lock size={12} className="text-white" />
-              </div>
-            )}
-            <div className={`absolute inset-x-2 bottom-2 rounded-xl border px-3 py-2.5 shadow-sm backdrop-blur-md ${
-              gift.selected ? "border-white/70 bg-white/92" : "border-white/60 bg-white/88"
-            }`}>
+            <div className="relative aspect-[16/9] overflow-hidden bg-stone-100">
+              <img
+                src={gift.image}
+                alt={gift.alt}
+                loading="lazy"
+                className={`absolute inset-0 h-full w-full object-cover transition-all duration-300 ${
+                  gift.selected ? "scale-[1.02]" : "grayscale contrast-75 opacity-70 group-hover:opacity-85"
+                }`}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/10 to-transparent" />
+              {gift.selected ? (
+                <div className="absolute left-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 shadow-sm">
+                  <Check size={12} strokeWidth={3} className="text-white" />
+                </div>
+              ) : (
+                <div className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-stone-900/70 backdrop-blur-sm">
+                  <Lock size={12} className="text-white" />
+                </div>
+              )}
+            </div>
+            <div className={`border-t px-3 py-3 ${gift.selected ? "border-orange-100 bg-white" : "border-stone-200 bg-stone-50"}`}>
               <p className="text-xs font-bold leading-tight text-[#1C1917] sm:text-sm">{gift.title}</p>
               <div className="mt-1.5">
-                <span className="block font-display text-sm font-extrabold leading-none text-[#B45309] sm:text-base">{gift.detail}</span>
-                <span className={`mt-1 block text-[9px] font-bold leading-tight sm:text-[10px] ${gift.selected ? "text-emerald-700" : "text-stone-500"}`}>
+                <span className="block font-display text-base font-extrabold leading-none text-[#B45309] sm:text-lg">{gift.detail}</span>
+                <span className={`mt-1.5 block text-[9px] font-bold leading-tight sm:text-[10px] ${gift.selected ? "text-emerald-700" : "text-stone-500"}`}>
                   {gift.selected ? gift.activeLabel : gift.inactiveLabel}
                 </span>
               </div>
@@ -682,16 +682,16 @@ export default function StickPack() {
             <div className="hidden md:block absolute top-8 left-[12.5%] right-[12.5%] h-0.5 border-t-2 border-dashed border-[#D97706]/30" />
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4">
               {COMPOUNDING_STAGES.map((milestone, i) => (
-                <FadeUp key={milestone.period} delay={i * 0.1}>
-                  <div className="flex flex-col items-center text-center">
+                <FadeUp key={milestone.period} delay={i * 0.1} className="h-full">
+                  <div className="flex h-full flex-col items-center text-center">
                     <div className={`relative z-10 w-16 h-16 rounded-full ${milestone.color} border-2 flex items-center justify-center mb-4`}>
                       <span className={`font-display font-bold text-sm ${milestone.iconColor}`}>{milestone.level}</span>
                     </div>
                     <span className="text-xs font-semibold uppercase tracking-widest text-[#D97706] mb-2">{milestone.period}</span>
-                    <div className={`${milestone.color} border rounded-2xl p-5 w-full`}>
+                    <div className={`${milestone.color} border rounded-2xl p-5 w-full flex flex-1 flex-col`}>
                       <h3 className="font-display font-bold text-base text-[#1C1917] mb-2">{milestone.title}</h3>
                       <p className="text-xs text-[#57534E] leading-relaxed mb-3">{milestone.desc}</p>
-                      <div className="flex flex-wrap justify-center gap-1.5">
+                      <div className="mt-auto flex flex-wrap justify-center gap-1.5">
                         {milestone.ingredients.map((ing) => (
                           <span key={ing} className="px-2.5 py-1 rounded-full bg-white/80 text-[10px] font-semibold text-[#44403C] border border-stone-100">{ing}</span>
                         ))}
