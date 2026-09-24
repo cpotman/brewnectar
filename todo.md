@@ -313,3 +313,4 @@
 - [x] Verify badge alignment and offer-card height across desktop and phone widths
 - [x] Replace “Calm, locked-in focus without adding more caffeine*” with “Focus that you can feel” in the shared hero benefit list
 - [x] Verify the revised benefit appears consistently in the desktop and mobile hero renderings
+- [x] Finalize the first hero benefit as “Focus you can actually feel*” on desktop and mobile

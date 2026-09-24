@@ -47,7 +47,7 @@ const PDP_BADGES = [
 ];
 
 const HERO_BENEFITS = [
-  "Focus that you can feel",
+  "Focus you can actually feel*",
   "Targets brain fog at the source*",
   "Clinically studied doses of key ingredients",
   "Third-party tested for quality and purity",

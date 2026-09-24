@@ -122,7 +122,8 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source.match(/Are You Ready To Take Back Your Mental Clarity\?/g)).toHaveLength(2);
     expect(source.match(/Take Back Your Mental Clarity with BrewNectar Stick Packs/g)).toHaveLength(1);
     expect(source).toContain("Your coffee is already a habit. Make it work harder.");
-    expect(source).toContain("Focus that you can feel");
+    expect(source).toContain("Focus you can actually feel*");
+    expect(source).not.toContain("Focus that you can feel");
     expect(source).not.toContain("Calm, locked-in focus without adding more caffeine*");
     expect(source).toContain("Targets brain fog at the source*");
     expect(source).toContain("Clinically studied doses of key ingredients");
