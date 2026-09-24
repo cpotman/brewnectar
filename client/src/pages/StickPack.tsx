@@ -47,7 +47,7 @@ const PDP_BADGES = [
 ];
 
 const HERO_BENEFITS = [
-  "Calm, locked-in focus without adding more caffeine*",
+  "Focus that you can feel",
   "Targets brain fog at the source*",
   "Clinically studied doses of key ingredients",
   "Third-party tested for quality and purity",
@@ -166,10 +166,10 @@ const INGREDIENTS = [
 
 /* --- Plans --- */
 const PLANS = [
-  { id: "1mo", name: "1 Bag", savings: "Save $9.05", price: "$39.95", perDay: "$1.43/day", billed: "$39.95 per bag", badge: "", perks: [] },
-  { id: "2mo", name: "2 Bags", savings: "Save $38.05", price: "$59.95", perDay: "$1.07/day", billed: "$29.98 per bag", badge: "MOST POPULAR", perks: [] },
-  { id: "3mo", name: "3 Bags", savings: "Save $72.01", price: "$74.95", perDay: "$0.89/day", billed: "$24.98 per bag", badge: "BEST VALUE", perks: ["Exclusive Focus & Clarity Masterclass ($99 value)", "Maximum savings — lowest price per serving", "Lock in savings — price guaranteed even if we raise it", "Try it for 60 days. If it isn't right for you, contact us for a full refund.", "La Marzocco Espresso Machine ($4500) Giveaway entries"] },
-  { id: "one-time", name: "One-Time Purchase", savings: "", price: "$49", perDay: "$1.75/day", billed: "$49 per bag", badge: "", perks: [] },
+  { id: "1mo", name: "1 Bag", savings: "Save $9.05", price: "$39.95", perDay: "$1.43/day", billed: "$39.95 per bag", supply: "1 Month Supply", badge: "", perks: [] },
+  { id: "2mo", name: "2 Bags", savings: "Save $38.05", price: "$59.95", perDay: "$1.07/day", billed: "$29.98 per bag", supply: "2 Month Supply", badge: "MOST POPULAR", perks: [] },
+  { id: "3mo", name: "3 Bags", savings: "Save $72.01", price: "$74.95", perDay: "$0.89/day", billed: "$24.98 per bag", supply: "3 Month Supply", badge: "BEST VALUE", perks: ["Exclusive Focus & Clarity Masterclass ($99 value)", "Maximum savings — lowest price per serving", "Lock in savings — price guaranteed even if we raise it", "Try it for 60 days. If it isn't right for you, contact us for a full refund.", "La Marzocco Espresso Machine ($4500) Giveaway entries"] },
+  { id: "one-time", name: "One-Time Purchase", savings: "", price: "$49", perDay: "$1.75/day", billed: "$49 per bag", supply: "1 Month Supply", badge: "", perks: [] },
 ];
 
 /* --- Compounding Effect stages --- */
@@ -585,7 +585,7 @@ export default function StickPack() {
                           <div className="flex items-center gap-3">
                             <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${isSelected ? "border-[#B45309]" : "border-stone-300"}`}>{isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#B45309]" />}</div>
                             <div>
-                              <div className="flex items-center gap-2 flex-wrap"><h3 className="font-display font-bold text-base text-[#1C1917]">{plan.name}</h3><span className="text-sm font-semibold text-emerald-600">({plan.savings})</span></div>
+                              <div className="flex items-center gap-2 flex-wrap"><h3 className="font-display font-bold text-base text-[#1C1917]">{plan.name}</h3><span className="text-sm font-semibold text-emerald-600">({plan.savings})</span><span className="inline-flex whitespace-nowrap rounded-full border border-stone-200 bg-stone-100 px-2.5 py-1 text-[10px] font-semibold leading-none text-[#57534E] sm:text-[11px]">{plan.supply}</span></div>
                               <p className="text-xs text-[#78716C] mt-0.5">{plan.billed}</p>
                             </div>
                           </div>
@@ -1022,7 +1022,7 @@ export default function StickPack() {
                           <div className="flex items-center gap-3">
                             <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${isSelected ? "border-[#B45309]" : "border-stone-300"}`}>{isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#B45309]" />}</div>
                             <div>
-                              <div className="flex items-center gap-2 flex-wrap"><span className="font-display font-bold text-base text-[#1C1917]">{plan.name}</span><span className="text-sm font-semibold text-emerald-600">({plan.savings})</span></div>
+                              <div className="flex items-center gap-2 flex-wrap"><span className="font-display font-bold text-base text-[#1C1917]">{plan.name}</span><span className="text-sm font-semibold text-emerald-600">({plan.savings})</span><span className="inline-flex whitespace-nowrap rounded-full border border-stone-200 bg-stone-100 px-2.5 py-1 text-[10px] font-semibold leading-none text-[#57534E] sm:text-[11px]">{plan.supply}</span></div>
                               <p className="text-xs text-[#78716C] mt-0.5">{plan.billed}</p>
                             </div>
                           </div>

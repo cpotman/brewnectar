@@ -122,7 +122,8 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source.match(/Are You Ready To Take Back Your Mental Clarity\?/g)).toHaveLength(2);
     expect(source.match(/Take Back Your Mental Clarity with BrewNectar Stick Packs/g)).toHaveLength(1);
     expect(source).toContain("Your coffee is already a habit. Make it work harder.");
-    expect(source).toContain("Calm, locked-in focus without adding more caffeine*");
+    expect(source).toContain("Focus that you can feel");
+    expect(source).not.toContain("Calm, locked-in focus without adding more caffeine*");
     expect(source).toContain("Targets brain fog at the source*");
     expect(source).toContain("Clinically studied doses of key ingredients");
     expect(source).toContain("Third-party tested for quality and purity");
@@ -209,6 +210,11 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).toContain('id: "1mo", name: "1 Bag", savings: "Save $9.05", price: "$39.95", perDay: "$1.43/day", billed: "$39.95 per bag"');
     expect(source).toContain('id: "2mo", name: "2 Bags", savings: "Save $38.05", price: "$59.95", perDay: "$1.07/day", billed: "$29.98 per bag"');
     expect(source).toContain('id: "3mo", name: "3 Bags", savings: "Save $72.01", price: "$74.95", perDay: "$0.89/day", billed: "$24.98 per bag"');
+    expect(source).toContain('supply: "1 Month Supply"');
+    expect(source).toContain('supply: "2 Month Supply"');
+    expect(source).toContain('supply: "3 Month Supply"');
+    expect(source.match(/\{plan\.supply\}/g)).toHaveLength(2);
+    expect(source.match(/inline-flex whitespace-nowrap rounded-full border border-stone-200 bg-stone-100 px-2\.5 py-1 text-\[10px\] font-semibold leading-none text-\[#57534E\] sm:text-\[11px\]/g)).toHaveLength(2);
     expect(source).toContain('id: "one-time", name: "One-Time Purchase", savings: "", price: "$49", perDay: "$1.75/day", billed: "$49 per bag"');
     const offers = source.slice(source.indexOf("const PLANS = ["), source.indexOf("/* --- Compounding Effect stages --- */"));
     expect(offers.indexOf('id: "1mo"')).toBeLessThan(offers.indexOf('id: "2mo"'));

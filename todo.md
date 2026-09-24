@@ -308,3 +308,8 @@
 - [x] Apply the dynamic one-time quantity link to both offer blocks and verify all selection states
 - [x] Keep the dynamic link wording consistent as One Time Purchase (1), (2), or (3) with the matching total
 - [x] Expose the selected one-time quantity on the control for future cart integration
+- [x] Add 1 Month Supply, 2 Month Supply, and 3 Month Supply pills to every corresponding option in both offer blocks
+- [x] Keep the new supply badges compact and flex-wrapping so the price column remains stable on mobile
+- [x] Verify badge alignment and offer-card height across desktop and phone widths
+- [x] Replace “Calm, locked-in focus without adding more caffeine*” with “Focus that you can feel” in the shared hero benefit list
+- [x] Verify the revised benefit appears consistently in the desktop and mobile hero renderings
