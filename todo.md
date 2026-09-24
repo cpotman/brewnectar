@@ -320,3 +320,5 @@
 - [x] Move the dynamic One Time Purchase control beneath the 60-Day Satisfaction Guarantee in both offer blocks
 - [x] Rebuild the expanded 3 Bags list around the full 90-day benefit, both bonuses, maximum savings, and the 60-day guarantee
 - [x] Increase the 3 Bags benefit weight, size, spacing, and warm checkmark emphasis for easier scanning
+- [x] Preselect 3 Bags instead of 1 Bag when the stick-pack page first loads
+- [x] Verify the expanded 90-day benefits and unlocked gifts are visible by default on desktop and mobile

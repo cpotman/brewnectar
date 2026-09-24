@@ -459,7 +459,7 @@ function OneTimePurchaseLink({ selectedPlan }: { selectedPlan: string }) {
 
 /* ======= MAIN COMPONENT ======= */
 export default function StickPack() {
-  const [selectedPlan, setSelectedPlan] = useState("1mo");
+  const [selectedPlan, setSelectedPlan] = useState("3mo");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [expandedIngredient, setExpandedIngredient] = useState<number | null>(null);
   const [openPdpInfo, setOpenPdpInfo] = useState<string | null>(null);
