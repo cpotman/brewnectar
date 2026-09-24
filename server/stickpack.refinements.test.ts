@@ -159,7 +159,7 @@ describe("stick-pack content and pacing refinements", () => {
     const caffeineIndex = badges.indexOf('label: "Caffeine-Free"');
     const sugarIndex = badges.indexOf('label: "Sugar Free"');
     const clinicallyDosedIndex = badges.indexOf('label: "Clinically Dosed"');
-    const tasteIndex = badges.indexOf('label: "No Earthy Taste"');
+    const tasteIndex = badges.indexOf('label: "Unflavored"');
     expect(caffeineIndex).toBeGreaterThan(-1);
     expect(sugarIndex).toBeGreaterThan(caffeineIndex);
     expect(clinicallyDosedIndex).toBeGreaterThan(sugarIndex);
@@ -171,6 +171,8 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).toContain('className="grid grid-cols-2 gap-1.5 mb-5 xl:flex xl:flex-nowrap"');
     expect(source).not.toContain('label: "Made in USA"');
     expect(source).not.toMatch(/Made in USA/i);
+    expect(badges).toContain('label: "Unflavored", emoji: "💧"');
+    expect(badges).not.toContain("No Earthy Taste");
   });
 
   it("uses plan-dependent image gift cards with grayscale locked states in both offers", () => {
@@ -238,6 +240,11 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).not.toContain('&& "/MO"');
     expect(source).not.toContain('&& "/mo"');
     expect(source).not.toMatch(/Billed \$|every (?:12|8|4) weeks|One-time payment/);
+    expect(source).toContain('perks: ["Get the full 90-day benefit*", "Exclusive Focus & Clarity Masterclass ($99 value)", "La Marzocco Espresso Machine ($4,500 value) giveaway entry", "Maximum savings at $24.98 per bag", "60-day money-back guarantee"]');
+    expect(source).not.toContain("Lock in savings — price guaranteed even if we raise it");
+    expect(source.match(/className="flex items-start gap-2"><Check size=\{17\}/g)).toHaveLength(2);
+    expect(source.match(/Check size=\{17\} strokeWidth=\{3\} className="mt-0\.5 text-\[#B45309\] flex-shrink-0"/g)).toHaveLength(2);
+    expect(source.match(/text-\[13px\] font-semibold leading-snug text-\[#292524\]/g)).toHaveLength(2);
   });
 
   it("uses matching low-stock and add-to-cart controls across both offer blocks", () => {
@@ -253,7 +260,8 @@ describe("stick-pack content and pacing refinements", () => {
     );
     expect(offerButton).toContain("Add to Cart");
     expect(offerButton).not.toContain("currentPlan.price");
-    expect(source.match(/<OfferAddToCartButton \/>\s*<OneTimePurchaseLink/g)).toHaveLength(2);
+    expect(source).not.toMatch(/<OfferAddToCartButton \/>\s*<OneTimePurchaseLink/);
+    expect(source.match(/full refund\.<\/p><\/div><\/div>\s*<OneTimePurchaseLink/g)).toHaveLength(2);
     expect(source.match(/<OneTimePurchaseLink selectedPlan=\{selectedPlan\} \/>/g)).toHaveLength(2);
     expect(source).toContain('"1mo": { quantity: 1, total: "$49" }');
     expect(source).toContain('"2mo": { quantity: 2, total: "$98" }');
@@ -263,7 +271,8 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).toContain('data-quantity={option.quantity}');
     expect(source).not.toContain('`Add ${option.quantity} to the Cart · ${option.total}`');
     expect(source).not.toContain('isSelected={selectedPlan === "one-time"}');
-    expect(source).toContain('className="mt-3 text-center"');
+    expect(source).toContain('className="text-center"');
+    expect(source).not.toContain('className="mt-3 text-center"');
     expect(source.match(/60-Day Satisfaction Guarantee/g)).toHaveLength(3);
     expect(source.match(/Secure checkout/g)).toHaveLength(2);
     expect(source).not.toMatch(/Start Now|Select Your Plan|Subscribe & Save up to 49%/i);

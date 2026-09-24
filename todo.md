@@ -316,3 +316,7 @@
 - [x] Finalize the first hero benefit as “Focus you can actually feel*” on desktop and mobile
 - [x] Move each Month Supply badge beneath the per-bag price line on mobile in both offer blocks
 - [x] Preserve the compact inline Month Supply placement at tablet and desktop widths
+- [x] Replace the No Earthy Taste badge with an Unflavored badge and matching water-drop icon
+- [x] Move the dynamic One Time Purchase control beneath the 60-Day Satisfaction Guarantee in both offer blocks
+- [x] Rebuild the expanded 3 Bags list around the full 90-day benefit, both bonuses, maximum savings, and the 60-day guarantee
+- [x] Increase the 3 Bags benefit weight, size, spacing, and warm checkmark emphasis for easier scanning

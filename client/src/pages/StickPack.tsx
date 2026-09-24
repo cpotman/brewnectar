@@ -43,7 +43,7 @@ const PDP_BADGES = [
   { label: "Caffeine-Free", emoji: "☕", bg: "bg-amber-100 text-amber-800" },
   { label: "Sugar Free", emoji: "✨", bg: "bg-emerald-100 text-emerald-800" },
   { label: "Clinically Dosed", emoji: "🧪", bg: "bg-sky-100 text-sky-800" },
-  { label: "No Earthy Taste", emoji: "🙌", bg: "bg-rose-100 text-rose-800" },
+  { label: "Unflavored", emoji: "💧", bg: "bg-rose-100 text-rose-800" },
 ];
 
 const HERO_BENEFITS = [
@@ -168,7 +168,7 @@ const INGREDIENTS = [
 const PLANS = [
   { id: "1mo", name: "1 Bag", savings: "Save $9.05", price: "$39.95", perDay: "$1.43/day", billed: "$39.95 per bag", supply: "1 Month Supply", badge: "", perks: [] },
   { id: "2mo", name: "2 Bags", savings: "Save $38.05", price: "$59.95", perDay: "$1.07/day", billed: "$29.98 per bag", supply: "2 Month Supply", badge: "MOST POPULAR", perks: [] },
-  { id: "3mo", name: "3 Bags", savings: "Save $72.01", price: "$74.95", perDay: "$0.89/day", billed: "$24.98 per bag", supply: "3 Month Supply", badge: "BEST VALUE", perks: ["Exclusive Focus & Clarity Masterclass ($99 value)", "Maximum savings — lowest price per serving", "Lock in savings — price guaranteed even if we raise it", "Try it for 60 days. If it isn't right for you, contact us for a full refund.", "La Marzocco Espresso Machine ($4500) Giveaway entries"] },
+  { id: "3mo", name: "3 Bags", savings: "Save $72.01", price: "$74.95", perDay: "$0.89/day", billed: "$24.98 per bag", supply: "3 Month Supply", badge: "BEST VALUE", perks: ["Get the full 90-day benefit*", "Exclusive Focus & Clarity Masterclass ($99 value)", "La Marzocco Espresso Machine ($4,500 value) giveaway entry", "Maximum savings at $24.98 per bag", "60-day money-back guarantee"] },
   { id: "one-time", name: "One-Time Purchase", savings: "", price: "$49", perDay: "$1.75/day", billed: "$49 per bag", supply: "1 Month Supply", badge: "", perks: [] },
 ];
 
@@ -443,7 +443,7 @@ function OneTimePurchaseLink({ selectedPlan }: { selectedPlan: string }) {
   const label = `One Time Purchase (${option.quantity}) · ${option.total}`;
 
   return (
-    <div className="mt-3 text-center">
+    <div className="text-center">
       <button
         type="button"
         data-purchase-type="one-time"
@@ -598,7 +598,7 @@ export default function StickPack() {
                         <AnimatePresence initial={false}>
                           {isSelected && plan.perks.length > 0 && (
                             <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }} className="overflow-hidden">
-                              <div className="px-4 md:px-5 pb-4 md:pb-5 pt-0 border-t border-stone-100"><div className="pt-3 space-y-1.5">{plan.perks.map((perk) => (<div key={perk} className="flex items-center gap-2"><Check size={16} strokeWidth={3} className="text-emerald-600 flex-shrink-0" /><span className="text-xs text-[#44403C]">{perk}</span></div>))}</div></div>
+                              <div className="px-4 md:px-5 pb-4 md:pb-5 pt-0 border-t border-stone-100"><div className="pt-3 space-y-2">{plan.perks.map((perk) => (<div key={perk} className="flex items-start gap-2"><Check size={17} strokeWidth={3} className="mt-0.5 text-[#B45309] flex-shrink-0" /><span className="text-[13px] font-semibold leading-snug text-[#292524]">{perk}</span></div>))}</div></div>
                             </motion.div>
                           )}
                         </AnimatePresence>
@@ -610,10 +610,10 @@ export default function StickPack() {
                 <PlanGiftCards selectedPlan={selectedPlan} onSelectPlan={setSelectedPlan} />
 
                 <OfferAddToCartButton />
-                <OneTimePurchaseLink selectedPlan={selectedPlan} />
 
                 <div className="mt-4 space-y-3">
                   <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">60-Day Satisfaction Guarantee</p><p className="text-[11px] text-[#78716C]">Try it for 60 days. If it isn't right for you, contact us for a full refund.</p></div></div>
+                  <OneTimePurchaseLink selectedPlan={selectedPlan} />
                   <div className="flex items-center justify-center gap-2 px-1 text-[#57534E]"><Lock size={14} className="text-[#78716C]" /><span className="text-xs">Secure checkout</span></div>
                   {/* PDP Info Dropdowns - mobile only */}
                   <PdpInfoAccordion
@@ -1036,7 +1036,7 @@ export default function StickPack() {
                         <AnimatePresence initial={false}>
                           {isSelected && plan.perks.length > 0 && (
                             <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }} className="overflow-hidden">
-                              <div className="px-4 md:px-5 pb-4 md:pb-5 pt-0 border-t border-stone-100"><div className="pt-3 space-y-1.5">{plan.perks.map((perk) => (<div key={perk} className="flex items-center gap-2"><Check size={16} strokeWidth={3} className="text-emerald-600 flex-shrink-0" /><span className="text-xs text-[#44403C]">{perk}</span></div>))}</div></div>
+                              <div className="px-4 md:px-5 pb-4 md:pb-5 pt-0 border-t border-stone-100"><div className="pt-3 space-y-2">{plan.perks.map((perk) => (<div key={perk} className="flex items-start gap-2"><Check size={17} strokeWidth={3} className="mt-0.5 text-[#B45309] flex-shrink-0" /><span className="text-[13px] font-semibold leading-snug text-[#292524]">{perk}</span></div>))}</div></div>
                             </motion.div>
                           )}
                         </AnimatePresence>
@@ -1048,10 +1048,10 @@ export default function StickPack() {
                 <PlanGiftCards selectedPlan={selectedPlan} onSelectPlan={setSelectedPlan} />
 
                 <OfferAddToCartButton />
-                <OneTimePurchaseLink selectedPlan={selectedPlan} />
 
                 <div className="mt-4 space-y-3">
                   <div className="flex items-center gap-3 p-3 rounded-xl bg-stone-50 border border-stone-200"><ShieldCheck size={20} className="text-emerald-600 flex-shrink-0" /><div><p className="text-xs font-bold text-[#1C1917]">60-Day Satisfaction Guarantee</p><p className="text-[11px] text-[#78716C]">Try it for 60 days. If it isn't right for you, contact us for a full refund.</p></div></div>
+                  <OneTimePurchaseLink selectedPlan={selectedPlan} />
                   <div className="flex items-center justify-center gap-2 px-1 text-[#57534E]"><Lock size={14} className="text-[#78716C]" /><span className="text-xs">Secure checkout</span></div>
                   {/* PDP Info Dropdowns - mobile only */}
                   <PdpInfoAccordion
