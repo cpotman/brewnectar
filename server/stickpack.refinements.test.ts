@@ -214,8 +214,10 @@ describe("stick-pack content and pacing refinements", () => {
     expect(source).toContain('supply: "1 Month Supply"');
     expect(source).toContain('supply: "2 Month Supply"');
     expect(source).toContain('supply: "3 Month Supply"');
-    expect(source.match(/\{plan\.supply\}/g)).toHaveLength(2);
-    expect(source.match(/inline-flex whitespace-nowrap rounded-full border border-stone-200 bg-stone-100 px-2\.5 py-1 text-\[10px\] font-semibold leading-none text-\[#57534E\] sm:text-\[11px\]/g)).toHaveLength(2);
+    expect(source.match(/\{plan\.supply\}/g)).toHaveLength(4);
+    expect(source.match(/hidden whitespace-nowrap rounded-full border border-stone-200 bg-stone-100 px-2\.5 py-1 text-\[11px\] font-semibold leading-none text-\[#57534E\] sm:inline-flex/g)).toHaveLength(2);
+    expect(source.match(/mt-1 inline-flex whitespace-nowrap rounded-full border border-stone-200 bg-stone-100 px-2 py-1 text-\[10px\] font-semibold leading-none text-\[#57534E\] sm:hidden/g)).toHaveLength(2);
+    expect(source.match(/\{plan\.billed\}<\/p>\s*<span className="mt-1 inline-flex/g)).toHaveLength(2);
     expect(source).toContain('id: "one-time", name: "One-Time Purchase", savings: "", price: "$49", perDay: "$1.75/day", billed: "$49 per bag"');
     const offers = source.slice(source.indexOf("const PLANS = ["), source.indexOf("/* --- Compounding Effect stages --- */"));
     expect(offers.indexOf('id: "1mo"')).toBeLessThan(offers.indexOf('id: "2mo"'));

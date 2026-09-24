@@ -314,3 +314,5 @@
 - [x] Replace “Calm, locked-in focus without adding more caffeine*” with “Focus that you can feel” in the shared hero benefit list
 - [x] Verify the revised benefit appears consistently in the desktop and mobile hero renderings
 - [x] Finalize the first hero benefit as “Focus you can actually feel*” on desktop and mobile
+- [x] Move each Month Supply badge beneath the per-bag price line on mobile in both offer blocks
+- [x] Preserve the compact inline Month Supply placement at tablet and desktop widths

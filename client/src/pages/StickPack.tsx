@@ -585,8 +585,9 @@ export default function StickPack() {
                           <div className="flex items-center gap-3">
                             <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${isSelected ? "border-[#B45309]" : "border-stone-300"}`}>{isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#B45309]" />}</div>
                             <div>
-                              <div className="flex items-center gap-2 flex-wrap"><h3 className="font-display font-bold text-base text-[#1C1917]">{plan.name}</h3><span className="text-sm font-semibold text-emerald-600">({plan.savings})</span><span className="inline-flex whitespace-nowrap rounded-full border border-stone-200 bg-stone-100 px-2.5 py-1 text-[10px] font-semibold leading-none text-[#57534E] sm:text-[11px]">{plan.supply}</span></div>
+                              <div className="flex items-center gap-2 flex-wrap"><h3 className="font-display font-bold text-base text-[#1C1917]">{plan.name}</h3><span className="text-sm font-semibold text-emerald-600">({plan.savings})</span><span className="hidden whitespace-nowrap rounded-full border border-stone-200 bg-stone-100 px-2.5 py-1 text-[11px] font-semibold leading-none text-[#57534E] sm:inline-flex">{plan.supply}</span></div>
                               <p className="text-xs text-[#78716C] mt-0.5">{plan.billed}</p>
+                              <span className="mt-1 inline-flex whitespace-nowrap rounded-full border border-stone-200 bg-stone-100 px-2 py-1 text-[10px] font-semibold leading-none text-[#57534E] sm:hidden">{plan.supply}</span>
                             </div>
                           </div>
                           <div className="text-right flex-shrink-0">
@@ -1022,8 +1023,9 @@ export default function StickPack() {
                           <div className="flex items-center gap-3">
                             <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${isSelected ? "border-[#B45309]" : "border-stone-300"}`}>{isSelected && <div className="w-2.5 h-2.5 rounded-full bg-[#B45309]" />}</div>
                             <div>
-                              <div className="flex items-center gap-2 flex-wrap"><span className="font-display font-bold text-base text-[#1C1917]">{plan.name}</span><span className="text-sm font-semibold text-emerald-600">({plan.savings})</span><span className="inline-flex whitespace-nowrap rounded-full border border-stone-200 bg-stone-100 px-2.5 py-1 text-[10px] font-semibold leading-none text-[#57534E] sm:text-[11px]">{plan.supply}</span></div>
+                              <div className="flex items-center gap-2 flex-wrap"><span className="font-display font-bold text-base text-[#1C1917]">{plan.name}</span><span className="text-sm font-semibold text-emerald-600">({plan.savings})</span><span className="hidden whitespace-nowrap rounded-full border border-stone-200 bg-stone-100 px-2.5 py-1 text-[11px] font-semibold leading-none text-[#57534E] sm:inline-flex">{plan.supply}</span></div>
                               <p className="text-xs text-[#78716C] mt-0.5">{plan.billed}</p>
+                              <span className="mt-1 inline-flex whitespace-nowrap rounded-full border border-stone-200 bg-stone-100 px-2 py-1 text-[10px] font-semibold leading-none text-[#57534E] sm:hidden">{plan.supply}</span>
                             </div>
                           </div>
                           <div className="text-right flex-shrink-0">
